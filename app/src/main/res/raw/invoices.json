@@ -1,0 +1,68 @@
+[
+  {
+    "id": "0",
+    "travel_id": "0",
+    "name": "ESTAXI Alberto Aguilera 7, Madrid.",
+    "nif_client": "22222222s",
+    "nif_emiter": "22200002s",
+    "documentUrl": "http://www.africau.edu/images/default/sample.pdf",
+    "amount": 12.30,
+    "month": "10",
+    "date_time": "29/10/19"
+  },
+  {
+    "id": "0",
+    "travel_id": "0",
+    "name": "ESTAXI Alberto Aguilera 7, Madrid.",
+    "nif_client": "22222222s",
+    "nif_emiter": "22200002s",
+    "documentUrl": "http://www.africau.edu/images/default/sample.pdf",
+    "amount": 8.15,
+    "month": "11",
+    "date_time": "30/11/19"
+  },
+  {
+    "id": "0",
+    "travel_id": "0",
+    "name": "ESTAXI Alberto Aguilera 7, Madrid.",
+    "nif_client": "22222222s",
+    "nif_emiter": "22200002s",
+    "documentUrl": "http://www.africau.edu/images/default/sample.pdf",
+    "amount": 12.60,
+    "month": "10",
+    "date_time": "30/10/19"
+  },
+  {
+    "id": "0",
+    "travel_id": "0",
+    "name": "ESTAXI Alberto Aguilera 7, Madrid.",
+    "nif_client": "22222222s",
+    "nif_emiter": "22200002s",
+    "documentUrl": "http://www.africau.edu/images/default/sample.pdf",
+    "amount": 8.78,
+    "month": "9",
+    "date_time": "27/9/19"
+  },
+  {
+    "id": "0",
+    "travel_id": "0",
+    "name": "ESTAXI Alberto Aguilera 7, Madrid.",
+    "nif_client": "22222222s",
+    "nif_emiter": "22200002s",
+    "documentUrl": "http://www.africau.edu/images/default/sample.pdf",
+    "amount": 10.15,
+    "month": "10",
+    "date_time": "30/10/19"
+  },
+  {
+    "id": "0",
+    "travel_id": "0",
+    "name": "ESTAXI Alberto Aguilera 7, Madrid.",
+    "nif_client": "22222222s",
+    "nif_emiter": "22200002s",
+    "documentUrl": "http://www.africau.edu/images/default/sample.pdf",
+    "amount": 10.00,
+    "month": "11",
+    "date_time": "30/11/19"
+  }
+]

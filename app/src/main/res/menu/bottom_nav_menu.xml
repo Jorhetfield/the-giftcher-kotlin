@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/ic_loupe"
+        android:title="Buscar" />
+
+    <item
+        android:id="@+id/navigation_friends"
+        android:icon="@drawable/ic_friends"
+        android:title="Amigos" />
+
+    <item
+        android:id="@+id/navigation_add"
+        android:icon="@drawable/ic_add_desire"
+        android:title="Añadir Deseo" />
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_brain"
+        android:title="Perfil" />
+
+</menu>

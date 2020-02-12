@@ -1,0 +1,137 @@
+[
+  {
+    "id":"0",
+    "route": "wnwuFtvsUl@aMZsHLmCb@wFx@qIPyBT_C|@cHfBsNbA}HFo@AK?EDGHi@Lc@^aAJc@d@oAzAuDnCaH`AcCXa@Ra@|@_BFKb@_@^ITAr@@xDrArFnB`KnDb@NBFHFr@h@f@f@H^BD~ArANLb@J|KrBnEt@R@NCXS\\]FEBA`@Eh@G",
+    "price": 8.00,
+    "duration": "00:16:00",
+    "distance": "3.6",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  },
+  {
+    "id":"1",
+    "route": "smwuFxfsUD}MoVmFytAiCqn@kFqPkHeU_SwQcM}AgHwZt]~@hCzBmC",
+    "price": 4.00,
+    "duration": "00:26:00",
+    "distance": "3.0",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  },
+  {
+    "id":"2",
+    "route": "smwuFxfsUD}MoVmFytAaCqn@kFqPkHeU_SwQcM}AgHwZt]~@hCzBmC",
+    "price": 44.00,
+    "duration": "00:10:00",
+    "distance": "4.6",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  },
+  {
+    "id":"3",
+    "route": "smwuFxfsUD}MoVmFytAaCqn@kFqPkHeU_SwQcM}AgHwZt]~@hCzBmC",
+    "price": 12.00,
+    "duration": "00:01:00",
+    "distance": "6.6",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  },
+  {
+    "id":"4",
+    "route": "smwuFxfsUD}MoVmFytAaCqn@kFqPkHeU_SwQcM}AgHwZt]~@hCzBmC",
+    "price": 47.00,
+    "duration": "00:55:00",
+    "distance": "15.6",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  },
+  {
+    "id":"5",
+    "route": "smwuFxfsUD}MoVmFytAaCqn@kFqPkHeU_SwQcM}AgHwZt]~@hCzBmC",
+    "price": 16.00,
+    "duration": "00:19:00",
+    "distance": "44.6",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  },
+  {
+    "id":"6",
+    "route": "smwuFxfsUD}MoVmFytAaCqn@kFqPkHeU_SwQcM}AgHwZt]~@hCzBmC",
+    "price": 10.00,
+    "duration": "00:24:00",
+    "distance": "25.6",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  },
+  {
+    "id":"7",
+    "route": "smwuFxfsUD}MoVmFytAaCqn@kFqPkHeU_SwQcM}AgHwZt]~@hCzBmC",
+    "price": 17.00,
+    "duration": "00:38:00",
+    "distance": "14.6",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  },
+  {
+    "id":"8",
+    "route": "smwuFxfsUD}MoVmFytAaCqn@kFqPkHeU_SwQcM}AgHwZt]~@hCzBmC",
+    "price": 87.00,
+    "duration": "00:22:00",
+    "distance": "26.6",
+    "start_location": {
+      "lng": -3.708120,
+      "lat": 40.429650
+    },
+    "end_location": {
+      "lng": -3.699330,
+      "lat": 40.468260
+    }
+  }
+]

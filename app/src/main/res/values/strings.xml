@@ -1,0 +1,164 @@
+<resources>
+    <string name="app_name" translatable="false">ESTAXI PROFESIONAL</string>
+
+    <string name="default_notification_channel_id" translatable="false">default</string>
+
+    <string name="network_error">A mistake has occurred, try again.</string>
+    <string name="operation_ok">Operation carried out correctly.</string>
+    <string name="network_down">You can not connect to the server, check your connection.</string>
+    <string name="network_down_timeout">Waiting time exceeded, check your connection.</string>
+    <string name="error_email">You must enter a correct email address.</string>
+    <string name="error_pass_not_equals">Both passwords must be equals.</string>
+    <string name="error_pass">Fields cannot be empty.</string>
+
+    <string name="error_processing_places_api" translatable="false">Error processing Places API URL</string>
+    <string name="error_connecting_to_places_api" translatable="false">Error connecting to Places API</string>
+    <string name="error_cannot_process_json_results" translatable="false">Cannot process JSON results</string>
+    <string name="error_lib_not_initialized" translatable="false">Please initialize the api before using it</string>
+
+    <string name="loading">Loading…</string>
+    <string name="otherSettings">Other services</string>
+    <string name="darkMode">Turn dark mode on</string>
+    <string name="createTicket">Create new ticket</string>
+
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="placeholder_email">Email</string>
+    <string name="placeholder_password">Password</string>
+    <string name="placeholder_repeat_password">Repeat password</string>
+    <string name="register">Register</string>
+    <string name="continue_no_register">Continue without register</string>
+    <string name="title_taxi_all" translatable="false">EL<b>TAXI</b>PARA<b>TODOS</b></string>
+    <string name="title_taxi_one" translatable="false">TU<b>EMPRESA</b></string>
+    <string name="company" translatable="false"><b>EMPRESA</b></string>
+    <string name="title_taxi_two" translatable="false">TU<b>APP</b></string>
+    <string name="password_forgoten">I forgot my <b>password</b></string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_book">Confirm book</string>
+    <string name="placeholder_name">User name</string>
+    <string name="accept_policy_privacy">By clicking "Confirm", I accept the <b>Terms and Conditions</b> of the service and the <b>Privacy Policy</b></string>
+    <string name="route">Route</string>
+    <string name="billings">Billings</string>
+    <string name="settings">Settings</string>
+    <string name="available_services">Available services</string>
+    <string name="cancel_invoice">Cancel invoice</string>
+    <string name="origin">Origin</string>
+    <string name="destination">Destination</string>
+    <string name="see_results">See results</string>
+    <string name="profile">Profile</string>
+    <string name="error_origin_input">You must complete Origin input</string>
+    <string name="error_destination_input">You must complete Destination input</string>
+    <string name="route_estimation">Estimate route:</string>
+    <string name="route_options">Select your offer:</string>
+    <string name="time_and_km" translatable="false"><b>%s</b> (%s)</string>
+    <string name="special_requirement">Any special requirement?</string>
+    <string name="other_services">Other services</string>
+    <string name="invoice">Invoice</string>
+    <string name="invoice_number" translatable="false" >ESTAXI 128B</string>
+    <string name="date" translatable="false">11/11/2019</string>
+    <string name="hour" translatable="false">10:21</string>
+    <string name="name" translatable="false">Rick Sánchez</string>
+    <string name="offer">Offer</string>
+    <string name="offer_type" translatable="false">Madrid Central -20%</string>
+    <string name="amount">Amount</string>
+    <string name="discount" translatable="false">-20%</string>
+    <string name="sum">Sum</string>
+    <string name="requester">Requester</string>
+    <string name="equipment">Equipment</string>
+    <string name="paid">Paid</string>
+    <string name="not_paid">Not paid</string>
+    <string name="discount_text">Discount</string>
+    <string name="final_amount">Final amount</string>
+    <string name="payment_method">Payment method</string>
+    <string name="credit_card">Credit card</string>
+    <string name="cash">Cash</string>
+    <string name="recommended_route">Suggested route</string>
+    <string name="street_origin" translatable="false">Calle Andrés Mellado, 57</string>
+    <string name="street_destination" translatable="false">Avenida del Ferrol, 10</string>
+    <string name="estimated_time">Time (min)</string>
+    <string name="estimated_data">Estimated data according to geolocation not considered for the invoice</string>
+    <string name="end_service">End service</string>
+    <string name="accept_service">Accept service</string>
+    <string name="message_sender" translatable="false">ESTAXI</string>
+    <string name="message_subject">Subject</string>
+    <string name="empty">No invoices available</string>
+    <string name="change_pass">A confirmation email has been sent</string>
+    <string name="distance_km" translatable="false">a 2 km</string>
+    
+    <string name="empty_messages">A message cannot be empty</string>
+    <string name="messages">Messages</string>
+    <string name="services">Services</string>
+    <string name="billing_info">Billing information</string>
+    <string name="config">Configuration</string>
+    <string name="download">Download</string>
+    <string name="billing">Billing</string>
+    <string name="invoices">Invoices</string>
+    <string name="invoice_detail">Invoice detail</string>
+
+    <string name="time">Time</string>
+    <string name="distance">Distance</string>
+    <string name="order_by">Sort services by:</string>
+    <string name="book">Book</string>
+    <string name="available">Available</string>
+    <string name="pick_passenger">Pick up passenger</string>
+    <string name="occupied">Ocuppied</string>
+    <string name="state">Your current status is:</string>
+    <string name="request_now">Request now</string>
+    <string name="send_message">Please write your message</string>
+    <string name="estimated_money">Estimation (€)</string>
+    <string name="offer_percent" translatable="false">-%s%%</string>
+    <string name="price" translatable="false">%.2f€</string>
+    <string name="final_price">Final price</string>
+    <string name="percent" translatable="false">%s%%</string>
+    <string name="title_other_services_1">Other</string>
+    <string name="title_other_services_2">Services</string>
+    <string name="title_do_request_1">Do</string>
+    <string name="title_do_request_2">Your request</string>
+    <string name="select_your_requirements">Select your requirements</string>
+    <string name="apply">Apply</string>
+    <string name="select_date">Tap image to select date</string>
+    <string name="select_hour">Tap image to select hour</string>
+    <string name="error_not_date_hour">You must select an hour and date to do the request</string>
+    <string name="request_saved">Request saved</string>
+    <string name="select_your_payment_method">Select your payment method</string>
+    <string name="add_payment">Add payment method</string>
+    <string name="offer_required">You must select an offer</string>
+    <string name="book_confirmed">Book confirmed</string>
+    <string name="not_defined" translatable="false">N/A</string>
+    <string name="thank_you">Thank you for use ESTAXI!</string>
+    <string name="s_payed">%s PAYED</string>
+    <string name="ok">OK</string>
+    <string name="applied_ok">Applied correctly</string>
+    <string name="tab_title_profile">Profile</string>
+    <string name="tab_title_booking">Bookings</string>
+    <string name="tab_title_invoices">Invoices</string>
+    <string name="empty_invoices">You have no invoices yet.</string>
+    <string name="empty_bookings">You have no bookings yet.</string>
+    <string name="price_invoice">Price: %s€</string>
+    <string name="pass_sim" translatable="false">*********</string>
+    <string name="title_download_dialog">Download</string>
+    <string name="message_download_dialog">Are you sure you want to download this invoice?</string>
+    <string name="payment_methods">Payment methods</string>
+    <string name="error_no_activity">There is no application which can open this file</string>
+    <string name="content_description_origin_button">Select my current position as origin point</string>
+    <string name="content_description_edit_payment_method">Payment method edit</string>
+    <string name="content_description_see_invoice">See invoice</string>
+    <string name="content_description_original_price">Original price</string>
+    <string name="content_description_offer_percent">Offer</string>
+    <string name="content_description_final_price">Final price</string>
+    <string name="content_description_origin_location">Origin</string>
+    <string name="content_description_destination_location">Destination</string>
+    <string name="content_description_select_date">Select a date</string>
+    <string name="content_description_select_hour">Selecct an hour</string>
+    <string name="content_description_close">Close</string>
+
+    <string name="regular_fare">Regular rate</string>
+    <string name="airport_outsidem30_fare">Fare from airport outside M30</string>
+    <string name="airport_insidem30_fare">Fare from airport inside M30</string>
+    <string name="train_station_origin_fares">Rate with origin from Atocha</string>
+
+    <string name="logout_confirmation">Are you sure you want to log out?</string>
+    <string name="yes">Yes</string>
+    <string name="no" translatable="false">No</string>
+    <string name="logout_confirmed">You\'ve logged out correctly.</string>
+</resources>
