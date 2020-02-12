@@ -1,7 +1,7 @@
 package com.example.thegiftcherk.setup.network
 
 import android.util.Log
-import es.vanadis.utg_estaxi_profesional.setup.Prefs
+import com.example.thegiftcherk.setup.Prefs
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.util.*

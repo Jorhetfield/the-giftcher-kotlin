@@ -1,19 +1,6 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils.extensions
+package com.example.thegiftcherk.setup.utils.extensions
 
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.view.Window
-import androidx.navigation.findNavController
-import com.example.thegiftcherk.R
-import com.javiersc.kotlinloggerjvm.logDD
 import com.example.thegiftcherk.setup.BaseActivity
-import es.vanadis.utg_estaxi_profesional.setup.network.ResponseResult
-import com.example.thegiftcherk.setup.network.VanadisRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 
 private enum class States(val states: Int?) {
     NOT_ASSIGNED(1),

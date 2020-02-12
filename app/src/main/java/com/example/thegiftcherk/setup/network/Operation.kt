@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.network
+package com.example.thegiftcherk.setup.network
 
 data class Operation(
     val message: String

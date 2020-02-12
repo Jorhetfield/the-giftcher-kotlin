@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils.extensions
+package com.example.thegiftcherk.setup.utils.extensions
 
 import android.content.res.Resources
 import android.graphics.Bitmap
@@ -10,7 +10,7 @@ import android.view.MenuItem
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
-import es.vanadis.utg_estaxi_profesional.setup.utils.CircleTransform
+import com.example.thegiftcherk.setup.utils.CircleTransform
 
 
 fun ImageView.picasso(url: String?, placeholder: Int) = url?.let {

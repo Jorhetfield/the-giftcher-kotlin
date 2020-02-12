@@ -3,7 +3,6 @@ package com.example.thegiftcherk.setup
 import android.app.Dialog
 import android.content.Context
 import android.content.pm.PackageManager
-import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -12,7 +11,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.thegiftcherk.R
 import com.google.android.material.snackbar.Snackbar
-import es.vanadis.utg_estaxi_profesional.setup.Prefs
 
 import org.koin.android.ext.android.inject
 

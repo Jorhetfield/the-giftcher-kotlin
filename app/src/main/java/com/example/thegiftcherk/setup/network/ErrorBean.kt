@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.network
+package com.example.thegiftcherk.setup.network
 
 import com.google.gson.annotations.SerializedName
 

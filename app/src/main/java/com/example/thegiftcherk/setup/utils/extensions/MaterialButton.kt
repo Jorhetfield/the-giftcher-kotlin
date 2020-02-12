@@ -3,9 +3,6 @@ package com.example.thegiftcherk.setup.utils.extensions
 import android.animation.StateListAnimator
 import com.example.thegiftcherk.R
 import com.google.android.material.button.MaterialButton
-import es.vanadis.utg_estaxi_profesional.setup.utils.extensions.color
-import es.vanadis.utg_estaxi_profesional.setup.utils.extensions.colorStateList
-import es.vanadis.utg_estaxi_profesional.setup.utils.extensions.dp
 
 fun MaterialButton.isEnableStyle(enabled: Boolean) {
     if (!enabled)
