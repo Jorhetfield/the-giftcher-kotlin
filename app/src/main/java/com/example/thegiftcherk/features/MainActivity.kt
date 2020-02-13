@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
+        // StarWars dejó de molar tras las 6 primeras peliculas, y en ellas ya hay alguna mala.
 
         setSupportActionBar(materialToolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
