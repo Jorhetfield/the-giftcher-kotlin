@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils
+package com.example.thegiftcherk.setup.utils
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager

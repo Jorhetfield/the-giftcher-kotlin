@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils.extensions
+package com.example.thegiftcherk.setup.utils.extensions
 
 import android.app.Notification
 import android.app.NotificationManager
@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
-import es.vanadis.utg_estaxi_profesional.setup.network.ResponseResult
+import com.example.thegiftcherk.setup.network.ResponseResult
 import retrofit2.Response
 
 fun Context.getJsonFromResource(res: Int): String {

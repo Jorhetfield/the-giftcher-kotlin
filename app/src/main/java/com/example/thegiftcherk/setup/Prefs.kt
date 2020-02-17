@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup
+package com.example.thegiftcherk.setup
 
 import android.content.Context
 import android.content.SharedPreferences

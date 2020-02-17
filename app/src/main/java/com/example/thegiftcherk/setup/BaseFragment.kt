@@ -10,10 +10,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.setup.utils.extensions.hideProgressDialog
+import com.example.thegiftcherk.setup.utils.extensions.isEmail
+import com.example.thegiftcherk.setup.utils.extensions.showProgressDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import es.vanadis.utg_estaxi_profesional.setup.Prefs
-import es.vanadis.utg_estaxi_profesional.setup.utils.extensions.*
 import org.koin.android.ext.android.inject
 
 
@@ -90,11 +91,11 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
-//    fun showProgressDialog() {
-//        if (activity != null) {
-//            (activity as BaseActivity).showProgressDialog()
-//        }
-//    }
+    fun showProgressDialog() {
+        if (activity != null) {
+            (activity as BaseActivity).showProgressDialog()
+        }
+    }
 //
 //    fun showTaximetro() {
 //        if (activity != null) {

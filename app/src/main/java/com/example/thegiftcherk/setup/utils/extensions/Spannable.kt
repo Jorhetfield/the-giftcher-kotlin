@@ -1,5 +1,6 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils.extensions
+package com.example.thegiftcherk.setup.utils.extensions
 
+import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.TextUtils
@@ -12,8 +13,8 @@ private fun span(s: CharSequence, o: Any) = (if (s is String) SpannableString(s)
 operator fun SpannableString.plus(s: SpannableString) = SpannableString(TextUtils.concat(this, s))
 operator fun SpannableString.plus(s: String) = SpannableString(TextUtils.concat(this, s))
 
-fun bold(s: CharSequence) = span(s, StyleSpan(android.graphics.Typeface.BOLD))
-fun italic(s: CharSequence) = span(s, StyleSpan(android.graphics.Typeface.ITALIC))
+fun bold(s: CharSequence) = span(s, StyleSpan(Typeface.BOLD))
+fun italic(s: CharSequence) = span(s, StyleSpan(Typeface.ITALIC))
 fun underline(s: CharSequence) = span(s, UnderlineSpan())
 fun strike(s: CharSequence) = span(s, StrikethroughSpan())
 fun sup(s: CharSequence) = span(s, SuperscriptSpan())

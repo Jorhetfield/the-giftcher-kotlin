@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.network
+package com.example.thegiftcherk.setup.network
 
 sealed class ResponseResult<out T : Any> {
     data class Success<out T : Any>(val value: T) : ResponseResult<T>()

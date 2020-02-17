@@ -83,7 +83,7 @@ class BaseAdapter(
         fun onItemClicked(item: Any)
     }
 
-    class BaseHolder(v: View) : RecyclerView.ViewHolder(v) {
+    open class BaseHolder(v: View) : RecyclerView.ViewHolder(v) {
         private var view: View = v
 
         fun bind() {

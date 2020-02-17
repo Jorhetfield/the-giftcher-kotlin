@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils
+package com.example.thegiftcherk.setup.utils
 
 import android.graphics.*
 import com.squareup.picasso.Transformation
