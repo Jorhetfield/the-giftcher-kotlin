@@ -2,8 +2,8 @@ package com.example.thegiftcherk.setup.di
 
 import com.example.thegiftcherk.BuildConfig
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.example.thegiftcherk.setup.network.VanadisInterceptor
-import com.example.thegiftcherk.setup.network.VanadisService
+import com.example.thegiftcherk.setup.network.CustomInterceptor
+import com.example.thegiftcherk.setup.network.Service
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -27,23 +27,23 @@ val networkModule = module {
         }).apply { level = HttpLoggingInterceptor.Level.BODY }
     }
 
-    factory { VanadisInterceptor(prefs = get()) }
+    factory { CustomInterceptor(prefs = get()) }
 
     factory {
         OkHttpClient.Builder()
-            .addInterceptor(get<VanadisInterceptor>())
+            .addInterceptor(get<CustomInterceptor>())
             .addInterceptor(get<HttpLoggingInterceptor>()).build()
     }
 
     single {
         Retrofit.Builder()
             .client(get<OkHttpClient>())
-            .baseUrl(BuildConfig.BASE_URL_VANADIS)
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
 
-    factory { get<Retrofit>().create<VanadisService>() }
+    factory { get<Retrofit>().create<Service>() }
 
 }

@@ -2,8 +2,17 @@ package com.example.thegiftcherk.setup.network
 
 
 import android.content.Context
+import com.example.thegiftcherk.BuildConfig
+import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.search.models.Item
+import com.example.thegiftcherk.setup.MOCK_DELAY
+import com.example.thegiftcherk.setup.network.NetworkExceptionController.checkException
+import com.example.thegiftcherk.setup.network.NetworkExceptionController.checkResponse
+import com.example.thegiftcherk.setup.utils.extensions.getJsonFromResource
+import com.google.gson.Gson
+import kotlinx.coroutines.delay
 
-class VanadisRepository(private val service: VanadisService, private val context: Context) {
+class Repository(private val service: Service, private val context: Context) {
     //region User
 //    suspend fun doLogin(
 //        email: String, pass: String, FCMToken: String?,
@@ -98,7 +107,7 @@ class VanadisRepository(private val service: VanadisService, private val context
 //                val response = service.getAmountOfMonth(currentMonth)
 //                checkResponse(context, response)
 //            } catch (e: Exception) {
-//                checkException(context, e)
+//
 //            }
 //        } else {
 //            delay(MOCK_DELAY)
@@ -106,25 +115,25 @@ class VanadisRepository(private val service: VanadisService, private val context
 //        }
 //    }
 
-//    suspend fun getMonthlySum(
-//        month: Int?,
-//        fake: Boolean = BuildConfig.MOCK
-//    ): ResponseResult<Amount> {
-//        return if (!fake) {
-//            try {
-//                val response = service.getMonthlySum(month)
-//                checkResponse(context, response)
-//            } catch (e: Exception) {
-//                checkException(context, e)
-//            }
-//        } else {
-//            delay(MOCK_DELAY)
-//            val json = context.getJsonFromResource(R.raw.invoices)
-//            val response: Amount =
-//                Gson().fromJson(json, Amount::class.java)
-//            ResponseResult.Success(response)
-//        }
-//    }
+    suspend fun getItems(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<Item>> {
+        return if (!fake) {
+            try {
+                val response = service.getItems()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            val json = context.getJsonFromResource(R.raw.items)
+            val response: List<Item> =
+                Gson().fromJson(json, Array<Item>::class.java).toList()
+            ResponseResult.Success(response)
+        }
+    }
 
 //    suspend fun getDailySum(
 //        fake: Boolean = BuildConfig.MOCK

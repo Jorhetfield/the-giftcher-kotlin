@@ -3,13 +3,17 @@ package com.example.thegiftcherk.setup
 import android.app.Dialog
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.View
+import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.setup.utils.extensions.hideProgressDialog
 import com.google.android.material.snackbar.Snackbar
 
 import org.koin.android.ext.android.inject
@@ -31,6 +35,8 @@ abstract class BaseActivity : AppCompatActivity() {
             show()
         }
     }
+
+
 
     fun hideKeyboard() {
         with(getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager) {

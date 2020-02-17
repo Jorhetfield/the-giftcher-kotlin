@@ -1,7 +1,12 @@
 package com.example.thegiftcherk.setup.network
 
+import com.example.thegiftcherk.features.ui.search.models.Item
+import retrofit2.Response
+import retrofit2.http.GET
+import retrofit2.http.Query
 
-interface VanadisService {
+
+interface Service {
     //region User
 //    @FormUrlEncoded
 //    @POST("/api/Login/login_drivers")
@@ -49,11 +54,10 @@ interface VanadisService {
 //    suspend fun getDailySum(
 //    ): Response<Amount>
 //
-//    @GET("/api/invoice/amount_of_month")
-//    suspend fun getMonthlySum(
-//        @Query("month") CurrentMonth: Int?
-//    ): Response<Amount>
-//
+    @GET("/api/invoice/amount_of_month") // TODO change Url
+    suspend fun getItems(
+    ): Response<List<Item>>
+    //
 //    @GET("/api/invoice/invoice_of_day")
 //    suspend fun getDailyInvoices(
 //    ): Response<List<InvoiceResponse>>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "item1",
+    "description": "description example lorem ipsum dolor sit amaet",
+    "picture": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnothingaboutscotthere.wordpress.com%2F2014%2F12%2F26%2Frandom-item-928%2F&psig=AOvVaw2sNZt25Po6UCeokvM7nb78&ust=1582051287429000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMifjrqe2ecCFQAAAAAdAAAAABAE"
+  },
+  {
+    "id": "2",
+    "name": "item2",
+    "description": "description example lorem ipsum dolor sit amaet",
+    "picture": "null"
+  },
+  {
+    "id": "3",
+    "name": "item3",
+    "description": "description example lorem ipsum dolor sit amaet",
+    "picture": "null"
+  },
+  {
+    "id": "4",
+    "name": "item4",
+    "description": "description example lorem ipsum dolor sit amaet",
+    "picture": "null"
+  },
+  {
+    "id": "5",
+    "name": "item5",
+    "description": "description example lorem ipsum dolor sit amaet",
+    "picture": "null"
+  },
+  {
+    "id": "6",
+    "name": "item6",
+    "description": "description example lorem ipsum dolor sit amaet",
+    "picture": "null"
+  }
+]
