@@ -1,8 +1,9 @@
-package com.example.thegiftcherk.features
+package com.example.thegiftcherk.features.ui.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -35,5 +36,13 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(materialToolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    companion object {
+        private val LOGTAG: String = MainActivity::class.java.simpleName
+
+        @JvmStatic
+        fun intent(context: Context) =
+            Intent(context, MainActivity::class.java)
     }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">ESTAXI PROFESIONAL</string>
+    <string name="app_name" translatable="false">The Giftcher</string>
 
     <string name="default_notification_channel_id" translatable="false">default</string>
 

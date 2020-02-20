@@ -10,7 +10,9 @@ import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.network.ResponseResult
+import com.example.thegiftcherk.setup.utils.extensions.logD
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.item_row.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -35,7 +37,6 @@ class SearchFragment : BaseFragment() {
         itemAdapter = SearchAdapter(
             items
         ) {
-
         }
         recyclerItems.adapter = itemAdapter
         getItems()
