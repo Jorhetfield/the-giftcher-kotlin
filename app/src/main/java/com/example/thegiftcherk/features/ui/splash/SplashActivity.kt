@@ -1,5 +1,6 @@
 package com.example.thegiftcherk.features.ui.splash
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import com.example.thegiftcherk.BuildConfig
@@ -41,7 +42,7 @@ class SplashActivity : BaseActivity() {
 
 
     private fun checkToken() {
-        var intent = MainLoginActivity.intent(this)
+        val intent: Intent
         if (!isFinishing) {
             if (!prefs.token.isNullOrEmpty()) {
                 intent = MainActivity.intent(this)
