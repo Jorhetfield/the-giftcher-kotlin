@@ -1,10 +1,7 @@
-{
-  "token": "TOKEN_DEMO",
-  "type": "1",
-  "userInfo": {
+[
+  {
+   "token": "TOKEN",
     "id": "1",
-    "name": "Test user 1",
-    "email": "test1@test.es",
-    "phone": "000 000 000"
+    "name": "Juan Manull Pointer",
   }
-}
+]
