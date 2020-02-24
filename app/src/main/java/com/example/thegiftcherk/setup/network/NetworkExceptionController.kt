@@ -2,10 +2,8 @@ package com.example.thegiftcherk.setup.network
 
 import android.content.Context
 import com.example.thegiftcherk.R
-import es.vanadis.utg_estaxi_profesional.setup.network.ErrorBean
-import es.vanadis.utg_estaxi_profesional.setup.network.ResponseResult
-import es.vanadis.utg_estaxi_profesional.setup.utils.extensions.fromJson
-import es.vanadis.utg_estaxi_profesional.setup.utils.extensions.logD
+import com.example.thegiftcherk.setup.utils.extensions.fromJson
+import com.example.thegiftcherk.setup.utils.extensions.logD
 import retrofit2.Response
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException

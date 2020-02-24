@@ -1,19 +1,11 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils.extensions
+package com.example.thegiftcherk.setup.utils.extensions
 
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Window
-import androidx.navigation.findNavController
 import com.example.thegiftcherk.R
-import com.javiersc.kotlinloggerjvm.logDD
 import com.example.thegiftcherk.setup.BaseActivity
-import es.vanadis.utg_estaxi_profesional.setup.network.ResponseResult
-import com.example.thegiftcherk.setup.network.VanadisRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 
 private enum class States(val states: Int?) {
     NOT_ASSIGNED(1),
@@ -22,18 +14,18 @@ private enum class States(val states: Int?) {
     FINISHED(4),
 }
 
-//fun BaseActivity.showProgressDialog() {
-//
-//    hideProgressDialog()
-//    Dialog(this).apply {
-//        requestWindowFeature(Window.FEATURE_NO_TITLE)
-//        setCancelable(false)
-//        setContentView(R.layout.dialog_progress)
-//        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//        show()
-//        this@showProgressDialog.progressDialog = this
-//    }
-//}
+fun BaseActivity.showProgressDialog() {
+
+    hideProgressDialog()
+    Dialog(this).apply {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        setCancelable(false)
+        setContentView(R.layout.dialog_progress)
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        show()
+        this@showProgressDialog.progressDialog = this
+    }
+}
 
 
 //fun BaseActivity.showNewService(route: ServiceResponse?) {
@@ -54,7 +46,6 @@ fun BaseActivity.hideProgressDialog() {
 }
 
 //fun BaseActivity.showFares() {
-//    val vanadisRepository by inject<VanadisRepository>()
 //    Dialog(this).apply {
 //
 //
@@ -62,7 +53,6 @@ fun BaseActivity.hideProgressDialog() {
 //
 //            GlobalScope.launch(Dispatchers.Main) {
 //                showProgressDialog()
-//                when (val response = vanadisRepository.changeState(
 //                    prefs.token.toString()
 //                )) {
 //                    is ResponseResult.Success -> {
@@ -131,14 +121,12 @@ fun BaseActivity.hideProgressDialog() {
 //
 //fun BaseActivity.showTaximetro() {
 //
-//    val vanadisRepository by inject<VanadisRepository>()
 //
 //
 //    fun assignService(state: Int?, serviceId: String?, priceTaximeter: Float) {
 //        GlobalScope.launch(Dispatchers.Main) {
 //            showProgressDialog()
 //            when (val response =
-//                vanadisRepository.assignService(state, serviceId, priceTaximeter)) {
 //                is ResponseResult.Success -> {
 //                    val respuesta = response.value
 //                    logDD(" hola hola $respuesta")
