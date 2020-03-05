@@ -4,23 +4,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.search.SearchHolder
+import com.example.thegiftcherk.features.ui.search.models.Item
+import com.example.thegiftcherk.setup.utils.extensions.inflate
 import kotlinx.android.synthetic.main.item_friend.view.*
 
 
-class FriendsAdapter(private val mContext: FriendsFragment, private val listFriends: List<Friend>): ArrayAdapter<Friend>(mContext, 0, listFriends) {
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-
-        val layout = LayoutInflater.from(mContext!!).inflate(R.layout.item_friend, parent, false)
-
-        val friend = listFriends[position]
-
-        layout.name_TV.text = friend.name
-        layout.birthday_TV.text = friend.birthday
-        layout.image_IV.setImageResource(friend.image)
-
-        return layout
+class FriendsAdapter(
+private val friend: MutableList<Friend>,
+private val listener: (Friend) -> Unit
+) : RecyclerView.Adapter<FriendsHolder>() {
+    override fun onBindViewHolder(
+        friendHolder: FriendsHolder,
+        position: Int
+    ) {
+        friend[position].apply { friendHolder.bind(this) { listener(it) } }
     }
 
+    //region Methods
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendsHolder {
+        val inflatedView = parent.inflate(R.layout.item_friend, false)
+
+        return FriendsHolder(inflatedView)
+    }
+
+    override fun getItemCount(): Int = friend.size
+    //endregion
 }

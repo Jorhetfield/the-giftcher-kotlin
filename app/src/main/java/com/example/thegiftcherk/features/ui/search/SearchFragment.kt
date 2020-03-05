@@ -47,7 +47,6 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun getItems() {
-
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
