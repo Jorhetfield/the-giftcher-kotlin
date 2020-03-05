@@ -37,7 +37,6 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/message_subject"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,7 +48,6 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/montserrat_regular"
-                    android:text="@string/hour"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/message"
                     app:layout_constraintStart_toEndOf="@+id/subject"

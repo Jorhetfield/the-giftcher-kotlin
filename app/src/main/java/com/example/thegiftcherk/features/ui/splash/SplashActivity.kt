@@ -44,10 +44,10 @@ class SplashActivity : BaseActivity() {
     private fun checkToken() {
         val intent: Intent
         if (!isFinishing) {
-            if (!prefs.token.isNullOrEmpty()) {
-                intent = MainActivity.intent(this)
+            intent = if (!prefs.token.isNullOrEmpty()) {
+                MainActivity.intent(this)
             } else {
-                intent = MainLoginActivity.intent(this)
+                MainLoginActivity.intent(this)
             }
             startActivity(intent)
             finish()
