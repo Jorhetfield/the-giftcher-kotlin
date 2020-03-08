@@ -1,35 +1,33 @@
 package com.example.thegiftcherk.features.ui.friends
 
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.R
-import com.example.thegiftcherk.features.ui.search.SearchHolder
-import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.utils.extensions.inflate
-import kotlinx.android.synthetic.main.item_friend.view.*
 
 
 class FriendsAdapter(
-private val friend: MutableList<Friend>,
-private val listener: (Friend) -> Unit
+    private val friend: MutableList<Friend>,
+    private val listener: OnClickFriendsListener
 ) : RecyclerView.Adapter<FriendsHolder>() {
     override fun onBindViewHolder(
         friendHolder: FriendsHolder,
         position: Int
     ) {
-        friend[position].apply { friendHolder.bind(this) { listener(it) } }
+        friend[position].apply { friendHolder.bind(this, listener) }
     }
 
-    //region Methods
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendsHolder {
         val inflatedView = parent.inflate(R.layout.item_friend, false)
 
         return FriendsHolder(inflatedView)
     }
 
-    override fun getItemCount(): Int = friend.size
-    //endregion
+    override fun getItemCount(): Int {
+        return friend.size
+    }
+}
+
+interface OnClickFriendsListener {
+    fun onClickFriends(it: Friend)
 }

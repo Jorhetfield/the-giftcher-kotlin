@@ -18,7 +18,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class FriendsFragment : BaseFragment() {
+class FriendsFragment : BaseFragment(), OnClickFriendsListener {
     private val customRepository by inject<Repository>()
     private val friends: MutableList<Friend> = mutableListOf()
     private lateinit var friendsAdapter: FriendsAdapter
@@ -37,11 +37,7 @@ class FriendsFragment : BaseFragment() {
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerFriends.layoutManager = linearLayoutManager
 
-        friendsAdapter = FriendsAdapter(
-            friends
-        ) {
-
-        }
+        friendsAdapter = FriendsAdapter(friends, this)
         recyclerFriends.adapter = friendsAdapter
     }
 
@@ -65,12 +61,17 @@ class FriendsFragment : BaseFragment() {
                 }
 
                 is ResponseResult.Error -> {
-                    showError("dsfghnfg", view!!)
+                    showError("No estás en la build variant de MOCK.", view!!)
                 }
                 is ResponseResult.Forbidden -> {
                 }
             }
             hideProgressDialog()
         }
+    }
+
+    override fun onClickFriends(it: Friend) {
+        it.name?.let { it1 -> showError(it1, view!!) }
+
     }
 }

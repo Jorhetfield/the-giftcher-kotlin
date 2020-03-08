@@ -10,18 +10,18 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     private var view: View = v
     private var friend: Friend? = null
-    private lateinit var listener: (Friend) -> Unit
+    private lateinit var listener:OnClickFriendsListener
 
     init {
         v.setOnClickListener {
             friend?.let {
-                listener(it)
+                listener.onClickFriends(it)
                 logD("pene")
             }
         }
     }
 
-    fun bind(friend: Friend, listener: (Friend) -> Unit) {
+    fun bind(friend: Friend, listener: OnClickFriendsListener) {
         this.friend = friend
         this.listener = listener
 
