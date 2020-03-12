@@ -4,6 +4,7 @@ package com.example.thegiftcherk.setup.network
 import android.content.Context
 import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.friends.Friend
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.MOCK_DELAY
@@ -82,6 +83,26 @@ class Repository(private val service: Service, private val context: Context) {
             val json = context.getJsonFromResource(R.raw.items)
             val response: List<Item> =
                 Gson().fromJson(json, Array<Item>::class.java).toList()
+            ResponseResult.Success(response)
+        }
+    }
+
+    suspend fun getFriends(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<Friend>> {
+        return if (!fake) {
+            try {
+                val response = service.getFriends()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            val json = context.getJsonFromResource(R.raw.friends)
+            val response: List<Friend> =
+                Gson().fromJson(json, Array<Friend>::class.java).toList()
             ResponseResult.Success(response)
         }
     }
