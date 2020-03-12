@@ -29,17 +29,12 @@ class HomeHolder(v: View) : RecyclerView.ViewHolder(v) {
         this.item = item
         this.listener = listener
 
-        view.subject.text = item.id
-        view.date.text = item.name
         view.message.text = item.description
 
         Picasso.get()
             .load(item.picture)
             .noPlaceholder()
             .into(view.itemImage)
-
-
-
 
     }
 

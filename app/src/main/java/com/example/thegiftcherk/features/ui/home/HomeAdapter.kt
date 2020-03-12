@@ -20,7 +20,7 @@ class HomeAdapter(
 
     //region Methods
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeHolder {
-        val inflatedView = parent.inflate(R.layout.item_friend, false)
+        val inflatedView = parent.inflate(R.layout.item_home_row, false)
 
         return HomeHolder(inflatedView)
     }
