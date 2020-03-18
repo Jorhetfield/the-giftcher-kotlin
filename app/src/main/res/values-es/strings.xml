@@ -23,4 +23,12 @@
     <string name="yes">Si</string>
     <string name="logout_confirmed">Has salido correctamente</string>
 
+    <string name="selected_item">Card type:</string>
+
+    <string-array name="CardTypes">
+        <item>VISA</item>
+        <item>MC</item>
+        <item>AMEX</item>
+    </string-array>
+
 </resources>

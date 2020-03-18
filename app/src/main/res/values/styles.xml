@@ -14,8 +14,8 @@
         <item name="colorError">@color/colorError</item>
         <item name="colorOnError">@color/colorOnError</item>
 
-        <item name="android:navigationBarColor">@color/transparent</item>
-        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/colorDetail</item>
+        <item name="android:statusBarColor">@color/colorDetail</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">
             @bool/windowLightNavigationBar
         </item>

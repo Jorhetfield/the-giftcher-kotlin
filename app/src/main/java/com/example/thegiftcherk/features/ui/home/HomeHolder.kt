@@ -20,7 +20,7 @@ class HomeHolder(v: View) : RecyclerView.ViewHolder(v) {
         v.setOnClickListener {
             item?.let {
                 listener(it)
-                logD("Click from holder")
+                logD("Click from holder home")
             }
         }
     }
