@@ -33,4 +33,13 @@
     <string name="yes">Yes</string>
     <string name="no" translatable="false">No</string>
     <string name="logout_confirmed">You\'ve logged out correctly.</string>
+
+    <string name="selected_item">Card type:</string>
+
+    <string-array name="CardTypes">
+        <item>VISA</item>
+        <item>MC</item>
+        <item>AMEX</item>
+    </string-array>
+
 </resources>

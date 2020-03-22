@@ -29,8 +29,12 @@
         android:label="Search Product"
         tools:layout="@layout/fragment_search" >
         <action
-            android:id="@+id/action_navigation_search_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
+            android:id="@+id/goFromSearchToDetail"
+            app:destination="@id/productDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
 
     <fragment
@@ -42,5 +46,10 @@
         android:id="@+id/productDetailFragment"
         tools:layout="@layout/product_detail_fragment"
         android:name="com.example.thegiftcherk.features.ui.addproduct.productdetail.ProductDetailFragment"
-        android:label="ProductDetailFragment" />
+        android:label="ProductDetailFragment" >
+        <argument
+            android:name="productId"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>
