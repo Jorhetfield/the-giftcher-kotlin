@@ -1,0 +1,39 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="871.88dp"
+    android:height="935.51dp"
+    android:viewportWidth="871.88"
+    android:viewportHeight="935.51">
+  <path
+      android:pathData="M283.36,91.09L283.36,265.54a279.47,279.47 0,0 0,0 468.16L283.36,908.07A436.52,436.52 0,0 1,0 499.54C0,312.54 117.88,152.94 283.36,91.09Z"
+      android:fillColor="#333"/>
+  <path
+      android:pathData="M632.49,301a278.48,278.48 0,0 0,-196.55 -80.83L435.94,63.63a434.48,434.48 0,0 1,306.76 126.2Z"
+      android:fillColor="#333"/>
+  <path
+      android:pathData="M871.88,498.54v1a434.84,434.84 0,0 1,-28.57 155.55C780.67,819.08 621.88,935.54 435.94,935.54L435.94,778.97A279.09,279.09 0,0 0,668.06 655.12L435.94,655.12L435.94,499.23l0.65,-0.65Z"
+      android:fillColor="#333"/>
+  <path
+      android:pathData="M436.6,498.58l-0.66,0.66l0,-0.66l0.66,0z"
+      android:fillColor="#00ff00"/>
+  <path
+      android:pathData="M435.94,63.63L435.94,935.54a435.32,435.32 0,0 1,-152.58 -27.44v-817A434.88,434.88 0,0 1,435.94 63.63Z"
+      android:fillColor="#ed1c24"/>
+  <path
+      android:pathData="M329.14,180.33S256.11,257.54 271.46,392.54l29.8,19.86s-8.68,-173.62 87.77,-233.46Z"
+      android:fillColor="#bf302a"/>
+  <path
+      android:pathData="M400.74,180.33S473.77,257.54 458.43,392.54l-29.81,19.86S437.3,238.76 340.88,178.92Z"
+      android:fillColor="#bf302a"/>
+  <path
+      android:pathData="M200.67,333.8S274.88,295.54 340.88,189.8C340.88,189.8 332.76,293.74 200.67,333.8Z"
+      android:fillColor="#8f302a"/>
+  <path
+      android:pathData="M520.59,333.8s-74.24,-38.31 -140.18,-144C380.41,189.8 388.51,293.74 520.59,333.8Z"
+      android:fillColor="#8f302a"/>
+  <path
+      android:pathData="M173.12,104.05S166.21,116.46 340.88,143.54C340.88,143.54 320.21,104.85 173.12,104.05Z"
+      android:fillColor="#9b302a"/>
+  <path
+      android:pathData="M548.25,104.05s6.9,12.41 -167.76,39.52C380.49,143.54 401.15,104.85 548.25,104.05Z"
+      android:fillColor="#9b302a"/>
+</vector>

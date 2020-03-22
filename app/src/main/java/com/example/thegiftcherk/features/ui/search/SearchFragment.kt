@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.search.models.Item
@@ -35,14 +37,13 @@ class SearchFragment : BaseFragment() {
         itemAdapter = SearchAdapter(
             items
         ) {
-
+            
         }
         recyclerItems.adapter = itemAdapter
         getItems()
     }
 
     private fun getItems() {
-
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =

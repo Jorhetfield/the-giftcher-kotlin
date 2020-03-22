@@ -156,6 +156,36 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
+    fun addTextWatcherRequired(inputLayout: TextInputLayout) : TextWatcher {
+        return object: TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                inputLayout.isErrorEnabled = s.toString().isEmpty()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                inputLayout.isErrorEnabled = s.toString().isEmpty()
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                inputLayout.isErrorEnabled = s.toString().isEmpty()
+            }
+        }
+    }
+
+    fun checkInputs(inputsArray : ArrayList<TextInputLayout>) : Boolean {
+        if(!inputsArray.isNullOrEmpty()) {
+            inputsArray.forEach {
+                if(it.isErrorEnabled) {
+                    showError(it.error.toString(), view!!)
+                    return false
+                }
+            }
+            return true
+        } else {
+            return false
+        }
+    }
+
 
     companion object {
         const val REQUEST_LOCATION = 83

@@ -31,6 +31,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
     flavorDimensions "normal"
     productFlavors {
         mock {
@@ -60,7 +61,18 @@ android {
             buildConfigField "boolean", "MOCK", "false"
         }
     }
+    buildTypes {
+        debug {
+            buildConfigField "long", "SPLASH_DELAY", '1000'
+        }
 
+        release {
+            buildConfigField "long", "SPLASH_DELAY", '1000'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.release
+        }
+    }
 
 }
 
