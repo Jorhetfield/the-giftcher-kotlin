@@ -10,7 +10,8 @@ import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.network.ResponseResult
-import com.google.android.material.textfield.TextInputLayout
+import com.example.thegiftcherk.setup.utils.extensions.isEmail
+import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -32,14 +33,11 @@ class LoginFragment : BaseFragment() {
 
         //Watch input
         inputEmail?.addTextChangedListener(addTextWatcherEmail(inputEmailLayout))
-        inputPassword?.addTextChangedListener(addTextWatcherRequired(inputPasswordLayout))
-
+        inputPassword?.addTextChangedListener(textWatcherPass(inputPasswordLayout))
         //Set buttons click
+
         buttonLogin?.setOnClickListener {
-            //            onClickLogin()
-            startMainClientActivity()
-
-
+            onClickLogin()
         }
 
         buttonRegister?.setOnClickListener {
@@ -50,7 +48,8 @@ class LoginFragment : BaseFragment() {
         }
 
         buttonForgottenPass?.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_forgottenPassFragment)
+            Navigation.findNavController(it)
+                .navigate(R.id.action_loginFragment_to_forgottenPassFragment)
         }
     }
     //endregion Override Methods
@@ -59,18 +58,28 @@ class LoginFragment : BaseFragment() {
 
     //region Clicks
     private fun onClickLogin() {
-        if (checkInputs(ArrayList<TextInputLayout>().apply {
-                add(inputEmailLayout)
-                add(inputPasswordLayout)
-            })
+        if (checkInputs()) {
+            requestLogin(inputEmail?.text.toString(), inputPassword?.text.toString())
+        }
+    }
+
+    private fun checkInputs(): Boolean {
+        return if (inputEmail?.text.toString().isEmail() && inputEmail?.text.toString().isNotEmpty()
+            && inputPassword?.text.toString()
+                .isNotEmpty() && inputPassword?.text.toString().length >= 6
         ) {
-            if (checkAndRequestPermission(
-                    android.Manifest.permission.ACCESS_FINE_LOCATION,
-                    REQUEST_LOCATION
-                )
+            true
+        } else {
+            if (inputEmail?.text.toString().isEmpty() && inputPassword?.text.toString().isEmpty()) {
+                showError(getString(R.string.error_pass), constraintContainer)
+            } else if (inputPassword?.text.toString().isValidPassword()) {
+                showError(getString(R.string.error_pass), constraintContainer)
+            } else if (!inputEmail?.text.toString().isEmail() || inputEmail?.text.toString()
+                    .isEmpty()
             ) {
-                requestLogin(inputEmail?.text.toString(), inputPassword?.text.toString())
+                showError(getString(R.string.error_email), constraintContainer)
             }
+            false
         }
     }
     //endregion Clicks

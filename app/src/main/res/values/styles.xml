@@ -41,6 +41,19 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="DialogTheme" parent="Theme.MaterialComponents.Dialog">
+
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@color/colorDetail</item>
+        <item name="android:textColor">@color/colorDetail</item>
+        <item name="colorPrimary">@color/colorDetail</item>
+        <item name="android:headerBackground">@color/colorDetail</item>
+        <item name="colorAccent">@color/colorDetail</item>
+        <item name="colorSecondary">@color/colorDetail</item>
+    </style>
+
     <style name="MyOutlinedBox.Dense" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="hintTextAppearance">@style/TextAppearance.TextInputLayout.HintText</item>
         <item name="android:paddingBottom">8dp</item>
