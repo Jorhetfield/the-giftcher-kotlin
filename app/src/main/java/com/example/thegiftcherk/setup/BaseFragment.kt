@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.setup.utils.extensions.hideProgressDialog
 import com.example.thegiftcherk.setup.utils.extensions.isEmail
+import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
 import com.example.thegiftcherk.setup.utils.extensions.showProgressDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
@@ -132,6 +133,7 @@ abstract class BaseFragment : Fragment() {
     /**
      * App Special Methods
      **/
+
     //region App Special Methods
     fun addTextWatcherEmail(inputEmailLayout: TextInputLayout) : TextWatcher {
         return object: TextWatcher {
@@ -156,6 +158,29 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
+    fun textWatcherPass(inputPasswordLayout: TextInputLayout): TextWatcher {
+        return object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (s.toString().isValidPassword()) {
+                    inputPasswordLayout.isErrorEnabled = false
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                if (s.toString().isValidPassword()) {
+                    inputPasswordLayout.isErrorEnabled = false
+                }
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (!s.toString().isValidPassword()) {
+                    inputPasswordLayout.isErrorEnabled = true
+                    inputPasswordLayout.error = getString(R.string.error_pass)
+                }
+            }
+        }
+    }
+
     fun addTextWatcherRequired(inputLayout: TextInputLayout) : TextWatcher {
         return object: TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -172,19 +197,7 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
-    fun checkInputs(inputsArray : ArrayList<TextInputLayout>) : Boolean {
-        if(!inputsArray.isNullOrEmpty()) {
-            inputsArray.forEach {
-                if(it.isErrorEnabled) {
-                    showError(it.error.toString(), view!!)
-                    return false
-                }
-            }
-            return true
-        } else {
-            return false
-        }
-    }
+
 
 
     companion object {
