@@ -1,8 +1,6 @@
 package com.example.thegiftcherk.features.ui.login
 
 import android.app.DatePickerDialog
-import android.app.TimePickerDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +14,7 @@ import com.example.thegiftcherk.setup.utils.extensions.addTenths
 import com.example.thegiftcherk.setup.utils.extensions.isEmail
 import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
 import com.example.thegiftcherk.setup.utils.extensions.logD
-import kotlinx.android.synthetic.main.dialog_date_picker.*
 import kotlinx.android.synthetic.main.fragment_register.*
-import kotlinx.android.synthetic.main.fragment_register.buttonConfirm
-import kotlinx.android.synthetic.main.fragment_register.constraintContainer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -64,25 +59,35 @@ class RegisterFragment : BaseFragment() {
     //region Methods
     private fun onClickRegister() {
         if (checkInputs()) {
-            if (checkAndRequestPermission(
-                    android.Manifest.permission.ACCESS_FINE_LOCATION,
-                    REQUEST_LOCATION
+//            if (checkAndRequestPermission(
+//                    android.Manifest.permission.ACCESS_FINE_LOCATION,
+//                    REQUEST_LOCATION
+//                )
+//            ) {
+                logD(
+                    "print inputs ${inputName?.text.toString() +
+                            inputLastname?.text.toString() +
+                            inputEmail?.text.toString() +
+                            inputUsername?.text.toString() +
+                            inputPassword?.text.toString() +
+                            birthdayText?.text.toString()}"
                 )
-            ) {
-                requestRegister(
-                    inputEmail?.text.toString(),
-                    inputPassword?.text.toString(),
-                    inputName?.text.toString(),
-                    inputPhone?.text.toString()
-                )
-            }
+//                requestRegister(
+//                    inputName?.text.toString(),
+//                    inputLastname?.text.toString(),
+//                    inputEmail?.text.toString(),
+//                    inputUsername?.text.toString(),
+//                    inputPassword?.text.toString(),
+//                    birthdayText?.text.toString()
+//                )
+
         }
     }
 
     private fun checkInputs(): Boolean {
         return if (inputEmail?.text.toString().isEmail() && inputEmail?.text.toString().isNotEmpty()
             && inputPassword?.text.toString()
-                .isNotEmpty() && inputPassword?.text.toString().length >= 6
+                .isNotEmpty() && inputPassword?.text.toString().length >= 6 && birthdayText?.text.toString() != "Select your birthday"
         ) {
             true
         } else {
@@ -134,14 +139,18 @@ class RegisterFragment : BaseFragment() {
     }
 
 
-    private fun requestRegister(email: String, pass: String, name: String, phone: String) {
+    private fun requestRegister(
+        name: String,
+        surname: String,
+        email: String,
+        username: String,
+        pass: String,
+        birthDay: String
+    ) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response = customRepository.doRegister(
-                email,
-                pass,
-                name,
-                phone
+                name, surname, email, username, pass, birthDay
             )) {
                 is ResponseResult.Success -> {
                     //Save User:

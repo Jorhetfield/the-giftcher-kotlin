@@ -31,15 +31,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+                <ImageView
                     android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:gravity="center"
-                    android:text="THEGIFTCHER"
-                    android:textColor="@color/colorDetail"
-                    android:textSize="@dimen/text_title" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_logo_tg_white_mode"
+                    android:gravity="center" />
 
             </LinearLayout>
 
@@ -80,6 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
+                    android:layout_marginTop="8dp"
                     android:textColorHint="@color/colorDetail"
                     app:boxStrokeColor="@color/colorDetail"
                     app:hintTextColor="@color/colorDetail">
@@ -115,7 +113,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputPhoneLayout"
+                    android:id="@+id/inputUsernameLayout"
                     style="@style/MyOutlinedBox.Dense"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -127,7 +125,7 @@
                     app:hintTextColor="@color/colorDetail">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/inputPhone"
+                        android:id="@+id/inputUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nombre de usuario"
@@ -184,23 +182,30 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/datePickerImage"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
+                        android:backgroundTint="@color/color_detail"
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="32dp"
-                        android:background="@drawable/ic_home" />
+                        android:background="@drawable/ic_appointment" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/birthdayText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="birthday"
-                        android:textColor="@color/colorSecondary" />
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="32dp"
+                        android:backgroundTint="@color/color_detail"
+                        android:text="Select your birthday"
+                        android:textColor="@color/colorDetail"
+                        android:textSize="16dp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </LinearLayout>
@@ -225,6 +230,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/button_height"
                 android:layout_marginTop="24dp"
+                android:layout_marginBottom="36dp"
                 android:text="@string/confirm"
                 android:textColor="@color/colorSecondary"
                 app:cornerRadius="24dp"

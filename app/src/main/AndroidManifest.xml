@@ -12,9 +12,9 @@
     <application
         android:name=".App"
         android:allowBackup="true"
-        android:icon="@drawable/ic_logo_tg_white_mode"
+        android:icon="@drawable/ic_icono_tg_white_mode"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_logo_tg_white_mode"
+        android:roundIcon="@drawable/ic_icono_tg_white_mode"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:fullBackupContent="true"

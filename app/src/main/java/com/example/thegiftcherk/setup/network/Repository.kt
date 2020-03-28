@@ -51,12 +51,17 @@ class Repository(private val service: Service, private val context: Context) {
     }
 
     suspend fun doRegister(
-        email: String, pass: String, name: String, phone: String,
+        name: String,
+        surname: String,
+        email: String,
+        username: String,
+        pass: String,
+        birthDay: String,
         fake: Boolean = BuildConfig.MOCK
-    ): ResponseResult<User> {
+    ): ResponseResult<Any> {
         return if (!fake) {
             try {
-                val response = service.register(email, pass, name, phone)
+                val response = service.register(name, surname, email, username, pass, birthDay)
                 checkResponse(context, response)
             } catch (e: Exception) {
                 checkException(context, e)

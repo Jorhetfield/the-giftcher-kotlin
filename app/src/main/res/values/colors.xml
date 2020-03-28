@@ -31,7 +31,8 @@
     <color name="ocupied">#f27666</color>
 
     <color name="transparent">#00FFFFFF</color>
-    <color name="semi_transparent_black">#BE000000</color>
+    <color name="semi_transparent_black">#10000000</color>
+    <color name="semi_transparent_white">#10FFFFFF</color>
     <color name="black">#000000</color>
     <color name="primary_night_mode">#1D1D1D</color>
     <color name="gray_text">#5A5A5A</color>

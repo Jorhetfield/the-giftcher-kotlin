@@ -25,11 +25,13 @@ interface Service {
     @FormUrlEncoded
     @POST("/api/register/register_client") // TODO change Url
     suspend fun register(
-        @Field("email") email: String,
-        @Field("password") pass: String,
         @Field("name") name: String,
-        @Field("number") phone: String
-    ): Response<User>
+        @Field("surname") surname: String,
+        @Field("email") email: String,
+        @Field("username") username: String,
+        @Field("password") pass: String,
+        @Field("date_of_birth") birthDay: String
+    ): Response<Any>
 
 
     @GET("/api/invoice/amount_of_month") // TODO change Url
