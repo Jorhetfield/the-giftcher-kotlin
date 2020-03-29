@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.utils.extensions.hideProgressDialog
 import com.example.thegiftcherk.setup.utils.extensions.isEmail
 import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
@@ -22,6 +23,7 @@ import org.koin.android.ext.android.inject
 abstract class BaseFragment : Fragment() {
     //region Vars
     val prefs: Prefs by inject()
+    val customRepository by inject<Repository>()
     //endregion Vars
 
     fun checkAndRequestPermission(permission: String, codeRequest: Int): Boolean {

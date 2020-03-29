@@ -1,5 +1,9 @@
 package com.example.thegiftcherk.features.ui.login
 
+import android.app.Activity
+import android.content.Intent
+import android.media.Image
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +16,17 @@ import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.isEmail
 import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
+import com.example.thegiftcherk.setup.utils.extensions.json
+import com.example.thegiftcherk.setup.utils.extensions.logD
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class LoginFragment : BaseFragment() {
+
+open class LoginFragment : BaseFragment() {
     //region Vars
-    private val customRepository by inject<Repository>()
     //endregion Vars
 
     //region Override Methods
@@ -38,12 +44,12 @@ class LoginFragment : BaseFragment() {
 
         buttonLogin?.setOnClickListener {
             onClickLogin()
+//            pickFromGallery()
         }
 
         buttonRegister?.setOnClickListener {
             //            onClickLogin()
             Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_registerFragment)
-
 
         }
 
@@ -62,6 +68,32 @@ class LoginFragment : BaseFragment() {
             requestLogin(inputEmail?.text.toString(), inputPassword?.text.toString())
         }
     }
+
+//    private fun pickFromGallery() {
+//        //Create an Intent with action as ACTION_PICK
+//        val intent = Intent(Intent.ACTION_PICK)
+//        // Sets the type as image/*. This ensures only components of type image are selected
+//        intent.type = "image/*"
+//        //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
+//        val mimeTypes =
+//            arrayOf("image/jpeg", "image/png")
+//        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+//        // Launching the Intent
+//        startActivityForResult(intent, 0)
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (resultCode == Activity.RESULT_OK) when (requestCode) {
+//            0 -> {
+//                //data.getData returns the content URI for the selected Image
+//                val selectedImage: Uri? = data?.data
+//                logD("selected image $selectedImage")
+//                imageLogo?.setImageURI(selectedImage)
+//
+//            }
+//        }
+//    }
 
     private fun checkInputs(): Boolean {
         return if (inputEmail?.text.toString().isEmail() && inputEmail?.text.toString().isNotEmpty()
@@ -91,6 +123,8 @@ class LoginFragment : BaseFragment() {
                 customRepository.doLogin(email, pass)) {
                 is ResponseResult.Success -> {
                     //Save User:
+                    prefs.token = response.value.token
+                    prefs.user = response.value.json()
 
                     //Change view:
                     startMainClientActivity()
@@ -103,6 +137,8 @@ class LoginFragment : BaseFragment() {
             hideProgressDialog()
         }
     }
+
+
 
     private fun startMainClientActivity() {
         context?.let {

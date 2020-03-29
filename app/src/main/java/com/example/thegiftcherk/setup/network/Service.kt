@@ -1,5 +1,7 @@
 package com.example.thegiftcherk.setup.network
 
+import android.media.Image
+import android.net.Uri
 import com.example.thegiftcherk.features.ui.friends.Friend
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
@@ -41,6 +43,11 @@ interface Service {
     @GET("/api/invoice/amount_of_month") // TODO change Url
     suspend fun getFriends(
     ): Response<List<Friend>>
+
+    @POST("/api/invoice/amount_of_month") // TODO change Url
+    suspend fun uploadImage(
+        @Part ("image") image: Uri
+    ): Response<Any>
 
     //endregion Others
 }

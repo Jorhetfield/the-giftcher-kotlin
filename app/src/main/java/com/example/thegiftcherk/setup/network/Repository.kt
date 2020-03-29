@@ -2,6 +2,8 @@ package com.example.thegiftcherk.setup.network
 
 
 import android.content.Context
+import android.media.Image
+import android.net.Uri
 import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
@@ -108,6 +110,28 @@ class Repository(private val service: Service, private val context: Context) {
             val json = context.getJsonFromResource(R.raw.friends)
             val response: List<Friend> =
                 Gson().fromJson(json, Array<Friend>::class.java).toList()
+            ResponseResult.Success(response)
+        }
+    }
+
+
+    suspend fun uploadImage(
+        image:Uri,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Any> {
+        return if (!fake) {
+            try {
+                val response = service.uploadImage(image)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            val json = context.getJsonFromResource(R.raw.items)
+            val response: List<Item> =
+                Gson().fromJson(json, Array<Item>::class.java).toList()
             ResponseResult.Success(response)
         }
     }

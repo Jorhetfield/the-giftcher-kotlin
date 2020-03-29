@@ -21,7 +21,6 @@ import org.koin.android.ext.android.inject
 class SearchFragment : BaseFragment() {
     val items: MutableList<Item> = mutableListOf()
     private lateinit var itemAdapter: SearchAdapter
-    private val customRepository by inject<Repository>()
 
 
     override fun onCreateView(
