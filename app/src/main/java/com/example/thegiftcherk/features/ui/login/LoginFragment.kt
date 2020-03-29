@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.Repository
@@ -19,6 +20,11 @@ import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
 import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.constraintContainer
+import kotlinx.android.synthetic.main.fragment_login.inputEmail
+import kotlinx.android.synthetic.main.fragment_login.inputPassword
+import kotlinx.android.synthetic.main.fragment_login.inputPasswordLayout
+import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,6 +33,7 @@ import org.koin.android.ext.android.inject
 
 open class LoginFragment : BaseFragment() {
     //region Vars
+    private lateinit var sendUser: SendUser
     //endregion Vars
 
     //region Override Methods
@@ -38,11 +45,12 @@ open class LoginFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Watch input
-        inputEmail?.addTextChangedListener(addTextWatcherEmail(inputEmailLayout))
+//        inputEmail?.addTextChangedListener(addTextWatcherEmail(inputEmailLayout))
         inputPassword?.addTextChangedListener(textWatcherPass(inputPasswordLayout))
         //Set buttons click
 
         buttonLogin?.setOnClickListener {
+            sendUser = SendUser(inputEmail?.text.toString(), inputPassword?.text.toString())
             onClickLogin()
 //            pickFromGallery()
         }
@@ -65,38 +73,12 @@ open class LoginFragment : BaseFragment() {
     //region Clicks
     private fun onClickLogin() {
         if (checkInputs()) {
-            requestLogin(inputEmail?.text.toString(), inputPassword?.text.toString())
+            requestLogin(sendUser)
         }
     }
 
-//    private fun pickFromGallery() {
-//        //Create an Intent with action as ACTION_PICK
-//        val intent = Intent(Intent.ACTION_PICK)
-//        // Sets the type as image/*. This ensures only components of type image are selected
-//        intent.type = "image/*"
-//        //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
-//        val mimeTypes =
-//            arrayOf("image/jpeg", "image/png")
-//        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-//        // Launching the Intent
-//        startActivityForResult(intent, 0)
-//    }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (resultCode == Activity.RESULT_OK) when (requestCode) {
-//            0 -> {
-//                //data.getData returns the content URI for the selected Image
-//                val selectedImage: Uri? = data?.data
-//                logD("selected image $selectedImage")
-//                imageLogo?.setImageURI(selectedImage)
-//
-//            }
-//        }
-//    }
-
     private fun checkInputs(): Boolean {
-        return if (inputEmail?.text.toString().isEmail() && inputEmail?.text.toString().isNotEmpty()
+        return if (inputEmail?.text.toString().isNotEmpty()
             && inputPassword?.text.toString()
                 .isNotEmpty() && inputPassword?.text.toString().length >= 6
         ) {
@@ -116,11 +98,11 @@ open class LoginFragment : BaseFragment() {
     }
     //endregion Clicks
 
-    private fun requestLogin(email: String, pass: String) {
+    private fun requestLogin(sendUser: SendUser) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
-                customRepository.doLogin(email, pass)) {
+                customRepository.doLogin(sendUser)) {
                 is ResponseResult.Success -> {
                     //Save User:
                     prefs.token = response.value.token

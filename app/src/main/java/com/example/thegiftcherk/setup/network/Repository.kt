@@ -7,6 +7,7 @@ import android.net.Uri
 import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.MOCK_DELAY
@@ -20,12 +21,12 @@ import kotlinx.coroutines.delay
 class Repository(private val service: Service, private val context: Context) {
     //region User
     suspend fun doLogin(
-        email: String, pass: String,
+        sendUser: SendUser,
         fake: Boolean = BuildConfig.MOCK
     ): ResponseResult<User> {
         return if (!fake) {
             try {
-                val response = service.login(email, pass)
+                val response = service.login(sendUser)
                 checkResponse(context, response)
             } catch (e: Exception) {
                 checkException(context, e)

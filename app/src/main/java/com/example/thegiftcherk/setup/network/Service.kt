@@ -3,6 +3,7 @@ package com.example.thegiftcherk.setup.network
 import android.media.Image
 import android.net.Uri
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
 import retrofit2.Response
@@ -11,11 +12,9 @@ import retrofit2.http.*
 
 interface Service {
     //region User
-    @FormUrlEncoded
     @POST("/api/Login/login_drivers") // TODO change Url
     suspend fun login(
-        @Field("email") email: String,
-        @Field("password") pass: String
+        @Body sendUser: SendUser
     ): Response<User>
 
     @FormUrlEncoded
