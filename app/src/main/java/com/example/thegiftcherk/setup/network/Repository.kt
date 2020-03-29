@@ -8,6 +8,7 @@ import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
 import com.example.thegiftcherk.features.ui.login.models.SendUser
+import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.MOCK_DELAY
@@ -54,17 +55,12 @@ class Repository(private val service: Service, private val context: Context) {
     }
 
     suspend fun doRegister(
-        name: String,
-        surname: String,
-        email: String,
-        username: String,
-        pass: String,
-        birthDay: String,
+        sendUserRegister: SendUserRegister,
         fake: Boolean = BuildConfig.MOCK
     ): ResponseResult<Any> {
         return if (!fake) {
             try {
-                val response = service.register(name, surname, email, username, pass, birthDay)
+                val response = service.register(sendUserRegister)
                 checkResponse(context, response)
             } catch (e: Exception) {
                 checkException(context, e)

@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.setup.BaseFragment
-import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.addTenths
 import com.example.thegiftcherk.setup.utils.extensions.isEmail
@@ -18,11 +19,11 @@ import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 import java.util.*
 
 class RegisterFragment : BaseFragment() {
     //region Vars
+    private lateinit var sendUserRegister: SendUserRegister
     //endregion Vars
 
     //region Override Methods
@@ -63,22 +64,23 @@ class RegisterFragment : BaseFragment() {
 //                    REQUEST_LOCATION
 //                )
 //            ) {
-                logD(
-                    "print inputs ${inputName?.text.toString() +
-                            inputLastname?.text.toString() +
-                            inputEmail?.text.toString() +
-                            inputUsername?.text.toString() +
-                            inputPassword?.text.toString() +
-                            birthdayText?.text.toString()}"
-                )
-//                requestRegister(
-//                    inputName?.text.toString(),
-//                    inputLastname?.text.toString(),
-//                    inputEmail?.text.toString(),
-//                    inputUsername?.text.toString(),
-//                    inputPassword?.text.toString(),
-//                    birthdayText?.text.toString()
-//                )
+            logD(
+                "print inputs ${inputName?.text.toString() +
+                        inputLastname?.text.toString() +
+                        inputEmail?.text.toString() +
+                        inputUsername?.text.toString() +
+                        inputPassword?.text.toString() +
+                        birthdayText?.text.toString()}"
+            )
+            sendUserRegister = SendUserRegister(
+                inputName?.text.toString(),
+                inputUsername?.text.toString(),
+                inputLastname?.text.toString(),
+                inputEmail?.text.toString(),
+                inputPassword?.text.toString(),
+                birthdayText?.text.toString()
+            )
+            requestRegister(sendUserRegister)
 
         }
     }
@@ -139,21 +141,16 @@ class RegisterFragment : BaseFragment() {
 
 
     private fun requestRegister(
-        name: String,
-        surname: String,
-        email: String,
-        username: String,
-        pass: String,
-        birthDay: String
+        sendUserRegister: SendUserRegister
     ) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response = customRepository.doRegister(
-                name, surname, email, username, pass, birthDay
+                sendUserRegister
             )) {
                 is ResponseResult.Success -> {
                     //Save User:
-
+                    findNavController().popBackStack()
                     //Change view:
 
                 }

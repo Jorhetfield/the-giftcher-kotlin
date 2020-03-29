@@ -4,8 +4,10 @@ import android.media.Image
 import android.net.Uri
 import com.example.thegiftcherk.features.ui.friends.Friend
 import com.example.thegiftcherk.features.ui.login.models.SendUser
+import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
+import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -23,15 +25,9 @@ interface Service {
         @Field("email") email: String
     ): Response<Operation>
 
-    @FormUrlEncoded
     @POST("/api/register/register_client") // TODO change Url
     suspend fun register(
-        @Field("name") name: String,
-        @Field("surname") surname: String,
-        @Field("email") email: String,
-        @Field("username") username: String,
-        @Field("password") pass: String,
-        @Field("date_of_birth") birthDay: String
+        @Body sendUserRegister: SendUserRegister
     ): Response<Any>
 
 
