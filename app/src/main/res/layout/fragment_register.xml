@@ -129,7 +129,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nombre de usuario"
-                        android:inputType="phone"
+                        android:inputType="text"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 

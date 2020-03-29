@@ -43,7 +43,7 @@ android {
         dev {
             dimension "normal"
             buildConfigField "String", "ENVIRONMENT", '"DEV"'
-            buildConfigField "String", "BASE_URL", '"https://url"'
+            buildConfigField "String", "BASE_URL", '"http://192.168.1.138:8080/"'
             buildConfigField "boolean", "MOCK", "false"
         }
 

@@ -72,6 +72,8 @@
                 android:layout_marginEnd="8dp"
                 android:textColorHint="@color/colorDetail"
                 app:boxStrokeColor="@color/colorDetail"
+                app:counterOverflowTextColor="@color/colorSecondary"
+                app:counterTextColor="@color/colorSecondary"
                 app:hintTextColor="@color/colorDetail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +83,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Name"
-                    app:hintTextColor="@color/colorSecondary">
+                    android:inputType="text"
+                    android:textColor="@color/colorSecondary">
 
                 </com.google.android.material.textfield.TextInputEditText>
 
@@ -93,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:textColorHint="@color/colorDetail"
                 app:boxStrokeColor="@color/colorDetail"
@@ -106,6 +109,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Store"
+                    android:inputType="text"
+                    android:textColor="@color/colorSecondary"
                     app:hintTextColor="@color/colorSecondary">
 
                 </com.google.android.material.textfield.TextInputEditText>
@@ -126,6 +131,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputName3"
+
                     style="@style/MyOutlinedBox.Dense"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -138,6 +144,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Price"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/colorSecondary"
                         app:hintTextColor="@color/colorSecondary">
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -151,33 +159,11 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="50"
+                    android:layout_marginStart="16dp"
+                    android:textColor="@color/colorSecondary"
                     android:backgroundTint="@color/colorDetail"
                     android:minHeight="40dp" />
             </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputName4"
-                style="@style/MyOutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:textColorHint="@color/colorDetail"
-                app:boxStrokeColor="@color/colorDetail"
-                app:hintTextColor="@color/colorDetail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearContainer">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Category"
-                    app:hintTextColor="@color/colorSecondary">
-
-                </com.google.android.material.textfield.TextInputEditText>
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/inputName5"
@@ -185,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:textColorHint="@color/colorDetail"
@@ -194,12 +180,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inputName4">
+                app:layout_constraintTop_toBottomOf="@id/linearContainer">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Description"
+                    android:inputType="text"
+                    android:textColor="@color/colorSecondary"
                     app:hintTextColor="@color/colorSecondary">
 
                 </com.google.android.material.textfield.TextInputEditText>

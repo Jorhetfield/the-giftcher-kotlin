@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.net.toUri
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
@@ -25,11 +26,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.selects.select
+import retrofit2.http.Multipart
 import java.io.File
 
 
 class AddProductFragment : BaseFragment() {
-    private lateinit var image: Uri
+    private lateinit var image: File
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -38,17 +40,17 @@ class AddProductFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val cardTypes: MutableList<String> = mutableListOf()
-        cardTypes.add("asdasd")
-        cardTypes.add("asdasd2")
-        cardTypes.add("asdasd3")
-        cardTypes.add("asdasd4")
-        cardTypes.add("asdasd5")
+        cardTypes.add("Tech")
+        cardTypes.add("Sports")
+        cardTypes.add("Geek")
+        cardTypes.add("Foodie")
+        cardTypes.add("Music")
 
         if (spinnerCardType != null) {
             val adapter = context?.let {
                 ArrayAdapter(
                     it,
-                    android.R.layout.simple_spinner_dropdown_item, cardTypes
+                    R.layout.spinner_row, cardTypes
                 )
             }
             spinnerCardType.adapter = adapter
@@ -100,20 +102,15 @@ class AddProductFragment : BaseFragment() {
             0 -> {
                 //data.getData returns the content URI for the selected Image
                 val selectedImage: Uri? = data?.data
-                logD("selected image $selectedImage")
-                val bitmap = BitmapFactory.decodeFile(selectedImage.toString())
-                logD("selected image2 $bitmap")
-                image = selectedImage!!
-
-                val file = File(selectedImage.path.toString())
-                val bitmap1 = BitmapFactory.decodeFile(file.absolutePath)
+                val file = File(selectedImage?.path!!)
+                image = file
                 imagePickerIV?.setImageURI(selectedImage)
-                logD("selected image2 $selectedImage *** $file")
-
+                val prueba = image.absoluteFile
+                logD("selected image2 $selectedImage *** $file *** $prueba *** $image")
             }
         }
     }
-    private fun uploadImageTest(image: Uri) {
+    private fun uploadImageTest(image: File) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
@@ -121,6 +118,7 @@ class AddProductFragment : BaseFragment() {
                 is ResponseResult.Success -> {
                     //Save User:
                     Toast.makeText(view?.context, "ok",Toast.LENGTH_LONG).show()
+
                     //Change view:
                 }
                 is ResponseResult.Error ->

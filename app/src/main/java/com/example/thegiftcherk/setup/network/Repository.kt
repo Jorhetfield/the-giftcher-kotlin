@@ -18,6 +18,7 @@ import com.example.thegiftcherk.setup.utils.extensions.getJsonFromResource
 import com.example.thegiftcherk.setup.utils.extensions.getMockResponseResult
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
+import java.io.File
 
 class Repository(private val service: Service, private val context: Context) {
     //region User
@@ -113,7 +114,7 @@ class Repository(private val service: Service, private val context: Context) {
 
 
     suspend fun uploadImage(
-        image:Uri,
+        image:File,
         fake: Boolean = BuildConfig.MOCK
     ): ResponseResult<Any> {
         return if (!fake) {

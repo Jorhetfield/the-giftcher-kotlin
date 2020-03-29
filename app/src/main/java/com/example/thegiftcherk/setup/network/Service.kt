@@ -10,11 +10,12 @@ import com.example.thegiftcherk.features.ui.search.models.Item
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Response
 import retrofit2.http.*
+import java.io.File
 
 
 interface Service {
     //region User
-    @POST("/api/Login/login_drivers") // TODO change Url
+    @POST("user/login") // TODO change Url
     suspend fun login(
         @Body sendUser: SendUser
     ): Response<User>
@@ -25,12 +26,11 @@ interface Service {
         @Field("email") email: String
     ): Response<Operation>
 
-    @POST("/api/register/register_client") // TODO change Url
+    @POST("user/register") // TODO change Url
     suspend fun register(
         @Body sendUserRegister: SendUserRegister
     ): Response<Any>
-
-
+    
     @GET("/api/invoice/amount_of_month") // TODO change Url
     suspend fun getItems(
     ): Response<List<Item>>
@@ -41,7 +41,7 @@ interface Service {
 
     @POST("/api/invoice/amount_of_month") // TODO change Url
     suspend fun uploadImage(
-        @Part ("image") image: Uri
+        @Part ("image") image: File
     ): Response<Any>
 
     //endregion Others
