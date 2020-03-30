@@ -18,6 +18,8 @@ import com.example.thegiftcherk.setup.utils.extensions.getJsonFromResource
 import com.example.thegiftcherk.setup.utils.extensions.getMockResponseResult
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import java.io.File
 
 class Repository(private val service: Service, private val context: Context) {
@@ -114,12 +116,14 @@ class Repository(private val service: Service, private val context: Context) {
 
 
     suspend fun uploadImage(
-        image:File,
+        entityId:RequestBody?,
+        picType:RequestBody?,
+        data:MultipartBody.Part?,
         fake: Boolean = BuildConfig.MOCK
     ): ResponseResult<Any> {
         return if (!fake) {
             try {
-                val response = service.uploadImage(image)
+                val response = service.uploadImage(entityId, picType, data)
                 checkResponse(context, response)
 
             } catch (e: Exception) {

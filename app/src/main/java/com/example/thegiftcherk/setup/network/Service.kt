@@ -1,16 +1,15 @@
 package com.example.thegiftcherk.setup.network
 
-import android.media.Image
-import android.net.Uri
 import com.example.thegiftcherk.features.ui.friends.Friend
 import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
-import com.google.android.material.textfield.TextInputLayout
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
-import java.io.File
 
 
 interface Service {
@@ -39,9 +38,13 @@ interface Service {
     suspend fun getFriends(
     ): Response<List<Friend>>
 
-    @POST("/api/invoice/amount_of_month") // TODO change Url
-    suspend fun uploadImage(
-        @Part ("image") image: File
+    @Streaming
+    @Multipart
+    @POST("/api/upload/picture/upload_pics")
+    fun uploadImage(
+        @Part("entity_id") entityId: RequestBody?,
+        @Part("picType") picType: RequestBody?,
+        @Part data: MultipartBody.Part?
     ): Response<Any>
 
     //endregion Others
