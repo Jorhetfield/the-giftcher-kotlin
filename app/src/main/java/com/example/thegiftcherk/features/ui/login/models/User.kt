@@ -8,11 +8,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class User(
     val token: String,
-    val type: String?,
     val id: String?,
-    val email: String,
-    val name: String,
-    @SerializedName("number") var phone: String?,
-    var address: String?,
-    var nif: String?
+    val name: String
 )  : Parcelable, JSONConvertable

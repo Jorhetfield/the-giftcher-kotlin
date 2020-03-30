@@ -22,22 +22,13 @@
 
         <TextView
             android:id="@+id/textView"
-            android:fontFamily="@font/montserrat_medium"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_taxi_one"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:text="THEGIFTCHER"
+            android:textColor="@color/colorDetail"
             android:textSize="@dimen/text_title" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:fontFamily="@font/montserrat_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_taxi_two"
-            android:textSize="@dimen/text_title"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     </LinearLayout>
 
@@ -49,6 +40,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:textColorHint="@color/colorDetail"
+        app:boxStrokeColor="@color/colorDetail"
+        app:hintTextColor="@color/colorDetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLinear">
@@ -58,20 +52,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/placeholder_email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorDetail" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonConfirm"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/colorDetail"
         android:text="@string/confirm"
+        android:textColor="@android:color/white"
         app:cornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/colorSecondary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
