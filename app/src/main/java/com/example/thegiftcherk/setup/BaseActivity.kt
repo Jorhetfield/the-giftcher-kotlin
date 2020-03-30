@@ -3,7 +3,6 @@ package com.example.thegiftcherk.setup
 import android.app.Dialog
 import android.content.Context
 import android.content.pm.PackageManager
-import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -12,7 +11,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.thegiftcherk.R
 import com.google.android.material.snackbar.Snackbar
-import es.vanadis.utg_estaxi_profesional.setup.Prefs
 
 import org.koin.android.ext.android.inject
 
@@ -34,6 +32,8 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+
+
     fun hideKeyboard() {
         with(getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager) {
             this.hideSoftInputFromWindow(
@@ -47,7 +47,7 @@ abstract class BaseActivity : AppCompatActivity() {
         val window = this.window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorDetail)
     }
 
     fun checkAndRequestPermission(permission: String, codeRequest: Int): Boolean {

@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils.extensions
+package com.example.thegiftcherk.setup.utils.extensions
 
 import android.annotation.SuppressLint
 import java.text.DateFormat

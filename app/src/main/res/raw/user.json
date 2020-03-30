@@ -1,10 +1,5 @@
 {
-  "token": "TOKEN_DEMO",
-  "type": "1",
-  "userInfo": {
-    "id": "1",
-    "name": "Test user 1",
-    "email": "test1@vanadis.es",
-    "phone": "000 000 000"
-  }
+  "token": "TOKEN",
+  "id": "1",
+  "name": "Juan Manull Pointer"
 }

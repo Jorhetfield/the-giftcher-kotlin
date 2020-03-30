@@ -31,40 +31,48 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+
     flavorDimensions "normal"
     productFlavors {
         mock {
             dimension "normal"
             buildConfigField "String", "ENVIRONMENT", '"MOCK"'
-            buildConfigField "String", "BASE_URL_VANADIS", '"http://obs2.dev.vanadis.es"'
+            buildConfigField "String", "BASE_URL", '"https://url"'
             buildConfigField "boolean", "MOCK", "true"
-            buildConfigField "String", "BASE_URL_SOCKET", '"http://obs2.dev.vanadis.es:2020"'
         }
         dev {
             dimension "normal"
             buildConfigField "String", "ENVIRONMENT", '"DEV"'
-            buildConfigField "String", "BASE_URL_VANADIS", '"http://estaxi.dev.vanadis.es/"'
+            buildConfigField "String", "BASE_URL", '"http://192.168.1.138:8080/"'
             buildConfigField "boolean", "MOCK", "false"
-            buildConfigField "String", "BASE_URL_SOCKET", '"http://estaxi.dev.vanadis.es:2020/"'
         }
 
         beta {
             dimension "normal"
             buildConfigField "String", "ENVIRONMENT", '"BETA"'
-            buildConfigField "String", "BASE_URL_VANADIS", '"https://estaxi.beta.vanadis.es"'
+            buildConfigField "String", "BASE_URL", '"https://url"'
             buildConfigField "boolean", "MOCK", "false"
-            buildConfigField "String", "BASE_URL_SOCKET", '"https://estaxi.beta.vanadis.es:2021/"'
         }
 
         pro {
             dimension "normal"
             buildConfigField "String", "ENVIRONMENT", '""'
-            buildConfigField "String", "BASE_URL_VANADIS", '"https://url"'
+            buildConfigField "String", "BASE_URL", '"https://url"'
             buildConfigField "boolean", "MOCK", "false"
-            buildConfigField "String", "BASE_URL_SOCKET", '"http://estaxi.dev.vanadis.es:2020/"'
         }
     }
+    buildTypes {
+        debug {
+            buildConfigField "long", "SPLASH_DELAY", '1000'
+        }
 
+        release {
+            buildConfigField "long", "SPLASH_DELAY", '1000'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //signingConfig signingConfigs.release
+        }
+    }
 
 }
 

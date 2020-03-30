@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.utils.extensions
+package com.example.thegiftcherk.setup.utils.extensions
 
 import java.util.regex.Pattern
 
@@ -13,8 +13,17 @@ private val VALID_PHONE_REGEX = Pattern.compile(
     Pattern.CASE_INSENSITIVE
 )
 
+private val VALID_PASS_REGEX = Pattern.compile(
+    "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#!$%]).{8,20})"
+)
+
 fun String.isEmail(): Boolean {
     val matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(this)
+    return matcher.find()
+}
+
+fun String.isValidPassword(): Boolean {
+    val matcher = VALID_PASS_REGEX.matcher(this)
     return matcher.find()
 }
 

@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup
+package com.example.thegiftcherk.setup
 
 const val MOCK_DELAY = 600L
 const val FCM_TOPIC_GENERAL = "general"

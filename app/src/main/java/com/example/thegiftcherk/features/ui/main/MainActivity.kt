@@ -1,16 +1,18 @@
-package com.example.thegiftcherk.features
+package com.example.thegiftcherk.features.ui.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.setup.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,5 +37,13 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(materialToolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    companion object {
+        private val LOGTAG: String = MainActivity::class.java.simpleName
+
+        @JvmStatic
+        fun intent(context: Context) =
+            Intent(context, MainActivity::class.java)
     }
 }

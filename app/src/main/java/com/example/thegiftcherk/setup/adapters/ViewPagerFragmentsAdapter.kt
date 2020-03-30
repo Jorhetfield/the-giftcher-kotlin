@@ -1,4 +1,4 @@
-package es.vanadis.utg_estaxi_profesional.setup.adapters
+package com.example.thegiftcherk.setup.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
