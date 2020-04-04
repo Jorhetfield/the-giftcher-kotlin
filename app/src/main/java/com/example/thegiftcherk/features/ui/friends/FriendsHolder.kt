@@ -1,6 +1,7 @@
 package com.example.thegiftcherk.features.ui.friends
 
 import android.view.View
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.R
@@ -35,7 +36,8 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
             .into(view.image_IV)
 
         view.friend_messageCard?.setOnClickListener {
-            view.findNavController().navigate(R.id.goFromFriendToFriendDetail)
+            val action = FriendsFragmentDirections.goFromFriendToFriendDetail(friend)
+            Navigation.findNavController(this.view).navigate(action)
         }
     }
 
