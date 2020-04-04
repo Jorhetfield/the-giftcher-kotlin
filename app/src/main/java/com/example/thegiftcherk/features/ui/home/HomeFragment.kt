@@ -23,11 +23,9 @@ import org.koin.android.ext.android.inject
 class HomeFragment : BaseFragment() {
     val items: MutableList<Item> = mutableListOf()
     private lateinit var itemAdapter: HomeAdapter
-    private val customRepository by inject<Repository>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_home, container, false)
-    // Comentario de prueba de conexión
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,6 +58,7 @@ class HomeFragment : BaseFragment() {
                     val responseResult = response.value
 
                     items.addAll(responseResult)
+                    items.shuffle()
                     itemAdapter.notifyDataSetChanged()
                     hideKeyboard()
                 }

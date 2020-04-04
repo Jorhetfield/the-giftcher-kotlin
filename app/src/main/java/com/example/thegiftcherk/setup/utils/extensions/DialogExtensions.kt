@@ -21,7 +21,6 @@ fun BaseActivity.showProgressDialog() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setCancelable(false)
         setContentView(R.layout.dialog_progress)
-        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         show()
         this@showProgressDialog.progressDialog = this
     }

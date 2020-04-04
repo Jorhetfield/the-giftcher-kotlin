@@ -48,8 +48,7 @@
         android:name="com.example.thegiftcherk.features.ui.addproduct.productdetail.ProductDetailFragment"
         android:label="ProductDetailFragment" >
         <argument
-            android:name="productId"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="product"
+            app:argType="com.example.thegiftcherk.features.ui.search.models.Item" />
     </fragment>
 </navigation>

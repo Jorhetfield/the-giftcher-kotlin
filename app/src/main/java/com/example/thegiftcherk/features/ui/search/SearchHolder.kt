@@ -30,15 +30,12 @@ class SearchHolder(v: View) : RecyclerView.ViewHolder(v) {
         this.item = item
         this.listener = listener
 
-        view.subject.text = item.id
-        view.date.text = item.name
+        view.subject.text = item.name
         view.message.text = item.description
 
         view.messageCard.setOnClickListener {
-            view.findNavController().navigate(R.id.goFromSearchToDetail)
-
-//            val action = SearchFragmentDirections.findToDetail(item)
-//            Navigation.findNavController(this.view).navigate(action)
+            val action = SearchFragmentDirections.goFromSearchToDetail(item)
+            Navigation.findNavController(this.view).navigate(action)
         }
 
         Picasso.get()

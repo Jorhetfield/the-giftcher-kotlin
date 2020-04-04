@@ -3,7 +3,8 @@
     <color name="colorPrimary">@color/primary_night_mode</color>
     <color name="colorSecondary">@color/primary_day_mode</color>
     <color name="colorDetail">@color/color_detail</color>
-    <color name="colorLogoPrimary">@color/color_detail</color>
+    <color name="colorDetailDark">@color/color_detail</color>
+    <color name="colorLogoPrimary">@color/color_detail_dark</color>
     <color name="colorLogoSecondary">@color/color_detail</color>
     <bool name="windowLightNavigationBar">false</bool>
 

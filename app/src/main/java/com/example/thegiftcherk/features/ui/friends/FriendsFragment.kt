@@ -19,7 +19,6 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class FriendsFragment : BaseFragment(), OnClickFriendsListener {
-    private val customRepository by inject<Repository>()
     private val friends: MutableList<Friend> = mutableListOf()
     private lateinit var friendsAdapter: FriendsAdapter
 
