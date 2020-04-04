@@ -21,6 +21,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="4dp"
             app:cardElevation="4dp"
+            app:cardCornerRadius="0dp"
             android:backgroundTint="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,33 +31,32 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintMEssageInside"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/colorDetail">
 
-                <TextView
-                    android:id="@+id/subject"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:textColor="@color/colorSecondary"
-                    android:layout_marginTop="16dp"
-                    android:text="asds"
-                    android:fontFamily="@font/montserrat_bold"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/red"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="1dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/date"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/subject"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
-                    android:text="asd"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="asds"
                     android:textColor="@color/colorSecondary"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toTopOf="@+id/message"
-                    app:layout_constraintStart_toEndOf="@+id/subject"
+                    app:layout_constraintEnd_toStartOf="@+id/itemImage"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
@@ -76,13 +76,15 @@
 
                 <ImageView
                     android:id="@+id/itemImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/message"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
             </androidx.constraintlayout.widget.ConstraintLayout>

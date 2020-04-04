@@ -69,16 +69,14 @@ class AddProductFragment : BaseFragment() {
                 parent: AdapterView<*>?,
                 view: View, position: Int, id: Long
             ) {
-
             }
-
         }
 
         imagePickerIV?.setOnClickListener {
             pickFromGallery()
         }
         saveButton?.setOnClickListener {
-            uploadImageTest(image)
+//            uploadImageTest(image)
         }
 
     }
@@ -110,24 +108,24 @@ class AddProductFragment : BaseFragment() {
             }
         }
     }
-    private fun uploadImageTest(image: File) {
-        GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
-            when (val response =
-                customRepository.uploadImage(image)) {
-                is ResponseResult.Success -> {
-                    //Save User:
-                    Toast.makeText(view?.context, "ok",Toast.LENGTH_LONG).show()
-
-                    //Change view:
-                }
-                is ResponseResult.Error ->
-                    showError(response.message, constraintContainer)
-                is ResponseResult.Forbidden ->
-                    showError("ERROR", constraintContainer)
-            }
-            hideProgressDialog()
-        }
-    }
+//    private fun uploadImageTest(image: File) {
+//        GlobalScope.launch(Dispatchers.Main) {
+//            showProgressDialog()
+//            when (val response =
+//                customRepository.uploadImage(image)) {
+//                is ResponseResult.Success -> {
+//                    //Save User:
+//                    Toast.makeText(view?.context, "ok",Toast.LENGTH_LONG).show()
+//
+//                    //Change view:
+//                }
+//                is ResponseResult.Error ->
+//                    showError(response.message, constraintContainer)
+//                is ResponseResult.Forbidden ->
+//                    showError("ERROR", constraintContainer)
+//            }
+//            hideProgressDialog()
+//        }
+//    }
 
 }

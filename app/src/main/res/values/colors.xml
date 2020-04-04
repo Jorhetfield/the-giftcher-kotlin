@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/primary_night_mode</color>
     <color name="colorDetail">@color/black</color>
+    <color name="colorDetailDark">@color/color_detail</color>
     <color name="colorSecondary">@color/primary_night_mode</color>
     <color name="colorSecondaryVariant">@color/primary_day_mode</color>
     <color name="colorBackground">@color/primary_day_mode</color>
@@ -28,6 +29,7 @@
     <color name="yellow">#FFC107</color>
     <color name="orange">#FF5722</color>
     <color name="color_detail">#D93045</color>
+    <color name="color_detail_dark">#500A13</color>
     <color name="ocupied">#f27666</color>
 
     <color name="transparent">#00FFFFFF</color>
