@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/messageCard"
         android:layout_width="match_parent"
@@ -21,24 +22,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintMEssageInside"
+            android:id="@+id/constraintMessageInside"
             android:layout_width="match_parent"
             android:background="@color/colorDetail"
             android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/red"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorPrimary"
-            android:layout_margin="1dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/red"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/colorPrimary"
+                android:layout_margin="1dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             <ImageView
-                android:id="@+id/itemImage"
+                android:id="@+id/imagefriend_IV"
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 android:layout_marginStart="8dp"
@@ -51,7 +52,7 @@
                 app:layout_goneMarginEnd="8dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <androidx.appcompat.widget.AppCompatImageButton
+            <!--<androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/materialButton2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -75,7 +76,7 @@
                 android:src="@drawable/ic_placeholder"
                 android:tint="@color/colorSecondary"
                 app:layout_constraintBottom_toBottomOf="@+id/itemImage"
-                app:layout_constraintStart_toEndOf="@+id/materialButton2" />
+                app:layout_constraintStart_toEndOf="@+id/materialButton2" /> -->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/textContainer"
@@ -84,9 +85,9 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/itemImage">
+                app:layout_constraintTop_toBottomOf="@+id/imagefriend_IV">
 
-                <View
+                <!--<View
                     android:id="@+id/divider2"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
@@ -94,35 +95,27 @@
                     android:background="@color/colorDetail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <LinearLayout
-                    android:id="@+id/linearTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/divider2">
+                    app:layout_constraintTop_toTopOf="parent" /> -->
 
                     <TextView
-                        android:id="@+id/titleTV"
+                        android:id="@+id/nombreusuario_TV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_weight="50"
                         android:fontFamily="@font/montserrat_regular"
                         android:gravity="center"
-                        android:text="Producto"
+                        android:text="Nombre"
                         android:textColor="@color/colorSecondary"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/priceTV"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"/>
 
 
-                    <TextView
+
+                    <!--<TextView
                         android:id="@+id/priceTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -130,12 +123,12 @@
                         android:layout_weight="50"
                         android:fontFamily="@font/montserrat_regular"
                         android:gravity="center"
-                        android:text="5€"
+                        android:text="Nombre"
                         android:textColor="@color/colorSecondary"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/titleTV" />
-                </LinearLayout>
+                        app:layout_constraintTop_toTopOf="@+id/titleTV" />-->
+
 
                 <View
                     android:id="@+id/divider4"
@@ -148,20 +141,22 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearTitle" />
 
                 <TextView
-                    android:id="@+id/descriptionTV"
+                    android:id="@+id/cumpleaños_TV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
-                    android:text="Descripción"
+                    android:text="Cumpleaños"
                     android:textColor="@color/colorSecondary"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
+                    app:layout_constraintTop_toBottomOf="@+id/nombreusuario_TV"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <View
                     android:id="@+id/divider1"
@@ -173,7 +168,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
 
-                <LinearLayout
+                <!--<LinearLayout
                     android:id="@+id/linearCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -183,7 +178,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/divider1">
 
-                    <TextView
+                        <TextView
                         android:id="@+id/categoryTV"
                         android:layout_weight="50"
                         android:layout_width="wrap_content"
@@ -200,7 +195,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
 
-                    <TextView
+                        <TextView
                         android:id="@+id/storeTV"
                         android:layout_weight="50"
                         android:layout_width="wrap_content"
@@ -216,7 +211,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/categoryTV" />
-                </LinearLayout>
+                </LinearLayout>-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

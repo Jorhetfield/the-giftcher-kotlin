@@ -11,11 +11,33 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
+    <!-- Aquí está el fragment "friend" -->
     <fragment
         android:id="@+id/navigation_friends"
         android:name="com.example.thegiftcherk.features.ui.friends.FriendsFragment"
         android:label="Friends"
-        tools:layout="@layout/fragment_friends" />
+        tools:layout="@layout/fragment_friends" >
+
+        <!-- Aquí está la navegación desde el fragment Friend al fragment "friendDetail"-->
+        <action
+            android:id="@+id/goFromFriendToFriendDetail"
+            app:destination="@id/friendDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+
+    <!-- Aquí está el fragment "friendDetail" -->
+    <fragment
+        android:id="@+id/friendDetailFragment"
+        tools:layout="@layout/friend_detail_fragment"
+        android:name="com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragment"
+        android:label="FriendtDetailFragment" >
+        <argument
+            android:name="friend"
+            app:argType="com.example.thegiftcherk.features.ui.friends.Friend" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_add"
@@ -48,8 +70,8 @@
         android:name="com.example.thegiftcherk.features.ui.addproduct.productdetail.ProductDetailFragment"
         android:label="ProductDetailFragment" >
         <argument
-            android:name="productId"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="product"
+            app:argType="com.example.thegiftcherk.features.ui.search.models.Item" />
     </fragment>
+
 </navigation>

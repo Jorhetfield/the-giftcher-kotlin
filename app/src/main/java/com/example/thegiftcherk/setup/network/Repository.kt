@@ -2,8 +2,6 @@ package com.example.thegiftcherk.setup.network
 
 
 import android.content.Context
-import android.media.Image
-import android.net.Uri
 import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
@@ -20,7 +18,6 @@ import com.google.gson.Gson
 import kotlinx.coroutines.delay
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import java.io.File
 
 class Repository(private val service: Service, private val context: Context) {
     //region User
@@ -87,7 +84,7 @@ class Repository(private val service: Service, private val context: Context) {
             }
         } else {
             delay(MOCK_DELAY)
-            val json = context.getJsonFromResource(R.raw.items)
+            val json = context.getJsonFromResource(R.raw.lista_personal)
             val response: List<Item> =
                 Gson().fromJson(json, Array<Item>::class.java).toList()
             ResponseResult.Success(response)
@@ -131,7 +128,7 @@ class Repository(private val service: Service, private val context: Context) {
             }
         } else {
             delay(MOCK_DELAY)
-            val json = context.getJsonFromResource(R.raw.items)
+            val json = context.getJsonFromResource(R.raw.lista_personal)
             val response: List<Item> =
                 Gson().fromJson(json, Array<Item>::class.java).toList()
             ResponseResult.Success(response)

@@ -3,6 +3,7 @@ package com.example.thegiftcherk.setup
 import android.app.Dialog
 import android.content.Context
 import android.content.pm.PackageManager
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -66,14 +67,12 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         return false
     }
-
-//    override fun onBackPressed() {
-//        val fragment =
-//            this.supportFragmentManager.findFragmentById(R.id.fragment)
-//        (fragment as? IOnBackPressed)?.onBackPressed()?.not()?.let {
-//            super.onBackPressed()
-//        }
-//    }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> super.onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     interface IOnBackPressed {
         fun onBackPressed(): Boolean

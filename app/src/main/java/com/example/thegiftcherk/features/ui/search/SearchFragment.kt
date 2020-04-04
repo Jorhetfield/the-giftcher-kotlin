@@ -22,7 +22,6 @@ class SearchFragment : BaseFragment() {
     val items: MutableList<Item> = mutableListOf()
     private lateinit var itemAdapter: SearchAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_search, container, false)
@@ -36,7 +35,6 @@ class SearchFragment : BaseFragment() {
         itemAdapter = SearchAdapter(
             items
         ) {
-            
         }
         recyclerItems.adapter = itemAdapter
         getItems()
@@ -50,11 +48,11 @@ class SearchFragment : BaseFragment() {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
 
+                    items.clear()
                     items.addAll(responseResult)
                     itemAdapter.notifyDataSetChanged()
                     hideKeyboard()
                 }
-
                 is ResponseResult.Error -> {
                 }
                 is ResponseResult.Forbidden -> {
@@ -63,6 +61,4 @@ class SearchFragment : BaseFragment() {
             hideProgressDialog()
         }
     }
-
-
 }
