@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/messageCard"
         android:layout_width="match_parent"
