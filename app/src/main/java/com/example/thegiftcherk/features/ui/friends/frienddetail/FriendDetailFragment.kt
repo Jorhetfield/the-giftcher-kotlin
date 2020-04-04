@@ -9,11 +9,35 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_add_product.*
+import kotlinx.android.synthetic.main.friend_detail_fragment.*
+import kotlinx.android.synthetic.main.item_friend.*
+import kotlinx.android.synthetic.main.product_detail_fragment.*
 
 class FriendDetailFragment : Fragment () {
+
+    private val mFriend by lazyUnsychronized {
+        arguments?.let {
+           FriendDetailFragmentArgs.fromBundle(it).friend
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.friend_detail_fragment, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        name_TV?.text = mFriend?.name
+        birthday_TV?.text = mFriend?.birthday
+
+        Picasso.get()
+            .load(mFriend?.picture)
+            .into(imagefriend_IV)
+
+    }
 
 }
