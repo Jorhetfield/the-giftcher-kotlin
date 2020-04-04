@@ -35,9 +35,8 @@
         android:name="com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragment"
         android:label="FriendtDetailFragment" >
         <argument
-            android:name="friendId"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="friend"
+            app:argType="com.example.thegiftcherk.features.ui.friends.Friend" />
     </fragment>
 
     <fragment

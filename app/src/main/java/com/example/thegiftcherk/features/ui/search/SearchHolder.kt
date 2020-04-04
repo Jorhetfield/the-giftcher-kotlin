@@ -32,7 +32,6 @@ class SearchHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         view.subject.text = item.name
         view.message.text = item.description
-
         view.messageCard.setOnClickListener {
             val action = SearchFragmentDirections.goFromSearchToDetail(item)
             Navigation.findNavController(this.view).navigate(action)
@@ -42,6 +41,7 @@ class SearchHolder(v: View) : RecyclerView.ViewHolder(v) {
             .load(item.picture)
             .noPlaceholder()
             .into(view.itemImage)
+
     }
 
 

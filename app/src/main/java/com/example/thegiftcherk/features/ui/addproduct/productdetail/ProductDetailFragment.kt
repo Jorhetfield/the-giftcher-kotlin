@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_detail_fragment.*
 
-class ProductDetailFragment : Fragment() {
+class ProductDetailFragment : BaseFragment() {
 
     private val mProduct by lazyUnsychronized {
         arguments?.let {
