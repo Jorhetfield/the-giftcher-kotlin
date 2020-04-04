@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintMEssageInside"
+            android:id="@+id/constraintMessageInside"
             android:layout_width="match_parent"
             android:background="@color/colorDetail"
             android:layout_height="wrap_content">
@@ -52,31 +52,31 @@
                 app:layout_goneMarginEnd="8dp"
                 tools:srcCompat="@tools:sample/avatars" />
 
-<!--            <androidx.appcompat.widget.AppCompatImageButton-->
-<!--                android:id="@+id/materialButton2"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:backgroundTint="@color/colorPrimary"-->
-<!--                android:scaleType="centerCrop"-->
-<!--                android:src="@drawable/ic_placeholder"-->
-<!--                android:tint="@color/colorSecondary"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/itemImage"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/itemImage" />-->
+            <!--<androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/materialButton2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_placeholder"
+                android:tint="@color/colorSecondary"
+                app:layout_constraintBottom_toBottomOf="@+id/itemImage"
+                app:layout_constraintStart_toStartOf="@+id/itemImage" />
 
-<!--            <androidx.appcompat.widget.AppCompatImageButton-->
-<!--                android:id="@+id/materialButton"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginBottom="8dp"-->
-<!--                android:backgroundTint="@color/colorPrimary"-->
-<!--                android:scaleType="centerCrop"-->
-<!--                android:src="@drawable/ic_placeholder"-->
-<!--                android:tint="@color/colorSecondary"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/itemImage"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/materialButton2" />-->
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/materialButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_placeholder"
+                android:tint="@color/colorSecondary"
+                app:layout_constraintBottom_toBottomOf="@+id/itemImage"
+                app:layout_constraintStart_toEndOf="@+id/materialButton2" /> -->
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/textContainer"
@@ -87,24 +87,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imagefriend_IV">
 
-<!--                <View-->
-<!--                    android:id="@+id/divider2"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:background="@color/colorDetail"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent" />-->
-
-                <LinearLayout
-                    android:id="@+id/linearTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                <!--<View
+                    android:id="@+id/divider2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorDetail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/divider2">
+                    app:layout_constraintTop_toTopOf="parent" /> -->
 
                     <TextView
                         android:id="@+id/nombreusuario_TV"
@@ -118,9 +109,10 @@
                         android:textColor="@color/colorSecondary"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/priceTV"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"/>
+
 
 
                     <!--<TextView
@@ -136,7 +128,7 @@
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/titleTV" />-->
-                </LinearLayout>
+
 
                 <View
                     android:id="@+id/divider4"
@@ -163,7 +155,7 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider4"
+                    app:layout_constraintTop_toBottomOf="@+id/nombreusuario_TV"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <View

@@ -31,8 +31,8 @@ class FriendDetailFragment : Fragment () {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        name_TV?.text = mFriend?.name
-        birthday_TV?.text = mFriend?.birthday
+        nombreusuario_TV?.text = mFriend?.name
+        cumpleaños_TV?.text = mFriend?.birthday
 
         Picasso.get()
             .load(mFriend?.picture)
