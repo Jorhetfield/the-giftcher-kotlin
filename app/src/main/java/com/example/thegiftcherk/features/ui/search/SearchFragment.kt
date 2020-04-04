@@ -39,7 +39,9 @@ class SearchFragment : BaseFragment() {
         recyclerItems.adapter = itemAdapter
         getItems()
     }
-
+    override fun onResume() {
+        super.onResume()
+    }
     private fun getItems() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()

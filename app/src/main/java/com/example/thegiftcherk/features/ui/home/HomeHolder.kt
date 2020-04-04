@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_home_row.view.*
 import kotlinx.android.synthetic.main.item_row.view.*
+import kotlinx.android.synthetic.main.item_row.view.itemImage
+import kotlinx.android.synthetic.main.item_row.view.message
 import kotlinx.coroutines.flow.callbackFlow
 
 class HomeHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -29,12 +32,17 @@ class HomeHolder(v: View) : RecyclerView.ViewHolder(v) {
         this.item = item
         this.listener = listener
 
-        view.message.text = item.description
+        view.message.text = item.name
 
         Picasso.get()
             .load(item.picture)
             .noPlaceholder()
             .into(view.itemImage)
+
+        view.homeItemCard?.setOnClickListener {
+            val action = HomeFragmentDirections.actionNavigationHomeToProductDetailFragment(item)
+            Navigation.findNavController(this.view).navigate(action)
+        }
 
     }
 
