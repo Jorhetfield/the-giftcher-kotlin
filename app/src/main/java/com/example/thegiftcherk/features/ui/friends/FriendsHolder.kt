@@ -1,10 +1,13 @@
 package com.example.thegiftcherk.features.ui.friends
 
 import android.view.View
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thegiftcherk.R
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_friend.view.*
+import kotlinx.android.synthetic.main.item_row.view.*
 
 class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
@@ -16,7 +19,6 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
         v.setOnClickListener {
             friend?.let {
                 listener.onClickFriends(it)
-                logD("pene")
             }
         }
     }
@@ -32,7 +34,9 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
             .load(friend.picture)
             .into(view.image_IV)
 
-
+        view.friend_messageCard?.setOnClickListener {
+            view.findNavController().navigate(R.id.goFromFriendToFriendDetail)
+        }
     }
 
 
