@@ -70,7 +70,9 @@ class FriendsFragment : BaseFragment(), OnClickFriendsListener {
     }
 
     override fun onClickFriends(it: Friend) {
-        it.name?.let { it1 -> showError(it1, view!!) }
+        //Aquí se marca que enseñe el nombre en un toast
+        it.name?.let { it1 -> showError(it1, view!!)}
+
 
     }
 }
