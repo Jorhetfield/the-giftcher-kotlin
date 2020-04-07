@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_add_product.*
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.friend_detail_fragment.*
 import kotlinx.android.synthetic.main.item_friend.*
 import kotlinx.android.synthetic.main.product_detail_fragment.*
 
-class FriendDetailFragment : Fragment () {
+class FriendDetailFragment : BaseFragment() {
 
     private val mFriend by lazyUnsychronized {
         arguments?.let {

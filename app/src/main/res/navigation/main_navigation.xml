@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
+            app:destination="@id/productDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
 
     <!-- Aquí está el fragment "friend" -->
@@ -37,7 +41,7 @@
         android:id="@+id/friendDetailFragment"
         tools:layout="@layout/friend_detail_fragment"
         android:name="com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragment"
-        android:label="FriendtDetailFragment" >
+        android:label="FriendDetailFragment" >
         <argument
             android:name="friend"
             app:argType="com.example.thegiftcherk.features.ui.friends.Friend" />
