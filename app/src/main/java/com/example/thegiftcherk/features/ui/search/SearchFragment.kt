@@ -20,7 +20,7 @@ import org.koin.android.ext.android.inject
 
 class SearchFragment : BaseFragment() {
     val items: MutableList<Item> = mutableListOf()
-    private lateinit var itemAdapter: SearchAdapter
+        private lateinit var itemAdapter: SearchAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -39,7 +39,9 @@ class SearchFragment : BaseFragment() {
         recyclerItems.adapter = itemAdapter
         getItems()
     }
-
+    override fun onResume() {
+        super.onResume()
+    }
     private fun getItems() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()

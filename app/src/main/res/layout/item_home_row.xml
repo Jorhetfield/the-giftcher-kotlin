@@ -7,9 +7,10 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/messageCard"
+        android:id="@+id/homeItemCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minHeight="100dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -26,7 +27,7 @@
             android:id="@+id/constraintMEssageInside"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorDetail">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/red"
@@ -43,12 +44,15 @@
                 android:id="@+id/message"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
+                android:minHeight="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:textStyle="bold"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="asdasdasasd asd asdas das asdas "
+                android:text="nombre"
                 android:textColor="@color/colorSecondary"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,9 +62,9 @@
 
             <ImageView
                 android:id="@+id/itemImage"
-                android:layout_width="100dp"
+                android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="14dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"

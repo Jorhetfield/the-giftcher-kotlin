@@ -30,7 +30,7 @@ class FriendsFragment : BaseFragment(), OnClickFriendsListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getItems()
+        getFriends()
 
 
         val linearLayoutManager = LinearLayoutManager(context)
@@ -41,7 +41,7 @@ class FriendsFragment : BaseFragment(), OnClickFriendsListener {
     }
 
 
-    private fun getItems() {
+    private fun getFriends() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
@@ -49,9 +49,9 @@ class FriendsFragment : BaseFragment(), OnClickFriendsListener {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
 
+                    friends.clear()
                     friends.addAll(responseResult)
                     friendsAdapter.notifyDataSetChanged()
-
 
                     responseResult.forEach {
                         logD("probando peticiones $it")

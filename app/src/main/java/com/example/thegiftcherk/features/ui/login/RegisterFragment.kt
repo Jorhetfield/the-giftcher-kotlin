@@ -123,7 +123,7 @@ class RegisterFragment : BaseFragment() {
             R.style.DialogTheme,
             DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                 stringDate = String.format(
-                    "%s/%s/%s",
+                    "%s-%s-%s",
                     year.toString().addTenths(),
                     (month + 1).toString().addTenths(),
                     dayOfMonth.toString().addTenths()
