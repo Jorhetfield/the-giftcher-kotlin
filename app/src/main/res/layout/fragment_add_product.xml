@@ -6,11 +6,11 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logoBackground"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="1000dp"
+        android:layout_height="2000dp"
         android:layout_margin="16dp"
+        android:alpha=".3"
         android:src="@drawable/ic_icono_tg_white_mode"
-        android:alpha=".7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,11 +20,12 @@
         android:id="@+id/imageCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="16dp"
         android:elevation="8dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="10dp"
         app:layout_constraintBottom_toTopOf="@id/materialCardView"
         app:layout_constraintStart_toStartOf="@+id/materialCardView"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,8 +38,9 @@
                 android:id="@+id/imagePickerIV"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:layout_margin="4dp"
                 android:background="@drawable/ic_placeholder"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,9 +56,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:elevation="8dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageCard">
@@ -161,11 +165,11 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="50"
                     android:layout_marginStart="16dp"
-                    android:textColor="@color/colorSecondary"
+                    android:layout_weight="50"
                     android:backgroundTint="@color/colorDetail"
-                    android:minHeight="40dp" />
+                    android:minHeight="40dp"
+                    android:textColor="@color/colorSecondary" />
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -201,18 +205,35 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/saveButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar"
-        android:textColor="@color/colorDetail"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Guardar"
+            android:textColor="@color/colorDetail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/assignButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asignar"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/colorDetail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

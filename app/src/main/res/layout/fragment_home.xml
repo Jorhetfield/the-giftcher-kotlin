@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <com.google.android.material.card.MaterialCardView
+         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCard"
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -81,11 +80,11 @@
 
 
         <LinearLayout
+            android:id="@+id/recyclerContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="60dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/materialCard">

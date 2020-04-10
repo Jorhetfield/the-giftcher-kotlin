@@ -11,6 +11,7 @@ import com.example.thegiftcherk.features.ui.profile.profiletabs.MyReservationsFr
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.adapters.ViewPagerFragmentsAdapter
 import com.example.thegiftcherk.setup.utils.TabLayoutMediator
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.friend_detail_fragment.*
 
 class ProfileFragment : BaseFragment() {
@@ -23,6 +24,12 @@ class ProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setTabBar()
+        Picasso.get()
+            .load("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROWl9625R5ktew_CZWB9mak3-LdyQTdSHxLS6yZm8Bed_Cytda&usqp=CAU")
+            .into(imagefriend_IV)
+        nombreusuario_TV?.text = "Juanmanull Pointer"
+        cumpleaños_TV?.text = "1/1/0"
+
     }
 
     private fun setTabBar() {
