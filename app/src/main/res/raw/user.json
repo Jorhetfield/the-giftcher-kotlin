@@ -1,7 +1,5 @@
-[
-  {
-   "token": "TOKEN",
-    "id": "1",
-    "name": "Juan Manull Pointer",
-  }
-]
+{
+  "token": "TOKEN",
+  "id": "1",
+  "name": "Juan Manull Pointer"
+}

@@ -57,18 +57,18 @@ class BaseAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 //        when(holder) {
-//            is OfferHolder -> holder.bind(items[position].model as OfferResponse) {
-//                //holder.onClick(position, items)
+//            is OfferHolder -> holder.bind(lista_personal[position].model as OfferResponse) {
+//                //holder.onClick(position, lista_personal)
 //                listener?.onItemClicked(it)
 //            }
-//            is OtherServiceHolder -> holder.bind(items[position].model as ServiceResponse) {
+//            is OtherServiceHolder -> holder.bind(lista_personal[position].model as ServiceResponse) {
 //                holder.onClick()
 //                listener?.onItemClicked(it)
 //            }
-//            is InvoiceHolder -> holder.bind(items[position].model as InvoiceResponse) {
+//            is InvoiceHolder -> holder.bind(lista_personal[position].model as InvoiceResponse) {
 //                listener?.onItemClicked(it)
 //            }
-//            is BookingHolder -> holder.bind(items[position].model as BookingResponse) {
+//            is BookingHolder -> holder.bind(lista_personal[position].model as BookingResponse) {
 //                listener?.onItemClicked(it)
 //            }
 //            //is ...

@@ -21,13 +21,17 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class HomeFragment : BaseFragment() {
-    val items: MutableList<Item> = mutableListOf()
-    private lateinit var itemAdapter: HomeAdapter
-    private val customRepository by inject<Repository>()
+    val items1: MutableList<Item> = mutableListOf()
+    val items2: MutableList<Item> = mutableListOf()
+    val items3: MutableList<Item> = mutableListOf()
+    val items4: MutableList<Item> = mutableListOf()
+    private lateinit var itemAdapter1: HomeAdapter
+    private lateinit var itemAdapter2: HomeAdapter
+    private lateinit var itemAdapter3: HomeAdapter
+    private lateinit var itemAdapter4: HomeAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_home, container, false)
-    // Comentario de prueba de conexión
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,16 +44,43 @@ class HomeFragment : BaseFragment() {
         recycler2.layoutManager = linearLayoutManager1
         recycler3.layoutManager = linearLayoutManager2
         recycler4.layoutManager = linearLayoutManager3
-        itemAdapter = HomeAdapter(
-            items
+
+        itemAdapter1 = HomeAdapter(
+            items1
         ) {
         }
-        recycler1.adapter = itemAdapter
-        recycler2.adapter = itemAdapter
-        recycler3.adapter = itemAdapter
-        recycler4.adapter = itemAdapter
+
+        itemAdapter2 = HomeAdapter(
+            items2
+        ) {
+        }
+
+        itemAdapter3 = HomeAdapter(
+            items3
+        ) {
+        }
+
+        itemAdapter4 = HomeAdapter(
+            items4
+        ) {
+        }
+        recycler1.adapter = itemAdapter1
+        recycler2.adapter = itemAdapter2
+        recycler3.adapter = itemAdapter3
+        recycler4.adapter = itemAdapter4
 
         getItems()
+
+        recyclerTitle1.text = "Tech"
+        recyclerTitle2.text = "Health"
+        recyclerTitle3.text = "Clothing"
+        recyclerTitle4.text = "Collections"
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
     private fun getItems() {
         GlobalScope.launch(Dispatchers.Main) {
@@ -57,10 +88,37 @@ class HomeFragment : BaseFragment() {
             when (val response =
                 customRepository.getItems()) {
                 is ResponseResult.Success -> {
-                    val responseResult = response.value
 
-                    items.addAll(responseResult)
-                    itemAdapter.notifyDataSetChanged()
+                    var tech = response.value.filter {
+                        it?.category == "Tech"
+                    }
+
+                    var health =response.value.filter {
+                        it?.category == "Health"
+                    }
+
+                    var clothing =response.value.filter {
+                        it?.category == "Clothing"
+                    }
+
+                    var collections =response.value.filter {
+                        it?.category == "Collections"
+                    }
+
+
+                    items1.clear()
+                    items2.clear()
+                    items3.clear()
+                    items4.clear()
+                    items1.addAll(tech)
+                    items2.addAll(health)
+                    items3.addAll(clothing)
+                    items4.addAll(collections)
+
+                    itemAdapter1.notifyDataSetChanged()
+                    itemAdapter2.notifyDataSetChanged()
+                    itemAdapter3.notifyDataSetChanged()
+                    itemAdapter4.notifyDataSetChanged()
                     hideKeyboard()
                 }
 
