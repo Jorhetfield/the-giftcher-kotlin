@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class FriendDesireFragment : BaseFragment() {
+class FriendGiftsFragment : BaseFragment() {
     private val desires: MutableList<Item> = mutableListOf()
     private lateinit var friendTabsAdapter: FriendTabsAdapter
 
@@ -28,7 +28,7 @@ class FriendDesireFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getDesires()
+        getGifts()
 
 
         val gridLayoutManager = GridLayoutManager(context, 3)
@@ -39,7 +39,7 @@ class FriendDesireFragment : BaseFragment() {
     }
 
 
-    private fun getDesires() {
+    private fun getGifts() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
