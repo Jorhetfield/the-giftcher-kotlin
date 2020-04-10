@@ -12,6 +12,7 @@ import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import kotlinx.android.synthetic.main.fragment_friends.*
+import kotlinx.android.synthetic.main.fragment_my_list.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class FriendGiftsFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.fragment_friends, container, false)
+    ): View = inflater.inflate(R.layout.fragment_my_list, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,10 +33,10 @@ class FriendGiftsFragment : BaseFragment() {
 
 
         val gridLayoutManager = GridLayoutManager(context, 3)
-        recyclerFriends.layoutManager = gridLayoutManager
+        recyclerItemsMyList.layoutManager = gridLayoutManager
 
         friendTabsAdapter = FriendTabsAdapter(desires) {}
-        recyclerFriends.adapter = friendTabsAdapter
+        recyclerItemsMyList.adapter = friendTabsAdapter
     }
 
 

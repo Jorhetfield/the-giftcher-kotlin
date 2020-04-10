@@ -45,6 +45,13 @@
         <argument
             android:name="friend"
             app:argType="com.example.thegiftcherk.features.ui.friends.Friend" />
+        <action
+            android:id="@+id/action_friendDetailFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
 
     <fragment
@@ -71,7 +78,15 @@
         android:id="@+id/navigation_profile"
         android:name="com.example.thegiftcherk.features.ui.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_productDetailFragment"
+            app:destination="@id/productDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
         tools:layout="@layout/product_detail_fragment"

@@ -1,7 +1,9 @@
 package com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs
 
 import android.view.View
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragmentDirections
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_friend.view.*
@@ -31,6 +33,14 @@ class FriendTabsHolder(v: View) : RecyclerView.ViewHolder(v) {
         Picasso.get()
             .load(item.picture)
             .into(view.itemImage)
+
+        view.homeItemCard?.setOnClickListener {
+
+            val action = FriendDetailFragmentDirections.actionFriendDetailFragmentToProductDetailFragment(item)
+            Navigation.findNavController(this.view).navigate(action)
+
+        }
+
     }
 
 
