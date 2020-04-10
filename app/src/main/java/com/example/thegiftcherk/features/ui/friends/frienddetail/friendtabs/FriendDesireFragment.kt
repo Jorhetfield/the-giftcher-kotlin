@@ -1,4 +1,4 @@
-package com.example.thegiftcherk.features.ui.friends.frienddetail.frienddesire
+package com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs
 
 import android.os.Bundle
 import android.view.LayoutInflater

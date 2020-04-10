@@ -32,8 +32,8 @@ class ProfileFragment : BaseFragment() {
         activity?.let {
             requestsTabsAdapter =
                 ViewPagerFragmentsAdapter(it.supportFragmentManager, lifecycle)
-            requestsTabsAdapter.addFragment(AddProductFragment())
-            requestsTabsAdapter.addFragment(SearchFragment())
+            requestsTabsAdapter.addFragment(MyListFragment())
+            requestsTabsAdapter.addFragment(MyReservationsFragment())
             containerTabs.adapter = requestsTabsAdapter
 
             TabLayoutMediator(tabs, containerTabs) { tab, position ->

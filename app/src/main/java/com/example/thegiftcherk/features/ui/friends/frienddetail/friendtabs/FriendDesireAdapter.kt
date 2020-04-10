@@ -1,10 +1,8 @@
-package com.example.thegiftcherk.features.ui.friends.frienddetail.frienddesire
+package com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.R
-import com.example.thegiftcherk.features.ui.friends.Friend
-import com.example.thegiftcherk.features.ui.search.SearchHolder
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.utils.extensions.inflate
 

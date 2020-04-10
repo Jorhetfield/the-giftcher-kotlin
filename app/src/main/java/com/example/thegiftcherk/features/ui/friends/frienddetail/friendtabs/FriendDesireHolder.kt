@@ -1,4 +1,4 @@
-package com.example.thegiftcherk.features.ui.friends.frienddetail.frienddesire
+package com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
