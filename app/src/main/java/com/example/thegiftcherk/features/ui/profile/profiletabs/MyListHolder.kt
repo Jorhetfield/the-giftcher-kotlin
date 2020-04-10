@@ -1,10 +1,7 @@
-package com.example.thegiftcherk.features.ui.profile
+package com.example.thegiftcherk.features.ui.profile.profiletabs
 
 import android.view.View
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.squareup.picasso.Picasso

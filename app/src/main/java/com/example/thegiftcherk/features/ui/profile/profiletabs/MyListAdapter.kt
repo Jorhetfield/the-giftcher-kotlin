@@ -1,4 +1,4 @@
-package com.example.thegiftcherk.features.ui.profile
+package com.example.thegiftcherk.features.ui.profile.profiletabs
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +21,9 @@ class MyListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyListHolder {
         val inflatedView = parent.inflate(R.layout.item_my_list_row, false)
 
-        return MyListHolder(inflatedView)
+        return MyListHolder(
+            inflatedView
+        )
     }
 
     override fun getItemCount(): Int = items.size
