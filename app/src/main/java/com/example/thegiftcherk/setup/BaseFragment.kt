@@ -48,7 +48,6 @@ abstract class BaseFragment : Fragment() {
 
     fun showMessage(message: String, view: View) {
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
-
     }
 
     fun capitalizeWords(text: String){

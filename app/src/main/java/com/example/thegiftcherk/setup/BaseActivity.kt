@@ -15,12 +15,10 @@ import com.google.android.material.snackbar.Snackbar
 
 import org.koin.android.ext.android.inject
 
-
 @Suppress("DEPRECATION")
 abstract class BaseActivity : AppCompatActivity() {
     var progressDialog: Dialog? = null
     val prefs: Prefs by inject()
-
 
     fun showMessage(message: String, view: View = this.findViewById(android.R.id.content)) {
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
@@ -32,8 +30,6 @@ abstract class BaseActivity : AppCompatActivity() {
             show()
         }
     }
-
-
 
     fun hideKeyboard() {
         with(getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager) {
