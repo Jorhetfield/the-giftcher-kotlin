@@ -67,7 +67,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:textColor="@color/colorSecondary"
-                    android:fontFamily="@font/montserrat_regular"
+                    android:fontFamily="@font/montserrat"
                     android:text="asdasdasasd asd asdas das asdas "
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"

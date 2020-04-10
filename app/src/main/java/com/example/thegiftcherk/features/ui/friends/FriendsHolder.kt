@@ -5,6 +5,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_friend.view.*
@@ -14,17 +15,16 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     private var view: View = v
     private var friend: Friend? = null
-    private lateinit var listener:OnClickFriendsListener
+    private lateinit var listener:(Friend) -> Unit
 
     init {
         v.setOnClickListener {
             friend?.let {
-                listener.onClickFriends(it)
             }
         }
     }
 
-    fun bind(friend: Friend, listener: OnClickFriendsListener) {
+    fun bind(friend: Friend, listener: (Friend) -> Unit) {
         this.friend = friend
         this.listener = listener
 

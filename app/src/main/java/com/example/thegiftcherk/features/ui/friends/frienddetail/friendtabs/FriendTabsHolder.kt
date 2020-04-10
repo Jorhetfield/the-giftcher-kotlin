@@ -1,19 +1,16 @@
-package com.example.thegiftcherk.features.ui.home
+package com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs
 
 import android.view.View
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragmentDirections
 import com.example.thegiftcherk.features.ui.search.models.Item
-import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_home_row.view.*
-import kotlinx.android.synthetic.main.item_row.view.*
-import kotlinx.android.synthetic.main.item_row.view.itemImage
-import kotlinx.android.synthetic.main.item_row.view.message
-import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.android.synthetic.main.item_friend.view.*
+import kotlinx.android.synthetic.main.item_my_list_row.view.*
 
-class HomeHolder(v: View) : RecyclerView.ViewHolder(v) {
+
+class FriendTabsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     private var view: View = v
     private var item: Item? = null
@@ -22,8 +19,7 @@ class HomeHolder(v: View) : RecyclerView.ViewHolder(v) {
     init {
         v.setOnClickListener {
             item?.let {
-                listener(it)
-                logD("Click from holder home")
+
             }
         }
     }
@@ -36,12 +32,13 @@ class HomeHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         Picasso.get()
             .load(item.picture)
-            .noPlaceholder()
             .into(view.itemImage)
 
         view.homeItemCard?.setOnClickListener {
-            val action = HomeFragmentDirections.actionNavigationHomeToProductDetailFragment(item)
+
+            val action = FriendDetailFragmentDirections.actionFriendDetailFragmentToProductDetailFragment(item)
             Navigation.findNavController(this.view).navigate(action)
+
         }
 
     }
