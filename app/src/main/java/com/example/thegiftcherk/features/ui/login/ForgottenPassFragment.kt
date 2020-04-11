@@ -59,7 +59,7 @@ class ForgottenPassFragment : BaseFragment() {
     }
 
     private fun requestRecoverPass() {
-        val email = inputEmail.text.toString()
+        val email = inputEmail?.text.toString()
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response = customRepository.rememberPass(email)) {

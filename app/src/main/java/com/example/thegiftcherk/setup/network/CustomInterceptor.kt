@@ -18,7 +18,7 @@ class CustomInterceptor(private val prefs: Prefs) : Interceptor {
         request.addHeader(HttpHeaders.ACCEPT, "application/json")
         prefs.token?.let { authToken ->
             request
-                .addHeader("Authorization", authToken)
+                .addHeader("Authorization", "Bearer $authToken")
                 .addHeader("Lang", Locale.getDefault().language)
                 .build()
         }

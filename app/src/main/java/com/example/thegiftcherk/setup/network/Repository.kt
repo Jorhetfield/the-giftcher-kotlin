@@ -76,7 +76,7 @@ class Repository(private val service: Service, private val context: Context) {
     ): ResponseResult<List<Item>> {
         return if (!fake) {
             try {
-                val response = service.getItems()
+                val response = service.getOwnWishes()
                 checkResponse(context, response)
 
             } catch (e: Exception) {
