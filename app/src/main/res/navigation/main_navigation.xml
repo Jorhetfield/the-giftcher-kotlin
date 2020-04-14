@@ -9,13 +9,57 @@
         android:id="@+id/navigation_home"
         android:name="com.example.thegiftcherk.features.ui.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_productDetailFragment"
+            app:destination="@id/productDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
 
+    <!-- Aquí está el fragment "friend" -->
     <fragment
         android:id="@+id/navigation_friends"
         android:name="com.example.thegiftcherk.features.ui.friends.FriendsFragment"
         android:label="Friends"
-        tools:layout="@layout/fragment_friends" />
+        tools:layout="@layout/fragment_friends" >
+
+        <!-- Aquí está la navegación desde el fragment Friend al fragment "friendDetail"-->
+        <action
+            android:id="@+id/goFromFriendToFriendDetail"
+            app:destination="@id/friendDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_navigation_friends_to_addFriendsFragment"
+            app:destination="@id/addFriendsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+
+    <!-- Aquí está el fragment "friendDetail" -->
+    <fragment
+        android:id="@+id/friendDetailFragment"
+        tools:layout="@layout/friend_detail_fragment"
+        android:name="com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragment"
+        android:label="FriendDetailFragment" >
+        <argument
+            android:name="friend"
+            app:argType="com.example.thegiftcherk.features.ui.friends.Friend" />
+        <action
+            android:id="@+id/action_friendDetailFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_add"
@@ -41,15 +85,27 @@
         android:id="@+id/navigation_profile"
         android:name="com.example.thegiftcherk.features.ui.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_productDetailFragment"
+            app:destination="@id/productDetailFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
         tools:layout="@layout/product_detail_fragment"
         android:name="com.example.thegiftcherk.features.ui.addproduct.productdetail.ProductDetailFragment"
         android:label="ProductDetailFragment" >
         <argument
-            android:name="productId"
-            app:argType="string"
-            app:nullable="true" />
+            android:name="product"
+            app:argType="com.example.thegiftcherk.features.ui.search.models.Item" />
     </fragment>
+    <fragment
+        android:id="@+id/addFriendsFragment"
+        android:name="com.example.thegiftcherk.features.ui.friends.AddFriendsFragment"
+        android:label="AddFriendsFragment" />
+
 </navigation>

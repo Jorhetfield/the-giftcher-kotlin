@@ -3,12 +3,13 @@ package com.example.thegiftcherk.features.ui.friends
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.utils.extensions.inflate
 
 
 class FriendsAdapter(
     private val friend: MutableList<Friend>,
-    private val listener: OnClickFriendsListener
+    private val listener: (Friend) -> Unit
 ) : RecyclerView.Adapter<FriendsHolder>() {
     override fun onBindViewHolder(
         friendHolder: FriendsHolder,
@@ -28,6 +29,3 @@ class FriendsAdapter(
     }
 }
 
-interface OnClickFriendsListener {
-    fun onClickFriends(it: Friend)
-}

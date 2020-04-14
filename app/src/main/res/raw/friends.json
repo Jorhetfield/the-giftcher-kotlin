@@ -2,37 +2,61 @@
   {
     "id": "1",
     "name": "Cloud Strife",
-    "birthday": "10/04/2020",
-    "picture": "https://3.bp.blogspot.com/-7Tg8JOhhjjw/Wbv5JhBWcKI/AAAAAAAAEH0/wrpSxfNZq7Qs866Tr-BMbLiEhUZ7HXACQCLcBGAs/s1600/Cloud_Portrait.jpg"
+    "birthday": "August 11, 1986",
+    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_cloud.png"
   },
   {
     "id": "2",
-    "name": "Juanma Null Pointer",
-    "birthday": "11/12/1989",
-    "picture": "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/01/q3V3Xe3-796x531.jpg"
+    "name": "Aerith Gainsborough",
+    "birthday": "February 7, 1985",
+    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_aerith.png"
   },
   {
     "id": "3",
-    "name": "Eduardroid Canvas",
-    "birthday": "11/12/1989",
-    "picture": "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/01/q3V3Xe3-796x531.jpg"
+    "name": "Red XIII",
+    "birthday": "March 17, 1959",
+    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_redxiii.png"
   },
   {
     "id": "4",
-    "name": "Juanma Null Pointer",
-    "birthday": "11/12/1989",
-    "picture": "https://images.salsify.com/image/upload/s--CMV4mlPz--/c_limit,cs_srgb,h_600,w_600/fimmlpkabrcjhzioy9in.jpg"
+    "name": "Sephiroth",
+    "birthday": "Unknown",
+    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_sephiroth.png"
   },
   {
     "id": "5",
-    "name": "Juanma Null Pointer",
-    "birthday": "11/12/1989",
-    "picture": "https://images.salsify.com/image/upload/s--CMV4mlPz--/c_limit,cs_srgb,h_600,w_600/fimmlpkabrcjhzioy9in.jpg"
+    "name": "Barret Wallace",
+    "birthday": "December 15, 1972",
+    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_barret.png"
   },
   {
     "id": "6",
-    "name": "Juanma Null Pointer",
-    "birthday": "11/12/1989",
-    "picture": "https://images-na.ssl-images-amazon.com/images/I/51FJr5q1HVL._SX679_.jpg"
+    "name": "Tifa Lockhart",
+    "birthday": "May 3, 1987",
+    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_tifa.png"
+  },
+  {
+    "id": "7",
+    "name": "Vincent Valentine",
+    "birthday": "October 13, 1950",
+    "picture": "https://www.wallpaperhi.com/thumbnails/detail/20140306/final%20fantasy%20video%20games%20dirge%20of%20cerberus_www.wallpaperhi.com_9.jpg"
+  },
+  {
+    "id": "8",
+    "name": "Yuffie Kisaragi",
+    "birthday": "November 20, 1991",
+    "picture": "https://data.whicdn.com/images/6401903/original.jpg"
+  },
+  {
+    "id": "9",
+    "name": "Caith Sith",
+    "birthday": "April 30, 1970",
+    "picture": "https://cdna.artstation.com/p/assets/images/images/019/135/596/large/leandro-franci-cait-sith-2019.jpg?1562166375"
+  },
+  {
+    "id": "10",
+    "name": "Cid Highwind",
+    "birthday": "February 22, 1975",
+    "picture": "https://i.imgur.com/EbzDDKa.jpg"
   }
 ]

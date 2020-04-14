@@ -3,6 +3,7 @@ package com.example.thegiftcherk.setup
 import android.app.Dialog
 import android.content.Context
 import android.content.pm.PackageManager
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -14,12 +15,10 @@ import com.google.android.material.snackbar.Snackbar
 
 import org.koin.android.ext.android.inject
 
-
 @Suppress("DEPRECATION")
 abstract class BaseActivity : AppCompatActivity() {
     var progressDialog: Dialog? = null
     val prefs: Prefs by inject()
-
 
     fun showMessage(message: String, view: View = this.findViewById(android.R.id.content)) {
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
@@ -31,8 +30,6 @@ abstract class BaseActivity : AppCompatActivity() {
             show()
         }
     }
-
-
 
     fun hideKeyboard() {
         with(getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager) {
@@ -66,14 +63,12 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         return false
     }
-
-//    override fun onBackPressed() {
-//        val fragment =
-//            this.supportFragmentManager.findFragmentById(R.id.fragment)
-//        (fragment as? IOnBackPressed)?.onBackPressed()?.not()?.let {
-//            super.onBackPressed()
-//        }
-//    }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            android.R.id.home -> super.onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     interface IOnBackPressed {
         fun onBackPressed(): Boolean

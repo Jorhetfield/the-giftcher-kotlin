@@ -4,13 +4,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <SearchView
+    <com.example.thegiftcherk.setup.SearchTextView
         android:id="@+id/searchView"
         android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
+        android:elevation="5dp"
+        android:textColor="@color/colorSecondary"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:foregroundGravity="left"
+        android:hint="Pulsa para buscar"
+        android:foregroundTint="@color/colorSecondary"
+        android:gravity="center"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recyclerItems"/>
+
+    <ImageView
+        android:id="@+id/searchIV"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchView"
+        app:layout_constraintStart_toStartOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchView"
+        app:srcCompat="@android:drawable/ic_menu_search"/>
+
+    <ImageView
+        android:id="@+id/closeBut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchView"
+        app:layout_constraintEnd_toEndOf="@+id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchView"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logoBackground"
+        android:layout_width="1000dp"
+        android:layout_height="2000dp"
+        android:layout_margin="16dp"
+        android:alpha=".3"
+        android:src="@drawable/ic_icono_tg_white_mode"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,7 +67,6 @@
         android:id="@+id/recyclerItems"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

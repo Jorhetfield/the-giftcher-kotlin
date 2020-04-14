@@ -6,6 +6,8 @@
     <string name="loading">Cargando…</string>
     <string name="login">Iniciar sesión</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="asdasdsadasdsad">Both passwords must be equals.</string>
+
     <string name="network_down">No puedes conectarte al servidor, por favor, comprueba tu conexión</string>
     <string name="network_down_timeout">Tiempo de espera agotado, comprueba tu conexión</string>
     <string name="network_error">Ha ocurrido un error, intentelo més tarde</string>
