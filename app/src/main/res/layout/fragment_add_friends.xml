@@ -6,6 +6,19 @@
     android:isScrollContainer="false"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logoBackground"
+        android:layout_width="1000dp"
+        android:layout_height="2000dp"
+        android:layout_margin="16dp"
+        android:alpha=".3"
+        android:isScrollContainer="false"
+        android:src="@drawable/ic_icono_tg_white_mode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.example.thegiftcherk.setup.SearchTextView
         android:id="@+id/searchView2"
         android:layout_width="0dp"
@@ -20,7 +33,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:foregroundGravity="left"
-        android:hint="Pulsa para buscar amigos"
+        android:hint="Pulsa para encontrar nuevos amigos"
         android:foregroundTint="@color/colorSecondary"
         android:gravity="center"
         android:maxLength="20"
@@ -52,18 +65,7 @@
         app:layout_constraintTop_toTopOf="@+id/searchView2"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logoBackground"
-        android:layout_width="1000dp"
-        android:layout_height="2000dp"
-        android:layout_margin="16dp"
-        android:alpha=".3"
-        android:isScrollContainer="false"
-        android:src="@drawable/ic_icono_tg_white_mode"
-        app:layout_constraintBottom_toBottomOf="@+id/constraintContainer"
-        app:layout_constraintEnd_toEndOf="@+id/constraintContainer"
-        app:layout_constraintStart_toStartOf="@+id/constraintContainer"
-        app:layout_constraintTop_toTopOf="@+id/constraintContainer" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerAddFriends"
@@ -84,26 +86,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView2" >
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_icono_tg_white_mode"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emptyText" />
+<!--        <androidx.appcompat.widget.AppCompatImageView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_icono_tg_white_mode"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/emptyText" />-->
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/emptyText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Escribe el nombre de tu amigx en el buscador
-            para encontrarlx"
+            android:text="⬆     Encuentra a otros usuarios escribiendo su nombre en el buscador y envíales una solicitud de amistad."
             android:textSize="20sp"
             android:textColor="@color/colorSecondary"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="20dp"
             android:layout_marginEnd="16dp"
-            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:gravity="start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
