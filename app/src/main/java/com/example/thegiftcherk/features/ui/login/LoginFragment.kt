@@ -108,6 +108,7 @@ open class LoginFragment : BaseFragment() {
                     prefs.token = response.value.token
                     prefs.user = response.value.json()
 
+                    logD("respuesta login ${prefs.token}")
                     //Change view:
                     startMainClientActivity()
                 }

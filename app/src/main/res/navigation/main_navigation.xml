@@ -34,6 +34,13 @@
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
             app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_navigation_friends_to_addFriendsFragment"
+            app:destination="@id/addFriendsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
 
     <!-- Aquí está el fragment "friendDetail" -->
@@ -96,5 +103,9 @@
             android:name="product"
             app:argType="com.example.thegiftcherk.features.ui.search.models.Item" />
     </fragment>
+    <fragment
+        android:id="@+id/addFriendsFragment"
+        android:name="com.example.thegiftcherk.features.ui.friends.AddFriendsFragment"
+        android:label="AddFriendsFragment" />
 
 </navigation>

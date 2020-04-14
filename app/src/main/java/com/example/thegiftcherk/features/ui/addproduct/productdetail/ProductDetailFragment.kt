@@ -30,11 +30,19 @@ class ProductDetailFragment : BaseFragment() {
         descriptionTV?.text = mProduct?.description
         categoryTV?.text = mProduct?.category
         priceTV?.text = mProduct?.price
-        storeTV?.text = mProduct?.store
+        storeTV?.text = mProduct?.shop
 
         Picasso.get()
             .load(mProduct?.picture)
             .into(itemImage)
+
+        shareButton?.setOnClickListener {
+            //TODO abrir intent de compartir
+        }
+
+        saveButton?.setOnClickListener {
+            //TODO petición de añadir deseo a lista
+        }
 
     }
 }
