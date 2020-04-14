@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/messageCard"
         android:layout_width="match_parent"
@@ -36,7 +35,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_goneMarginEnd="8dp"
                 tools:srcCompat="@tools:sample/avatars" />
-
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/textContainer"
@@ -89,7 +87,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nombreusuario_TV" />
+                    app:layout_constraintTop_toBottomOf="@+id/nombreusuario_TV"/>
 
                 <View
                     android:id="@+id/divider1"
@@ -99,7 +97,7 @@
                     android:background="@color/colorDetailDark"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTV"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
