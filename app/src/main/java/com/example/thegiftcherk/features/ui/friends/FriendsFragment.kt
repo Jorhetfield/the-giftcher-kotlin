@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.search.models.Item
@@ -38,6 +39,11 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
         super.onViewCreated(view, savedInstanceState)
 
         getFriends()
+
+        fabAddFriend?.setOnClickListener{
+            val action = FriendsFragmentDirections.actionNavigationFriendsToAddFriendsFragment()
+            Navigation.findNavController(view).navigate(action)
+        }
 
         closeBut1.setOnClickListener {
             hideKeyboard()
@@ -122,9 +128,6 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
         return filteredModelList
     }
 
-
-
-
     private fun getFriends() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
@@ -141,7 +144,6 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
                     responseResult.forEach {
                         logD("probando peticiones $it")
                     }
-
                 }
 
                 is ResponseResult.Error -> {

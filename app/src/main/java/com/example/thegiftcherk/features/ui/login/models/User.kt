@@ -7,7 +7,12 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class User(
-    val token: String,
-    val id: String?,
-    val name: String
+    val id:String,
+    val username:String,
+    val lastName:String,
+    val mail:String,
+    val birthday:String,
+    val imageName:String,
+    val imagePath:String,
+    val token:String
 )  : Parcelable, JSONConvertable

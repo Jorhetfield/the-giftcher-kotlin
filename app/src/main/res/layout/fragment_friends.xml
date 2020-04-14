@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/constraintContainer"
     android:layout_width="match_parent"
-    android:isScrollContainer="false"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:isScrollContainer="false">
 
     <com.example.thegiftcherk.setup.SearchTextView
         android:id="@+id/searchView1"
@@ -16,20 +16,20 @@
         android:background="@color/colorPrimary"
         android:backgroundTint="@color/colorPrimary"
         android:elevation="5dp"
-        android:textColor="@color/colorSecondary"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:foregroundGravity="left"
-        android:hint="Pulsa para buscar"
         android:foregroundTint="@color/colorSecondary"
         android:gravity="center"
+        android:hint="Pulsa para buscar entre tus amigos"
         android:maxLength="20"
         android:maxLines="1"
         android:singleLine="true"
+        android:textColor="@color/colorSecondary"
+        app:layout_constraintBottom_toTopOf="@id/recyclerFriends"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recyclerFriends"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/searchIV1"
@@ -40,7 +40,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/searchView1"
         app:layout_constraintStart_toStartOf="@+id/searchView1"
         app:layout_constraintTop_toTopOf="@+id/searchView1"
-        app:srcCompat="@android:drawable/ic_menu_search"/>
+        app:srcCompat="@android:drawable/ic_menu_search" />
 
     <ImageView
         android:id="@+id/closeBut1"
@@ -51,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/searchView1"
         app:layout_constraintEnd_toEndOf="@+id/searchView1"
         app:layout_constraintTop_toTopOf="@+id/searchView1"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"/>
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logoBackground"
@@ -76,5 +76,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchView1" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/colorDetail"
+        android:foregroundTint="@color/colorPrimary"
+        android:src="@drawable/ic_followers"
+        android:tint="@color/colorPrimary"
+        app:backgroundTint="@color/white_gray"
+        app:tint="@color/colorSecondary"
+        app:borderWidth="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:maxImageSize="26dp"
+        app:rippleColor="@color/colorPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

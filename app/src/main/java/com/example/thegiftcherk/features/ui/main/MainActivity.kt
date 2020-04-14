@@ -4,20 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.setup.BaseActivity
-import com.google.android.material.navigation.NavigationView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -53,8 +49,25 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar, menu)
+        val editIcon: View? = findViewById(R.id.edit)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_profile -> {
+                    materialToolbar.visibility = View.VISIBLE
+                    editIcon?.visibility = View.VISIBLE
+                    menu?.findItem(R.id.edit)?.isVisible = true
+                }
+                else -> {
+                    materialToolbar.visibility = View.VISIBLE
+                    editIcon?.visibility = View.GONE
+                    menu?.findItem(R.id.edit)?.isVisible = false
+                }
+            }
+        }
         return super.onCreateOptionsMenu(menu)
 
     }

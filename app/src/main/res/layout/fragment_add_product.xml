@@ -10,6 +10,7 @@
         android:layout_height="2000dp"
         android:layout_margin="16dp"
         android:alpha=".3"
+        android:isScrollContainer="false"
         android:src="@drawable/ic_icono_tg_white_mode"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.features.ui.profile.profiletabs.MyListFragment
 import com.example.thegiftcherk.features.ui.profile.profiletabs.MyReservationsFragment
+import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.adapters.ViewPagerFragmentsAdapter
 import com.example.thegiftcherk.setup.utils.TabLayoutMediator
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.friend_detail_fragment.*
 
@@ -24,11 +27,15 @@ class ProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setTabBar()
+        val user = Gson().fromJson(prefs.user, User::class.java)
         Picasso.get()
-            .load("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROWl9625R5ktew_CZWB9mak3-LdyQTdSHxLS6yZm8Bed_Cytda&usqp=CAU")
+            .load(user?.imagePath)
+            .placeholder(R.drawable.ic_placeholder)
             .into(imagefriend_IV)
-        nombreusuario_TV?.text = "Juanmanull Pointer"
-        cumpleaños_TV?.text = "1/1/0"
+
+
+        nombreusuario_TV?.text = user.username
+        cumpleaños_TV?.text = user.birthday
 
     }
 

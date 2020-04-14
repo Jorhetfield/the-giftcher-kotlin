@@ -20,9 +20,9 @@ interface Service {
     ): Response<User>
 
     @FormUrlEncoded
-    @POST("/api/login/remember_password") // TODO change Url
+    @POST("user/reset_password") // TODO change Url
     suspend fun rememberPass(
-        @Field("email") email: String
+        @Field("userMail") email: String
     ): Response<Operation>
 
     @POST("user/register") // TODO change Url
@@ -30,8 +30,8 @@ interface Service {
         @Body sendUserRegister: SendUserRegister
     ): Response<Any>
     
-    @GET("/api/invoice/amount_of_month") // TODO change Url
-    suspend fun getItems(
+    @GET("wishes/") // TODO change Url
+    suspend fun getOwnWishes(
     ): Response<List<Item>>
 
     @GET("/api/invoice/amount_of_month") // TODO change Url
