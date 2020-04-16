@@ -72,9 +72,9 @@ open class LoginFragment : BaseFragment() {
 
     //region Clicks
     private fun onClickLogin() {
-        if (checkInputs()) {
+//        if (checkInputs()) {
             requestLogin(sendUser)
-        }
+//        }
     }
 
     private fun checkInputs(): Boolean {
