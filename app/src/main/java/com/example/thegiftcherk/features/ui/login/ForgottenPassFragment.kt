@@ -17,7 +17,6 @@ import org.koin.android.ext.android.inject
 
 class ForgottenPassFragment : BaseFragment() {
     //region Vars
-    private val customRepository by inject<Repository>()
     //endregion Vars
 
     //region Override Methods
@@ -60,7 +59,7 @@ class ForgottenPassFragment : BaseFragment() {
     }
 
     private fun requestRecoverPass() {
-        val email = inputEmail.text.toString()
+        val email = inputEmail?.text.toString()
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response = customRepository.rememberPass(email)) {

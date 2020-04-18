@@ -2,13 +2,13 @@
     <string name="app_name" translatable="false">The Giftcher</string>
 
     <string name="default_notification_channel_id" translatable="false">default</string>
-
     <string name="network_error">A mistake has occurred, try again.</string>
     <string name="operation_ok">Operation carried out correctly.</string>
     <string name="network_down">You can not connect to the server, check your connection.</string>
     <string name="network_down_timeout">Waiting time exceeded, check your connection.</string>
     <string name="error_email">You must enter a correct email address.</string>
     <string name="error_pass_not_equals">Both passwords must be equals.</string>
+    <string name="asdasdsadasdsad">Both passwords must be equals.</string>
     <string name="error_pass">Fields cannot be empty.</string>
 
     <string name="error_processing_places_api" translatable="false">Error processing Places API URL</string>

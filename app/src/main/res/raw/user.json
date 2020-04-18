@@ -1,7 +1,10 @@
-[
-  {
-   "token": "TOKEN",
-    "id": "1",
-    "name": "Juan Manull Pointer",
-  }
-]
+{
+  "token": "TOKEN",
+  "id": "1",
+  "username": "jorhetfield33",
+  "lastName": "Jorge García",
+  "mail": "jorgarcar1989@gmail.com",
+  "birthday": "1989-12-11",
+  "imageName": "profileImage",
+  "imagePath": "https://media.metrolatam.com/2019/10/11/capturadepantall-9840943c5c177be463476c82a691e2f2-600x400.jpg"
+}
