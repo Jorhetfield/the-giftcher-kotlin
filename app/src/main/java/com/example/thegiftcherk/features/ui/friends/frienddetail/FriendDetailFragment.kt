@@ -34,7 +34,7 @@ class FriendDetailFragment : BaseFragment() {
 
         Picasso.get()
             .load(mFriend?.picture)
-            .into(imagefriend_IV)
+            .into(imageProfile)
 
         setTabBar()
     }

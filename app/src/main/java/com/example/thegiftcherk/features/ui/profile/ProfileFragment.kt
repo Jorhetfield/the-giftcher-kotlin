@@ -13,12 +13,15 @@ import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.adapters.ViewPagerFragmentsAdapter
 import com.example.thegiftcherk.setup.utils.TabLayoutMediator
+import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.friend_detail_fragment.*
 
 class ProfileFragment : BaseFragment() {
     lateinit var requestsTabsAdapter: ViewPagerFragmentsAdapter
+    val user = Gson().fromJson(prefs.user, User::class.java)
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -27,13 +30,12 @@ class ProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setTabBar()
-        val user = Gson().fromJson(prefs.user, User::class.java)
+
+        logD("user $user")
         Picasso.get()
             .load(user?.imagePath)
             .placeholder(R.drawable.ic_placeholder)
-            .into(imagefriend_IV)
-
-
+            .into(imageProfile)
         nombreusuario_TV?.text = user.username
         cumpleaños_TV?.text = user.birthday
 

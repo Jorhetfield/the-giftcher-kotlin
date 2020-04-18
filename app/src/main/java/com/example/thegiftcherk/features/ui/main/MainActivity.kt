@@ -60,11 +60,13 @@ class MainActivity : BaseActivity() {
                     materialToolbar.visibility = View.VISIBLE
                     editIcon?.visibility = View.VISIBLE
                     menu?.findItem(R.id.edit)?.isVisible = true
+                    menu?.findItem(R.id.settings)?.isVisible = true
                 }
                 else -> {
                     materialToolbar.visibility = View.VISIBLE
                     editIcon?.visibility = View.GONE
                     menu?.findItem(R.id.edit)?.isVisible = false
+                    menu?.findItem(R.id.settings)?.isVisible = false
                 }
             }
         }
