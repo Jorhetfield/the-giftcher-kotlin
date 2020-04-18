@@ -33,4 +33,26 @@
     <string name="yes">Yes</string>
     <string name="no" translatable="false">No</string>
     <string name="logout_confirmed">You\'ve logged out correctly.</string>
+
+    <string-array name="Categories">
+        <item>Videojuegos</item>
+        <item>Hogar</item>
+        <item>Motor</item>
+        <item>Electrodomésticos</item>
+        <item>Jardín</item>
+        <item>Televisión</item>
+        <item>Música</item>
+        <item>Foto</item>
+        <item>Móviles</item>
+        <item>Informática</item>
+        <item>Deporte</item>
+        <item>Libros</item>
+        <item>Niños y Bebés</item>
+        <item>Agricultura</item>
+        <item>Servicios</item>
+        <item>Coleccionismo</item>
+        <item>Construcción</item>
+        <item>Otros</item>
+    </string-array>
+
 </resources>

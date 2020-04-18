@@ -40,17 +40,13 @@ class AddProductFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val cardTypes: MutableList<String> = mutableListOf()
-        cardTypes.add("Tech")
-        cardTypes.add("Sports")
-        cardTypes.add("Geek")
-        cardTypes.add("Foodie")
-        cardTypes.add("Music")
+        val prueba = resources.getStringArray(R.array.Categories)
 
         if (spinnerCardType != null) {
             val adapter = context?.let {
                 ArrayAdapter(
                     it,
-                    R.layout.spinner_row, cardTypes
+                    R.layout.spinner_row, prueba
                 )
             }
             spinnerCardType.adapter = adapter

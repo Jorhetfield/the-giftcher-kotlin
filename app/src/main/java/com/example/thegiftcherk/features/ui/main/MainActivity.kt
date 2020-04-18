@@ -4,17 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.setup.BaseActivity
+import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     private lateinit var toolbar: Toolbar
@@ -52,27 +54,47 @@ class MainActivity : BaseActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar, menu)
-        val editIcon: View? = findViewById(R.id.edit)
+        val navController = findNavController(R.id.nav_host_fragment)
+        val settingsIcon: View? = findViewById(R.id.settings)
+        val editPhotoIcon: View? = findViewById(R.id.edit)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
+
             when (destination.id) {
+
                 R.id.navigation_profile -> {
-                    materialToolbar.visibility = View.VISIBLE
-                    editIcon?.visibility = View.VISIBLE
-                    menu?.findItem(R.id.edit)?.isVisible = true
                     menu?.findItem(R.id.settings)?.isVisible = true
+                    menu?.findItem(R.id.edit)?.isVisible = true
+                    editPhotoIcon?.visibility = View.VISIBLE
+                    settingsIcon?.visibility = View.VISIBLE
                 }
+
                 else -> {
-                    materialToolbar.visibility = View.VISIBLE
-                    editIcon?.visibility = View.GONE
-                    menu?.findItem(R.id.edit)?.isVisible = false
                     menu?.findItem(R.id.settings)?.isVisible = false
+                    menu?.findItem(R.id.edit)?.isVisible = false
+                    editPhotoIcon?.visibility = View.GONE
+                    settingsIcon?.visibility = View.GONE
                 }
+
             }
         }
+
         return super.onCreateOptionsMenu(menu)
 
     }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.settings ->
+                findNavController(R.id.nav_host_fragment).navigate(R.id.actionGoToSettings)
+
+            R.id.edit ->
+                findNavController(R.id.nav_host_fragment).navigate(R.id.actionGoToEditProfile)
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
 
     companion object {
         private val LOGTAG: String = MainActivity::class.java.simpleName
