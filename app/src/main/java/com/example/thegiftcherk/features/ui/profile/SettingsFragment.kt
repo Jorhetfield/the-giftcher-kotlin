@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.thegiftcherk.R
-import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.features.ui.main.MainLoginActivity
 import com.example.thegiftcherk.setup.BaseFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -26,19 +25,22 @@ class SettingsFragment : BaseFragment() {
         }
 
         termsAndConditionsButton?.setOnClickListener {
-
+            val action = SettingsFragmentDirections.actionSettingsFragmentToTextContainerFragment(0)
+            Navigation.findNavController(view).navigate(action)
         }
 
         privacyPoliticButton?.setOnClickListener {
-
+            val action = SettingsFragmentDirections.actionSettingsFragmentToTextContainerFragment(1)
+            Navigation.findNavController(view).navigate(action)
         }
 
         helpButton?.setOnClickListener {
-
+            val action = SettingsFragmentDirections.actionSettingsFragmentToEditProfileFragment()
+            Navigation.findNavController(view).navigate(action)
         }
 
         logoutButton?.setOnClickListener {
-            MaterialAlertDialogBuilder(context,R.style.DialogTheme1)
+            MaterialAlertDialogBuilder(context, R.style.DialogTheme1)
                 .setTitle("¿De verdad quieres cerrar sesión?")
                 .setNegativeButton("No", null)
                 .setPositiveButton("Si") { _, _ ->

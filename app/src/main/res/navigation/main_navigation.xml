@@ -119,6 +119,13 @@
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
             app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_settingsFragment_to_textContainerFragment"
+            app:destination="@id/textContainerFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
 
     </fragment>
     <fragment
@@ -142,5 +149,14 @@
         app:exitAnim="@anim/exit_to_left"
         app:popEnterAnim="@anim/enter_from_left"
         app:popExitAnim="@anim/exit_to_right" />
+    <fragment
+        android:id="@+id/textContainerFragment"
+        tools:layout="@layout/fragment_text_container"
+        android:name="com.example.thegiftcherk.features.ui.profile.TextContainerFragment"
+        android:label="TextContainerFragment" >
+        <argument
+            android:name="textType"
+            app:argType="integer" />
+    </fragment>
 
 </navigation>
