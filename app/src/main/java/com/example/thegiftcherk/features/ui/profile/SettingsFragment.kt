@@ -35,7 +35,7 @@ class SettingsFragment : BaseFragment() {
         }
 
         helpButton?.setOnClickListener {
-            val action = SettingsFragmentDirections.actionSettingsFragmentToEditProfileFragment()
+            val action = SettingsFragmentDirections.actionSettingsFragmentToHelpFragment()
             Navigation.findNavController(view).navigate(action)
         }
 
@@ -44,7 +44,10 @@ class SettingsFragment : BaseFragment() {
                 .setTitle("¿De verdad quieres cerrar sesión?")
                 .setNegativeButton("No", null)
                 .setPositiveButton("Si") { _, _ ->
-                    prefs.clear()
+                    prefs.token = ""
+                    prefs.user = ""
+                    prefs.userType = ""
+                    prefs.userId = ""
                     startLoginActivity()
                 }.show()
         }

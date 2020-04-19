@@ -126,6 +126,13 @@
             app:exitAnim="@anim/exit_to_left"
             app:popEnterAnim="@anim/enter_from_left"
             app:popExitAnim="@anim/exit_to_right" />
+        <action
+            android:id="@+id/action_settingsFragment_to_helpFragment"
+            app:destination="@id/helpFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right"/>
 
     </fragment>
     <fragment
@@ -158,5 +165,23 @@
             android:name="textType"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        tools:layout="@layout/fragment_help"
+        android:name="com.example.thegiftcherk.features.ui.profile.HelpFragment"
+        android:label="HelpFragment" >
+        <action
+            android:id="@+id/action_helpFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactUsFragment"
+        tools:layout="@layout/fragment_contact_us"
+        android:name="com.example.thegiftcherk.features.ui.profile.ContactUsFragment"
+        android:label="ContactUsFragment" />
 
 </navigation>

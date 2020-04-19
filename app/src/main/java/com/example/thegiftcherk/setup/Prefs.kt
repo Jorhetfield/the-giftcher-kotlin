@@ -24,7 +24,7 @@ class Prefs(context: Context) {
     private val CHECK_IN_ENABLED = "CHECK_IN_ENABLED"
 
     private val SERVICE_ID = "SERVICE_ID "
-    private val PHONE_OBS = "PHONE_OBS"
+    private val FIRST_LOGIN = "FIRST_LOGIN"
     private val OBS_LOCATION_ADDRESS = "OBS_LOCATION_ADDRESS"
 
     private val LAST_LOCATION_LAT = "LAST_LOCATION_LAT"
@@ -57,6 +57,10 @@ class Prefs(context: Context) {
     var filter: String?
         get() = prefs.getString(FILTER, "time")
         set(value) = prefs.edit().putString(FILTER, value).apply()
+
+    var firstLogin: Boolean
+        get() = prefs.getBoolean(FIRST_LOGIN, true)
+        set(value) = prefs.edit().putBoolean(FIRST_LOGIN, value).apply()
 
     var state: String?
         get() = prefs.getString(STATE, "available")
