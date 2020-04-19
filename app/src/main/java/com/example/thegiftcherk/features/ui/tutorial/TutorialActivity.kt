@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager2.widget.ViewPager2
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.carousel.ImagesAdapter
@@ -16,13 +17,15 @@ import es.vanadis.estaxitablet.features.carousel.extensions.color
 import es.vanadis.estaxitablet.features.carousel.extensions.dp
 import kotlinx.android.synthetic.main.activity_tutorial.*
 
+
 class TutorialActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tutorial)
 
         homeButton?.setOnClickListener {
-            startMainActivity()
+//            startMainActivity()
+            fragmentLikes()
             prefs.firstLogin = false
         }
 
@@ -89,6 +92,13 @@ class TutorialActivity : BaseActivity() {
             )
             addItemDecoration(pagerDecoration)
         }
+    }
+
+    private fun fragmentLikes(){
+        val fragment = LikesFragment()
+        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.container, fragment)
+        transaction.commit()
     }
 
     private fun startMainActivity() {
