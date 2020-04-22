@@ -71,11 +71,10 @@ class HomeFragment : BaseFragment() {
 
         getItems()
 
-        recyclerTitle1.text = "Tech"
-        recyclerTitle2.text = "Health"
-        recyclerTitle3.text = "Clothing"
-        recyclerTitle4.text = "Collections"
-
+        recyclerTitle1.text = CategoriesIds.VIDEOJUEGOS.category.second
+        recyclerTitle2.text = CategoriesIds.MODA.category.second
+        recyclerTitle3.text = CategoriesIds.TELEVISION.category.second
+        recyclerTitle4.text = CategoriesIds.DEPORTE.category.second
 
     }
 
@@ -89,20 +88,20 @@ class HomeFragment : BaseFragment() {
                 customRepository.getItems()) {
                 is ResponseResult.Success -> {
 
-                    var tech = response.value.filter {
-                        it?.category == "Tech"
+                    val tech = response.value.filter {
+                        it.category == CategoriesIds.VIDEOJUEGOS.category.first
                     }
 
-                    var health =response.value.filter {
-                        it?.category == "Health"
+                    val health =response.value.filter {
+                        it.category == CategoriesIds.MODA.category.first
                     }
 
-                    var clothing =response.value.filter {
-                        it?.category == "Clothing"
+                    val clothing =response.value.filter {
+                        it.category == CategoriesIds.TELEVISION.category.first
                     }
 
-                    var collections =response.value.filter {
-                        it?.category == "Collections"
+                    val collections =response.value.filter {
+                        it.category == CategoriesIds.DEPORTE.category.first
                     }
 
 

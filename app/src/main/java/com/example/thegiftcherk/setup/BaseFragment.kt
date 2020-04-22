@@ -50,7 +50,7 @@ abstract class BaseFragment : Fragment() {
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
     }
 
-    fun capitalizeWords(text: String){
+    fun capitalizeWords(text: String) {
         text.split(' ').joinToString(" ") { it.capitalize() }
     }
 
@@ -136,8 +136,8 @@ abstract class BaseFragment : Fragment() {
      **/
 
     //region App Special Methods
-    fun addTextWatcherEmail(inputEmailLayout: TextInputLayout) : TextWatcher {
-        return object: TextWatcher {
+    fun addTextWatcherEmail(inputEmailLayout: TextInputLayout): TextWatcher {
+        return object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (s.toString().isEmail()) {
                     inputEmailLayout.isErrorEnabled = false
@@ -182,8 +182,8 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
-    fun addTextWatcherRequired(inputLayout: TextInputLayout) : TextWatcher {
-        return object: TextWatcher {
+    fun addTextWatcherRequired(inputLayout: TextInputLayout): TextWatcher {
+        return object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 inputLayout.isErrorEnabled = s.toString().isEmpty()
             }
@@ -199,7 +199,27 @@ abstract class BaseFragment : Fragment() {
     }
 
 
-
+    enum class CategoriesIds(val category: Pair<String, String>) {
+        VIDEOJUEGOS(Pair("1", "Videojuegos")),
+        HOGAR(Pair("2", "Hogar")),
+        MOTOR(Pair("3", "Motor")),
+        ELECTRODOMESTICOS(Pair("4", "Electrodomésticos")),
+        MODA(Pair("5", "Moda")),
+        JARDIN(Pair("6", "Jardín")),
+        TELEVISION(Pair("7", "Televisión")),
+        MUSICA(Pair("8", "Música")),
+        FOTO(Pair("9", "Fotografía")),
+        MOVILES(Pair("10", "Móviles")),
+        INFORMATICA(Pair("11", "Informática")),
+        DEPORTE(Pair("12", "Deporte")),
+        LIBROS(Pair("13", "Libros")),
+        NIÑOS_Y_BEBES(Pair("14", "Niños y Bebés")),
+        AGRICULTURA(Pair("15", "Agricultura")),
+        SERVICIOS(Pair("16", "Servicios")),
+        COLECCIONISMO(Pair("17", "Coleccionismo")),
+        CONSTRUCCION(Pair("18", "Construcción")),
+        OTROS(Pair("19", "Otros"))
+    }
 
     companion object {
         const val REQUEST_LOCATION = 83

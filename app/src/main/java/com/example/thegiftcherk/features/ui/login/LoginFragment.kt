@@ -68,6 +68,8 @@ open class LoginFragment : BaseFragment() {
 //        }
     }
 
+
+
     private fun checkInputs(): Boolean {
         return if (inputEmail?.text.toString().isNotEmpty()
             && inputPassword?.text.toString()

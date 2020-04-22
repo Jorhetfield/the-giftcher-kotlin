@@ -1,6 +1,7 @@
 package com.example.thegiftcherk.setup.network
 
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.login.models.SendNewWish
 import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.login.models.User
@@ -14,29 +15,35 @@ import retrofit2.http.*
 
 interface Service {
     //region User
-    @POST("user/login") // TODO change Url
+    @POST("user/login")
     suspend fun login(
         @Body sendUser: SendUser
     ): Response<User>
 
     @FormUrlEncoded
-    @POST("user/reset_password") // TODO change Url
+    @POST("user/reset_password")
     suspend fun rememberPass(
         @Field("userMail") email: String
     ): Response<Operation>
 
-    @POST("user/register") // TODO change Url
+    @POST("user/register")
     suspend fun register(
         @Body sendUserRegister: SendUserRegister
     ): Response<Any>
     
-    @GET("wishes/") // TODO change Url
+    @GET("wishes/")
     suspend fun getOwnWishes(
     ): Response<List<Item>>
 
-    @GET("/api/invoice/amount_of_month") // TODO change Url
+    @POST("wishes/")
+    suspend fun addNewWish(
+        @Body sendNewWish: SendNewWish
+    ): Response<Operation>
+
+    @GET("friends")
     suspend fun getFriends(
     ): Response<List<Friend>>
+
 
     @Streaming
     @Multipart

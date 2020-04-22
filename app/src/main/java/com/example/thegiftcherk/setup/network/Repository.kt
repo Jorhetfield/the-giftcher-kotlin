@@ -5,6 +5,7 @@ import android.content.Context
 import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.login.models.SendNewWish
 import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.login.models.User
@@ -132,6 +133,24 @@ class Repository(private val service: Service, private val context: Context) {
             val response: List<Item> =
                 Gson().fromJson(json, Array<Item>::class.java).toList()
             ResponseResult.Success(response)
+        }
+    }
+
+    suspend fun addWish(
+        sendNewWish: SendNewWish,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.addNewWish(sendNewWish)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
         }
     }
 
