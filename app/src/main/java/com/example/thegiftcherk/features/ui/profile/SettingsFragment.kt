@@ -51,7 +51,6 @@ class SettingsFragment : BaseFragment() {
                     startLoginActivity()
                 }.show()
         }
-
     }
 
     private fun startLoginActivity() {

@@ -17,6 +17,7 @@ import com.example.thegiftcherk.R
 import com.example.thegiftcherk.setup.BaseActivity
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.stream.JsonReader
 
 class MainActivity : BaseActivity() {
     private lateinit var toolbar: Toolbar
@@ -44,7 +45,6 @@ class MainActivity : BaseActivity() {
 //        NavigationUI.setupActionBarWithNavController(this, navController)
 
         NavigationUI.setupWithNavController(toolbar, navController)
-
         setStatusBarColor()
         setSupportActionBar(toolbar)
         navView.setupWithNavController(navController)

@@ -11,6 +11,8 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
+import java.io.File
+import java.util.stream.Stream
 
 
 interface Service {
@@ -44,15 +46,24 @@ interface Service {
     suspend fun getFriends(
     ): Response<List<Friend>>
 
+    @GET("user/get_users")
+    suspend fun getAllUsers(
+    ): Response<List<Friend>>
 
-    @Streaming
     @Multipart
     @POST("/api/upload/picture/upload_pics")
-    fun uploadImage(
-        @Part("entity_id") entityId: RequestBody?,
-        @Part("picType") picType: RequestBody?,
-        @Part data: MultipartBody.Part?
+    suspend fun uploadImage(
+        @Part file: MultipartBody.Part?
     ): Response<Any>
+
+    @GET("user/get_profile_image")
+    suspend fun getProfileImage(
+    ): Response<File>
+
+    @GET("/wishes/wish_image/{{id}}")
+    suspend fun getWisheImage(
+        @Path("id") id:String
+    ): Response<File>
 
     //endregion Others
 }

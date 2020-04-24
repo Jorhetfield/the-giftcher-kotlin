@@ -145,7 +145,6 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
                         logD("probando peticiones $it")
                     }
                 }
-
                 is ResponseResult.Error -> {
                     showError("No estás en la build variant de MOCK.", view!!)
                 }
