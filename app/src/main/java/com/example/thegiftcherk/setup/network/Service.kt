@@ -1,6 +1,7 @@
 package com.example.thegiftcherk.setup.network
 
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.login.models.SendNewWish
 import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.login.models.User
@@ -10,42 +11,59 @@ import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
+import java.io.File
+import java.util.stream.Stream
 
 
 interface Service {
     //region User
-    @POST("user/login") // TODO change Url
+    @POST("user/login")
     suspend fun login(
         @Body sendUser: SendUser
     ): Response<User>
 
     @FormUrlEncoded
-    @POST("user/reset_password") // TODO change Url
+    @POST("user/reset_password")
     suspend fun rememberPass(
         @Field("userMail") email: String
     ): Response<Operation>
 
-    @POST("user/register") // TODO change Url
+    @POST("user/register")
     suspend fun register(
         @Body sendUserRegister: SendUserRegister
     ): Response<Any>
     
-    @GET("wishes/") // TODO change Url
+    @GET("wishes/")
     suspend fun getOwnWishes(
     ): Response<List<Item>>
 
-    @GET("/api/invoice/amount_of_month") // TODO change Url
+    @POST("wishes/")
+    suspend fun addNewWish(
+        @Body sendNewWish: SendNewWish
+    ): Response<Operation>
+
+    @GET("friends")
     suspend fun getFriends(
     ): Response<List<Friend>>
 
-    @Streaming
+    @GET("user/get_users")
+    suspend fun getAllUsers(
+    ): Response<List<Friend>>
+
     @Multipart
     @POST("/api/upload/picture/upload_pics")
-    fun uploadImage(
-        @Part("entity_id") entityId: RequestBody?,
-        @Part("picType") picType: RequestBody?,
-        @Part data: MultipartBody.Part?
+    suspend fun uploadImage(
+        @Part file: MultipartBody.Part?
     ): Response<Any>
+
+    @GET("user/get_profile_image")
+    suspend fun getProfileImage(
+    ): Response<File>
+
+    @GET("/wishes/wish_image/{{id}}")
+    suspend fun getWisheImage(
+        @Path("id") id:String
+    ): Response<File>
 
     //endregion Others
 }

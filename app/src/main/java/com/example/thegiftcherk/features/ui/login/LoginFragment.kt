@@ -1,9 +1,5 @@
 package com.example.thegiftcherk.features.ui.login
 
-import android.app.Activity
-import android.content.Intent
-import android.media.Image
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,23 +8,17 @@ import androidx.navigation.Navigation
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.main.MainActivity
+import com.example.thegiftcherk.features.ui.tutorial.TutorialActivity
 import com.example.thegiftcherk.setup.BaseFragment
-import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.isEmail
 import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
 import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_login.constraintContainer
-import kotlinx.android.synthetic.main.fragment_login.inputEmail
-import kotlinx.android.synthetic.main.fragment_login.inputPassword
-import kotlinx.android.synthetic.main.fragment_login.inputPasswordLayout
-import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 
 
 open class LoginFragment : BaseFragment() {
@@ -72,10 +62,13 @@ open class LoginFragment : BaseFragment() {
 
     //region Clicks
     private fun onClickLogin() {
-        if (checkInputs()) {
-            requestLogin(sendUser)
-        }
+//        if (checkInputs()) {
+
+        requestLogin(sendUser)
+//        }
     }
+
+
 
     private fun checkInputs(): Boolean {
         return if (inputEmail?.text.toString().isNotEmpty()
@@ -98,6 +91,14 @@ open class LoginFragment : BaseFragment() {
     }
     //endregion Clicks
 
+    private fun startTutorialActivity() {
+        context?.let {
+            val intent = TutorialActivity.intent(it)
+            startActivity(intent)
+            activity?.finish()
+        }
+    }
+
     private fun requestLogin(sendUser: SendUser) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
@@ -108,9 +109,14 @@ open class LoginFragment : BaseFragment() {
                     prefs.token = response.value.token
                     prefs.user = response.value.json()
 
-                    logD("respuesta login ${prefs.token}")
+                    logD("respuesta login ${response.value}")
+                    logD("respuesta login ${prefs.firstLogin}")
                     //Change view:
-                    startMainClientActivity()
+                    if (prefs.firstLogin) {
+                        startTutorialActivity()
+                    } else {
+                        startMainClientActivity()
+                    }
                 }
                 is ResponseResult.Error ->
                     showError(response.message, constraintContainer)
@@ -120,7 +126,6 @@ open class LoginFragment : BaseFragment() {
             hideProgressDialog()
         }
     }
-
 
 
     private fun startMainClientActivity() {

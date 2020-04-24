@@ -1,37 +1,31 @@
 package com.example.thegiftcherk.features.ui.addproduct
 
 import android.app.Activity
-import android.content.ContentProvider
-import android.content.ContentProviderClient
-import android.content.ContentResolver
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.net.toUri
+import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.login.models.SendNewWish
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import kotlinx.android.synthetic.main.fragment_add_product.*
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.selects.select
-import retrofit2.http.Multipart
 import java.io.File
 
 
 class AddProductFragment : BaseFragment() {
     private lateinit var image: File
+    private lateinit var wish: SendNewWish
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -40,17 +34,13 @@ class AddProductFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val cardTypes: MutableList<String> = mutableListOf()
-        cardTypes.add("Tech")
-        cardTypes.add("Sports")
-        cardTypes.add("Geek")
-        cardTypes.add("Foodie")
-        cardTypes.add("Music")
+        val prueba = resources.getStringArray(R.array.Categories)
 
         if (spinnerCardType != null) {
             val adapter = context?.let {
                 ArrayAdapter(
                     it,
-                    R.layout.spinner_row, cardTypes
+                    R.layout.spinner_row, prueba
                 )
             }
             spinnerCardType.adapter = adapter
@@ -76,7 +66,7 @@ class AddProductFragment : BaseFragment() {
             pickFromGallery()
         }
         saveButton?.setOnClickListener {
-//            uploadImageTest(image)
+            fetchData()
         }
 
     }
@@ -108,6 +98,41 @@ class AddProductFragment : BaseFragment() {
             }
         }
     }
+
+    private fun fetchData() {
+
+        inputName?.text
+        inputStore?.text
+        inputPrice?.text
+        inputDescription?.text
+        spinnerCardType?.selectedItemPosition
+
+        logD(
+            "inputsAddWish ${inputName?.text} ${inputStore?.text} ${inputPrice?.text} ${inputDescription?.text} ${spinnerCardType?.selectedItemPosition}"
+        )
+        fillData()
+
+    }
+
+    private fun fillData() {
+
+        wish = SendNewWish(
+            inputName?.text.toString(),
+            inputDescription?.text.toString(),
+            inputPrice?.text.toString(),
+            inputStore?.text.toString(),
+            false,
+            null,
+            null,
+            null,
+            (spinnerCardType?.selectedItemPosition)?.plus(1)
+        )
+
+        addWish(wish)
+
+    }
+
+
 //    private fun uploadImageTest(image: File) {
 //        GlobalScope.launch(Dispatchers.Main) {
 //            showProgressDialog()
@@ -127,5 +152,26 @@ class AddProductFragment : BaseFragment() {
 //            hideProgressDialog()
 //        }
 //    }
+
+    private fun addWish(sendNewWish: SendNewWish) {
+        GlobalScope.launch(Dispatchers.Main) {
+            showProgressDialog()
+            when (val response =
+                customRepository.addWish(sendNewWish)) {
+                is ResponseResult.Success -> {
+
+                    showMessage("Deseo añadido correctamente",logoBackground)
+                    findNavController().popBackStack()
+
+                }
+
+                is ResponseResult.Error -> {
+                }
+                is ResponseResult.Forbidden -> {
+                }
+            }
+            hideProgressDialog()
+        }
+    }
 
 }
