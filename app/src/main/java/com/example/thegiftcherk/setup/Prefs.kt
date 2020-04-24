@@ -20,11 +20,10 @@ class Prefs(context: Context) {
     private val SCREEN_HEIGHT = "HEIGHT"
     private val NOTIFICATIONS_GENERAL_ENABLED = "NOTIFICATIONS_GENERAL_ENABLED"
     private val SERVICES_APPLIED = "SERVICES_APPLIED"
-
+    private val LIKES = "LIKES"
     private val CHECK_IN_ENABLED = "CHECK_IN_ENABLED"
-
     private val SERVICE_ID = "SERVICE_ID "
-    private val PHONE_OBS = "PHONE_OBS"
+    private val FIRST_LOGIN = "FIRST_LOGIN"
     private val OBS_LOCATION_ADDRESS = "OBS_LOCATION_ADDRESS"
 
     private val LAST_LOCATION_LAT = "LAST_LOCATION_LAT"
@@ -44,6 +43,10 @@ class Prefs(context: Context) {
         get() = prefs.getString(FCM_TOKEN, "")
         set(value) = prefs.edit().putString(FCM_TOKEN, value).apply()
 
+    var likes: String?
+        get() = prefs.getString(LIKES, "")
+        set(value) = prefs.edit().putString(LIKES, value).apply()
+
     var userType: String?
         get() = prefs.getString(USER_TYPE, "")
         set(value) = prefs.edit().putString(USER_TYPE, value).apply()
@@ -57,6 +60,10 @@ class Prefs(context: Context) {
     var filter: String?
         get() = prefs.getString(FILTER, "time")
         set(value) = prefs.edit().putString(FILTER, value).apply()
+
+    var firstLogin: Boolean
+        get() = prefs.getBoolean(FIRST_LOGIN, true)
+        set(value) = prefs.edit().putBoolean(FIRST_LOGIN, value).apply()
 
     var state: String?
         get() = prefs.getString(STATE, "available")

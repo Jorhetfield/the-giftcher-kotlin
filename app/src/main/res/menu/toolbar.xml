@@ -12,12 +12,14 @@
         android:id="@+id/edit"
         android:icon="@drawable/ic_edit"
         android:title="edit"
+        android:visible="false"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"
         android:title="settings"
+        android:visible="false"
         app:showAsAction="always"/>
 
 </menu>

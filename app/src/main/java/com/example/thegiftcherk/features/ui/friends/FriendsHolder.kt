@@ -28,11 +28,11 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
         this.friend = friend
         this.listener = listener
 
-        view.name_TV.text = friend.name
+        view.name_TV.text = friend.username
         view.birthday_TV.text = friend.birthday
 
         Picasso.get()
-            .load(friend.picture)
+            .load(friend.imagePath)
             .into(view.image_IV)
 
         view.friend_messageCard?.setOnClickListener {

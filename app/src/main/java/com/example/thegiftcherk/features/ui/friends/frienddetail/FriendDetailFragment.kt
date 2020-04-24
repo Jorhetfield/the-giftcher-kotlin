@@ -33,7 +33,7 @@ class FriendDetailFragment : BaseFragment() {
         cumpleaños_TV?.text = mFriend?.birthday
 
         Picasso.get()
-            .load(mFriend?.picture)
+            .load(mFriend?.imagePath)
             .into(imageProfile)
 
         setTabBar()

@@ -5,6 +5,7 @@ import android.content.Context
 import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.login.models.SendNewWish
 import com.example.thegiftcherk.features.ui.login.models.SendUser
 import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.login.models.User
@@ -17,7 +18,7 @@ import com.example.thegiftcherk.setup.utils.extensions.getMockResponseResult
 import com.google.gson.Gson
 import kotlinx.coroutines.delay
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
+import java.io.File
 
 class Repository(private val service: Service, private val context: Context) {
     //region User
@@ -111,16 +112,33 @@ class Repository(private val service: Service, private val context: Context) {
         }
     }
 
+    suspend fun getAllUsers(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<Friend>> {
+        return if (!fake) {
+            try {
+                val response = service.getAllUsers()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            val json = context.getJsonFromResource(R.raw.friends)
+            val response: List<Friend> =
+                Gson().fromJson(json, Array<Friend>::class.java).toList()
+            ResponseResult.Success(response)
+        }
+    }
 
     suspend fun uploadImage(
-        entityId:RequestBody?,
-        picType:RequestBody?,
-        data:MultipartBody.Part?,
+        file: MultipartBody.Part?,
         fake: Boolean = BuildConfig.MOCK
     ): ResponseResult<Any> {
         return if (!fake) {
             try {
-                val response = service.uploadImage(entityId, picType, data)
+                val response = service.uploadImage(file)
                 checkResponse(context, response)
 
             } catch (e: Exception) {
@@ -132,6 +150,59 @@ class Repository(private val service: Service, private val context: Context) {
             val response: List<Item> =
                 Gson().fromJson(json, Array<Item>::class.java).toList()
             ResponseResult.Success(response)
+        }
+    }
+
+    suspend fun addWish(
+        sendNewWish: SendNewWish,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.addNewWish(sendNewWish)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun getProfileImage(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<File> {
+        return if (!fake) {
+            try {
+                val response = service.getProfileImage()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun getWishImage(
+        id: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<File> {
+        return if (!fake) {
+            try {
+                val response = service.getWisheImage(id)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
         }
     }
 
