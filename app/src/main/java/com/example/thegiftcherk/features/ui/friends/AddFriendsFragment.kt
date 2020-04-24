@@ -8,24 +8,19 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
-import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
-import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_add_friends.*
-import kotlinx.android.synthetic.main.fragment_friends.*
-import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 import java.util.*
 
-class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
+class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
     private val friends: MutableList<Friend> = mutableListOf()
     private val friendsFiltered: MutableList<Friend> = mutableListOf()
     private lateinit var friendsAdapter: FriendsAdapter
@@ -37,11 +32,10 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getAllUsers()
 
-        if (friends.isEmpty()){
-            recyclerAddFriends?.visibility = View.GONE
-            emptyView?.visibility = View.VISIBLE
-        }
+
+
 
         closeBut2.setOnClickListener {
             hideKeyboard()
@@ -55,7 +49,9 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerAddFriends.layoutManager = linearLayoutManager
 
-        friendsAdapter = FriendsAdapter(friends) {}
+        friendsAdapter = FriendsAdapter(friends) {
+
+        }
         recyclerAddFriends.adapter = friendsAdapter
     }
 
@@ -65,7 +61,8 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
             friends.clear()
 //            getFriends()
         } else {
-            val productsPrefs = Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
+            val productsPrefs =
+                Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
             val name = ""
             val itemsQuery = productsPrefs.filter {
                 if (it.name.isNullOrEmpty()) {
@@ -91,7 +88,8 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
             friends.clear()
 //            getFriends()
         } else {
-            val productsPrefs = Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
+            val productsPrefs =
+                Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
             val name = ""
             val itemsQuery = productsPrefs.filter {
                 if (it.name.isNullOrEmpty()) {
@@ -126,22 +124,22 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
         return filteredModelList
     }
 
-    private fun getFriends() {
+    private fun getAllUsers() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
-                customRepository.getFriends()) {
+                customRepository.getAllUsers()) {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
+
+                    responseResult.forEach {
+                        logD("response ${it.username}")
+                    }
 
                     prefs.obsLocationAddress = responseResult.json()
                     friends.clear()
                     friends.addAll(responseResult)
                     friendsAdapter.notifyDataSetChanged()
-
-                    responseResult.forEach {
-                        logD("probando peticiones $it")
-                    }
                 }
 
                 is ResponseResult.Error -> {

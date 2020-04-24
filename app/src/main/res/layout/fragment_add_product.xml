@@ -71,7 +71,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputName"
+                android:id="@+id/inputNameLayout"
                 style="@style/MyOutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,6 +88,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Name"
@@ -99,7 +100,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputName2"
+                android:id="@+id/inputStoreLayout"
                 style="@style/MyOutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,9 +112,10 @@
                 app:hintTextColor="@color/colorDetail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inputName">
+                app:layout_constraintTop_toBottomOf="@id/inputNameLayout">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputStore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Store"
@@ -135,11 +137,10 @@
                 android:weightSum="100"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputName2">
+                app:layout_constraintTop_toBottomOf="@+id/inputStoreLayout">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputName3"
-
+                    android:id="@+id/inputPriceLayout"
                     style="@style/MyOutlinedBox.Dense"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -149,6 +150,7 @@
                     app:hintTextColor="@color/colorDetail">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Price"
@@ -163,8 +165,8 @@
                 <Spinner
                     android:id="@+id/spinnerCardType"
                     style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="16dp"
                     android:layout_weight="50"
@@ -174,10 +176,10 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputName5"
+                android:id="@+id/inputDescriptionLayout"
                 style="@style/MyOutlinedBox.Dense"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
@@ -191,10 +193,12 @@
                 app:layout_constraintTop_toBottomOf="@id/linearContainer">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:hint="Description"
-                    android:inputType="text"
+                    android:maxLines="15"
+                    android:inputType="textLongMessage"
                     android:textColor="@color/colorSecondary"
                     app:hintTextColor="@color/colorSecondary">
 

@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorDetail"
             android:foregroundTint="@color/colorDetail"
-            android:hint="@string/placeholder_email"
+            android:hint="Nombre de Usuario"
             android:inputType="textEmailAddress"
             android:textColor="@color/colorSecondary" />
     </com.google.android.material.textfield.TextInputLayout>
