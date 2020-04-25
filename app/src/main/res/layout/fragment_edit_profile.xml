@@ -114,7 +114,7 @@
             app:layout_constraintTop_toBottomOf="@id/materialCardView">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputUsername"
+                android:id="@+id/inputUsernameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -124,7 +124,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputSurnameLayout"
+            android:id="@+id/inputNameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -139,7 +139,7 @@
             app:layout_constraintTop_toBottomOf="@+id/inputUsernameLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputSurname"
+                android:id="@+id/inputNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre"
@@ -150,7 +150,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputEmailLayout"
+            android:id="@+id/inputLastNameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -162,17 +162,52 @@
             app:hintTextColor="@color/colorDetail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputSurnameLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputNameLayout">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputEmail"
+                android:id="@+id/inputLastNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="Apellidos"
                 android:textSize="18sp"
                 android:inputType="text"
                 android:textColor="@color/colorSecondary" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/passwordTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contraseña"
+            android:textColor="@color/colorDetail"
+            android:textSize="22sp"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputLastNameLayout" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/passwordET"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="**************"
+            android:textColor="@color/colorDetail"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/passwordTV"
+            app:layout_constraintTop_toBottomOf="@+id/passwordTV" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/editPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cambiar"
+            android:textColor="@color/colorDetail"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/passwordET" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputPhoneLayout"
@@ -188,7 +223,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputEmailLayout">
+            app:layout_constraintTop_toBottomOf="@+id/inputLastNameLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputPhone"
@@ -205,13 +240,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginTop="16dp"
-            android:textSize="16sp"
             android:text="Cambiar perfil a público"
+            android:textSize="16sp"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputPhoneLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordET" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/birthdayContainter"

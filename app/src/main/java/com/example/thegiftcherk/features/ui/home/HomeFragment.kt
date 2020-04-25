@@ -104,7 +104,6 @@ class HomeFragment : BaseFragment() {
                         it.category == CategoriesIds.DEPORTE.category.first
                     }
 
-
                     items1.clear()
                     items2.clear()
                     items3.clear()

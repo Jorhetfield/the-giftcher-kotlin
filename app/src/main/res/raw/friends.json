@@ -2,61 +2,71 @@
   {
     "id": "1",
     "name": "Cloud Strife",
+    "username": "Cloud",
     "birthday": "August 11, 1986",
-    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_cloud.png"
+    "imagePath": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_cloud.png"
   },
   {
     "id": "2",
     "name": "Aerith Gainsborough",
+    "username": "Aerith",
     "birthday": "February 7, 1985",
-    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_aerith.png"
+    "imagePath": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_aerith.png"
   },
   {
     "id": "3",
     "name": "Red XIII",
+    "username": "Red",
     "birthday": "March 17, 1959",
-    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_redxiii.png"
+    "imagePath": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_redxiii.png"
   },
   {
     "id": "4",
     "name": "Sephiroth",
+    "username": "Sephiroth",
     "birthday": "Unknown",
-    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_sephiroth.png"
+    "imagePath": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_sephiroth.png"
   },
   {
     "id": "5",
     "name": "Barret Wallace",
+    "username": "Barret",
     "birthday": "December 15, 1972",
-    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_barret.png"
+    "imagePath": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_barret.png"
   },
   {
     "id": "6",
     "name": "Tifa Lockhart",
+    "username": "Lockhart",
     "birthday": "May 3, 1987",
-    "picture": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_tifa.png"
+    "imagePath": "https://ffvii-remake.square-enix-games.com/images/characters/characters_profile_tifa.png"
   },
   {
     "id": "7",
     "name": "Vincent Valentine",
+    "username": "Vincent",
     "birthday": "October 13, 1950",
-    "picture": "https://www.wallpaperhi.com/thumbnails/detail/20140306/final%20fantasy%20video%20games%20dirge%20of%20cerberus_www.wallpaperhi.com_9.jpg"
+    "imagePath": "https://www.wallpaperhi.com/thumbnails/detail/20140306/final%20fantasy%20video%20games%20dirge%20of%20cerberus_www.wallpaperhi.com_9.jpg"
   },
   {
     "id": "8",
     "name": "Yuffie Kisaragi",
+    "username": "Yuffie",
     "birthday": "November 20, 1991",
-    "picture": "https://data.whicdn.com/images/6401903/original.jpg"
+    "imagePath": "https://data.whicdn.com/images/6401903/original.jpg"
   },
   {
     "id": "9",
     "name": "Caith Sith",
+    "username": "Sith",
     "birthday": "April 30, 1970",
-    "picture": "https://cdna.artstation.com/p/assets/images/images/019/135/596/large/leandro-franci-cait-sith-2019.jpg?1562166375"
+    "imagePath": "https://cdna.artstation.com/p/assets/images/images/019/135/596/large/leandro-franci-cait-sith-2019.jpg?1562166375"
   },
   {
     "id": "10",
     "name": "Cid Highwind",
+    "username": "Highwind",
     "birthday": "February 22, 1975",
-    "picture": "https://i.imgur.com/EbzDDKa.jpg"
+    "imagePath": "https://i.imgur.com/EbzDDKa.jpg"
   }
 ]

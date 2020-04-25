@@ -1,160 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:isScrollContainer="false">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logoBackground"
-        android:layout_width="1000dp"
-        android:layout_height="2000dp"
-        android:layout_margin="16dp"
-        android:alpha=".3"
-        android:isScrollContainer="false"
-        android:src="@drawable/ic_icono_tg_white_mode"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/imageCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:elevation="8dp"
-        app:cardElevation="4dp"
-        app:cardMaxElevation="10dp"
-        app:layout_constraintBottom_toTopOf="@id/materialCardView"
-        app:layout_constraintStart_toStartOf="@+id/materialCardView"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/imagePickerIV"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_margin="4dp"
-                android:background="@drawable/ic_placeholder"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:elevation="8dp"
-        app:cardElevation="4dp"
-        app:cardMaxElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageCard">
+        android:layout_height="match_parent"
+        android:isScrollContainer="false">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logoBackground"
+            android:layout_width="1000dp"
+            android:layout_height="2000dp"
+            android:layout_margin="16dp"
+            android:alpha=".3"
+            android:isScrollContainer="false"
+            android:src="@drawable/ic_icono_tg_white_mode"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/imageCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:elevation="8dp"
+            app:cardElevation="4dp"
+            app:cardMaxElevation="10dp"
+            app:layout_constraintBottom_toTopOf="@id/materialCardView"
+            app:layout_constraintStart_toStartOf="@+id/materialCardView"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imagePickerIV"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="4dp"
+                    android:background="@drawable/ic_placeholder"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:elevation="8dp"
+            android:isScrollContainer="false"
+            app:cardElevation="4dp"
+            app:cardMaxElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCard">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputNameLayout"
-                style="@style/MyOutlinedBox.Dense"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:textColorHint="@color/colorDetail"
-                app:boxStrokeColor="@color/colorDetail"
-                app:counterOverflowTextColor="@color/colorSecondary"
-                app:counterTextColor="@color/colorSecondary"
-                app:hintTextColor="@color/colorDetail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Name"
-                    android:inputType="text"
-                    android:textColor="@color/colorSecondary">
-
-                </com.google.android.material.textfield.TextInputEditText>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputStoreLayout"
-                style="@style/MyOutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:textColorHint="@color/colorDetail"
-                app:boxStrokeColor="@color/colorDetail"
-                app:hintTextColor="@color/colorDetail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inputNameLayout">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputStore"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Store"
-                    android:inputType="text"
-                    android:textColor="@color/colorSecondary"
-                    app:hintTextColor="@color/colorSecondary">
-
-                </com.google.android.material.textfield.TextInputEditText>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                android:id="@+id/linearContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:gravity="center_vertical"
-                android:weightSum="100"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inputStoreLayout">
+                android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputPriceLayout"
+                    android:id="@+id/inputNameLayout"
                     style="@style/MyOutlinedBox.Dense"
-                    android:layout_width="100dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="40"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:textColorHint="@color/colorDetail"
                     app:boxStrokeColor="@color/colorDetail"
-                    app:hintTextColor="@color/colorDetail">
+                    app:counterOverflowTextColor="@color/colorSecondary"
+                    app:counterTextColor="@color/colorSecondary"
+                    app:hintTextColor="@color/colorDetail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/inputPrice"
+                        android:id="@+id/inputName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Price"
-                        android:inputType="numberDecimal"
+                        android:hint="Name"
+                        android:inputType="text"
+                        android:textColor="@color/colorSecondary">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputStoreLayout"
+                    style="@style/MyOutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColorHint="@color/colorDetail"
+                    app:boxStrokeColor="@color/colorDetail"
+                    app:hintTextColor="@color/colorDetail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inputNameLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputStore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Store"
+                        android:inputType="text"
+                        android:textColor="@color/colorSecondary"
+                        app:hintTextColor="@color/colorSecondary">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLocationLayout"
+                    style="@style/MyOutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColorHint="@color/colorDetail"
+                    app:boxStrokeColor="@color/colorDetail"
+                    app:hintTextColor="@color/colorDetail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inputStoreLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Location"
+                        android:inputType="text"
                         android:textColor="@color/colorSecondary"
                         app:hintTextColor="@color/colorSecondary">
 
@@ -162,84 +161,121 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <Spinner
-                    android:id="@+id/spinnerCardType"
-                    style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
-                    android:layout_weight="50"
-                    android:backgroundTint="@color/colorDetail"
-                    android:minHeight="40dp"
-                    android:textColor="@color/colorSecondary" />
-            </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputDescriptionLayout"
-                style="@style/MyOutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:textColorHint="@color/colorDetail"
-                app:boxStrokeColor="@color/colorDetail"
-                app:hintTextColor="@color/colorDetail"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linearContainer">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputDescription"
+                <LinearLayout
+                    android:id="@+id/linearContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Description"
-                    android:maxLines="15"
-                    android:inputType="textLongMessage"
-                    android:textColor="@color/colorSecondary"
-                    app:hintTextColor="@color/colorSecondary">
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical"
+                    android:weightSum="100"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inputLocationLayout">
 
-                </com.google.android.material.textfield.TextInputEditText>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputPriceLayout"
+                        style="@style/MyOutlinedBox.Dense"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="40"
+                        android:textColorHint="@color/colorDetail"
+                        app:boxStrokeColor="@color/colorDetail"
+                        app:hintTextColor="@color/colorDetail">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/inputPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Price"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/colorSecondary"
+                            app:hintTextColor="@color/colorSecondary">
+
+                        </com.google.android.material.textfield.TextInputEditText>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/spinnerCardType"
+                        style="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="50"
+                        android:backgroundTint="@color/colorDetail"
+                        android:minHeight="40dp"
+                        android:textColor="@color/colorSecondary" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputDescriptionLayout"
+                    style="@style/MyOutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/colorDetail"
+                    app:boxStrokeColor="@color/colorDetail"
+                    app:hintTextColor="@color/colorDetail"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linearContainer">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="Description"
+                        android:inputType="textLongMessage"
+                        android:maxLines="15"
+                        android:textColor="@color/colorSecondary"
+                        app:hintTextColor="@color/colorSecondary">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/saveButton"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="Guardar"
-            android:textColor="@color/colorDetail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/assignButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Asignar"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/colorDetail"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Guardar"
+                android:textColor="@color/colorDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/assignButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Asignar"
+                android:textColor="@color/colorDetail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
+
 
 
 
