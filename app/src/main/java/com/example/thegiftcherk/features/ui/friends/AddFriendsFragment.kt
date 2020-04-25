@@ -34,9 +34,6 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
         super.onViewCreated(view, savedInstanceState)
         getAllUsers()
 
-
-
-
         closeBut2.setOnClickListener {
             hideKeyboard()
             searchView?.setText("")
@@ -105,7 +102,6 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
         }
         hideKeyboard()
         return false
-
     }
 
     private fun filter(models: List<Friend>, query: String): List<Friend> {

@@ -6,30 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.widget.addTextChangedListener
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
-import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.network.ResponseResult
+import com.example.thegiftcherk.setup.utils.extensions.fromJson
 import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.gson.Gson
-import com.javiersc.kotlinloggerjvm.logDD
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 import java.util.*
 import java.util.Collections.replaceAll
 
-class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener  {
+class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener {
     val items: MutableList<Item> = mutableListOf()
     val itemsQuery: MutableList<Item> = mutableListOf()
-        private lateinit var itemAdapter: SearchAdapter
+    private lateinit var itemAdapter: SearchAdapter
+    val userData = prefs.user?.fromJson<User>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -54,7 +53,7 @@ class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener  {
         ) {
         }
         recyclerItems.adapter = itemAdapter
-        getItems()
+        getAllWishes()
     }
 
 
@@ -64,9 +63,10 @@ class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener  {
         val text = searchView.text.toString().toLowerCase()
         if (text.isEmpty()) {
             items.clear()
-            getItems()
+            getAllWishes()
         } else {
-            val productsPrefs = Gson().fromJson(prefs.servicesApplied, Array<Item>::class.java).toList()
+            val productsPrefs =
+                Gson().fromJson(prefs.servicesApplied, Array<Item>::class.java).toList()
             val name = ""
             val itemsQuery = productsPrefs.filter {
                 if (it.name.isNullOrEmpty()) {
@@ -90,9 +90,10 @@ class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener  {
 
         if (text.isEmpty()) {
             items.clear()
-            getItems()
+            getAllWishes()
         } else {
-            val productsPrefs = Gson().fromJson(prefs.servicesApplied, Array<Item>::class.java).toList()
+            val productsPrefs =
+                Gson().fromJson(prefs.servicesApplied, Array<Item>::class.java).toList()
             val name = ""
             val itemsQuery = productsPrefs.filter {
                 if (it.name.isNullOrEmpty()) {
@@ -127,17 +128,22 @@ class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener  {
         return filteredModelList
     }
 
-    private fun getItems() {
+    private fun getAllWishes() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
-                customRepository.getItems()) {
+                customRepository.getAllWishes()) {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
 
-                    prefs.servicesApplied = response.value.json()
+
+                    val allWishesNotMine = responseResult.filterNot {
+                        it.userId == userData?.id
+                    }
+
+                    prefs.servicesApplied = allWishesNotMine.json()
                     items.clear()
-                    items.addAll(responseResult)
+                    items.addAll(allWishesNotMine)
                     itemAdapter.notifyDataSetChanged()
                     hideKeyboard()
                     logD("ok")

@@ -34,8 +34,6 @@ class ProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setTabBar()
         imageProfile?.setOnClickListener {
-            getProfileImage()
-//            getWishImage("26")
             logD("responseClick")
         }
 

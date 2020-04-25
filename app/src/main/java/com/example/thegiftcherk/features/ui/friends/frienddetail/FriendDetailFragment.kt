@@ -29,7 +29,8 @@ class FriendDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        nombreusuario_TV?.text = mFriend?.name
+        prefs.friendId = mFriend?.id
+        nombreusuario_TV?.text = "${mFriend?.name} ${mFriend?.lastName} (${mFriend?.username})"
         cumpleaños_TV?.text = mFriend?.birthday
 
         Picasso.get()
