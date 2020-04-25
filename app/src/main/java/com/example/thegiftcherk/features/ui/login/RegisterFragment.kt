@@ -37,8 +37,8 @@ class RegisterFragment : BaseFragment() {
         //Watch input
         inputName?.addTextChangedListener(addTextWatcherRequired(inputNameLayout))
         inputEmail?.addTextChangedListener(addTextWatcherEmail(inputEmailLayout))
-        inputPassword?.addTextChangedListener(addTextWatcherRequired(inputPasswordLayout))
-        inputRepeatPassword?.addTextChangedListener(addTextWatcherRequired(inputRepeatPasswordLayout))
+        inputPassword?.addTextChangedListener(textWatcherPass(inputPasswordLayout))
+        inputRepeatPassword?.addTextChangedListener(textWatcherPass(inputRepeatPasswordLayout))
 
         //Set buttons click
         buttonConfirm.setOnClickListener {
@@ -87,19 +87,31 @@ class RegisterFragment : BaseFragment() {
 
     private fun checkInputs(): Boolean {
         return if (inputEmail?.text.toString().isEmail() && inputEmail?.text.toString().isNotEmpty()
-            && inputPassword?.text.toString()
-                .isNotEmpty() && inputPassword?.text.toString().length >= 6 && birthdayText?.text.toString() != "Select your birthday"
+            && inputPassword?.text.toString().isValidPassword() && inputName?.text.toString()
+                .isNotEmpty() && inputUsername?.text.toString()
+                .isNotEmpty() && inputLastname?.text.toString().isNotEmpty()
+            && inputPassword?.text.toString() == inputRepeatPassword?.text.toString()
+            && birthdayText?.text.toString() != "Select your birthday"
         ) {
             true
         } else {
-            if (inputEmail?.text.toString().isEmpty() && inputPassword?.text.toString().isEmpty()) {
+            if (inputEmail?.text.toString().isEmpty() || inputPassword?.text.toString()
+                    .isEmpty() || inputRepeatPassword.text.toString()
+                    .isEmpty() || inputName?.text.toString()
+                    .isEmpty() || inputUsername?.text.toString()
+                    .isEmpty() || inputLastname?.text.toString()
+                    .isEmpty() || birthdayText?.text.toString() == "Select your birthday"
+            ) {
                 showError(getString(R.string.error_pass), constraintContainer)
-            } else if (inputPassword?.text.toString().isValidPassword()) {
-                showError(getString(R.string.error_pass), constraintContainer)
-            } else if (!inputEmail?.text.toString().isEmail() || inputEmail?.text.toString()
-                    .isEmpty()
+            } else if (!inputPassword?.text.toString().isValidPassword()) {
+                showError("Debes introducir una contraseña válida", constraintContainer)
+            } else if (inputPassword?.text.toString() != inputRepeatPassword?.text.toString()) {
+                showError("Las contraseñas deben ser iguales", constraintContainer)
+            } else if (!inputEmail?.text.toString().isEmail()
             ) {
                 showError(getString(R.string.error_email), constraintContainer)
+            } else if (birthdayText?.text.toString() == "Select your birthday") {
+                showError("Debes seleccionar una fecha de cumpleaños", constraintContainer)
             }
             false
         }

@@ -34,7 +34,7 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputEmailLayout"
+        android:id="@+id/inputUsernameLoginLayout"
         style="@style/MyOutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLinear">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/inputUsernameLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorDetail"
@@ -72,7 +72,7 @@
         app:hintTextColor="@color/colorDetail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputEmailLayout"
+        app:layout_constraintTop_toBottomOf="@+id/inputUsernameLoginLayout"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/colorDetail">
 
