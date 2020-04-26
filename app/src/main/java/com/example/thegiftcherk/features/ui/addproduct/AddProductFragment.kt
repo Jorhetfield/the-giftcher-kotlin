@@ -133,26 +133,6 @@ class AddProductFragment : BaseFragment() {
     }
 
 
-//    private fun uploadImageTest(image: File) {
-//        GlobalScope.launch(Dispatchers.Main) {
-//            showProgressDialog()
-//            when (val response =
-//                customRepository.uploadImage(image)) {
-//                is ResponseResult.Success -> {
-//                    //Save User:
-//                    Toast.makeText(view?.context, "ok",Toast.LENGTH_LONG).show()
-//
-//                    //Change view:
-//                }
-//                is ResponseResult.Error ->
-//                    showError(response.message, constraintContainer)
-//                is ResponseResult.Forbidden ->
-//                    showError("ERROR", constraintContainer)
-//            }
-//            hideProgressDialog()
-//        }
-//    }
-
     private fun addWish(sendNewWish: SendNewWish) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()

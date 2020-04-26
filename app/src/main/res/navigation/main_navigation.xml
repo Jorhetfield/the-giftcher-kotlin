@@ -112,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/addFriendsFragment"
-        android:name="com.example.thegiftcherk.features.ui.friends.AddFriendsFragment"
+        android:name="com.example.thegiftcherk.features.ui.friends.addfriend.AddFriendsFragment"
         android:label="AddFriendsFragment" />
     <fragment
         android:id="@+id/settingsFragment"
