@@ -176,7 +176,7 @@ abstract class BaseFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (!s.toString().isValidPassword()) {
                     inputPasswordLayout.isErrorEnabled = true
-                    inputPasswordLayout.error = getString(R.string.error_pass)
+                    inputPasswordLayout.error = "La contraseña debe tener más de 8 caracteres, una mayus, un número y uno de estos símbolos @#!$%"
                 }
             }
         }

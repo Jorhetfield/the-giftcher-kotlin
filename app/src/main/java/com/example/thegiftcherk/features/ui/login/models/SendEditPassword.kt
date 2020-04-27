@@ -6,14 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class User(
-    val id:String,
-    val name:String,
-    val username:String,
-    val lastName:String,
-    val mail:String,
-    val birthday:String,
-    val imageName:String,
-    val imagePath:String,
-    val token:String
-)  : Parcelable, JSONConvertable
+data class SendEditPassword(
+    @SerializedName("newPassword") val newPassword: String?,
+    @SerializedName("oldPassword") val oldPassword: String?
+) : Parcelable, JSONConvertable

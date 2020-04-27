@@ -1,4 +1,4 @@
-package com.example.thegiftcherk.features.ui.addproduct
+package com.example.thegiftcherk.features.ui.addproduct.productdetail
 
 import android.app.Activity
 import android.content.Intent
@@ -12,20 +12,29 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
-import com.example.thegiftcherk.features.ui.login.models.SendNewWish
+import com.example.thegiftcherk.features.ui.login.models.SendEditWish
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
+import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
 import com.example.thegiftcherk.setup.utils.extensions.logD
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_add_product.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.File
 
 
-class AddProductFragment : BaseFragment() {
+class EditWishFragment : BaseFragment() {
     private lateinit var image: File
-    private lateinit var wish: SendNewWish
+    private lateinit var wish: SendEditWish
+
+    private val mProduct by lazyUnsychronized {
+        arguments?.let {
+            EditWishFragmentArgs.fromBundle(it).wish
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -33,7 +42,6 @@ class AddProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cardTypes: MutableList<String> = mutableListOf()
         val prueba = resources.getStringArray(R.array.Categories)
 
         if (spinnerCardType != null) {
@@ -61,6 +69,17 @@ class AddProductFragment : BaseFragment() {
             ) {
             }
         }
+
+        inputName?.setText(mProduct?.name)
+        inputStore?.setText(mProduct?.shop)
+        inputPrice?.setText(mProduct?.price)
+        inputDescription?.setText(mProduct?.description)
+        inputLocation?.setText(mProduct?.location)
+
+        Picasso.get()
+            .load(mProduct?.picture)
+            .into(imagePickerIV)
+
 
         imagePickerIV?.setOnClickListener {
             pickFromGallery()
@@ -116,38 +135,45 @@ class AddProductFragment : BaseFragment() {
 
     private fun fillData() {
 
-        wish = SendNewWish(
+        wish = SendEditWish(
             inputName?.text.toString(),
             inputDescription?.text.toString(),
-            inputPrice?.text.toString(),
+            inputPrice?.text.toString().toFloat(),
             inputStore?.text.toString(),
-            false,
+            mProduct?.picture,
+            "",
+            null,
             inputLocation?.text.toString(),
             null,
             null,
             (spinnerCardType?.selectedItemPosition)?.plus(1)
         )
 
-        addWish(wish)
-
+        editWish(mProduct?.id!!.toString(), wish)
+        logD("productId = ${mProduct?.id}")
+        logD("sendEditWish = $wish")
     }
 
 
-    private fun addWish(sendNewWish: SendNewWish) {
+    private fun editWish(wishId: String, sendEditWish: SendEditWish) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
-                customRepository.addWish(sendNewWish)) {
+                customRepository.editWish(wishId, sendEditWish)) {
                 is ResponseResult.Success -> {
 
-                    showMessage("Deseo añadido correctamente",logoBackground)
+                    showMessage("Deseo añadido correctamente", logoBackground)
                     findNavController().popBackStack()
 
                 }
 
                 is ResponseResult.Error -> {
+                    showError(response.message, constraintContainer)
+
                 }
                 is ResponseResult.Forbidden -> {
+                    showError(response.message, constraintContainer)
+
                 }
             }
             hideProgressDialog()

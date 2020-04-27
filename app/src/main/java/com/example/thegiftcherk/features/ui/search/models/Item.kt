@@ -1,6 +1,7 @@
 package com.example.thegiftcherk.features.ui.search.models
 
 import android.os.Parcelable
+import android.telephony.cdma.CdmaCellLocation
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -8,9 +9,11 @@ import kotlinx.android.parcel.Parcelize
 data class Item(
     val id: String?,
     val name: String?,
+    @SerializedName("userId") val userId: String?,
     @SerializedName("shop") val shop: String?,
     val price: String?,
     val category: String?,
     val description: String?,
+    val location: String?,
     val picture: String?
 ) : Parcelable
