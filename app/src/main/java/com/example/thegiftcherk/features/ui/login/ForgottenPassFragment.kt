@@ -81,4 +81,5 @@ class ForgottenPassFragment : BaseFragment() {
     companion object {
         private val LOGTAG: String = ForgottenPassFragment::class.java.simpleName
     }
+
 }

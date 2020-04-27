@@ -17,6 +17,7 @@ import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_friends.*
+import kotlinx.android.synthetic.main.fragment_my_list.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Dispatchers
@@ -146,9 +147,11 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
                     }
                 }
                 is ResponseResult.Error -> {
-                    showError("No estás en la build variant de MOCK.", view!!)
+                    showError(response.message, view!!)
                 }
                 is ResponseResult.Forbidden -> {
+                    showError(response.message, view!!)
+
                 }
             }
             hideProgressDialog()

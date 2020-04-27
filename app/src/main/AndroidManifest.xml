@@ -25,21 +25,25 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name="com.example.thegiftcherk.features.ui.main.MainActivity"
+            android:windowSoftInputMode="stateVisible|adjustPan"
             android:label="@string/app_name">
         </activity>
 
         <activity
             android:name="com.example.thegiftcherk.features.ui.main.MainLoginActivity"
+            android:windowSoftInputMode="stateVisible|adjustPan"
             android:label="@string/app_name">
         </activity>
 
         <activity
             android:name="com.example.thegiftcherk.features.ui.tutorial.TutorialActivity"
+            android:windowSoftInputMode="stateVisible|adjustPan"
             android:label="@string/app_name">
         </activity>
 
         <activity
             android:name="com.example.thegiftcherk.features.ui.splash.SplashActivity"
+            android:windowSoftInputMode="stateVisible|adjustPan"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

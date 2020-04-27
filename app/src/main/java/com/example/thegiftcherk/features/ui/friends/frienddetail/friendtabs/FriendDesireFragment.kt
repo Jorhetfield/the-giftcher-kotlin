@@ -29,7 +29,7 @@ class FriendDesireFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getDesires()
+        getFriendWishes(prefs.friendId ?: "0")
 
 
         val gridLayoutManager = GridLayoutManager(context, 3)
@@ -40,11 +40,11 @@ class FriendDesireFragment : BaseFragment() {
     }
 
 
-    private fun getDesires() {
+    private fun getFriendWishes(userId: String) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
-                customRepository.getItems()) {
+                customRepository.getFriendWishes(userId)) {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
 
@@ -59,9 +59,10 @@ class FriendDesireFragment : BaseFragment() {
                 }
 
                 is ResponseResult.Error -> {
-                    showError("No estás en la build variant de MOCK.", view!!)
+                    showError(response.message, constraintContainerMyList)
                 }
                 is ResponseResult.Forbidden -> {
+                    showError(response.message, constraintContainerMyList)
                 }
             }
             hideProgressDialog()

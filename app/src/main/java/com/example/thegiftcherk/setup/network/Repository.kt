@@ -5,10 +5,7 @@ import android.content.Context
 import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
-import com.example.thegiftcherk.features.ui.login.models.SendNewWish
-import com.example.thegiftcherk.features.ui.login.models.SendUser
-import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
-import com.example.thegiftcherk.features.ui.login.models.User
+import com.example.thegiftcherk.features.ui.login.models.*
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.MOCK_DELAY
 import com.example.thegiftcherk.setup.network.NetworkExceptionController.checkException
@@ -89,6 +86,66 @@ class Repository(private val service: Service, private val context: Context) {
             val response: List<Item> =
                 Gson().fromJson(json, Array<Item>::class.java).toList()
             ResponseResult.Success(response)
+        }
+    }
+
+    suspend fun getAllWishes(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<Item>> {
+        return if (!fake) {
+            try {
+                val response = service.getAllWishes()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            val json = context.getJsonFromResource(R.raw.lista_personal)
+            val response: List<Item> =
+                Gson().fromJson(json, Array<Item>::class.java).toList()
+            ResponseResult.Success(response)
+        }
+    }
+
+    suspend fun getWishesByCategories(
+        categoryId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<Item>> {
+        return if (!fake) {
+            try {
+                val response = service.getWishesByCategories(categoryId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            val json = context.getJsonFromResource(R.raw.lista_personal)
+            val response: List<Item> =
+                Gson().fromJson(json, Array<Item>::class.java).toList()
+            ResponseResult.Success(response)
+        }
+    }
+
+    suspend fun editWish(
+        wishId: String,
+        sendEditWish: SendEditWish,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.editWish(wishId, sendEditWish)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
         }
     }
 
@@ -205,6 +262,194 @@ class Repository(private val service: Service, private val context: Context) {
             context.getMockResponseResult(R.raw.user)
         }
     }
+
+    suspend fun deleteWish(
+        id: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.deleteWish(id)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun getFriendWishes(
+        id: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<Item>> {
+        return if (!fake) {
+            try {
+                val response = service.getFriendWishes(id)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun editUser(
+        sendEditUser: SendEditUser,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.editProfile(sendEditUser)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun changePassword(
+        sendEditPassword: SendEditPassword,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.changePassword(sendEditPassword)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun copyWishFromUser(
+        userId: String,
+        wishId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.copyWishFromUser(userId, wishId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun getFriendRequests(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<ListaPeticionesAmistad>> {
+        return if (!fake) {
+            try {
+                val response = service.getFriendRequests()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun confirmFriend(
+        friendRequestId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.confirmFriend(friendRequestId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun deleteFriendRequest(
+        friendRequestId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.deleteFriendRequest(friendRequestId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun deleteFriend(
+        friendId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<ListaPeticionesAmistad>> {
+        return if (!fake) {
+            try {
+                val response = service.deleteFriend(friendId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun createFriendRequest(
+        friendRequestId: Operation,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.createFriendRequest(friendRequestId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+
+
 
     //endregion Others
 }

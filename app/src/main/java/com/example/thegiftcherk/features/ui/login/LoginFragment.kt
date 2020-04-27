@@ -35,12 +35,11 @@ open class LoginFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //Watch input
-//        inputEmail?.addTextChangedListener(addTextWatcherEmail(inputEmailLayout))
         inputPassword?.addTextChangedListener(textWatcherPass(inputPasswordLayout))
         //Set buttons click
 
         buttonLogin?.setOnClickListener {
-            sendUser = SendUser(inputEmail?.text.toString(), inputPassword?.text.toString())
+            sendUser = SendUser(inputUsernameLogin?.text.toString(), inputPassword?.text.toString())
             onClickLogin()
 //            pickFromGallery()
         }
@@ -62,29 +61,25 @@ open class LoginFragment : BaseFragment() {
 
     //region Clicks
     private fun onClickLogin() {
-//        if (checkInputs()) {
-
-        requestLogin(sendUser)
-//        }
+        if (checkInputs()) {
+            requestLogin(sendUser)
+        }
     }
 
-
-
     private fun checkInputs(): Boolean {
-        return if (inputEmail?.text.toString().isNotEmpty()
+        return if (inputUsernameLogin?.text.toString().isNotEmpty()
             && inputPassword?.text.toString()
-                .isNotEmpty() && inputPassword?.text.toString().length >= 6
+                .isValidPassword()
         ) {
             true
         } else {
-            if (inputEmail?.text.toString().isEmpty() && inputPassword?.text.toString().isEmpty()) {
-                showError(getString(R.string.error_pass), constraintContainer)
-            } else if (inputPassword?.text.toString().isValidPassword()) {
-                showError(getString(R.string.error_pass), constraintContainer)
-            } else if (!inputEmail?.text.toString().isEmail() || inputEmail?.text.toString()
-                    .isEmpty()
+            if (inputUsernameLogin?.text.toString().isEmpty() || inputPassword?.text.toString().isEmpty()) {
+                showError("No puede haber campos vacíos", constraintContainer)
+            } else if (!inputPassword?.text.toString().isValidPassword()) {
+                showError("Debes introducir una contraseña válida", constraintContainer)
+            } else if (!inputUsernameLogin?.text.toString().isEmpty()
             ) {
-                showError(getString(R.string.error_email), constraintContainer)
+                showError("Debes introducir un email válido", constraintContainer)
             }
             false
         }
@@ -121,7 +116,7 @@ open class LoginFragment : BaseFragment() {
                 is ResponseResult.Error ->
                     showError(response.message, constraintContainer)
                 is ResponseResult.Forbidden ->
-                    showError("ERROR", constraintContainer)
+                    showError(response.message, constraintContainer)
             }
             hideProgressDialog()
         }
@@ -136,8 +131,4 @@ open class LoginFragment : BaseFragment() {
         }
     }
     //endregion Methods
-
-    companion object {
-        private val LOGTAG: String = LoginFragment::class.java.simpleName
-    }
 }
