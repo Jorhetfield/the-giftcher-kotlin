@@ -6,6 +6,7 @@
     android:isScrollContainer="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:isScrollContainer="false">

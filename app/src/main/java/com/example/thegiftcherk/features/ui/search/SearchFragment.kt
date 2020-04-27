@@ -149,12 +149,10 @@ class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener {
                     logD("ok")
                 }
                 is ResponseResult.Error -> {
-                    logD("Error")
-
+                    showError(response.message, view!!)
                 }
                 is ResponseResult.Forbidden -> {
-                    logD("Forbidden")
-
+                    showError(response.message, view!!)
                 }
             }
             hideProgressDialog()

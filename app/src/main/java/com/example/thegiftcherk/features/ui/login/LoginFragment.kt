@@ -116,7 +116,7 @@ open class LoginFragment : BaseFragment() {
                 is ResponseResult.Error ->
                     showError(response.message, constraintContainer)
                 is ResponseResult.Forbidden ->
-                    showError("ERROR", constraintContainer)
+                    showError(response.message, constraintContainer)
             }
             hideProgressDialog()
         }

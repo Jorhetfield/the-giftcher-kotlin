@@ -19,6 +19,7 @@ import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_add_product.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -167,8 +168,12 @@ class EditWishFragment : BaseFragment() {
                 }
 
                 is ResponseResult.Error -> {
+                    showError(response.message, constraintContainer)
+
                 }
                 is ResponseResult.Forbidden -> {
+                    showError(response.message, constraintContainer)
+
                 }
             }
             hideProgressDialog()

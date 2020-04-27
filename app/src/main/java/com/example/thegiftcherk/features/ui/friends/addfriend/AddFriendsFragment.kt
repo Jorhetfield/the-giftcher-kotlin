@@ -1,4 +1,4 @@
-package com.example.thegiftcherk.features.ui.friends
+package com.example.thegiftcherk.features.ui.friends.addfriend
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,12 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.friends.FriendsAdapter
+import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
+import com.example.thegiftcherk.setup.utils.extensions.fromJson
 import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.gson.Gson
@@ -23,7 +27,8 @@ import java.util.*
 class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
     private val friends: MutableList<Friend> = mutableListOf()
     private val friendsFiltered: MutableList<Friend> = mutableListOf()
-    private lateinit var friendsAdapter: FriendsAdapter
+    private lateinit var friendsAdapter: AddFriendsAdapter
+    val userData = prefs.user?.fromJson<User>()
 
 
     override fun onCreateView(
@@ -46,9 +51,10 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerAddFriends.layoutManager = linearLayoutManager
 
-        friendsAdapter = FriendsAdapter(friends) {
+        friendsAdapter =
+            AddFriendsAdapter(friends) {
 
-        }
+            }
         recyclerAddFriends.adapter = friendsAdapter
     }
 
@@ -131,17 +137,21 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
                     responseResult.forEach {
                         logD("response ${it.username}")
                     }
+                    val allUsers = response.value.filterNot {
+                        it.username == userData?.username
+                    }
 
-                    prefs.obsLocationAddress = responseResult.json()
+                    prefs.obsLocationAddress = allUsers.json()
                     friends.clear()
-                    friends.addAll(responseResult)
+                    friends.addAll(allUsers)
                     friendsAdapter.notifyDataSetChanged()
                 }
 
                 is ResponseResult.Error -> {
-                    showError("No estás en la build variant de MOCK.", view!!)
+                    showError(response.message, view!!)
                 }
                 is ResponseResult.Forbidden -> {
+                    showError(response.message, view!!)
                 }
             }
             hideProgressDialog()

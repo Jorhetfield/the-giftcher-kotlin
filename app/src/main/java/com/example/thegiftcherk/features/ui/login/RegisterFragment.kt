@@ -161,10 +161,8 @@ class RegisterFragment : BaseFragment() {
                 sendUserRegister
             )) {
                 is ResponseResult.Success -> {
-                    //Save User:
                     findNavController().popBackStack()
-                    //Change view:
-
+                    showMessage("Registro correcto, inicia sesión para empezar", constraintContainer)
                 }
                 is ResponseResult.Error ->
                     showError(response.message, constraintContainer)

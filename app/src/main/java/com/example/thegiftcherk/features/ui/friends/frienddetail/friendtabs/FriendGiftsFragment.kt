@@ -56,9 +56,11 @@ class FriendGiftsFragment : BaseFragment() {
                 }
 
                 is ResponseResult.Error -> {
-                    showError("No estás en la build variant de MOCK.", view!!)
+                    showError(response.message, constraintContainerMyList)
                 }
                 is ResponseResult.Forbidden -> {
+                    showError(response.message, constraintContainerMyList)
+
                 }
             }
             hideProgressDialog()
