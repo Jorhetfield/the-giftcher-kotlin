@@ -2,11 +2,19 @@ package com.example.thegiftcherk.features.ui.friends
 
 import android.view.View
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.setup.network.Repository
+import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.logD
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_friend.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
@@ -37,5 +45,16 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
                 FriendsFragmentDirections.goFromFriendToFriendDetail(friend)
             Navigation.findNavController(this.view).navigate(action)
         }
+
+        view.friend_messageCard?.setOnLongClickListener {
+            MaterialAlertDialogBuilder(view.context, R.style.DialogTheme1)
+                .setTitle("¿Quieres borrar a ${friend.username} de tu lista de amigos?")
+                .setNegativeButton("No",null)
+                .setPositiveButton("Si") { _, _ ->
+
+                }.show()
+            true
+        }
+
     }
 }

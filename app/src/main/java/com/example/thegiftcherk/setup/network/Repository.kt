@@ -354,6 +354,103 @@ class Repository(private val service: Service, private val context: Context) {
         }
     }
 
+    suspend fun getFriendRequests(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<ListaPeticionesAmistad>> {
+        return if (!fake) {
+            try {
+                val response = service.getFriendRequests()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun confirmFriend(
+        friendRequestId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.confirmFriend(friendRequestId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun deleteFriendRequest(
+        friendRequestId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.deleteFriendRequest(friendRequestId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun deleteFriend(
+        friendId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<List<ListaPeticionesAmistad>> {
+        return if (!fake) {
+            try {
+                val response = service.deleteFriend(friendId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun createFriendRequest(
+        friendRequestId: Operation,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.createFriendRequest(friendRequestId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+
+
+
     //endregion Others
 }
 

@@ -11,6 +11,7 @@ import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.fromJson
 import com.example.thegiftcherk.setup.utils.extensions.logD
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -33,7 +34,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        getFriendRequests()
 
         likes?.forEach { like ->
             val prueba = CategoriesIds.values().find {
@@ -88,11 +89,6 @@ class HomeFragment : BaseFragment() {
 
         getItems()
 
-
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     private fun getItems() {
@@ -149,5 +145,39 @@ class HomeFragment : BaseFragment() {
         }
     }
 
+    private fun getFriendRequests() {
+        GlobalScope.launch(Dispatchers.Main) {
+            showProgressDialog()
+            when (val response =
+                customRepository.getFriendRequests()) {
+                is ResponseResult.Success -> {
+                    if (response.value.isNotEmpty()) {
+                        //todo abrir diálogo
+                        logD("Ok ${response.value}")
+                        MaterialAlertDialogBuilder(context, R.style.DialogTheme1)
+                            .setTitle("Tienes nuevas peticiones de amistad")
+                            .setNegativeButton("Cerrar") { _, _ ->
+
+
+
+                            }
+                            .setPositiveButton("Ver") { _, _ ->
+
+
+
+                            }.show()
+                    }
+                }
+                is ResponseResult.Error -> {
+                    logD("Error")
+                }
+                is ResponseResult.Forbidden -> {
+                    logD("Forbidden")
+
+                }
+            }
+            hideProgressDialog()
+        }
+    }
 
 }
