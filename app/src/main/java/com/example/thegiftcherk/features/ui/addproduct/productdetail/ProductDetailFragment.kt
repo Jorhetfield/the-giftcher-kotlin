@@ -111,7 +111,6 @@ class ProductDetailFragment : BaseFragment() {
                     deleteWish(mProduct?.id.toString())
                 }.show()
         }
-
     }
 
     private fun deleteWish(id: String) {
@@ -124,11 +123,9 @@ class ProductDetailFragment : BaseFragment() {
                 }
                 is ResponseResult.Error -> {
                     logD("Error")
-
                 }
                 is ResponseResult.Forbidden -> {
                     logD("Forbidden")
-
                 }
             }
             hideProgressDialog()
@@ -141,15 +138,12 @@ class ProductDetailFragment : BaseFragment() {
             when (val response =
                 customRepository.copyWishFromUser(userId, wishId)) {
                 is ResponseResult.Success -> {
-
                 }
                 is ResponseResult.Error -> {
                     logD("Error")
-
                 }
                 is ResponseResult.Forbidden -> {
                     logD("Forbidden")
-
                 }
             }
             hideProgressDialog()

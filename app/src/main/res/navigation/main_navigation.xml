@@ -213,5 +213,16 @@
         tools:layout="@layout/fragment_edit_password"
         android:name="com.example.thegiftcherk.features.ui.profile.EditPasswordFragment"
         android:label="EditPasswordFragment" />
-
+    <fragment
+        android:id="@+id/friendsRequestsFragment"
+        tools:layout="@layout/fragment_friends"
+        android:name="com.example.thegiftcherk.features.ui.friends.friendrequests.FriendsRequestsFragment"
+        android:label="FriendsRequestsFragment" />
+    <action
+        android:id="@+id/actionGoToFriendRequest"
+        app:destination="@id/friendsRequestsFragment"
+        app:enterAnim="@anim/enter_from_right"
+        app:exitAnim="@anim/exit_to_left"
+        app:popEnterAnim="@anim/enter_from_left"
+        app:popExitAnim="@anim/exit_to_right" />
 </navigation>

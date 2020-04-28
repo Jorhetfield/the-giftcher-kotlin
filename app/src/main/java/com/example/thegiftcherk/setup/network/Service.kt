@@ -32,6 +32,11 @@ interface Service {
         @Body sendUserRegister: SendUserRegister
     ): Response<Any>
 
+    @GET("user/{userId}")
+    suspend fun getSingleUser(
+        @Path("userId") userId: String
+    ): Response<Friend>
+
     @GET("wishes/")
     suspend fun getOwnWishes(
     ): Response<List<Item>>
@@ -105,22 +110,22 @@ interface Service {
     suspend fun getFriendRequests(
     ): Response<List<ListaPeticionesAmistad>>
 
-    @GET("friends/{friendRequestId}")
+    @PUT("friends/{friendRequestId}")
     suspend fun confirmFriend(
         @Path("friendRequestId") friendRequestId: String
     ): Response<Operation>
 
-    @GET("/friends/requests/{friendRequestId}")
+    @DELETE("/friends/requests/{friendRequestId}")
     suspend fun deleteFriendRequest(
         @Path("friendRequestId") friendRequestId: String
     ): Response<Operation>
 
-    @GET("friends/{friendId}")
+    @DELETE("friends/{friendId}")
     suspend fun deleteFriend(
         @Path("friendId") friendId: String
     ): Response<List<ListaPeticionesAmistad>>
 
-    @GET("friends")
+    @POST("friends")
     suspend fun createFriendRequest(
         @Body friendRequestId: Operation
     ): Response<Operation>

@@ -52,6 +52,23 @@ class Repository(private val service: Service, private val context: Context) {
         }
     }
 
+    suspend fun getSingleUser(
+        userId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Friend> {
+        return if (!fake) {
+            try {
+                val response = service.getSingleUser(userId)
+                checkResponse(context, response)
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
     suspend fun doRegister(
         sendUserRegister: SendUserRegister,
         fake: Boolean = BuildConfig.MOCK
@@ -368,7 +385,7 @@ class Repository(private val service: Service, private val context: Context) {
 
         } else {
             delay(MOCK_DELAY)
-            context.getMockResponseResult(R.raw.user)
+            context.getMockResponseResult(R.raw.chip_response)
         }
     }
 
