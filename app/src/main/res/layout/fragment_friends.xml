@@ -21,7 +21,7 @@
         android:foregroundGravity="left"
         android:foregroundTint="@color/colorSecondary"
         android:gravity="center"
-        android:hint="Pulsa para buscar entre tus amigos"
+        android:hint="@string/friends_searchbar_placeholder"
         android:maxLength="20"
         android:maxLines="1"
         android:singleLine="true"

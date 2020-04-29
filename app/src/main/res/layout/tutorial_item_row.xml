@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="asdasdasasd asd asdas das asdas "
+                android:text="@string/sample"
                 android:textColor="@color/colorSecondary"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"

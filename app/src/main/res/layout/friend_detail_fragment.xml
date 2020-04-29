@@ -90,7 +90,7 @@
                     android:layout_weight="50"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
-                    android:text="Nombre"
+                    android:text="@string/placeholder_name"
                     android:textColor="@color/colorSecondary"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -118,7 +118,7 @@
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
-                    android:text="Cumpleaños"
+                    android:text=""
                     android:textColor="@color/colorSecondary"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -160,12 +160,12 @@
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Deseos" />
+                        android:text="@string/frienddetail_title_wishlist" />
 
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Regalos asociados" />
+                        android:text="@string/frienddetail_title_associatelist" />
 
 
                 </com.google.android.material.tabs.TabLayout>

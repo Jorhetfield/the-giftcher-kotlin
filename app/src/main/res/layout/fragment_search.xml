@@ -18,7 +18,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:foregroundGravity="left"
-        android:hint="Pulsa para buscar"
+        android:hint="@string/search_placeholder"
         android:foregroundTint="@color/colorSecondary"
         android:gravity="center"
         android:maxLength="20"

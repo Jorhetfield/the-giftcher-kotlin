@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Elige tus gustos personales"
+            android:text="@string/likes_title"
             android:textColor="@color/colorSecondary"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,110 +41,110 @@
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Videojuegos"
+                android:text="@string/likes_checkbox_videogames"
                 app:checkedIconVisible="true" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hogar" />
+                android:text="@string/likes_checkbox_home" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Motor" />
+                android:text="@string/likes_checkbox_motor" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Electrodomésticos" />
+                android:text="@string/likes_checkbox_homeappliances" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jardín" />
+                android:text="@string/likes_checkbox_garden" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Televisión" />
+                android:text="@string/likes_checkbox_tv" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Música" />
+                android:text="@string/likes_checkbox_music" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fotografía" />
+                android:text="@string/likes_checkbox_photo" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Móviles" />
+                android:text="@string/likes_checkbox_mobile" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Informática" />
+                android:text="@string/likes_checkbox_computing" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Deporte" />
+                android:text="@string/likes_checkbox_sports" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Libros" />
+                android:text="@string/likes_checkbox_books" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Niños y Bebés" />
+                android:text="@string/likes_checkbox_childs" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Agricultura" />
+                android:text="@string/likes_checkbox_farming" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Servicios" />
+                android:text="@string/likes_checkbox_services" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Coleccionismo" />
+                android:text="@string/likes_checkbox_collectibles" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Construcción" />
+                android:text="@string/likes_checkbox_masonry" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Otros" />
+                android:text="@string/likes_checkbox_others" />
 
         </com.google.android.material.chip.ChipGroup>
 
@@ -155,7 +155,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:cornerRadius="24dp"
-            android:text="Continuar"
+            android:text="@string/likes_button_continue"
             android:textColor="@color/white_gray"
             app:strokeColor="@color/colorDetailDark"
             app:rippleColor="@color/colorDetailDark"

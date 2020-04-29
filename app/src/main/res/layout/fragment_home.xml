@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="THE GIFTCHER"
+                    android:text="@string/app_name"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/montserrat"
                     android:textSize="18sp"
@@ -48,7 +48,7 @@
                     android:layout_marginEnd="32dp"
                     android:gravity="center"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text="Listas personalizadas adecuadas a tus gustos."
+                    android:text="@string/home_subtitle"
                     android:textColor="@color/colorPrimary"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:backgroundTint="@color/transparent"
-                    android:text="MAS INFORMACIÓN"
+                    android:text="@string/home_button_moreinfo"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/montserrat_light"
                     android:textColorHighlight="@color/colorPrimary"
@@ -94,10 +94,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:textSize="16dp"
+                android:textSize="16sp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Recycler uno"
+                android:text="@string/sample"
                 android:textColor="@color/colorSecondary" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -113,8 +113,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/montserrat"
-                android:textSize="16dp"
-                android:text="Recycler dos"
+                android:textSize="16sp"
+                android:text="@string/sample"
                 android:textColor="@color/colorSecondary" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -130,8 +130,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/montserrat"
-                android:textSize="16dp"
-                android:text="Recycler tres"
+                android:textSize="16sp"
+                android:text="@string/sample"
                 android:textColor="@color/colorSecondary" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -147,8 +147,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/montserrat"
-                android:textSize="16dp"
-                android:text="Recycler cuatro"
+                android:textSize="16sp"
+                android:text="@string/sample"
                 android:textColor="@color/colorSecondary" />
 
             <androidx.recyclerview.widget.RecyclerView

@@ -5,20 +5,20 @@
     <item
         android:id="@+id/logo"
         android:icon="@drawable/ic_icono_tg_white_mode"
-        android:title="logo"
+        android:title="@string/sample"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/edit"
         android:icon="@drawable/ic_edit"
-        android:title="edit"
+        android:title="@string/sample"
         android:visible="false"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"
-        android:title="settings"
+        android:title="@string/sample"
         android:visible="false"
         app:showAsAction="always"/>
 
