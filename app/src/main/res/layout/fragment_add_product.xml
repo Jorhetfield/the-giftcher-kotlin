@@ -99,7 +99,7 @@
                         android:id="@+id/inputName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Name"
+                        android:hint="@string/placeholder_name"
                         android:inputType="text"
                         android:textColor="@color/colorSecondary">
 
@@ -126,7 +126,7 @@
                         android:id="@+id/inputStore"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Store"
+                        android:hint="@string/addproduct_placeholder_shop"
                         android:inputType="text"
                         android:textColor="@color/colorSecondary"
                         app:hintTextColor="@color/colorSecondary">
@@ -153,7 +153,7 @@
                         android:id="@+id/inputLocation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Location"
+                        android:hint="@string/addproduct_placeholder_location"
                         android:inputType="text"
                         android:textColor="@color/colorSecondary"
                         app:hintTextColor="@color/colorSecondary">
@@ -188,7 +188,7 @@
                             android:id="@+id/inputPrice"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Price"
+                            android:hint="@string/addproduct_placeholder_price"
                             android:inputType="numberDecimal"
                             android:textColor="@color/colorSecondary"
                             app:hintTextColor="@color/colorSecondary">
@@ -231,7 +231,7 @@
                         android:id="@+id/inputDescription"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="Description"
+                        android:hint="@string/addproduct_placeholder_description"
                         android:inputType="textLongMessage"
                         android:maxLines="15"
                         android:textColor="@color/colorSecondary"
@@ -258,7 +258,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="Guardar"
+                android:text="@string/addproduct_button_save"
                 android:textColor="@color/colorDetail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
@@ -268,7 +268,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Asignar"
+                android:text="@string/addproduct_button_associate"
                 android:textColor="@color/colorDetail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView" />

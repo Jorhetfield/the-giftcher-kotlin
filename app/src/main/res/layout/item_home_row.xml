@@ -52,7 +52,7 @@
                 android:gravity="center"
                 android:textStyle="bold"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="nombre"
+                android:text="@string/placeholder_name"
                 android:textColor="@color/colorSecondary"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"

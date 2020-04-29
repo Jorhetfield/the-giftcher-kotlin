@@ -202,23 +202,23 @@ abstract class BaseFragment : Fragment() {
     enum class CategoriesIds(val category: Pair<String, String>) {
         VIDEOJUEGOS(Pair("1", "Videojuegos")),
         HOGAR(Pair("2", "Hogar")),
-        MOTOR(Pair("3", "Motor")),
+        MOTOR(Pair("3", "Vehículos")),
         ELECTRODOMESTICOS(Pair("4", "Electrodomésticos")),
         MODA(Pair("5", "Moda")),
-        JARDIN(Pair("6", "Jardín")),
-        TELEVISION(Pair("7", "Televisión")),
+        JARDIN(Pair("6", "Jardinería")),
+        TELEVISION(Pair("7", "Televisores")),
         MUSICA(Pair("8", "Música")),
         FOTO(Pair("9", "Fotografía")),
-        MOVILES(Pair("10", "Móviles")),
+        MOVILES(Pair("10", "Telefonía")),
         INFORMATICA(Pair("11", "Informática")),
-        DEPORTE(Pair("12", "Deporte")),
-        LIBROS(Pair("13", "Libros")),
-        NIÑOS_Y_BEBES(Pair("14", "Niños y Bebés")),
+        DEPORTE(Pair("12", "Deportes")),
+        LIBROS(Pair("13", "Literatura")),
+        NIÑOS_Y_BEBES(Pair("14", "Niños y bebés")),
         AGRICULTURA(Pair("15", "Agricultura")),
         SERVICIOS(Pair("16", "Servicios")),
         COLECCIONISMO(Pair("17", "Coleccionismo")),
-        CONSTRUCCION(Pair("18", "Construcción")),
-        OTROS(Pair("19", "Otros"))
+        CONSTRUCCION(Pair("18", "Albañilería y construcción")),
+        OTROS(Pair("19", "Otras"))
     }
 
     companion object {

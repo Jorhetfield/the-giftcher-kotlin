@@ -65,7 +65,7 @@
                         android:id="@+id/inputName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nombre"
+                        android:hint="@string/placeholder_name"
                         android:inputType="textPersonName"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -86,7 +86,7 @@
                         android:id="@+id/inputLastname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Apellidos"
+                        android:hint="@string/placeholder_surname"
                         android:inputType="textPersonName"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -128,7 +128,7 @@
                         android:id="@+id/inputUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nombre de usuario"
+                        android:hint="@string/placeholder_username"
                         android:inputType="text"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -203,9 +203,9 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="32dp"
                         android:backgroundTint="@color/color_detail"
-                        android:text="Select your birthday"
+                        android:text="@string/title_updatebirthday"
                         android:textColor="@color/colorDetail"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </LinearLayout>
