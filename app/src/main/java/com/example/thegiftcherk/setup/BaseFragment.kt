@@ -223,6 +223,7 @@ abstract class BaseFragment : Fragment() {
 
     companion object {
         const val REQUEST_LOCATION = 83
+        const val CAMERA = 84
     }
     //endregion App Special Methods
 }

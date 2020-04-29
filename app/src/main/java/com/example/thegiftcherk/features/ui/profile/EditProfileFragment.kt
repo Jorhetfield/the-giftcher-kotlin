@@ -1,12 +1,15 @@
 package com.example.thegiftcherk.features.ui.profile
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.os.StrictMode
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -21,13 +24,12 @@ import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.addTenths
 import com.example.thegiftcherk.setup.utils.extensions.logD
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_add_product.*
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.constraintContainer
-import kotlinx.android.synthetic.main.fragment_register.inputName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -42,7 +44,8 @@ class EditProfileFragment : BaseFragment() {
     //region Vars
     private lateinit var sendUserRegister: SendEditUser
     val user = Gson().fromJson(prefs.user, User::class.java)
-
+    private val galleryRequestCode = 10
+    private val cameraRequestCode = 20
     //endregion Vars
 
     //region Override Methods
@@ -71,11 +74,28 @@ class EditProfileFragment : BaseFragment() {
         }
 
         editImage?.setOnClickListener {
-            pickFromGallery()
+            if (checkAndRequestPermission(
+                    android.Manifest.permission.CAMERA,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.INTERNET,
+                    CAMERA
+                )
+            ){
+                selectImage()
+            }
+
         }
 
         editPassword?.setOnClickListener {
-            val action = EditProfileFragmentDirections.actionEditProfileFragmentToEditPasswordFragment()
+            val action =
+                EditProfileFragmentDirections.actionEditProfileFragmentToEditPasswordFragment()
             Navigation.findNavController(view).navigate(action)
         }
 
@@ -122,23 +142,56 @@ class EditProfileFragment : BaseFragment() {
         birthdayTextEdit?.text = date
     }
 
-    private fun pickFromGallery() {
-        //Create an Intent with action as ACTION_PICK
-        val intent = Intent(Intent.ACTION_PICK)
-        // Sets the type as image/*. This ensures only components of type image are selected
-        intent.type = "image/*"
-        //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
-        val mimeTypes =
-            arrayOf("image/jpeg", "image/png")
-        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-        // Launching the Intent
-        startActivityForResult(intent, 0)
+    private fun selectImage() {
+        val options =
+            arrayOf<CharSequence>("Hacer foto", "Elegir desde la galería", "Eliminar", "Cancelar")
+        val builder = AlertDialog.Builder(context)
+        builder.setItems(options) { dialog, item ->
+            if (options[item] == "Hacer foto") {
+                val policyBuilder = StrictMode.VmPolicy.Builder()
+                StrictMode.setVmPolicy(policyBuilder.build())
+
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+                val uri = Uri.parse("file:///sdcard/photo.jpg")
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+                //pic = f;
+                startActivityForResult(intent, cameraRequestCode)
+
+            } else if (options[item] == "Elegir desde la galería") {
+
+                val intent = Intent(
+                    Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                )
+                // Sets the type as image/*. This ensures only components of type image are selected
+                intent.type = "image/*"
+                //We pass an extra array with the accepted mime types. This will ensure only components with these MIME types as targeted.
+                val mimeTypes =
+                    arrayOf("image/jpeg", "image/png")
+                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+                // Launching the Intent
+                startActivityForResult(intent, galleryRequestCode)
+
+            } else if (options[item] == "Eliminar") {
+
+                MaterialAlertDialogBuilder(context)
+                    .setTitle("¿Quieres borrar tu foto de perfil?")
+                    .setNegativeButton("No", null)
+                    .setPositiveButton("Si") { _, _ ->
+                    }.show()
+
+            } else if (options[item] == "Cancelar") {
+                dialog.dismiss()
+            }
+        }
+        builder.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) when (requestCode) {
-            0 -> {
+            galleryRequestCode -> {
                 //data.getData returns the content URI for the selected Image
                 data?.data?.let { uri ->
                     context?.contentResolver?.let { contentResolver ->
@@ -147,13 +200,27 @@ class EditProfileFragment : BaseFragment() {
                             uri
                         )
 
-                        uploadImage(createMultipart(rotateBitmap(bitmap)))
-                        imageProfile.setImageBitmap(rotateBitmap(bitmap))
+                        logD("probando ${bitmap.width} ${bitmap.height}")
+
+                        uploadImage(createMultipart(bitmap))
                     }
                 }
             }
+            cameraRequestCode -> {
+                logD("probando $data")
+
+                val file = File(
+                    Environment.getExternalStorageDirectory().path,
+                    "photo.jpg"
+                )
+                val uri = Uri.fromFile(file)
+                val bitmap: Bitmap
+                bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
+                uploadImage(createMultipart(bitmap))
+            }
         }
     }
+
     private fun rotateBitmap(bitmap: Bitmap): Bitmap {
         val matrix = Matrix()
         matrix.postRotate(90f)
@@ -186,7 +253,11 @@ class EditProfileFragment : BaseFragment() {
         return convertBitmapToFile(fileName, bitmap, qualityJpeg = 100)
     }
 
-    private fun convertBitmapToFile(fileName: String, bitmap: Bitmap, qualityJpeg: Int = 100): File {
+    private fun convertBitmapToFile(
+        fileName: String,
+        bitmap: Bitmap,
+        qualityJpeg: Int = 100
+    ): File {
         //Create a file to write bitmap data
         val file = File(context?.cacheDir, fileName)
         file.createNewFile()
@@ -212,6 +283,7 @@ class EditProfileFragment : BaseFragment() {
         }
         return file
     }
+
 
     private fun dialogBook() {
         val calendar = Calendar.getInstance()

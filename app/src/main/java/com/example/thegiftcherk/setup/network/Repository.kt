@@ -227,10 +227,32 @@ class Repository(private val service: Service, private val context: Context) {
         }
     }
 
+    suspend fun uploadWishImage(
+        file: MultipartBody.Part?,
+        wishId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Any> {
+        return if (!fake) {
+            try {
+                val response = service.uploadWishImage(file, wishId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            val json = context.getJsonFromResource(R.raw.lista_personal)
+            val response: List<Item> =
+                Gson().fromJson(json, Array<Item>::class.java).toList()
+            ResponseResult.Success(response)
+        }
+    }
+
     suspend fun addWish(
         sendNewWish: SendNewWish,
         fake: Boolean = BuildConfig.MOCK
-    ): ResponseResult<Operation> {
+    ): ResponseResult<Item> {
         return if (!fake) {
             try {
                 val response = service.addNewWish(sendNewWish)

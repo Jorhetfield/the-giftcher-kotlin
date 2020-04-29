@@ -11,7 +11,6 @@ import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.features.ui.tutorial.TutorialActivity
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
-import com.example.thegiftcherk.setup.utils.extensions.isEmail
 import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
 import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
@@ -62,7 +61,22 @@ open class LoginFragment : BaseFragment() {
     //region Clicks
     private fun onClickLogin() {
         if (checkInputs()) {
-            requestLogin(sendUser)
+            if (checkAndRequestPermission(
+                    android.Manifest.permission.CAMERA,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.INTERNET,
+                    CAMERA
+                )
+            ) {
+                requestLogin(sendUser)
+            }
         }
     }
 
@@ -73,7 +87,9 @@ open class LoginFragment : BaseFragment() {
         ) {
             true
         } else {
-            if (inputUsernameLogin?.text.toString().isEmpty() || inputPassword?.text.toString().isEmpty()) {
+            if (inputUsernameLogin?.text.toString().isEmpty() || inputPassword?.text.toString()
+                    .isEmpty()
+            ) {
                 showError("No puede haber campos vacíos", constraintContainer)
             } else if (!inputPassword?.text.toString().isValidPassword()) {
                 showError("Debes introducir una contraseña válida", constraintContainer)

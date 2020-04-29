@@ -209,31 +209,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/passwordET" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/inputPhoneLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            style="@style/MyOutlinedBox.Dense"
-            android:textColorHint="@color/colorDetail"
-            app:boxStrokeColor="@color/colorDetail"
-            app:hintTextColor="@color/colorDetail"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputLastNameLayout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Teléfono*"
-                android:inputType="phone"
-                android:textColor="@color/colorSecondary" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchMaterial2"
             android:layout_width="0dp"

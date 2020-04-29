@@ -1,10 +1,8 @@
 package com.example.thegiftcherk.features.ui.friends.friendrequests
 
-import android.content.res.Resources
 import android.graphics.Color
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_friend.view.image_IV

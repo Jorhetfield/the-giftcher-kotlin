@@ -78,6 +78,7 @@ class ProductDetailFragment : BaseFragment() {
         Picasso.get()
             .load(mProduct?.picture)
             .into(itemImage)
+        logD("product $mProduct")
 
         shareButton?.setOnClickListener {
             //TODO abrir intent de compartir

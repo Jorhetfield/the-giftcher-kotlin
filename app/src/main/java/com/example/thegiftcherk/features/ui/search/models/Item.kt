@@ -15,5 +15,5 @@ data class Item(
     val category: String?,
     val description: String?,
     val location: String?,
-    val picture: String?
+    @SerializedName("imagePath") val picture: String?
 ) : Parcelable

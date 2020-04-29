@@ -60,7 +60,7 @@ interface Service {
     @POST("wishes/")
     suspend fun addNewWish(
         @Body sendNewWish: SendNewWish
-    ): Response<Operation>
+    ): Response<Item>
 
     @GET("friends")
     suspend fun getFriends(
@@ -74,6 +74,13 @@ interface Service {
     @POST("/user/google_cloud_image")
     suspend fun uploadImage(
         @Part file: MultipartBody.Part?
+    ): Response<Any>
+
+    @Multipart
+    @POST("/wishes/google_cloud_wish_image/{wishId}")
+    suspend fun uploadWishImage(
+        @Part file: MultipartBody.Part?,
+        @Path("wishId") id: String
     ): Response<Any>
 
     @GET("user/get_profile_image")
