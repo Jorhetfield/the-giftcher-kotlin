@@ -24,6 +24,7 @@
     <string name="edit_profile">Editar mi perfil</string>
     <string name="help">Ayuda</string>
     <string name="contact_us">Contacta con nosotros</string>
+    <string name="edit_wish">Edita este deseo</string>
 
     <!-- Login -->
     <string name="login">Iniciar sesión</string>
@@ -39,7 +40,7 @@
     <!-- Logout -->
     <string name="logout">Cerrar sesión.</string>
     <string name="logout_confirmation">¿Estás seguro de que quieres cerrar sesión?</string>
-    <string name="logout_confirmed">Has cerrado sesión correctamente en <b>The Giftcher</b></string>
+    <string name="logout_confirmed">Has cerrado sesión correctamente en <b>The Giftcher™</b></string>
 
     <!-- Register -->
     <string name="error_pass_not_equals">Las contraseñas deben ser iguales</string>
@@ -56,8 +57,8 @@
     <string name="addproduct_placeholder_location">Dirección</string>
     <string name="addproduct_placeholder_price">Precio</string>
     <string name="addproduct_placeholder_description">Descripción del producto</string>
-    <string name="addproduct_button_save">Guardar producto en mi lista</string>
-    <string name="addproduct_button_associate">Asociar producto a un amigo</string>
+    <string name="addproduct_button_save">Guardar</string>
+    <string name="addproduct_button_associate">Asociar</string>
 
     <!-- Fragment "Contact us" -->
     <string name="contactus_title">Formulario de contacto</string>
@@ -119,7 +120,7 @@
     <string name="settings_button_help">Ayuda</string>
 
     <!-- Fragment "Settings" -->
-    <string name="search_placeholder">Busca productos en The Giftcher</string>
+    <string name="search_placeholder">Busca productos en The Giftcher™</string>
 
     <!-- Fragment "Friend detail" -->
     <string name="frienddetail_title_birthday">Cumpleaños</string>
