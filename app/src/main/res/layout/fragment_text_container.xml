@@ -36,7 +36,7 @@
                 android:id="@+id/textViewLong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="alksjfoiasfhialhnaiaiuhianasfaasfasasdasdasdasdasdasdasdasdas asd asd sad ds ad asdsad g her jy tyrjh sfasfifasfjlfaf f ioaf oafhaiof "
+                android:text="@string/sample"
                 android:textColor="@color/colorSecondary"
                 android:textSize="18sp" />
 

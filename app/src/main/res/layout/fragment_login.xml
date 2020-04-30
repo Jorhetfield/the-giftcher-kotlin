@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorDetail"
             android:foregroundTint="@color/colorDetail"
-            android:hint="Nombre de Usuario"
+            android:hint="@string/placeholder_username"
             android:inputType="textEmailAddress"
             android:textColor="@color/colorSecondary" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -82,7 +82,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorDetail"
             android:foregroundTint="@color/colorDetail"
-            android:hint="@string/placeholder_password"
+            android:hint="@
+            /placeholder_password"
             android:inputType="textPassword"
             android:textColor="@color/colorSecondary" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -94,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:focusable="false"
-        android:text="@string/password_forgoten"
+        android:text="@string/password_forgotten"
         android:textAllCaps="false"
         android:textColor="@color/colorSecondary"
         app:layout_constraintStart_toStartOf="@+id/inputPasswordLayout"
@@ -125,7 +126,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/colorDetail"
-        android:text="Registrarse"
+        android:text="@string/register"
         android:textColor="@android:color/white"
         app:cornerRadius="24dp"
         app:layout_constraintEnd_toEndOf="parent"

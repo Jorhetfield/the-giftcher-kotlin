@@ -133,7 +133,7 @@
                         android:layout_weight="50"
                         android:fontFamily="@font/montserrat_regular"
                         android:gravity="center"
-                        android:text="Producto"
+                        android:text="@string/sample"
                         android:textColor="@color/colorSecondary"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -150,7 +150,7 @@
                         android:layout_weight="50"
                         android:fontFamily="@font/montserrat_regular"
                         android:gravity="center"
-                        android:text="5€"
+                        android:text="@string/sample"
                         android:textColor="@color/colorSecondary"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +176,7 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/montserrat_regular"
                     android:gravity="center"
-                    android:text="Descripción"
+                    android:text="@string/sample"
                     android:textColor="@color/colorSecondary"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -213,7 +213,7 @@
                         android:layout_weight="50"
                         android:fontFamily="@font/montserrat_regular"
                         android:gravity="center"
-                        android:text="Categoría"
+                        android:text="@string/sample"
                         android:textColor="@color/colorSecondary"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -230,7 +230,7 @@
                         android:layout_weight="50"
                         android:fontFamily="@font/montserrat_regular"
                         android:gravity="center"
-                        android:text="Amazon"
+                        android:text="@string/sample"
                         android:textColor="@color/colorSecondary"
                         android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -258,7 +258,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:textColor="@color/colorDetail"
-            android:text="Modificar"
+            android:text="@string/productdetail_button_update"
             app:layout_constraintTop_toBottomOf="@+id/messageCard" />
 
         <com.google.android.material.button.MaterialButton
@@ -267,7 +267,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:backgroundTint="@color/colorDetail"
-            android:text="Eliminar"
+            android:text="@string/productdetail_button_delete"
             android:textColor="@color/white_gray"
             app:layout_constraintTop_toBottomOf="@+id/messageCard" />
     </LinearLayout>

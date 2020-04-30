@@ -135,11 +135,11 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
             when (val response =
                 customRepository.getFriends()) {
                 is ResponseResult.Success -> {
-                    val responseResult = response.value
+                    val responseResult = response.value.friends
 
-                    prefs.obsLocationAddress = responseResult.json()
+                    prefs.obsLocationAddress = responseResult?.json()
                     friends.clear()
-                    friends.addAll(responseResult)
+                    friends.addAll(responseResult!!.toList())
                     friendsAdapter.notifyDataSetChanged()
 
                     responseResult.forEach {

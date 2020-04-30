@@ -55,6 +55,5 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
                 }.show()
             true
         }
-
     }
 }

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.thegiftcherk.features.ui.home.HomeFragment"
-        android:label="Home"
+        android:label=""
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_productDetailFragment"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/navigation_friends"
         android:name="com.example.thegiftcherk.features.ui.friends.FriendsFragment"
-        android:label="Friends"
+        android:label="@string/friends"
         tools:layout="@layout/fragment_friends">
 
         <!-- Aquí está la navegación desde el fragment Friend al fragment "friendDetail"-->
@@ -47,7 +47,6 @@
     <fragment
         android:id="@+id/friendDetailFragment"
         android:name="com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragment"
-        android:label="FriendDetailFragment"
         tools:layout="@layout/friend_detail_fragment">
         <argument
             android:name="friend"
@@ -64,13 +63,13 @@
     <fragment
         android:id="@+id/navigation_add"
         android:name="com.example.thegiftcherk.features.ui.addproduct.AddProductFragment"
-        android:label="Add Product"
+        android:label="@string/add_wish"
         tools:layout="@layout/fragment_add_product" />
 
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.example.thegiftcherk.features.ui.search.SearchFragment"
-        android:label="Search Product"
+        android:label="@string/search"
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/goFromSearchToDetail"
@@ -84,7 +83,7 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.thegiftcherk.features.ui.profile.ProfileFragment"
-        android:label="Profile"
+        android:label="@string/profile"
         tools:layout="@layout/friend_detail_fragment">
         <action
             android:id="@+id/action_navigation_profile_to_productDetailFragment"
@@ -97,8 +96,8 @@
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.thegiftcherk.features.ui.addproduct.productdetail.ProductDetailFragment"
-        android:label="ProductDetailFragment"
-        tools:layout="@layout/product_detail_fragment">
+        tools:layout="@layout/product_detail_fragment"
+        android:label="">
         <argument
             android:name="product"
             app:argType="com.example.thegiftcherk.features.ui.search.models.Item" />
@@ -113,11 +112,11 @@
     <fragment
         android:id="@+id/addFriendsFragment"
         android:name="com.example.thegiftcherk.features.ui.friends.addfriend.AddFriendsFragment"
-        android:label="AddFriendsFragment" />
+        android:label="@string/add_friend" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.thegiftcherk.features.ui.profile.SettingsFragment"
-        android:label="SettingsFragment"
+        android:label="@string/settings"
         tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_editProfileFragment"
@@ -146,7 +145,7 @@
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.thegiftcherk.features.ui.profile.EditProfileFragment"
-        android:label="EditProfileFragment"
+        android:label="@string/edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
         <action
             android:id="@+id/action_editProfileFragment_to_editPasswordFragment"
@@ -175,7 +174,6 @@
     <fragment
         android:id="@+id/textContainerFragment"
         android:name="com.example.thegiftcherk.features.ui.profile.TextContainerFragment"
-        android:label="TextContainerFragment"
         tools:layout="@layout/fragment_text_container">
         <argument
             android:name="textType"
@@ -184,7 +182,7 @@
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.thegiftcherk.features.ui.profile.HelpFragment"
-        android:label="HelpFragment"
+        android:label="@string/help"
         tools:layout="@layout/fragment_help">
         <action
             android:id="@+id/action_helpFragment_to_contactUsFragment"
@@ -197,7 +195,7 @@
     <fragment
         android:id="@+id/contactUsFragment"
         android:name="com.example.thegiftcherk.features.ui.profile.ContactUsFragment"
-        android:label="ContactUsFragment"
+        android:label="@string/contactus_title"
         tools:layout="@layout/fragment_contact_us" />
     <fragment
         android:id="@+id/editWishFragment"
@@ -213,5 +211,16 @@
         tools:layout="@layout/fragment_edit_password"
         android:name="com.example.thegiftcherk.features.ui.profile.EditPasswordFragment"
         android:label="EditPasswordFragment" />
-
+    <fragment
+        android:id="@+id/friendsRequestsFragment"
+        tools:layout="@layout/fragment_friends"
+        android:name="com.example.thegiftcherk.features.ui.friends.friendrequests.FriendsRequestsFragment"
+        android:label="FriendsRequestsFragment" />
+    <action
+        android:id="@+id/actionGoToFriendRequest"
+        app:destination="@id/friendsRequestsFragment"
+        app:enterAnim="@anim/enter_from_right"
+        app:exitAnim="@anim/exit_to_left"
+        app:popEnterAnim="@anim/enter_from_left"
+        app:popExitAnim="@anim/exit_to_right" />
 </navigation>

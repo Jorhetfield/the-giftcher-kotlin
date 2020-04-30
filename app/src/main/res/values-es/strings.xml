@@ -1,31 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="continue_no_register">Continuar sin registrarme</string>
+
+    <!-- General -->
+    <string name="yes">Sí</string>
+    <string name="confirm">Confirmar</string>
+    <string name="loading">Cargando…</string>
+    <string name="placeholder_name">Nombre</string>
+    <string name="placeholder_surname">Apellidos</string>
+    <string name="placeholder_username">Nombre de usuario</string>
+    <string name="placeholder_password">Contraseña</string>
+    <string name="title_updatebirthday">Actualiza tu cumpleaños</string>
+
+    <!-- Navigation Bar  -->
+    <string name="search">Buscar</string>
+    <string name="friends">Amigos</string>
+    <string name="add_wish">Añadir un deseo</string>
+    <string name="home">Home</string>
+    <string name="profile">Mi perfil</string>
+
+    <!-- + Navigation -->
+    <string name="add_friend">Añade un nuevo amigo</string>
+    <string name="settings">Ajustes</string>
+    <string name="edit_profile">Editar mi perfil</string>
+    <string name="help">Ayuda</string>
+    <string name="contact_us">Contacta con nosotros</string>
+
+    <!-- Login -->
+    <string name="login">Iniciar sesión</string>
+    <string name="network_error">Ha ocurrido un error. Inténtalo de nuevo más tarde</string>
+    <string name="operation_ok">Operación realizada con éxito</string>
+    <string name="network_down">No puedes conectarte al servidor. Por favor, comprueba tu conexión</string>
+    <string name="network_down_timeout">Tiempo de espera agotado. Por favor, comprueba tu conexión</string>
     <string name="error_email">Debes introducir un email válido</string>
     <string name="error_pass">Los campos no pueden estar vacíos</string>
-    <string name="loading">Cargando…</string>
-    <string name="login">Iniciar sesión</string>
-    <string name="logout">Cerrar sesión</string>
-    <string name="asdasdsadasdsad">Both passwords must be equals.</string>
+    <string name="password_forgotten">He olvidado mi <b>contraseña</b></string>
+    <string name="continue_no_register">Continuar sin registrarme</string>
 
-    <string name="network_down">No puedes conectarte al servidor, por favor, comprueba tu conexión</string>
-    <string name="network_down_timeout">Tiempo de espera agotado, comprueba tu conexión</string>
-    <string name="network_error">Ha ocurrido un error, intentelo més tarde</string>
-    <string name="operation_ok">Operación realizada con éxito</string>
-    <string name="password_forgoten">He olvidado mi <b>contraseña</b></string>
-    <string name="placeholder_email">Email</string>
-    <string name="placeholder_password">Contraseña</string>
+    <!-- Logout -->
+    <string name="logout">Cerrar sesión.</string>
+    <string name="logout_confirmation">¿Estás seguro de que quieres cerrar sesión?</string>
+    <string name="logout_confirmed">Has cerrado sesión correctamente en <b>The Giftcher</b></string>
+
+    <!-- Register -->
+    <string name="error_pass_not_equals">Las contraseñas deben ser iguales</string>
     <string name="placeholder_repeat_password">Repetir contraseña</string>
     <string name="register">Registrarme</string>
-    <string name="confirm">Confirmar</string>
-    <string name="placeholder_name">Nombre de usuario</string>
     <string name="accept_policy_privacy">Al dar en "Confirmar", acepto los <b>Términos y condiciones</b> del servicio y la <b>Política de privacidad</b></string>
-    <string name="error_pass_not_equals">Las contraseñas deben coincidir</string>
-    <string name="logout_confirmation">¿Seguro que quieres cerrar sesión?</string>
-    <string name="yes">Si</string>
-    <string name="logout_confirmed">Has salido correctamente</string>
 
+    <!-- Fragment Add Friend -->
+    <string name="addfriend_searchbar_placeholder">Busca nuevos amigos escribiendo aquí sus nombres de usuario.</string>
+    <string name="addfriend_searchbar_explanation">⬆     Encuentra a otros usuarios escribiendo su nombre en el buscador y envíales una solicitud de amistad.</string>
 
+    <!-- Fragment Add Product -->
+    <string name="addproduct_placeholder_shop">Tienda</string>
+    <string name="addproduct_placeholder_location">Dirección</string>
+    <string name="addproduct_placeholder_price">Precio</string>
+    <string name="addproduct_placeholder_description">Descripción del producto</string>
+    <string name="addproduct_button_save">Guardar producto en mi lista</string>
+    <string name="addproduct_button_associate">Asociar producto a un amigo</string>
 
+    <!-- Fragment "Contact us" -->
+    <string name="contactus_title">Formulario de contacto</string>
+    <string name="contactus_placeholder_name">Nombre</string>
+    <string name="contactus_placeholder_email">Email</string>
+    <string name="contactus_placeholder_subject">Asunto</string>
+    <string name="contactus_placeholder_message">Escribe aquí lo que quieras decirnos.</string>
+    <string name="contactus_button_send">Enviar</string>
+
+    <!-- Fragment "Edit password" -->
+    <string name="editpass_placeholder_previouspass">Contraseña anterior</string>
+    <string name="editpass_placeholder_newpass">Nueva contraseña</string>
+    <string name="editpass_placeholder_repeatnewpass">Repite la nueva contraseña</string>
+    <string name="editpass_button_save">Guardar cambios</string>
+
+    <!-- Fragment "Edit profile" -->
+    <string name="editprofile_button_changepass">Cambiar</string>
+    <string name="editprofile_switch_public">Cambiar mi perfil a Público</string>
+    <string name="editprofile_button_save">Guardar</string>
+
+    <!-- Fragment "Friends" -->
+    <string name="friends_searchbar_placeholder">Busca a quien quieras entre tu lista de amigos</string>
+
+    <!-- Fragment "Help" -->
+    <string name="help_button_tutorial_seeagain">Vuelve a ver el tutorial</string>
+    <string name="help_button_faq">FAQ (ver en la web)</string>
+    <string name="help_button_contactus">Contacta con nosotros</string>
+
+    <!-- Fragment "Home" -->
+    <string name="home_subtitle">Listas personalizadas adaptadas a tus gustos.</string>
+
+    <!-- Fragment "Likes" -->
+    <string name="likes_title">Escoge tus gustos personales</string>
+    <string name="likes_checkbox_videogames">Videojuegos</string>
+    <string name="likes_checkbox_home">Hogar</string>
+    <string name="likes_checkbox_motor">Vehículos</string>
+    <string name="likes_checkbox_homeappliances">Electrodomésticos</string>
+    <string name="likes_checkbox_fashion">Moda</string>
+    <string name="likes_checkbox_garden">Jardinería</string>
+    <string name="likes_checkbox_tv">Televisores</string>
+    <string name="likes_checkbox_music">Música</string>
+    <string name="likes_checkbox_photo">Fotografía</string>
+    <string name="likes_checkbox_mobile">Telefonía</string>
+    <string name="likes_checkbox_computing">Informática</string>
+    <string name="likes_checkbox_sports">Deportes</string>
+    <string name="likes_checkbox_books">Literatura</string>
+    <string name="likes_checkbox_childs">Niños y bebés</string>
+    <string name="likes_checkbox_farming">Agricultura</string>
+    <string name="likes_checkbox_services">Servicios</string>
+    <string name="likes_checkbox_collectibles">Coleccionismo</string>
+    <string name="likes_checkbox_masonry">Albañilería y construcción</string>
+    <string name="likes_checkbox_others">Otras</string>
+    <string name="likes_button_continue">Continuar</string>
+
+    <!-- Fragment "Search" -->
+    <string name="settings_button_editprofile">Editar mi perfil</string>
+    <string name="settings_button_termscond">Terminos y Condiciones de uso</string>
+    <string name="settings_button_privacypolicy">Política de privacidad</string>
+    <string name="settings_button_help">Ayuda</string>
+
+    <!-- Fragment "Settings" -->
+    <string name="search_placeholder">Busca productos en The Giftcher</string>
+
+    <!-- Fragment "Friend detail" -->
+    <string name="frienddetail_title_birthday">Cumpleaños</string>
+    <string name="frienddetail_title_wishlist"> Mis deseos</string>
+    <string name="frienddetail_title_associatelist">Regalos asociados</string>
+
+    <!-- Fragment "Product detail" -->
+    <string name="productdetail_button_update">Actualizar</string>
+    <string name="productdetail_button_delete">Eliminar</string>
+
+    <!-- Activity "Tutorial" -->
+    <string name="tutorial_1">Explora listas relacionadas con tus gustos</string>
+    <string name="tutorial_2">Añade deseos a tu lista personalizada</string>
+    <string name="tutorial_3">Elige entre las categorías</string>
+    <string name="tutorial_4">Explora tu lista de deseos</string>
+    <string name="tutorial_5">Mira los detalles de tus deseos</string>
+    <string name="tutorial_6">Explora entre tus amigos y añade más</string>
+    <string name="tutorial_7">Cotillea las listas de tus amigos</string>
+    <string name="tutorial_8">Allévoy!</string>
+    <string name="tutorial_9">Contempla los regalos que tienes asignados</string>
 
 </resources>

@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.search.models.Item
@@ -156,13 +158,10 @@ class HomeFragment : BaseFragment() {
                         logD("Ok ${response.value}")
                         MaterialAlertDialogBuilder(context, R.style.DialogTheme1)
                             .setTitle("Tienes nuevas peticiones de amistad")
-                            .setNegativeButton("Cerrar") { _, _ ->
-
-
-
-                            }
+                            .setNegativeButton("Cerrar", null)
                             .setPositiveButton("Ver") { _, _ ->
 
+                                findNavController().navigate(R.id.actionGoToFriendRequest)
 
 
                             }.show()
