@@ -37,6 +37,8 @@ class ProfileFragment : BaseFragment() {
             logD("responseClick")
         }
 
+        deleteFriendButton?.visibility = View.GONE
+
         logD("user $user")
         Picasso.get()
             .load(user?.imagePath)

@@ -38,7 +38,7 @@ class AddProductFragment : BaseFragment() {
     private lateinit var wish: SendNewWish
     private val galleryRequestCode = 10
     private val cameraRequestCode = 20
-    private lateinit var multipartPrueba: MultipartBody.Part
+    private var multipartPrueba: MultipartBody.Part? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -79,7 +79,16 @@ class AddProductFragment : BaseFragment() {
             selectImage()
         }
         saveButton?.setOnClickListener {
-            fetchData()
+            if (multipartPrueba != null && inputName.text.toString()
+                    .isNotEmpty() && inputStore.text.toString()
+                    .isNotEmpty() && inputLocation.text.toString()
+                    .isNotEmpty() && inputPrice.text.toString()
+                    .isNotEmpty() && inputDescription.text.toString().isNotEmpty()
+            ) {
+                fetchData()
+            } else {
+                showError("Necesitamos que subas una imagen con el deseo y rellenes todos los campos", constraintContainer)
+            }
 
         }
 
@@ -145,6 +154,7 @@ class AddProductFragment : BaseFragment() {
 
                         logD("probando ${bitmap.width} ${bitmap.height}")
                         multipartPrueba = createMultipart(bitmap)
+                        imagePickerIV?.setImageBitmap(bitmap)
 
 //                        uploadImage(createMultipart(bitmap))
                     }
@@ -162,6 +172,8 @@ class AddProductFragment : BaseFragment() {
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
 //                uploadImage(createMultipart(bitmap))
                 multipartPrueba = createMultipart(bitmap)
+                imagePickerIV?.setImageBitmap(bitmap)
+
             }
         }
     }
@@ -214,11 +226,11 @@ class AddProductFragment : BaseFragment() {
 
     private fun uploadWishImage(file: MultipartBody.Part, wishId: String) {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
             when (val response = customRepository.uploadWishImage(file, wishId)) {
                 is ResponseResult.Success -> {
                     //Save User:
                     logD("response ${response.value}")
+                    findNavController().popBackStack()
                 }
 
                 is ResponseResult.Error -> {
@@ -276,7 +288,7 @@ class AddProductFragment : BaseFragment() {
                 is ResponseResult.Success -> {
 
                     showMessage("Deseo añadido correctamente", logoBackground)
-                    uploadWishImage(multipartPrueba, response.value.id.toString())
+                    uploadWishImage(multipartPrueba!!, response.value.id.toString())
 //                    findNavController().popBackStack()
 
                 }
@@ -286,7 +298,6 @@ class AddProductFragment : BaseFragment() {
                 is ResponseResult.Forbidden -> {
                 }
             }
-            hideProgressDialog()
         }
     }
 
