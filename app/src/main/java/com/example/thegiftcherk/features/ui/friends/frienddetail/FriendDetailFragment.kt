@@ -4,15 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs.FriendDesireFragment
 import com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs.FriendGiftsFragment
+import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.adapters.ViewPagerFragmentsAdapter
+import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.TabLayoutMediator
+import com.example.thegiftcherk.setup.utils.extensions.fromJson
 import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
+import com.example.thegiftcherk.setup.utils.extensions.logD
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.friend_detail_fragment.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class FriendDetailFragment : BaseFragment() {
     lateinit var friendTabsAdapter: ViewPagerFragmentsAdapter
@@ -21,6 +30,7 @@ class FriendDetailFragment : BaseFragment() {
             FriendDetailFragmentArgs.fromBundle(it).friend
         }
     }
+    val userData = prefs.user?.fromJson<User>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -29,7 +39,14 @@ class FriendDetailFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        prefs.friendId = mFriend?.id
+        if (mFriend?.friendId == userData?.id) {
+            deleteFriendButton?.visibility = View.GONE
+        } else {
+            deleteFriendButton?.visibility = View.VISIBLE
+        }
+        logD("friendId ${mFriend?.friendId} userId ${userData?.id}")
+
+        prefs.friendId = mFriend?.friendId
         nombreusuario_TV?.text = "${mFriend?.name} ${mFriend?.lastName} (${mFriend?.username})"
         cumpleaños_TV?.text = mFriend?.birthday
 
@@ -38,6 +55,18 @@ class FriendDetailFragment : BaseFragment() {
             .into(imageProfile)
 
         setTabBar()
+
+        deleteFriendButton?.setOnClickListener {
+            MaterialAlertDialogBuilder(context, R.style.DialogTheme1)
+                .setTitle("¿De verdad quieres borrar a ${mFriend?.name} de tu lista de amigos?")
+                .setNegativeButton("No", null)
+                .setPositiveButton("Si") { _, _ ->
+
+                    deleteFriend(mFriend?.id!!)
+
+                }.show()
+        }
+
     }
 
     private fun setTabBar() {
@@ -56,6 +85,29 @@ class FriendDetailFragment : BaseFragment() {
             }.attach()
         }
     }
+
+    private fun deleteFriend(friendId: String) {
+        GlobalScope.launch(Dispatchers.Main) {
+            showProgressDialog()
+            when (val response =
+                customRepository.deleteFriend(friendId)) {
+                is ResponseResult.Success -> {
+
+                    showMessage("Amigo borrado correctamente", messageCard)
+                    findNavController().popBackStack()
+                    logD("respuesta login ${response.value}")
+                    logD("respuesta login ${prefs.firstLogin}")
+                    //Change view:
+                }
+                is ResponseResult.Error ->
+                    showError(response.message, messageCard)
+                is ResponseResult.Forbidden ->
+                    showError(response.message, messageCard)
+            }
+            hideProgressDialog()
+        }
+    }
+
 
     companion object {
         private const val TAB_DESIRES: Int = 0

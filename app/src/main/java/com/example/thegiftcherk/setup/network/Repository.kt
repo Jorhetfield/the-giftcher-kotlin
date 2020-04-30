@@ -5,6 +5,7 @@ import android.content.Context
 import com.example.thegiftcherk.BuildConfig
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.friends.FriendListResponse
 import com.example.thegiftcherk.features.ui.login.models.*
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.MOCK_DELAY
@@ -168,7 +169,7 @@ class Repository(private val service: Service, private val context: Context) {
 
     suspend fun getFriends(
         fake: Boolean = BuildConfig.MOCK
-    ): ResponseResult<List<Friend>> {
+    ): ResponseResult<FriendListResponse> {
         return if (!fake) {
             try {
                 val response = service.getFriends()
@@ -180,8 +181,8 @@ class Repository(private val service: Service, private val context: Context) {
         } else {
             delay(MOCK_DELAY)
             val json = context.getJsonFromResource(R.raw.friends)
-            val response: List<Friend> =
-                Gson().fromJson(json, Array<Friend>::class.java).toList()
+            val response: FriendListResponse =
+                Gson().fromJson(json, FriendListResponse::class.java)
             ResponseResult.Success(response)
         }
     }
@@ -321,7 +322,7 @@ class Repository(private val service: Service, private val context: Context) {
     }
 
     suspend fun getFriendWishes(
-        id: String,
+        id: Long,
         fake: Boolean = BuildConfig.MOCK
     ): ResponseResult<List<Item>> {
         return if (!fake) {
@@ -341,7 +342,7 @@ class Repository(private val service: Service, private val context: Context) {
     suspend fun editUser(
         sendEditUser: SendEditUser,
         fake: Boolean = BuildConfig.MOCK
-    ): ResponseResult<Operation> {
+    ): ResponseResult<User> {
         return if (!fake) {
             try {
                 val response = service.editProfile(sendEditUser)
@@ -452,7 +453,7 @@ class Repository(private val service: Service, private val context: Context) {
     suspend fun deleteFriend(
         friendId: String,
         fake: Boolean = BuildConfig.MOCK
-    ): ResponseResult<List<ListaPeticionesAmistad>> {
+    ): ResponseResult<Operation> {
         return if (!fake) {
             try {
                 val response = service.deleteFriend(friendId)
@@ -469,7 +470,7 @@ class Repository(private val service: Service, private val context: Context) {
     }
 
     suspend fun createFriendRequest(
-        friendRequestId: Operation,
+        friendRequestId: FriendRequestId,
         fake: Boolean = BuildConfig.MOCK
     ): ResponseResult<Operation> {
         return if (!fake) {

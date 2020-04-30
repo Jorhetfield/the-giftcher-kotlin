@@ -1,6 +1,7 @@
 package com.example.thegiftcherk.setup.network
 
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.friends.FriendListResponse
 import com.example.thegiftcherk.features.ui.login.models.*
 import com.example.thegiftcherk.features.ui.search.models.Item
 import okhttp3.MultipartBody
@@ -64,7 +65,7 @@ interface Service {
 
     @GET("friends")
     suspend fun getFriends(
-    ): Response<List<Friend>>
+    ): Response<FriendListResponse>
 
     @GET("user/get_users")
     suspend fun getAllUsers(
@@ -99,13 +100,13 @@ interface Service {
 
     @GET("/wishes/userId/{userId}")
     suspend fun getFriendWishes(
-        @Path("userId") userId: String
+        @Path("userId") userId: Long
     ): Response<List<Item>>
 
     @PUT("user/update/")
     suspend fun editProfile(
         @Body sendEditUser: SendEditUser
-    ): Response<Operation>
+    ): Response<User>
 
     @POST("wishes/copy/userId/{userId}/id/{wishId}")
     suspend fun copyWishFromUser(
@@ -130,11 +131,11 @@ interface Service {
     @DELETE("friends/{friendId}")
     suspend fun deleteFriend(
         @Path("friendId") friendId: String
-    ): Response<List<ListaPeticionesAmistad>>
+    ): Response<Operation>
 
     @POST("friends")
     suspend fun createFriendRequest(
-        @Body friendRequestId: Operation
+        @Body friendRequestId: FriendRequestId
     ): Response<Operation>
     //endregion Others
 }

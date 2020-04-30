@@ -56,13 +56,14 @@ class FriendsRequestsFragment : BaseFragment() {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
                     responseResult.forEach {
-                        idArray.add(it.friendRequestId.toString())
+                        idArray.add(it.userId.toString())
                         idRequest.add(it.requestId.toString())
                     }
 
                     idArray.forEach {
                         getSingleUser(it)
                     }
+                    logD("ids de usuarios mandando peticiones $idArray")
 
                 }
                 is ResponseResult.Error -> {
@@ -104,13 +105,13 @@ class FriendsRequestsFragment : BaseFragment() {
     //todo pasarle la id de la peticion, no la del usuario
      fun acceptFriend(friendRequestId: String) {
         GlobalScope.launch(Dispatchers.Main) {
-//            showProgressDialog()
+            showProgressDialog()
             when (val response =
                 customRepository.confirmFriend(friendRequestId)) {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
                     logD("singleUser $responseResult")
-
+                    getFriendsRequests()
                 }
                 is ResponseResult.Error -> {
                 }
@@ -124,14 +125,13 @@ class FriendsRequestsFragment : BaseFragment() {
 
      fun rejectFriend(friendRequestId: String) {
         GlobalScope.launch(Dispatchers.Main) {
-//            showProgressDialog()
+            showProgressDialog()
             when (val response =
                 customRepository.deleteFriendRequest(friendRequestId)) {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
                     logD("singleUser $responseResult")
-                    friendsAdapter.notifyDataSetChanged()
-
+                    getFriendsRequests()
                 }
                 is ResponseResult.Error -> {
                 }

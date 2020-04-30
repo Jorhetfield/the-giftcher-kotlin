@@ -2,6 +2,7 @@ package com.example.thegiftcherk.features.ui.friends.friendrequests
 
 import android.graphics.Color
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.features.ui.friends.Friend
 import com.squareup.picasso.Picasso
@@ -28,11 +29,13 @@ class FriendRequestHolder(v: View) : RecyclerView.ViewHolder(v) {
         val fragment = FriendsRequestsFragment()
         view.addFriendButton?.setOnClickListener {
             fragment.acceptFriend(requestId)
-            view.addFriendButton?.setBackgroundColor(Color.parseColor("#D93045"))
+            view.addFriendButton?.setBackgroundColor(Color.parseColor("#3AAA35"))
+            Toast.makeText(view.context, "La petición ha sido aceptada",Toast.LENGTH_LONG).show()
         }
-        view.rejectFriendButton?.setOnClickListener {
+        view.deleteFriendButton?.setOnClickListener {
             fragment.rejectFriend(requestId)
-            view.addFriendButton?.setBackgroundColor(Color.parseColor("#D93045"))
+            view.deleteFriendButton?.setBackgroundColor(Color.parseColor("#D93045"))
+            Toast.makeText(view.context, "La petición ha sido rechazada",Toast.LENGTH_LONG).show()
         }
         view.name_TV.text = friend.username
 

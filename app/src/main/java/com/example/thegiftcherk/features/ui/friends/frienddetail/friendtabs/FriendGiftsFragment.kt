@@ -27,7 +27,7 @@ class FriendGiftsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getFriendWishes(prefs.friendId ?: "0")
+        getFriendWishes(prefs.friendId!!.toLong())
 
         val gridLayoutManager = GridLayoutManager(context, 3)
         recyclerItemsMyList.layoutManager = gridLayoutManager
@@ -37,7 +37,7 @@ class FriendGiftsFragment : BaseFragment() {
     }
 
 
-    private fun getFriendWishes(userId: String) {
+    private fun getFriendWishes(userId: Long) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
