@@ -172,8 +172,8 @@ class EditWishFragment : BaseFragment() {
                         )
 
                         logD("probando ${bitmap.width} ${bitmap.height}")
-                        multipartPrueba = createMultipart(bitmap)
-                        imagePickerIV?.setImageBitmap(bitmap)
+                        multipartPrueba = createMultipart(scaledBitmap(bitmap))
+                        imagePickerIV?.setImageBitmap(scaledBitmap(bitmap))
 
 //                        uploadImage(createMultipart(bitmap))
                     }
@@ -190,13 +190,16 @@ class EditWishFragment : BaseFragment() {
                 val bitmap: Bitmap
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
 //                uploadImage(createMultipart(bitmap))
-                multipartPrueba = createMultipart(bitmap)
-                imagePickerIV?.setImageBitmap(bitmap)
+                multipartPrueba = createMultipart(scaledBitmap(bitmap))
+                imagePickerIV?.setImageBitmap(scaledBitmap(bitmap))
 
             }
         }
     }
+    private fun scaledBitmap(bitmap: Bitmap): Bitmap {
 
+        return Bitmap.createScaledBitmap(bitmap, 800, 500, true)
+    }
     private fun createMultipart(bitmap: Bitmap): MultipartBody.Part {
 
         val imageFile = getFileFromBitmap("file", bitmap)

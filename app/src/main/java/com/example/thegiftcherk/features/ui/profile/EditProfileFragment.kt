@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -203,7 +202,7 @@ class EditProfileFragment : BaseFragment() {
 
                         logD("probando ${bitmap.width} ${bitmap.height}")
 
-                        uploadImage(createMultipart(bitmap))
+                        uploadImage(createMultipart(scaledBitmap(bitmap)))
                     }
                 }
             }
@@ -217,26 +216,14 @@ class EditProfileFragment : BaseFragment() {
                 val uri = Uri.fromFile(file)
                 val bitmap: Bitmap
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
-                uploadImage(createMultipart(bitmap))
+                uploadImage(createMultipart(scaledBitmap(bitmap)))
             }
         }
     }
 
-    private fun rotateBitmap(bitmap: Bitmap): Bitmap {
-        val matrix = Matrix()
-        matrix.postRotate(90f)
+    private fun scaledBitmap(bitmap: Bitmap): Bitmap {
 
-        val scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.width, bitmap.height, true)
-
-        return Bitmap.createBitmap(
-            scaledBitmap,
-            0,
-            0,
-            scaledBitmap.width,
-            scaledBitmap.height,
-            matrix,
-            true
-        )
+        return Bitmap.createScaledBitmap(bitmap, 800, 500, true)
     }
 
     private fun createMultipart(bitmap: Bitmap): MultipartBody.Part {
@@ -351,7 +338,6 @@ class EditProfileFragment : BaseFragment() {
                     prefs.user = response.value.json()
                     prefs.token = response.value.token
                     showMessage("Cambios realizados correctamente", view!!.rootView)
-                    findNavController().popBackStack()
                     //Change view:
                 }
                 is ResponseResult.Error ->

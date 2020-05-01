@@ -153,8 +153,8 @@ class AddProductFragment : BaseFragment() {
                         )
 
                         logD("probando ${bitmap.width} ${bitmap.height}")
-                        multipartPrueba = createMultipart(bitmap)
-                        imagePickerIV?.setImageBitmap(bitmap)
+                        multipartPrueba = createMultipart(scaledBitmap(bitmap))
+                        imagePickerIV?.setImageBitmap(scaledBitmap(bitmap))
 
 //                        uploadImage(createMultipart(bitmap))
                     }
@@ -171,8 +171,8 @@ class AddProductFragment : BaseFragment() {
                 val bitmap: Bitmap
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
 //                uploadImage(createMultipart(bitmap))
-                multipartPrueba = createMultipart(bitmap)
-                imagePickerIV?.setImageBitmap(bitmap)
+                multipartPrueba = createMultipart(scaledBitmap(bitmap))
+                imagePickerIV?.setImageBitmap(scaledBitmap(bitmap))
 
             }
         }
@@ -186,6 +186,11 @@ class AddProductFragment : BaseFragment() {
             imageFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
 
         return MultipartBody.Part.createFormData("file", "file", requestBodyFromFile)
+    }
+
+    private fun scaledBitmap(bitmap: Bitmap): Bitmap {
+
+        return Bitmap.createScaledBitmap(bitmap, 800, 500, true)
     }
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
