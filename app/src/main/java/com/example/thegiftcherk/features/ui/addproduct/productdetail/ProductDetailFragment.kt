@@ -100,9 +100,11 @@ class ProductDetailFragment : BaseFragment() {
         }
 
         reserveButton?.setOnClickListener {
-            
-            wishToPrefs?.add(mProduct!!)
-            prefs.wishIds = wishToPrefs?.json()
+            if (!prefs.wishIds.isNullOrEmpty()){
+                prefs.wishIds = "${prefs.wishIds}, ${mProduct?.id}"
+            } else {
+                prefs.wishIds = mProduct?.id
+            }
 
         }
 

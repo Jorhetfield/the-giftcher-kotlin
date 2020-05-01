@@ -9,24 +9,19 @@ import androidx.core.widget.addTextChangedListener
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
-import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
-import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_friends.*
-import kotlinx.android.synthetic.main.fragment_my_list.*
-import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 import java.util.*
 
-class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
+class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
     private val friends: MutableList<Friend> = mutableListOf()
     private val friendsFiltered: MutableList<Friend> = mutableListOf()
     private lateinit var friendsAdapter: FriendsAdapter
@@ -38,10 +33,12 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        prefs.obsLocationAddress = ""
         getFriends()
 
-        fabAddFriend?.setOnClickListener{
+
+
+        fabAddFriend?.setOnClickListener {
             val action = FriendsFragmentDirections.actionNavigationFriendsToAddFriendsFragment()
             Navigation.findNavController(view).navigate(action)
         }
@@ -68,18 +65,20 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
             friends.clear()
             getFriends()
         } else {
-            val productsPrefs = Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
-            val name = ""
+            val productsPrefs =
+                Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
+            val username = ""
             val itemsQuery = productsPrefs.filter {
-                if (it.name.isNullOrEmpty()) {
-                    it.name == name
+                if (it.username.isNullOrEmpty()) {
+                    it.username == username
                 } else {
-                    it.name.toLowerCase().contains(text)
+                    it.username!!.toLowerCase().contains(text)
                 }
             }
             friends.clear()
             friends.addAll(itemsQuery)
             friendsAdapter.notifyDataSetChanged()
+            logD("amigos $itemsQuery ${prefs.obsLocationAddress}")
 
         }
         return true
@@ -94,13 +93,14 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
             friends.clear()
             getFriends()
         } else {
-            val productsPrefs = Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
-            val name = ""
+            val productsPrefs =
+                Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
+            val username = ""
             val itemsQuery = productsPrefs.filter {
-                if (it.name.isNullOrEmpty()) {
-                    it.name == name
+                if (it.username.isNullOrEmpty()) {
+                    it.username == username
                 } else {
-                    it.name.toLowerCase().contains(text)
+                    it.username.toLowerCase().contains(text)
                 }
             }
             friends.clear()
@@ -118,9 +118,9 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
 
         val filteredModelList = ArrayList<Friend>()
         for (product in models) {
-            val name = product.name?.toLowerCase()
-            if (!name.isNullOrEmpty()) {
-                if (name.contains(lowerCaseQuery)) {
+            val username = product.username?.toLowerCase()
+            if (!username.isNullOrEmpty()) {
+                if (username.contains(lowerCaseQuery)) {
                     filteredModelList.add(product)
                 }
             }
@@ -137,13 +137,36 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener  {
                 is ResponseResult.Success -> {
                     val responseResult = response.value.friends
 
+                    prefs.obsLocationAddress = ""
                     prefs.obsLocationAddress = responseResult?.json()
                     friends.clear()
                     friends.addAll(responseResult!!.toList())
                     friendsAdapter.notifyDataSetChanged()
 
+                    if (friends.size == 0) {
+                        searchView1.visibility = View.GONE
+                        searchIV1.visibility = View.GONE
+                        closeBut1.visibility = View.GONE
+                    } else {
+                        searchView1.visibility = View.VISIBLE
+                        searchIV1.visibility = View.VISIBLE
+                        closeBut1.visibility = View.VISIBLE
+                    }
+
+                    logD("probando peticiones ${prefs.obsLocationAddress}")
                     responseResult.forEach {
                         logD("probando peticiones $it")
+                    }
+                }
+                is ResponseResult.NotContent -> {
+                    if (friends.size == 0) {
+                        searchView1.visibility = View.GONE
+                        searchIV1.visibility = View.GONE
+                        closeBut1.visibility = View.GONE
+                    } else {
+                        searchView1.visibility = View.VISIBLE
+                        searchIV1.visibility = View.VISIBLE
+                        closeBut1.visibility = View.VISIBLE
                     }
                 }
                 is ResponseResult.Error -> {

@@ -209,7 +209,7 @@ class EditWishFragment : BaseFragment() {
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
 
-        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 40)
+        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 10)
     }
 
     private fun convertBitmapToFile(

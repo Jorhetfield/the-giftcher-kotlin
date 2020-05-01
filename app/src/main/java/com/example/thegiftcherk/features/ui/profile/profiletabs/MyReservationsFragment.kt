@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
-import com.example.thegiftcherk.setup.network.ResponseResult
+import com.example.thegiftcherk.setup.utils.extensions.fromJson
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_my_list.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class MyReservationsFragment : BaseFragment() {
     val items: MutableList<Item> = mutableListOf()
-        private lateinit var myListAdapter: MyListAdapter
+    private lateinit var myListAdapter: MyListAdapter
+    val wishList = prefs.wishIds?.fromJson<MutableList<Item>>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -26,39 +26,14 @@ class MyReservationsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val gridLayoutManager = GridLayoutManager(context,3)
+        val gridLayoutManager = GridLayoutManager(context, 3)
         recyclerItemsMyList.layoutManager = gridLayoutManager
         myListAdapter =
             MyListAdapter(
-                items
+                wishList
             ) {
             }
         recyclerItemsMyList.adapter = myListAdapter
-        getItems()
     }
 
-    private fun getItems() {
-        GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
-            when (val response =
-                customRepository.getItems()) {
-                is ResponseResult.Success -> {
-                    val responseResult = response.value
-
-                    items.clear()
-                    val health = responseResult.filter {
-                        it.category == "Health"
-                    }
-                    items.addAll(health)
-                    myListAdapter.notifyDataSetChanged()
-                    hideKeyboard()
-                }
-                is ResponseResult.Error -> {
-                }
-                is ResponseResult.Forbidden -> {
-                }
-            }
-            hideProgressDialog()
-        }
-    }
 }

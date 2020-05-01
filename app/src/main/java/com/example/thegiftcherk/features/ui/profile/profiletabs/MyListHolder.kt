@@ -19,7 +19,7 @@ class MyListHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     private var view: View = v
     private var item: Item? = null
-    private lateinit var listener: (Item) -> Unit
+    private lateinit var listener: (Item?) -> Unit
 
     init {
         v.setOnClickListener {
@@ -29,7 +29,7 @@ class MyListHolder(v: View) : RecyclerView.ViewHolder(v) {
         }
     }
 
-    fun bind(item: Item, listener: (Item) -> Unit) {
+    fun bind(item: Item, listener: (Item?) -> Unit) {
         this.item = item
         this.listener = listener
 

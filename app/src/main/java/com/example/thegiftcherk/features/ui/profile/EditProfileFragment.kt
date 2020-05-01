@@ -251,13 +251,13 @@ class EditProfileFragment : BaseFragment() {
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
 
-        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 40)
+        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 10)
     }
 
     private fun convertBitmapToFile(
         fileName: String,
         bitmap: Bitmap,
-        qualityJpeg: Int = 40
+        qualityJpeg: Int = 10
     ): File {
         //Create a file to write bitmap data
         val file = File(context?.cacheDir, fileName)
@@ -265,7 +265,7 @@ class EditProfileFragment : BaseFragment() {
 
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, bos)
         val bitMapData = bos.toByteArray()
 
         //write the bytes in file
