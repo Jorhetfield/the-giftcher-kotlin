@@ -44,7 +44,7 @@ class ProfileFragment : BaseFragment() {
             .load(user?.imagePath)
             .placeholder(R.drawable.ic_placeholder)
             .into(imageProfile)
-        nombreusuario_TV?.text = user.username
+        nombreusuario_TV?.text = "${user.name} ${user.lastName} (${user.username})"
         cumpleaños_TV?.text = user.birthday
 
     }

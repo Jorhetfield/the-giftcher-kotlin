@@ -152,7 +152,7 @@ class Repository(private val service: Service, private val context: Context) {
         wishId: String,
         sendEditWish: SendEditWish,
         fake: Boolean = BuildConfig.MOCK
-    ): ResponseResult<Operation> {
+    ): ResponseResult<Item> {
         return if (!fake) {
             try {
                 val response = service.editWish(wishId, sendEditWish)

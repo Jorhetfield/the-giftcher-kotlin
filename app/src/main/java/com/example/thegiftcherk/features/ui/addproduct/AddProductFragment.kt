@@ -190,13 +190,13 @@ class AddProductFragment : BaseFragment() {
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
 
-        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 100)
+        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 40)
     }
 
     private fun convertBitmapToFile(
         fileName: String,
         bitmap: Bitmap,
-        qualityJpeg: Int = 100
+        qualityJpeg: Int = 40
     ): File {
         //Create a file to write bitmap data
         val file = File(context?.cacheDir, fileName)
@@ -204,7 +204,7 @@ class AddProductFragment : BaseFragment() {
 
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos)
         val bitMapData = bos.toByteArray()
 
         //write the bytes in file

@@ -56,7 +56,7 @@ interface Service {
     suspend fun editWish(
         @Path("wishId") wishId: String,
         @Body sendEditWish: SendEditWish
-    ): Response<Operation>
+    ): Response<Item>
 
     @POST("wishes/")
     suspend fun addNewWish(

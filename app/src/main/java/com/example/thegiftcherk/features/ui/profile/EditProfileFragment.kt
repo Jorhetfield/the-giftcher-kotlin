@@ -23,6 +23,7 @@ import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.addTenths
+import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
@@ -250,13 +251,13 @@ class EditProfileFragment : BaseFragment() {
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
 
-        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 100)
+        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 40)
     }
 
     private fun convertBitmapToFile(
         fileName: String,
         bitmap: Bitmap,
-        qualityJpeg: Int = 100
+        qualityJpeg: Int = 40
     ): File {
         //Create a file to write bitmap data
         val file = File(context?.cacheDir, fileName)
@@ -264,7 +265,7 @@ class EditProfileFragment : BaseFragment() {
 
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos)
         val bitMapData = bos.toByteArray()
 
         //write the bytes in file
@@ -347,8 +348,10 @@ class EditProfileFragment : BaseFragment() {
             )) {
                 is ResponseResult.Success -> {
                     //Save User:
-                    findNavController().popBackStack()
+                    prefs.user = response.value.json()
+                    prefs.token = response.value.token
                     showMessage("Cambios realizados correctamente", view!!.rootView)
+                    findNavController().popBackStack()
                     //Change view:
                 }
                 is ResponseResult.Error ->

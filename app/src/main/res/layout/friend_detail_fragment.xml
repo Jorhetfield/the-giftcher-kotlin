@@ -172,10 +172,10 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tabBackground="@color/colorDetailDark"
-                    app:tabIndicatorColor="@color/white80Transparent"
+                    app:tabIndicatorColor="@color/colorDetail"
                     app:tabRippleColor="@color/green"
                     app:tabSelectedTextColor="@color/colorPrimary"
-                    app:tabTextColor="@color/dark_gray">
+                    app:tabTextColor="@color/white80Transparent">
 
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"

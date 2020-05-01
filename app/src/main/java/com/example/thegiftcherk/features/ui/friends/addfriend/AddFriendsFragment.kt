@@ -37,6 +37,7 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
     private val friendsFiltered: MutableList<Friend> = mutableListOf()
     private lateinit var friendsAdapter: AddFriendsAdapter
     val userData = prefs.user?.fromJson<User>()
+    val friendList = prefs.obsLocationAddress?.fromJson<Array<Friend>>()
 
 
     override fun onCreateView(
@@ -145,11 +146,11 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
                     responseResult.forEach {
                         logD("response ${it.username}")
                     }
+
                     val allUsers = response.value.filterNot {
                         it.username == userData?.username
                     }
 
-                    prefs.obsLocationAddress = allUsers.json()
                     friends.clear()
                     friends.addAll(allUsers)
                     friendsAdapter.notifyDataSetChanged()
