@@ -1,6 +1,5 @@
 package com.example.thegiftcherk.features.ui.addproduct.productdetail
 
-import android.content.ClipData
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +13,7 @@ import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.fromJson
+import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 
 class ProductDetailFragment : BaseFragment() {
     val userData = prefs.user?.fromJson<User>()
-    val wishToPrefs: MutableList<Item?> = mutableListOf()
+    val wishToPrefs: MutableList<Item>? = mutableListOf()
 
     private val mProduct by lazyUnsychronized {
         arguments?.let {
@@ -100,8 +100,9 @@ class ProductDetailFragment : BaseFragment() {
         }
 
         reserveButton?.setOnClickListener {
-            val wishesPrefs = prefs.wishIds?.fromJson<Collection<Item>>()
-            wishToPrefs.addAll(wishesPrefs)
+            
+            wishToPrefs?.add(mProduct!!)
+            prefs.wishIds = wishToPrefs?.json()
 
         }
 
@@ -123,7 +124,7 @@ class ProductDetailFragment : BaseFragment() {
         }
     }
 
-    private fun shareIntent(name: String){
+    private fun shareIntent(name: String) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, "¡Quiero $name de regalo!")

@@ -26,6 +26,7 @@ class Prefs(context: Context) {
     private val SERVICE_ID = "SERVICE_ID "
     private val FIRST_LOGIN = "FIRST_LOGIN"
     private val OBS_LOCATION_ADDRESS = "OBS_LOCATION_ADDRESS"
+    private val WISH_LIST = "WISH_LIST"
     private val WISH_ID = "WISH_ID"
 
     private val LAST_LOCATION_LAT = "LAST_LOCATION_LAT"
@@ -48,6 +49,10 @@ class Prefs(context: Context) {
     var wishIds: String?
         get() = prefs.getString(WISH_ID, "")
         set(value) = prefs.edit().putString(WISH_ID, value).apply()
+
+    var wishList: String?
+        get() = prefs.getString(WISH_LIST, "")
+        set(value) = prefs.edit().putString(WISH_LIST, value).apply()
 
     var likes: String?
         get() = prefs.getString(LIKES, "")

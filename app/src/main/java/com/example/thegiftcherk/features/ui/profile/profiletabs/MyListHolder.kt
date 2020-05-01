@@ -33,11 +33,11 @@ class MyListHolder(v: View) : RecyclerView.ViewHolder(v) {
         this.item = item
         this.listener = listener
 
-        if (item.reserved!!){
-            view.reservedText.visibility = View.VISIBLE
-        } else {
-            view.reservedText.visibility = View.GONE
-        }
+//        if (item.reserved){
+//            view.reservedText.visibility = View.VISIBLE
+//        } else {
+//            view.reservedText.visibility = View.GONE
+//        }
         view.message.text = item.name
 
         Picasso.get()
