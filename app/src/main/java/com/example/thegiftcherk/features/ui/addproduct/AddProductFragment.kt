@@ -189,8 +189,7 @@ class AddProductFragment : BaseFragment() {
     }
 
     private fun scaledBitmap(bitmap: Bitmap): Bitmap {
-
-        return Bitmap.createScaledBitmap(bitmap, 800, 500, true)
+        return Bitmap.createScaledBitmap(bitmap, 1024, 768, true)
     }
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {

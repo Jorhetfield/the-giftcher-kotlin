@@ -38,6 +38,10 @@ interface Service {
         @Path("userId") userId: String
     ): Response<Friend>
 
+    @DELETE("user/delete_account")
+    suspend fun deleteAccount(
+    ): Response<Operation>
+
     @GET("wishes/")
     suspend fun getOwnWishes(
     ): Response<List<Item>>
@@ -75,7 +79,7 @@ interface Service {
     @POST("/user/google_cloud_image")
     suspend fun uploadImage(
         @Part file: MultipartBody.Part?
-    ): Response<Any>
+    ): Response<User>
 
     @Multipart
     @POST("/wishes/google_cloud_wish_image/{wishId}")

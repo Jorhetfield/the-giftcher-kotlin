@@ -87,6 +87,23 @@ class Repository(private val service: Service, private val context: Context) {
         }
     }
 
+    suspend fun deleteAccount(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.deleteAccount()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
     suspend fun getItems(
         fake: Boolean = BuildConfig.MOCK
     ): ResponseResult<List<Item>> {
@@ -210,7 +227,7 @@ class Repository(private val service: Service, private val context: Context) {
     suspend fun uploadImage(
         file: MultipartBody.Part?,
         fake: Boolean = BuildConfig.MOCK
-    ): ResponseResult<Any> {
+    ): ResponseResult<User> {
         return if (!fake) {
             try {
                 val response = service.uploadImage(file)
@@ -221,10 +238,7 @@ class Repository(private val service: Service, private val context: Context) {
             }
         } else {
             delay(MOCK_DELAY)
-            val json = context.getJsonFromResource(R.raw.lista_personal)
-            val response: List<Item> =
-                Gson().fromJson(json, Array<Item>::class.java).toList()
-            ResponseResult.Success(response)
+            context.getMockResponseResult(R.raw.user)
         }
     }
 

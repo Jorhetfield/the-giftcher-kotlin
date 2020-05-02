@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_my_list.*
 class MyReservationsFragment : BaseFragment() {
     val items: MutableList<Item> = mutableListOf()
     private lateinit var myListAdapter: MyListAdapter
-    val wishList = prefs.wishIds?.fromJson<MutableList<Item>>()
+//    val wishList = prefs.wishIds?.fromJson<MutableList<Item>>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -30,7 +30,8 @@ class MyReservationsFragment : BaseFragment() {
         recyclerItemsMyList.layoutManager = gridLayoutManager
         myListAdapter =
             MyListAdapter(
-                wishList
+//                wishList
+            items
             ) {
             }
         recyclerItemsMyList.adapter = myListAdapter

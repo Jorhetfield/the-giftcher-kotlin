@@ -203,6 +203,8 @@ class EditProfileFragment : BaseFragment() {
                         logD("probando ${bitmap.width} ${bitmap.height}")
 
                         uploadImage(createMultipart(scaledBitmap(bitmap)))
+
+                        imageProfile.setImageBitmap(scaledBitmap(bitmap))
                     }
                 }
             }
@@ -217,13 +219,14 @@ class EditProfileFragment : BaseFragment() {
                 val bitmap: Bitmap
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
                 uploadImage(createMultipart(scaledBitmap(bitmap)))
+                imageProfile.setImageBitmap(scaledBitmap(bitmap))
+
             }
         }
     }
 
     private fun scaledBitmap(bitmap: Bitmap): Bitmap {
-
-        return Bitmap.createScaledBitmap(bitmap, 800, 500, true)
+        return Bitmap.createScaledBitmap(bitmap, 1024, 768, true)
     }
 
     private fun createMultipart(bitmap: Bitmap): MultipartBody.Part {
@@ -238,13 +241,13 @@ class EditProfileFragment : BaseFragment() {
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
 
-        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 10)
+        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 40)
     }
 
     private fun convertBitmapToFile(
         fileName: String,
         bitmap: Bitmap,
-        qualityJpeg: Int = 10
+        qualityJpeg: Int = 40
     ): File {
         //Create a file to write bitmap data
         val file = File(context?.cacheDir, fileName)
@@ -252,7 +255,7 @@ class EditProfileFragment : BaseFragment() {
 
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, bos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos)
         val bitMapData = bos.toByteArray()
 
         //write the bytes in file
@@ -309,7 +312,10 @@ class EditProfileFragment : BaseFragment() {
             when (val response = customRepository.uploadImage(file)) {
                 is ResponseResult.Success -> {
                     //Save User:
+                    prefs.user = response.value.json()
+                    prefs.token = response.value.token
                     logD("response ${response.value}")
+
                 }
 
                 is ResponseResult.Error -> {
@@ -338,6 +344,8 @@ class EditProfileFragment : BaseFragment() {
                     prefs.user = response.value.json()
                     prefs.token = response.value.token
                     showMessage("Cambios realizados correctamente", view!!.rootView)
+                    logD("response ${response.value}")
+
                     //Change view:
                 }
                 is ResponseResult.Error ->

@@ -198,7 +198,7 @@ class EditWishFragment : BaseFragment() {
     }
     private fun scaledBitmap(bitmap: Bitmap): Bitmap {
 
-        return Bitmap.createScaledBitmap(bitmap, 800, 500, true)
+        return Bitmap.createScaledBitmap(bitmap, 1024, 768, true)
     }
     private fun createMultipart(bitmap: Bitmap): MultipartBody.Part {
 

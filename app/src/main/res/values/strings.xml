@@ -86,6 +86,7 @@
     <string name="help_button_tutorial_seeagain">See again the tutorial</string>
     <string name="help_button_faq">FAQ (see on the web)</string>
     <string name="help_button_contactus">Contact us</string>
+    <string name="delete_account_button">Delete account</string>
 
     <!-- Fragment "Home" -->
     <string name="home_subtitle">Custom lists adapted to your personal preferences.</string>
