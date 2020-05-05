@@ -9,11 +9,11 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.login.models.User
+import com.example.thegiftcherk.features.ui.login.models.WishToReserve
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.fromJson
-import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -26,6 +26,7 @@ import kotlinx.coroutines.launch
 class ProductDetailFragment : BaseFragment() {
     val userData = prefs.user?.fromJson<User>()
     val wishToPrefs: MutableList<Item>? = mutableListOf()
+    private lateinit var wishToReserve: WishToReserve
 
     private val mProduct by lazyUnsychronized {
         arguments?.let {
@@ -67,10 +68,12 @@ class ProductDetailFragment : BaseFragment() {
         if (mProduct?.userId != userData?.id) {
             editWishButton?.visibility = View.GONE
             deleteWishButton?.visibility = View.GONE
+            reserveButton?.visibility = View.VISIBLE
             saveButton?.visibility = View.VISIBLE
         } else {
             editWishButton?.visibility = View.VISIBLE
             deleteWishButton?.visibility = View.VISIBLE
+            reserveButton?.visibility = View.GONE
             saveButton?.visibility = View.GONE
         }
 
@@ -79,9 +82,15 @@ class ProductDetailFragment : BaseFragment() {
         priceTV?.text = mProduct?.price
         storeTV?.text = mProduct?.shop
 
-        Picasso.get()
-            .load(mProduct?.picture)
-            .into(itemImage)
+        if (!mProduct?.picture.isNullOrEmpty()) {
+            Picasso.get()
+                .load(mProduct?.picture)
+                .into(itemImage)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(itemImage)
+        }
         logD("product $mProduct")
 
         shareButton?.setOnClickListener {
@@ -100,11 +109,9 @@ class ProductDetailFragment : BaseFragment() {
         }
 
         reserveButton?.setOnClickListener {
-            if (!prefs.wishIds.isNullOrEmpty()){
-                prefs.wishIds = "${prefs.wishIds}, ${mProduct?.id}"
-            } else {
-                prefs.wishIds = mProduct?.id
-            }
+            wishToReserve = WishToReserve(mProduct?.userId, mProduct?.id)
+            logD("wishToReserve $wishToReserve")
+            reserveWish(wishToReserve)
 
         }
 
@@ -165,6 +172,26 @@ class ProductDetailFragment : BaseFragment() {
                 customRepository.copyWishFromUser(userId, wishId)) {
                 is ResponseResult.Success -> {
                     showMessage("El deseo ha sido copiado correctamente", messageCard)
+                    findNavController().popBackStack()
+                }
+                is ResponseResult.Error -> {
+                    logD("Error")
+                }
+                is ResponseResult.Forbidden -> {
+                    logD("Forbidden")
+                }
+            }
+            hideProgressDialog()
+        }
+    }
+
+    private fun reserveWish(wishId: WishToReserve) {
+        GlobalScope.launch(Dispatchers.Main) {
+            showProgressDialog()
+            when (val response =
+                customRepository.reserveWish(wishId)) {
+                is ResponseResult.Success -> {
+                    showMessage("El deseo ha sido reservado correctamente", messageCard)
                     findNavController().popBackStack()
                 }
                 is ResponseResult.Error -> {

@@ -29,7 +29,8 @@ class HomeFragment : BaseFragment() {
     private lateinit var itemAdapter2: HomeAdapter
     private lateinit var itemAdapter3: HomeAdapter
     private lateinit var itemAdapter4: HomeAdapter
-    private val likes = prefs.likes?.fromJson<Array<String>>()
+    private val arrPrueba: Array<String> = arrayOf("Videojuegos", "Hogar", "Televisión" ,"Moda")
+    private val likes = prefs.likes?.fromJson<Array<String?>>() ?: arrPrueba
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_home, container, false)

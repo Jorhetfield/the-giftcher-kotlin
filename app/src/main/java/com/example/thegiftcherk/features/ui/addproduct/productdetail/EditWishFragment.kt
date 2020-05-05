@@ -87,9 +87,16 @@ class EditWishFragment : BaseFragment() {
         inputDescription?.setText(mProduct?.description)
         inputLocation?.setText(mProduct?.location)
 
-        Picasso.get()
-            .load(mProduct?.picture)
-            .into(imagePickerIV)
+        if (!mProduct?.picture.isNullOrEmpty()) {
+
+            Picasso.get()
+                .load(mProduct?.picture)
+                .into(imagePickerIV)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(imagePickerIV)
+        }
 
 
         imagePickerIV?.setOnClickListener {
@@ -196,10 +203,12 @@ class EditWishFragment : BaseFragment() {
             }
         }
     }
+
     private fun scaledBitmap(bitmap: Bitmap): Bitmap {
 
         return Bitmap.createScaledBitmap(bitmap, 1024, 768, true)
     }
+
     private fun createMultipart(bitmap: Bitmap): MultipartBody.Part {
 
         val imageFile = getFileFromBitmap("file", bitmap)

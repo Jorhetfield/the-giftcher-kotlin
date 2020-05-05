@@ -40,10 +40,17 @@ class ProfileFragment : BaseFragment() {
         deleteFriendButton?.visibility = View.GONE
 
         logD("user $user")
-        Picasso.get()
-            .load(user?.imagePath)
-            .placeholder(R.drawable.ic_placeholder)
-            .into(imageProfile)
+        if (!user?.imagePath.isNullOrEmpty()){
+            Picasso.get()
+                .load(user?.imagePath)
+                .placeholder(R.drawable.ic_placeholder)
+                .into(imageProfile)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(imageProfile)
+        }
+
         nombreusuario_TV?.text = "${user.name} ${user.lastName} (${user.username})"
         cumpleaños_TV?.text = user.birthday
 

@@ -141,5 +141,19 @@ interface Service {
     suspend fun createFriendRequest(
         @Body friendRequestId: FriendRequestId
     ): Response<Operation>
+
+    @GET("reserved_wishes")
+    suspend fun getReservedWishes(
+    ): Response<ReservedWishesList>
+
+    @POST("reserved_wishes")
+    suspend fun reserveWish(
+        @Body wishToReserve: WishToReserve
+    ): Response<WishReserved>
+
+    @DELETE("reserved_wishes/{wishId}")
+    suspend fun deleteReservedWish(
+        @Path("wishId") wishId: String
+    ): Response<Operation>
     //endregion Others
 }

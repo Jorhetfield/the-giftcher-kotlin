@@ -502,6 +502,61 @@ class Repository(private val service: Service, private val context: Context) {
         }
     }
 
+    suspend fun getReservedWishes(
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<ReservedWishesList> {
+        return if (!fake) {
+            try {
+                val response = service.getReservedWishes()
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun reserveWish(
+        wishToReserve: WishToReserve,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<WishReserved> {
+        return if (!fake) {
+            try {
+                val response = service.reserveWish(wishToReserve)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
+
+    suspend fun deleteReservedWish(
+        wishId: String,
+        fake: Boolean = BuildConfig.MOCK
+    ): ResponseResult<Operation> {
+        return if (!fake) {
+            try {
+                val response = service.deleteReservedWish(wishId)
+                checkResponse(context, response)
+
+            } catch (e: Exception) {
+                checkException(context, e)
+            }
+
+        } else {
+            delay(MOCK_DELAY)
+            context.getMockResponseResult(R.raw.user)
+        }
+    }
 
 
 

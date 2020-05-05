@@ -8,6 +8,7 @@ import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.features.ui.main.MainLoginActivity
 import com.example.thegiftcherk.setup.BaseActivity
+import com.example.thegiftcherk.setup.utils.extensions.logD
 
 class SplashActivity : BaseActivity() {
     //region Vars
@@ -38,6 +39,7 @@ class SplashActivity : BaseActivity() {
     //region Methods
     private val mRunnable: Runnable = Runnable {
         checkToken()
+        logD("tokenSpash ${prefs.token}")
     }
 
 

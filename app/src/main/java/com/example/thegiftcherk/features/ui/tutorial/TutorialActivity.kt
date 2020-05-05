@@ -86,8 +86,8 @@ class TutorialActivity : BaseActivity() {
 
             // LinePagerIndicatorDecoration has default values (#ff000000, 60000000, and 0f respectively)
             val pagerDecoration = LinePagerIndicatorDecoration(
-                colorActive = context.color(R.color.colorDetailDark),
-                colorInactive = context.color(R.color.white80Transparent),
+                colorActive = context.color(R.color.colorSecondary),
+                colorInactive = context.color(R.color.colorPrimary),
                 offSet = 0f.dp // let us to overlay the image with the page indicators (24f.dp = indicators move up 24 dpi)
             )
             addItemDecoration(pagerDecoration)

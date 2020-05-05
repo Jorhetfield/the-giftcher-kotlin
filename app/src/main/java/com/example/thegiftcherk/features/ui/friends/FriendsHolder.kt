@@ -11,6 +11,7 @@ import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_friend.view.*
+import kotlinx.android.synthetic.main.item_my_list_row.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -36,9 +37,17 @@ class FriendsHolder(v: View) : RecyclerView.ViewHolder(v) {
         view.name_TV.text = friend.username
         view.birthday_TV.text = friend.birthday
 
-        Picasso.get()
-            .load(friend.imagePath)
-            .into(view.image_IV)
+        if (!friend.imagePath.isNullOrEmpty()){
+
+            Picasso.get()
+                .load(friend.imagePath)
+                .placeholder(R.drawable.ic_placeholder)
+                .into(view.image_IV)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(view.image_IV)
+        }
 
         view.friend_messageCard?.setOnClickListener {
             val action =

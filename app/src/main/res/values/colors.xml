@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">@color/primary_night_mode</color>
+    <color name="colorPrimaryVariant">@color/primary_variant</color>
     <color name="colorDetail">@color/black</color>
     <color name="colorDetailDark">@color/color_detail</color>
     <color name="colorSecondary">@color/primary_night_mode</color>
@@ -37,6 +38,7 @@
     <color name="semi_transparent_white">#10FFFFFF</color>
     <color name="black">#000000</color>
     <color name="primary_night_mode">#1D1D1D</color>
+    <color name="primary_variant">#8e8e8e</color>
     <color name="gray_text">#5A5A5A</color>
     <color name="gray_light">#3B3B3B</color>
     <color name="gray_text_light">#B2B2B2</color>
@@ -47,4 +49,5 @@
     <color name="light_gray">#cbcbcb</color>
     <color name="medium_gray">#8e8e93</color>
     <color name="dark_gray">#333333</color>
+
 </resources>

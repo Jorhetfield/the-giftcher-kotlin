@@ -30,6 +30,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.constraintContainer
+import kotlinx.android.synthetic.main.item_my_list_row.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -61,10 +62,17 @@ class EditProfileFragment : BaseFragment() {
         inputNameEdit?.setText(user.name)
         birthdayTextEdit?.setText(user.birthday)
 
-        Picasso.get()
-            .load(user.imagePath)
-            .placeholder(R.drawable.ic_placeholder)
-            .into(imageProfile)
+        if (!user.imagePath.isNullOrEmpty()){
+
+            Picasso.get()
+                .load(user.imagePath)
+                .placeholder(R.drawable.ic_placeholder)
+                .into(view.itemImage)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(view.itemImage)
+        }
 
         datePickerImageEdit?.setOnClickListener {
             dialogBook()
