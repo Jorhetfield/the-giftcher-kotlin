@@ -1,5 +1,6 @@
 package com.example.thegiftcherk.features.ui.addproduct.productdetail
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.login.models.User
+import com.example.thegiftcherk.features.ui.login.models.WishToReserve
+import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.fromJson
@@ -22,6 +25,8 @@ import kotlinx.coroutines.launch
 
 class ProductDetailFragment : BaseFragment() {
     val userData = prefs.user?.fromJson<User>()
+    val wishToPrefs: MutableList<Item>? = mutableListOf()
+    private lateinit var wishToReserve: WishToReserve
 
     private val mProduct by lazyUnsychronized {
         arguments?.let {
@@ -35,7 +40,7 @@ class ProductDetailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        logD("reservedWish $reservedWish")
         when (mProduct?.category) {
 
             "1" -> categoryTV?.text = CategoriesIds.VIDEOJUEGOS.category.second
@@ -63,10 +68,12 @@ class ProductDetailFragment : BaseFragment() {
         if (mProduct?.userId != userData?.id) {
             editWishButton?.visibility = View.GONE
             deleteWishButton?.visibility = View.GONE
+            reserveButton?.visibility = View.VISIBLE
             saveButton?.visibility = View.VISIBLE
         } else {
             editWishButton?.visibility = View.VISIBLE
             deleteWishButton?.visibility = View.VISIBLE
+            reserveButton?.visibility = View.GONE
             saveButton?.visibility = View.GONE
         }
 
@@ -75,24 +82,36 @@ class ProductDetailFragment : BaseFragment() {
         priceTV?.text = mProduct?.price
         storeTV?.text = mProduct?.shop
 
-        Picasso.get()
-            .load(mProduct?.picture)
-            .into(itemImage)
+        if (!mProduct?.picture.isNullOrEmpty()) {
+            Picasso.get()
+                .load(mProduct?.picture)
+                .into(itemImage)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(itemImage)
+        }
         logD("product $mProduct")
 
         shareButton?.setOnClickListener {
             //TODO abrir intent de compartir
+            shareIntent(mProduct?.name.toString())
+
         }
 
         saveButton?.setOnClickListener {
-
             MaterialAlertDialogBuilder(context, R.style.DialogTheme1)
-                .setTitle("¿Quieres copiar el producto?")
-                .setMessage("El producto aparecerá en tu lista personal")
+                .setTitle("¿Quieres copiar el producto?, el producto aparecerá en tu lista.")
                 .setNegativeButton("No", null)
                 .setPositiveButton("Si") { _, _ ->
                     copyWishFromUser(mProduct?.userId.toString(), mProduct?.id.toString())
                 }.show()
+        }
+
+        reserveButton?.setOnClickListener {
+            wishToReserve = WishToReserve(mProduct?.userId, mProduct?.id)
+            logD("wishToReserve $wishToReserve")
+            reserveWish(wishToReserve)
 
         }
 
@@ -112,6 +131,19 @@ class ProductDetailFragment : BaseFragment() {
                     deleteWish(mProduct?.id.toString())
                 }.show()
         }
+    }
+
+    private fun shareIntent(name: String) {
+        val sendIntent: Intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "¡Quiero $name de regalo!")
+            putExtra(Intent.EXTRA_TITLE, "¡Mira mi lista de deseos en The Giftcher!")
+            type = "text/plain"
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent, null)
+        startActivity(shareIntent)
+
     }
 
     private fun deleteWish(id: String) {
@@ -139,6 +171,28 @@ class ProductDetailFragment : BaseFragment() {
             when (val response =
                 customRepository.copyWishFromUser(userId, wishId)) {
                 is ResponseResult.Success -> {
+                    showMessage("El deseo ha sido copiado correctamente", messageCard)
+                    findNavController().popBackStack()
+                }
+                is ResponseResult.Error -> {
+                    logD("Error")
+                }
+                is ResponseResult.Forbidden -> {
+                    logD("Forbidden")
+                }
+            }
+            hideProgressDialog()
+        }
+    }
+
+    private fun reserveWish(wishId: WishToReserve) {
+        GlobalScope.launch(Dispatchers.Main) {
+            showProgressDialog()
+            when (val response =
+                customRepository.reserveWish(wishId)) {
+                is ResponseResult.Success -> {
+                    showMessage("El deseo ha sido reservado correctamente", messageCard)
+                    findNavController().popBackStack()
                 }
                 is ResponseResult.Error -> {
                     logD("Error")

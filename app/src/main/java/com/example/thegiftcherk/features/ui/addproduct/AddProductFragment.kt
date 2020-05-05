@@ -153,8 +153,8 @@ class AddProductFragment : BaseFragment() {
                         )
 
                         logD("probando ${bitmap.width} ${bitmap.height}")
-                        multipartPrueba = createMultipart(bitmap)
-                        imagePickerIV?.setImageBitmap(bitmap)
+                        multipartPrueba = createMultipart(scaledBitmap(bitmap))
+                        imagePickerIV?.setImageBitmap(scaledBitmap(bitmap))
 
 //                        uploadImage(createMultipart(bitmap))
                     }
@@ -171,8 +171,8 @@ class AddProductFragment : BaseFragment() {
                 val bitmap: Bitmap
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
 //                uploadImage(createMultipart(bitmap))
-                multipartPrueba = createMultipart(bitmap)
-                imagePickerIV?.setImageBitmap(bitmap)
+                multipartPrueba = createMultipart(scaledBitmap(bitmap))
+                imagePickerIV?.setImageBitmap(scaledBitmap(bitmap))
 
             }
         }
@@ -188,15 +188,19 @@ class AddProductFragment : BaseFragment() {
         return MultipartBody.Part.createFormData("file", "file", requestBodyFromFile)
     }
 
+    private fun scaledBitmap(bitmap: Bitmap): Bitmap {
+        return Bitmap.createScaledBitmap(bitmap, 1024, 768, true)
+    }
+
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
 
-        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 100)
+        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 10)
     }
 
     private fun convertBitmapToFile(
         fileName: String,
         bitmap: Bitmap,
-        qualityJpeg: Int = 100
+        qualityJpeg: Int = 40
     ): File {
         //Create a file to write bitmap data
         val file = File(context?.cacheDir, fileName)
@@ -204,7 +208,7 @@ class AddProductFragment : BaseFragment() {
 
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos)
         val bitMapData = bos.toByteArray()
 
         //write the bytes in file

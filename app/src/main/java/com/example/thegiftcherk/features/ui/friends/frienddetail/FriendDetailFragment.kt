@@ -19,6 +19,7 @@ import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.friend_detail_fragment.*
+import kotlinx.android.synthetic.main.item_friend.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -50,9 +51,17 @@ class FriendDetailFragment : BaseFragment() {
         nombreusuario_TV?.text = "${mFriend?.name} ${mFriend?.lastName} (${mFriend?.username})"
         cumpleaños_TV?.text = mFriend?.birthday
 
-        Picasso.get()
-            .load(mFriend?.imagePath)
-            .into(imageProfile)
+        if (!mFriend?.imagePath.isNullOrEmpty()){
+
+            Picasso.get()
+                .load(mFriend?.imagePath)
+                .placeholder(R.drawable.ic_placeholder)
+                .into(imageProfile)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(imageProfile)
+        }
 
         setTabBar()
 

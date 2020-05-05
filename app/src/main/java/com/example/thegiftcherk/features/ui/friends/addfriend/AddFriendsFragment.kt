@@ -70,10 +70,11 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
         val text = searchView2.text.toString().toLowerCase()
         if (text.isEmpty()) {
             friends.clear()
-//            getFriends()
+            getAllUsers()
+
         } else {
             val productsPrefs =
-                Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
+                Gson().fromJson(prefs.wishIds, Array<Friend>::class.java).toList()
             val name = ""
             val itemsQuery = productsPrefs.filter {
                 if (it.username.isNullOrEmpty()) {
@@ -97,10 +98,10 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
         if (text.isEmpty()) {
             friends.clear()
-//            getFriends()
+            getAllUsers()
         } else {
             val productsPrefs =
-                Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
+                Gson().fromJson(prefs.wishIds, Array<Friend>::class.java).toList()
             val name = ""
             val itemsQuery = productsPrefs.filter {
                 if (it.username.isNullOrEmpty()) {
@@ -142,14 +143,15 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
 
+                    prefs.wishIds = response.value.json()
                     responseResult.forEach {
                         logD("response ${it.username}")
                     }
+
                     val allUsers = response.value.filterNot {
                         it.username == userData?.username
                     }
 
-                    prefs.obsLocationAddress = allUsers.json()
                     friends.clear()
                     friends.addAll(allUsers)
                     friendsAdapter.notifyDataSetChanged()

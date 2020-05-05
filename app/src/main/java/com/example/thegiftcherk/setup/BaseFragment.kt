@@ -1,5 +1,6 @@
 package com.example.thegiftcherk.setup
 
+import android.content.ClipData
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.text.Editable
@@ -10,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.utils.extensions.hideProgressDialog
 import com.example.thegiftcherk.setup.utils.extensions.isEmail
@@ -24,6 +26,7 @@ abstract class BaseFragment : Fragment() {
     //region Vars
     val prefs: Prefs by inject()
     val customRepository by inject<Repository>()
+    val reservedWish: MutableList<Item?> = mutableListOf()
     //endregion Vars
 
     fun checkAndRequestPermission(permission: String, codeRequest: Int): Boolean {

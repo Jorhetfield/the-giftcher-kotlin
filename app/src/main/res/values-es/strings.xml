@@ -86,6 +86,8 @@
     <string name="help_button_tutorial_seeagain">Vuelve a ver el tutorial</string>
     <string name="help_button_faq">FAQ (ver en la web)</string>
     <string name="help_button_contactus">Contacta con nosotros</string>
+    <string name="delete_account_button">Borrar cuenta</string>
+
 
     <!-- Fragment "Home" -->
     <string name="home_subtitle">Listas personalizadas adaptadas a tus gustos.</string>

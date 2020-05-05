@@ -38,6 +38,10 @@ interface Service {
         @Path("userId") userId: String
     ): Response<Friend>
 
+    @DELETE("user/delete_account")
+    suspend fun deleteAccount(
+    ): Response<Operation>
+
     @GET("wishes/")
     suspend fun getOwnWishes(
     ): Response<List<Item>>
@@ -56,7 +60,7 @@ interface Service {
     suspend fun editWish(
         @Path("wishId") wishId: String,
         @Body sendEditWish: SendEditWish
-    ): Response<Operation>
+    ): Response<Item>
 
     @POST("wishes/")
     suspend fun addNewWish(
@@ -75,7 +79,7 @@ interface Service {
     @POST("/user/google_cloud_image")
     suspend fun uploadImage(
         @Part file: MultipartBody.Part?
-    ): Response<Any>
+    ): Response<User>
 
     @Multipart
     @POST("/wishes/google_cloud_wish_image/{wishId}")
@@ -136,6 +140,20 @@ interface Service {
     @POST("friends")
     suspend fun createFriendRequest(
         @Body friendRequestId: FriendRequestId
+    ): Response<Operation>
+
+    @GET("reserved_wishes")
+    suspend fun getReservedWishes(
+    ): Response<ReservedWishesList>
+
+    @POST("reserved_wishes")
+    suspend fun reserveWish(
+        @Body wishToReserve: WishToReserve
+    ): Response<WishReserved>
+
+    @DELETE("reserved_wishes/{wishId}")
+    suspend fun deleteReservedWish(
+        @Path("wishId") wishId: String
     ): Response<Operation>
     //endregion Others
 }

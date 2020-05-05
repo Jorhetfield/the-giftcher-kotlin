@@ -12,6 +12,7 @@ data class Item(
     @SerializedName("userId") val userId: String?,
     @SerializedName("shop") val shop: String?,
     val price: String?,
+    val reserved: Boolean?,
     val category: String?,
     val description: String?,
     val location: String?,

@@ -102,7 +102,9 @@ class FriendsRequestsFragment : BaseFragment() {
             hideProgressDialog()
         }
     }
-    //todo pasarle la id de la peticion, no la del usuario
+
+
+
      fun acceptFriend(friendRequestId: String) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()

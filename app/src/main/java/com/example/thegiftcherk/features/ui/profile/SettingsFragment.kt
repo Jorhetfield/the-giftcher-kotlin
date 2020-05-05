@@ -44,10 +44,7 @@ class SettingsFragment : BaseFragment() {
                 .setTitle("¿De verdad quieres cerrar sesión?")
                 .setNegativeButton("No", null)
                 .setPositiveButton("Si") { _, _ ->
-                    prefs.token = ""
-                    prefs.user = ""
-                    prefs.userType = ""
-                    prefs.userId = ""
+                    prefs.clear()
                     startLoginActivity()
                 }.show()
         }

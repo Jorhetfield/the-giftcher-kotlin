@@ -96,6 +96,23 @@
                     android:src="@drawable/ic_save" />
             </com.google.android.material.card.MaterialCardView>
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/reserveButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                app:cardElevation="4dp"
+                app:cardMaxElevation="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/textContainer"
+                app:layout_constraintStart_toEndOf="@+id/saveButton">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_add_friend" />
+            </com.google.android.material.card.MaterialCardView>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/textContainer"

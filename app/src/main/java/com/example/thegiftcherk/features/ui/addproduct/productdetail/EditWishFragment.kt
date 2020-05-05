@@ -15,7 +15,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.login.models.SendEditWish
 import com.example.thegiftcherk.setup.BaseFragment
@@ -25,7 +24,6 @@ import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_add_product.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -41,7 +39,7 @@ class EditWishFragment : BaseFragment() {
     private lateinit var wish: SendEditWish
     private val galleryRequestCode = 10
     private val cameraRequestCode = 20
-    private lateinit var multipartPrueba: MultipartBody.Part
+    private var multipartPrueba: MultipartBody.Part? = null
 
     private val mProduct by lazyUnsychronized {
         arguments?.let {
@@ -89,16 +87,35 @@ class EditWishFragment : BaseFragment() {
         inputDescription?.setText(mProduct?.description)
         inputLocation?.setText(mProduct?.location)
 
-        Picasso.get()
-            .load(mProduct?.picture)
-            .into(imagePickerIV)
+        if (!mProduct?.picture.isNullOrEmpty()) {
+
+            Picasso.get()
+                .load(mProduct?.picture)
+                .into(imagePickerIV)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(imagePickerIV)
+        }
 
 
         imagePickerIV?.setOnClickListener {
             selectImage()
         }
         saveButton?.setOnClickListener {
-            fetchData()
+            if (multipartPrueba != null && inputName.text.toString()
+                    .isNotEmpty() && inputStore.text.toString()
+                    .isNotEmpty() && inputLocation.text.toString()
+                    .isNotEmpty() && inputPrice.text.toString()
+                    .isNotEmpty() && inputDescription.text.toString().isNotEmpty()
+            ) {
+                fetchData()
+            } else {
+                showError(
+                    "Necesitamos que subas una imagen con el deseo y rellenes todos los campos",
+                    constraintContainer
+                )
+            }
         }
 
     }
@@ -162,7 +179,8 @@ class EditWishFragment : BaseFragment() {
                         )
 
                         logD("probando ${bitmap.width} ${bitmap.height}")
-                        multipartPrueba = createMultipart(bitmap)
+                        multipartPrueba = createMultipart(scaledBitmap(bitmap))
+                        imagePickerIV?.setImageBitmap(scaledBitmap(bitmap))
 
 //                        uploadImage(createMultipart(bitmap))
                     }
@@ -179,9 +197,16 @@ class EditWishFragment : BaseFragment() {
                 val bitmap: Bitmap
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
 //                uploadImage(createMultipart(bitmap))
-                multipartPrueba = createMultipart(bitmap)
+                multipartPrueba = createMultipart(scaledBitmap(bitmap))
+                imagePickerIV?.setImageBitmap(scaledBitmap(bitmap))
+
             }
         }
+    }
+
+    private fun scaledBitmap(bitmap: Bitmap): Bitmap {
+
+        return Bitmap.createScaledBitmap(bitmap, 1024, 768, true)
     }
 
     private fun createMultipart(bitmap: Bitmap): MultipartBody.Part {
@@ -196,13 +221,13 @@ class EditWishFragment : BaseFragment() {
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
 
-        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 100)
+        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 10)
     }
 
     private fun convertBitmapToFile(
         fileName: String,
         bitmap: Bitmap,
-        qualityJpeg: Int = 100
+        qualityJpeg: Int = 40
     ): File {
         //Create a file to write bitmap data
         val file = File(context?.cacheDir, fileName)
@@ -210,7 +235,7 @@ class EditWishFragment : BaseFragment() {
 
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos)
         val bitMapData = bos.toByteArray()
 
         //write the bytes in file
@@ -288,7 +313,6 @@ class EditWishFragment : BaseFragment() {
         logD("sendEditWish = $wish")
     }
 
-
     private fun editWish(wishId: String, sendEditWish: SendEditWish) {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
@@ -297,18 +321,15 @@ class EditWishFragment : BaseFragment() {
                 is ResponseResult.Success -> {
 
                     showMessage("Deseo añadido correctamente", logoBackground)
-//                    findNavController().popBackStack()
-//                    uploadWishImage(multipartPrueba, response.value.id.toString())
+                    uploadWishImage(multipartPrueba!!, wishId)
 
                 }
 
                 is ResponseResult.Error -> {
                     showError(response.message, constraintContainer)
-
                 }
                 is ResponseResult.Forbidden -> {
                     showError(response.message, constraintContainer)
-
                 }
             }
             hideProgressDialog()

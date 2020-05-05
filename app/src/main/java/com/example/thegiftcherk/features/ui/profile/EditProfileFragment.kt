@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -23,6 +22,7 @@ import com.example.thegiftcherk.features.ui.main.MainActivity
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.addTenths
+import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
@@ -30,6 +30,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.constraintContainer
+import kotlinx.android.synthetic.main.item_my_list_row.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -61,10 +62,17 @@ class EditProfileFragment : BaseFragment() {
         inputNameEdit?.setText(user.name)
         birthdayTextEdit?.setText(user.birthday)
 
-        Picasso.get()
-            .load(user.imagePath)
-            .placeholder(R.drawable.ic_placeholder)
-            .into(imageProfile)
+        if (!user.imagePath.isNullOrEmpty()){
+
+            Picasso.get()
+                .load(user.imagePath)
+                .placeholder(R.drawable.ic_placeholder)
+                .into(view.itemImage)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(view.itemImage)
+        }
 
         datePickerImageEdit?.setOnClickListener {
             dialogBook()
@@ -202,7 +210,9 @@ class EditProfileFragment : BaseFragment() {
 
                         logD("probando ${bitmap.width} ${bitmap.height}")
 
-                        uploadImage(createMultipart(bitmap))
+                        uploadImage(createMultipart(scaledBitmap(bitmap)))
+
+                        imageProfile.setImageBitmap(scaledBitmap(bitmap))
                     }
                 }
             }
@@ -216,26 +226,15 @@ class EditProfileFragment : BaseFragment() {
                 val uri = Uri.fromFile(file)
                 val bitmap: Bitmap
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
-                uploadImage(createMultipart(bitmap))
+                uploadImage(createMultipart(scaledBitmap(bitmap)))
+                imageProfile.setImageBitmap(scaledBitmap(bitmap))
+
             }
         }
     }
 
-    private fun rotateBitmap(bitmap: Bitmap): Bitmap {
-        val matrix = Matrix()
-        matrix.postRotate(90f)
-
-        val scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.width, bitmap.height, true)
-
-        return Bitmap.createBitmap(
-            scaledBitmap,
-            0,
-            0,
-            scaledBitmap.width,
-            scaledBitmap.height,
-            matrix,
-            true
-        )
+    private fun scaledBitmap(bitmap: Bitmap): Bitmap {
+        return Bitmap.createScaledBitmap(bitmap, 1024, 768, true)
     }
 
     private fun createMultipart(bitmap: Bitmap): MultipartBody.Part {
@@ -250,13 +249,13 @@ class EditProfileFragment : BaseFragment() {
 
     private fun getFileFromBitmap(fileName: String, bitmap: Bitmap): File {
 
-        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 100)
+        return convertBitmapToFile(fileName, bitmap, qualityJpeg = 40)
     }
 
     private fun convertBitmapToFile(
         fileName: String,
         bitmap: Bitmap,
-        qualityJpeg: Int = 100
+        qualityJpeg: Int = 40
     ): File {
         //Create a file to write bitmap data
         val file = File(context?.cacheDir, fileName)
@@ -264,7 +263,7 @@ class EditProfileFragment : BaseFragment() {
 
         //Convert bitmap to byte array
         val bos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bos)
         val bitMapData = bos.toByteArray()
 
         //write the bytes in file
@@ -321,7 +320,10 @@ class EditProfileFragment : BaseFragment() {
             when (val response = customRepository.uploadImage(file)) {
                 is ResponseResult.Success -> {
                     //Save User:
+                    prefs.user = response.value.json()
+                    prefs.token = response.value.token
                     logD("response ${response.value}")
+
                 }
 
                 is ResponseResult.Error -> {
@@ -347,8 +349,11 @@ class EditProfileFragment : BaseFragment() {
             )) {
                 is ResponseResult.Success -> {
                     //Save User:
-                    findNavController().popBackStack()
+                    prefs.user = response.value.json()
+                    prefs.token = response.value.token
                     showMessage("Cambios realizados correctamente", view!!.rootView)
+                    logD("response ${response.value}")
+
                     //Change view:
                 }
                 is ResponseResult.Error ->

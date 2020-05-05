@@ -3,10 +3,10 @@ package com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs
 import android.view.View
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragmentDirections
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_friend.view.*
 import kotlinx.android.synthetic.main.item_my_list_row.view.*
 
 
@@ -30,9 +30,17 @@ class FriendTabsHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         view.message.text = item.name
 
-        Picasso.get()
-            .load(item.picture)
-            .into(view.itemImage)
+        if (!item.picture.isNullOrEmpty()){
+
+            Picasso.get()
+                .load(item.picture)
+                .placeholder(R.drawable.ic_placeholder)
+                .into(view.itemImage)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(view.itemImage)
+        }
 
         view.homeItemCard?.setOnClickListener {
 

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_friend.view.image_IV
@@ -39,8 +40,15 @@ class FriendRequestHolder(v: View) : RecyclerView.ViewHolder(v) {
         }
         view.name_TV.text = friend.username
 
-        Picasso.get()
-            .load(friend.imagePath)
-            .into(view.image_IV)
+        if (!friend.imagePath.isNullOrEmpty()){
+            Picasso.get()
+                .load(friend.imagePath)
+                .into(view.image_IV)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_placeholder)
+                .into(view.image_IV)
+        }
+
     }
 }

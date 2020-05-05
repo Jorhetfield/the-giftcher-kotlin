@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
@@ -12,6 +11,7 @@ import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.fromJson
+import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -29,7 +29,8 @@ class HomeFragment : BaseFragment() {
     private lateinit var itemAdapter2: HomeAdapter
     private lateinit var itemAdapter3: HomeAdapter
     private lateinit var itemAdapter4: HomeAdapter
-    private val likes = prefs.likes?.fromJson<Array<String>>()
+    private val arrPrueba: Array<String> = arrayOf("Videojuegos", "Hogar", "Televisión" ,"Moda")
+    private val likes = prefs.likes?.fromJson<Array<String?>>() ?: arrPrueba
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_home, container, false)
