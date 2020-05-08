@@ -1,167 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/ic_logo_tg_white_mode"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
+        android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/divider1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDetailDark"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_logo_tg_white_mode"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/editProfileButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/transparent"
-            android:elevation="0dp"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:shadowColor="@color/transparent"
-            android:text="@string/settings_button_editprofile"
-            android:textAllCaps="false"
-            android:textColor="@color/colorSecondary"
-            android:textSize="20sp"
-            app:elevation="0dp" />
-
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDetailDark"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/termsAndConditionsButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/transparent"
-            android:elevation="0dp"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:shadowColor="@color/transparent"
-            android:text="@string/settings_button_termscond"
-            android:textAllCaps="false"
-            android:textColor="@color/colorSecondary"
-            android:textSize="20sp"
-            app:elevation="0dp" />
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDetailDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/divider3"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDetailDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/editProfileButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/transparent"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:shadowColor="@color/transparent"
+                android:text="@string/settings_button_editprofile"
+                android:textAllCaps="false"
+                android:textColor="@color/colorSecondary"
+                android:textSize="20sp"
+                app:elevation="0dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/privacyPoliticButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/transparent"
-            android:elevation="0dp"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:shadowColor="@color/transparent"
-            android:text="@string/settings_button_privacypolicy"
-            android:textAllCaps="false"
-            android:textColor="@color/colorSecondary"
-            android:textSize="20sp"
-            app:elevation="0dp" />
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDetailDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/divider4"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDetailDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/termsAndConditionsButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/transparent"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:shadowColor="@color/transparent"
+                android:text="@string/settings_button_termscond"
+                android:textAllCaps="false"
+                android:textColor="@color/colorSecondary"
+                android:textSize="20sp"
+                app:elevation="0dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/helpButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/transparent"
-            android:elevation="0dp"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:shadowColor="@color/transparent"
-            android:text="@string/settings_button_help"
-            android:textAllCaps="false"
-            android:textColor="@color/colorSecondary"
-            android:textSize="20sp"
-            app:elevation="0dp" />
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDetailDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/divider5"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDetailDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/privacyPoliticButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/transparent"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:shadowColor="@color/transparent"
+                android:text="@string/settings_button_privacypolicy"
+                android:textAllCaps="false"
+                android:textColor="@color/colorSecondary"
+                android:textSize="20sp"
+                app:elevation="0dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/logoutButton"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:backgroundTint="@color/transparent"
-            android:elevation="0dp"
-            android:gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:shadowColor="@color/transparent"
-            android:text="@string/logout"
-            android:textAllCaps="false"
-            android:textColor="@color/colorSecondary"
-            android:textSize="20sp"
-            app:elevation="0dp" />
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDetailDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:id="@+id/divider6"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorDetailDark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/helpButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/transparent"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:shadowColor="@color/transparent"
+                android:text="@string/settings_button_help"
+                android:textAllCaps="false"
+                android:textColor="@color/colorSecondary"
+                android:textSize="20sp"
+                app:elevation="0dp" />
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDetailDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logoutButton"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/transparent"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:shadowColor="@color/transparent"
+                android:text="@string/logout"
+                android:textAllCaps="false"
+                android:textColor="@color/colorSecondary"
+                android:textSize="20sp"
+                app:elevation="0dp" />
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorDetailDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

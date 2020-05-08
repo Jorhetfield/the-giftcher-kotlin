@@ -28,6 +28,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import kotlinx.android.synthetic.main.fragment_edit_profile.view.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.android.synthetic.main.fragment_register.constraintContainer
 import kotlinx.android.synthetic.main.item_my_list_row.view.*
@@ -67,11 +68,11 @@ class EditProfileFragment : BaseFragment() {
             Picasso.get()
                 .load(user.imagePath)
                 .placeholder(R.drawable.ic_placeholder)
-                .into(view.itemImage)
+                .into(view.imageProfileEdit)
         } else {
             Picasso.get()
                 .load(R.drawable.ic_placeholder)
-                .into(view.itemImage)
+                .into(view.imageProfileEdit)
         }
 
         datePickerImageEdit?.setOnClickListener {
@@ -212,7 +213,7 @@ class EditProfileFragment : BaseFragment() {
 
                         uploadImage(createMultipart(scaledBitmap(bitmap)))
 
-                        imageProfile.setImageBitmap(scaledBitmap(bitmap))
+                        imageProfileEdit.setImageBitmap(scaledBitmap(bitmap))
                     }
                 }
             }
@@ -227,7 +228,7 @@ class EditProfileFragment : BaseFragment() {
                 val bitmap: Bitmap
                 bitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, uri)
                 uploadImage(createMultipart(scaledBitmap(bitmap)))
-                imageProfile.setImageBitmap(scaledBitmap(bitmap))
+                imageProfileEdit.setImageBitmap(scaledBitmap(bitmap))
 
             }
         }

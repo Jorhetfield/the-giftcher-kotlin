@@ -38,7 +38,7 @@
                     android:layout_height="match_parent">
 
                     <ImageButton
-                        android:id="@+id/imageProfile"
+                        android:id="@+id/imageProfileEdit"
                         android:layout_width="160dp"
                         android:layout_height="160dp"
                         android:scaleType="centerCrop"

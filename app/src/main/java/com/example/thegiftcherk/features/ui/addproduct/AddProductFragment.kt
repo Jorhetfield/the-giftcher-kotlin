@@ -46,7 +46,6 @@ class AddProductFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cardTypes: MutableList<String> = mutableListOf()
         val prueba = resources.getStringArray(R.array.Categories)
 
         if (spinnerCardType != null) {
