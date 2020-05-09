@@ -43,22 +43,23 @@ class HomeFragment : BaseFragment() {
 
         likes.forEach { like ->
 
-            val prueba = if (resources.configuration.locale == Locale("es_ES")) {
+            val prueba = if (resources.configuration.locale.toString() == "es_ES") {
                 val dentro = CategoriesIds.values().find {
                     it.category.second == like
                 }
                 likesMatching.add(dentro?.category?.first)
+                logD("prueba likes if $likesMatching")
 
             } else {
                val dentro =  CategoriesIdsEnglish.values().find {
                     it.category.second == like
                 }
                 likesMatching.add(dentro?.category?.first)
+                logD("prueba likes else $likesMatching")
+
             }
 
-
-
-            logD("Prueba $prueba ")
+            logD("Prueba $prueba ${resources.configuration.locale} ")
             logD("Prueba $likesMatching")
         }
 
