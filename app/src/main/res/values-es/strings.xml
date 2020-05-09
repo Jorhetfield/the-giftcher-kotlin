@@ -49,7 +49,7 @@
     <string name="accept_policy_privacy">Al dar en "Confirmar", acepto los <b>Términos y condiciones</b> del servicio y la <b>Política de privacidad</b></string>
 
     <!-- Fragment Add Friend -->
-    <string name="addfriend_searchbar_placeholder">Busca nuevos amigos escribiendo aquí sus nombres de usuario.</string>
+    <string name="addfriend_searchbar_placeholder">Busca nuevos amigos.</string>
     <string name="addfriend_searchbar_explanation">⬆     Encuentra a otros usuarios escribiendo su nombre en el buscador y envíales una solicitud de amistad.</string>
 
     <!-- Fragment Add Product -->
@@ -80,7 +80,7 @@
     <string name="editprofile_button_save">Guardar</string>
 
     <!-- Fragment "Friends" -->
-    <string name="friends_searchbar_placeholder">Busca a quien quieras entre tu lista de amigos</string>
+    <string name="friends_searchbar_placeholder">Busca a quien quieras entre tus amigos</string>
 
     <!-- Fragment "Help" -->
     <string name="help_button_tutorial_seeagain">Vuelve a ver el tutorial</string>

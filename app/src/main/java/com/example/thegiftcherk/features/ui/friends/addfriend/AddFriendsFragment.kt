@@ -64,6 +64,11 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
             }
         recyclerAddFriends.adapter = friendsAdapter
+
+        swipeNewFriends?.setOnRefreshListener {
+            getAllUsers()
+        }
+
     }
 
     override fun onQueryTextChange(query: String): Boolean {
@@ -137,7 +142,7 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
     private fun getAllUsers() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
+            swipeNewFriends?.isRefreshing = true
             when (val response =
                 customRepository.getAllUsers()) {
                 is ResponseResult.Success -> {
@@ -164,7 +169,7 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
                     showError(response.message, view!!)
                 }
             }
-            hideProgressDialog()
+            swipeNewFriends?.isRefreshing = false
         }
     }
 
@@ -177,7 +182,6 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
                     logD("respuesta login ${response.value}")
                 }
                 is ResponseResult.Error -> logD("respuesta login ${response.message}")
-
 ////                    showError(response.message, constraintContainer)
                 is ResponseResult.Forbidden -> logD("respuesta login ${response.message}")
 //                    showError(response.message, constraintContainer)

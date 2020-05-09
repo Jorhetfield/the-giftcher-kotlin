@@ -1,5 +1,7 @@
 package com.example.thegiftcherk.features.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -91,7 +93,14 @@ class HomeFragment : BaseFragment() {
         recycler4.adapter = itemAdapter4
 
         getItems()
+        moreInfoButton?.setOnClickListener {
+            openWeb("http://thegiftcher.com")
+        }
+    }
 
+    private fun openWeb(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
     private fun getItems() {

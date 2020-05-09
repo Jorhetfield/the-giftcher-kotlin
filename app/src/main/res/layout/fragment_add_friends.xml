@@ -1,116 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/constraintContainer"
+    android:id="@+id/swipeNewFriends"
     android:layout_width="match_parent"
-    android:isScrollContainer="false"
-    android:layout_height="match_parent">
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/logoBackground"
-        android:layout_width="1000dp"
-        android:layout_height="2000dp"
-        android:layout_margin="16dp"
-        android:alpha=".3"
-        android:isScrollContainer="false"
-        android:src="@drawable/ic_icono_tg_white_mode"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.example.thegiftcherk.setup.SearchTextView
-        android:id="@+id/searchView2"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/colorPrimary"
-        android:backgroundTint="@color/colorPrimary"
-        android:elevation="5dp"
-        android:textColor="@color/colorSecondary"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:foregroundGravity="left"
-        android:hint="@string/addfriend_searchbar_placeholder"
-        android:foregroundTint="@color/colorSecondary"
-        android:gravity="center"
-        android:maxLength="20"
-        android:maxLines="1"
-        android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:id="@+id/searchIV2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:elevation="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/searchView2"
-        app:layout_constraintStart_toStartOf="@+id/searchView2"
-        app:layout_constraintTop_toTopOf="@+id/searchView2"
-        app:srcCompat="@android:drawable/ic_menu_search"/>
-
-    <ImageView
-        android:id="@+id/closeBut2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:elevation="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/searchView2"
-        app:layout_constraintEnd_toEndOf="@+id/searchView2"
-        app:layout_constraintTop_toTopOf="@+id/searchView2"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"/>
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerAddFriends"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:isScrollContainer="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView2" />
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/emptyView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView2" >
+        android:id="@+id/constraintContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:isScrollContainer="false">
 
-<!--        <androidx.appcompat.widget.AppCompatImageView-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/ic_icono_tg_white_mode"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/emptyText" />-->
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/emptyText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/addfriend_searchbar_explanation"
-            android:textSize="20sp"
-            android:textColor="@color/colorSecondary"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
-            android:gravity="start"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/logoBackground"
+            android:layout_width="1000dp"
+            android:layout_height="2000dp"
+            android:layout_margin="16dp"
+            android:alpha=".3"
+            android:isScrollContainer="false"
+            android:src="@drawable/ic_icono_tg_white_mode"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.example.thegiftcherk.setup.SearchTextView
+            android:id="@+id/searchView2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimary"
+            android:elevation="5dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:foregroundGravity="left"
+            android:foregroundTint="@color/colorSecondary"
+            android:gravity="center"
+            android:hint="@string/addfriend_searchbar_placeholder"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/colorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/searchIV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:elevation="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/searchView2"
+            app:layout_constraintStart_toStartOf="@+id/searchView2"
+            app:layout_constraintTop_toTopOf="@+id/searchView2"
+            app:srcCompat="@android:drawable/ic_menu_search" />
+
+        <ImageView
+            android:id="@+id/closeBut2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:elevation="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/searchView2"
+            app:layout_constraintEnd_toEndOf="@+id/searchView2"
+            app:layout_constraintTop_toTopOf="@+id/searchView2"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerAddFriends"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:isScrollContainer="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchView2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/emptyView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView2">
+
+            <!--        <androidx.appcompat.widget.AppCompatImageView-->
+            <!--            android:layout_width="0dp"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:src="@drawable/ic_icono_tg_white_mode"-->
+            <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--            app:layout_constraintEnd_toEndOf="parent"-->
+            <!--            app:layout_constraintStart_toStartOf="parent"-->
+            <!--            app:layout_constraintTop_toBottomOf="@id/emptyText" />-->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/emptyText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="start"
+                android:text="@string/addfriend_searchbar_explanation"
+                android:textColor="@color/colorSecondary"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

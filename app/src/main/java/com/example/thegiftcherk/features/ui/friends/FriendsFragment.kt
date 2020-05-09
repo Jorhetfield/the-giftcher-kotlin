@@ -57,6 +57,11 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
         friendsAdapter = FriendsAdapter(friends) {}
         recyclerFriends.adapter = friendsAdapter
+
+        swipeFriends?.setOnRefreshListener {
+            getFriends()
+        }
+
     }
 
     override fun onQueryTextChange(query: String): Boolean {
@@ -131,7 +136,8 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
     private fun getFriends() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
+            swipeFriends?.isRefreshing = true
+
             when (val response =
                 customRepository.getFriends()) {
                 is ResponseResult.Success -> {
@@ -177,7 +183,8 @@ class FriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
                 }
             }
-            hideProgressDialog()
+            swipeFriends?.isRefreshing = false
+
         }
     }
 
