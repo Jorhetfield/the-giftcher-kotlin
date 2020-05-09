@@ -22,9 +22,7 @@ class LikesFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        chipGroup?.setOnCheckedChangeListener { group, checkedId ->
-            logD("checked chips $checkedId")
-        }
+
 
         val checkedChips: MutableList<String> = mutableListOf()
 

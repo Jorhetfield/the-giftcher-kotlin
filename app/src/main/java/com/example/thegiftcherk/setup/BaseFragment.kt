@@ -223,6 +223,28 @@ abstract class BaseFragment : Fragment() {
         OTROS(Pair("19", "Otras"))
     }
 
+    enum class CategoriesIdsEnglish(val category: Pair<String, String>) {
+        VIDEOJUEGOS(Pair("1", "Videogames")),
+        HOGAR(Pair("2", "Home")),
+        MOTOR(Pair("3", "Motor")),
+        ELECTRODOMESTICOS(Pair("4", "House appliances")),
+        MODA(Pair("5", "Fashion")),
+        JARDIN(Pair("6", "Gardening")),
+        TELEVISION(Pair("7", "TV")),
+        MUSICA(Pair("8", "Music")),
+        FOTO(Pair("9", "Photography")),
+        MOVILES(Pair("10", "Mobile phones")),
+        INFORMATICA(Pair("11", "Computing")),
+        DEPORTE(Pair("12", "Sports")),
+        LIBROS(Pair("13", "Books")),
+        NIÑOS_Y_BEBES(Pair("14", "Kids & Babies")),
+        AGRICULTURA(Pair("15", "Farming")),
+        SERVICIOS(Pair("16", "Services")),
+        COLECCIONISMO(Pair("17", "Collectibles")),
+        CONSTRUCCION(Pair("18", "Building and masonry")),
+        OTROS(Pair("19", "Other products"))
+    }
+
     companion object {
         const val REQUEST_LOCATION = 83
         const val CAMERA = 84

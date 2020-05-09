@@ -19,13 +19,14 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 class HomeFragment : BaseFragment() {
     val items1: MutableList<Item> = mutableListOf()
     val items2: MutableList<Item> = mutableListOf()
     val items3: MutableList<Item> = mutableListOf()
     val items4: MutableList<Item> = mutableListOf()
-    val likesMatching: MutableList<CategoriesIds?> = mutableListOf()
+    val likesMatching: MutableList<String?> = mutableListOf()
     private lateinit var itemAdapter1: HomeAdapter
     private lateinit var itemAdapter2: HomeAdapter
     private lateinit var itemAdapter3: HomeAdapter
@@ -41,19 +42,30 @@ class HomeFragment : BaseFragment() {
         getFriendRequests()
 
         likes.forEach { like ->
-            val prueba = CategoriesIds.values().find {
-                it.category.second == like
+
+            val prueba = if (resources.configuration.locale == Locale("es_ES")) {
+                val dentro = CategoriesIds.values().find {
+                    it.category.second == like
+                }
+                likesMatching.add(dentro?.category?.first)
+
+            } else {
+               val dentro =  CategoriesIdsEnglish.values().find {
+                    it.category.second == like
+                }
+                likesMatching.add(dentro?.category?.first)
             }
-            likesMatching.add(prueba)
-            logD("Prueba $prueba")
+
+
+
+            logD("Prueba $prueba ")
             logD("Prueba $likesMatching")
         }
 
-        recyclerTitle1.text = getStringFromCategory(likesMatching[0]?.category?.first ?: "")
-        recyclerTitle2.text = getStringFromCategory(likesMatching[1]?.category?.first ?: "")
-        recyclerTitle3.text = getStringFromCategory(likesMatching[2]?.category?.first ?: "")
-        recyclerTitle4.text = getStringFromCategory(likesMatching[3]?.category?.first ?: "")
-
+        recyclerTitle1.text = getStringFromCategory(likesMatching[0] ?: "")
+        recyclerTitle2.text = getStringFromCategory(likesMatching[1] ?: "")
+        recyclerTitle3.text = getStringFromCategory(likesMatching[2] ?: "")
+        recyclerTitle4.text = getStringFromCategory(likesMatching[3] ?: "")
 
         val linearLayoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -63,6 +75,7 @@ class HomeFragment : BaseFragment() {
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val linearLayoutManager3 =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         recycler1.layoutManager = linearLayoutManager
         recycler2.layoutManager = linearLayoutManager1
         recycler3.layoutManager = linearLayoutManager2
@@ -111,19 +124,19 @@ class HomeFragment : BaseFragment() {
                 is ResponseResult.Success -> {
 
                     val firstRecycler = response.value.filter {
-                        it.category == likesMatching[0]?.category?.first ?: "1"
+                        it.category == likesMatching[0] ?: "1"
                     }
 
                     val secondRecycler = response.value.filter {
-                        it.category == likesMatching[1]?.category?.first ?: "2"
+                        it.category == likesMatching[1] ?: "2"
                     }
 
                     val thirdRecycler = response.value.filter {
-                        it.category == likesMatching[2]?.category?.first ?: "3"
+                        it.category == likesMatching[2] ?: "3"
                     }
 
                     val fourthRecycler = response.value.filter {
-                        it.category == likesMatching[3]?.category?.first ?: "4"
+                        it.category == likesMatching[3] ?: "4"
                     }
 
                     items1.clear()
