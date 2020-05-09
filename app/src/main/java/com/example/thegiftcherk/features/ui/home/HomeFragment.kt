@@ -13,7 +13,6 @@ import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.extensions.fromJson
-import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -31,7 +30,7 @@ class HomeFragment : BaseFragment() {
     private lateinit var itemAdapter2: HomeAdapter
     private lateinit var itemAdapter3: HomeAdapter
     private lateinit var itemAdapter4: HomeAdapter
-    private val arrPrueba: Array<String> = arrayOf("Videojuegos", "Hogar", "Televisión" ,"Moda")
+    private val arrPrueba: Array<String> = arrayOf("Videojuegos", "Hogar", "Televisión", "Moda")
     private val likes = prefs.likes?.fromJson<Array<String?>>() ?: arrPrueba
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -41,7 +40,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         getFriendRequests()
 
-        likes?.forEach { like ->
+        likes.forEach { like ->
             val prueba = CategoriesIds.values().find {
                 it.category.second == like
             }
@@ -49,10 +48,11 @@ class HomeFragment : BaseFragment() {
             logD("Prueba $prueba")
             logD("Prueba $likesMatching")
         }
-        recyclerTitle1.text = likesMatching[0]?.category?.second ?: ""
-        recyclerTitle2.text = likesMatching[1]?.category?.second ?: ""
-        recyclerTitle3.text = likesMatching[2]?.category?.second ?: ""
-        recyclerTitle4.text = likesMatching[3]?.category?.second ?: ""
+
+        recyclerTitle1.text = getStringFromCategory(likesMatching[0]?.category?.first ?: "")
+        recyclerTitle2.text = getStringFromCategory(likesMatching[1]?.category?.first ?: "")
+        recyclerTitle3.text = getStringFromCategory(likesMatching[2]?.category?.first ?: "")
+        recyclerTitle4.text = getStringFromCategory(likesMatching[3]?.category?.first ?: "")
 
 
         val linearLayoutManager =
@@ -186,6 +186,31 @@ class HomeFragment : BaseFragment() {
                 }
             }
             hideProgressDialog()
+        }
+    }
+
+    private fun getStringFromCategory(category: String): String {
+        return when (category) {
+            "1" -> resources.getString(R.string.likes_checkbox_videogames)
+            "2" -> resources.getString(R.string.likes_checkbox_home)
+            "3" -> resources.getString(R.string.likes_checkbox_motor)
+            "4" -> resources.getString(R.string.likes_checkbox_homeappliances)
+            "5" -> resources.getString(R.string.likes_checkbox_fashion)
+            "6" -> resources.getString(R.string.likes_checkbox_garden)
+            "7" -> resources.getString(R.string.likes_checkbox_tv)
+            "8" -> resources.getString(R.string.likes_checkbox_music)
+            "9" -> resources.getString(R.string.likes_checkbox_photo)
+            "10" -> resources.getString(R.string.likes_checkbox_mobile)
+            "11" -> resources.getString(R.string.likes_checkbox_computing)
+            "12" -> resources.getString(R.string.likes_checkbox_sports)
+            "13" -> resources.getString(R.string.likes_checkbox_books)
+            "14" -> resources.getString(R.string.likes_checkbox_childs)
+            "15" -> resources.getString(R.string.likes_checkbox_farming)
+            "16" -> resources.getString(R.string.likes_checkbox_services)
+            "17" -> resources.getString(R.string.likes_checkbox_collectibles)
+            "18" -> resources.getString(R.string.likes_checkbox_masonry)
+            "19" -> resources.getString(R.string.likes_checkbox_others)
+            else -> "hola"
         }
     }
 

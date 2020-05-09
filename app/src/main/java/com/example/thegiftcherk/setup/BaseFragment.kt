@@ -1,6 +1,5 @@
 package com.example.thegiftcherk.setup
 
-import android.content.ClipData
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.text.Editable
@@ -179,7 +178,8 @@ abstract class BaseFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (!s.toString().isValidPassword()) {
                     inputPasswordLayout.isErrorEnabled = true
-                    inputPasswordLayout.error = "La contraseña debe tener más de 8 caracteres, una mayus, un número y uno de estos símbolos @#!$%"
+                    inputPasswordLayout.error =
+                        "La contraseña debe tener más de 8 caracteres, una mayus, un número y uno de estos símbolos @#!$%"
                 }
             }
         }
@@ -200,7 +200,6 @@ abstract class BaseFragment : Fragment() {
             }
         }
     }
-
 
     enum class CategoriesIds(val category: Pair<String, String>) {
         VIDEOJUEGOS(Pair("1", "Videojuegos")),
