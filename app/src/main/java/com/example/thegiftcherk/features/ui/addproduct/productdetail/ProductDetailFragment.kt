@@ -25,7 +25,6 @@ import kotlinx.coroutines.launch
 
 class ProductDetailFragment : BaseFragment() {
     val userData = prefs.user?.fromJson<User>()
-    val wishToPrefs: MutableList<Item>? = mutableListOf()
     private lateinit var wishToReserve: WishToReserve
 
     private val mProduct by lazyUnsychronized {
@@ -40,7 +39,7 @@ class ProductDetailFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        logD("reservedWish $reservedWish")
+        logD("producto $mProduct")
         when (mProduct?.category) {
 
             "1" -> categoryTV?.text = CategoriesIds.VIDEOJUEGOS.category.second
@@ -77,6 +76,12 @@ class ProductDetailFragment : BaseFragment() {
             saveButton?.visibility = View.GONE
         }
 
+
+        if (mProduct?.reserved == true && mProduct?.userId != userData?.id) {
+            reserveButton?.visibility = View.GONE
+            deleteReserveButton?.visibility = View.VISIBLE
+        }
+
         titleTV?.text = mProduct?.name
         descriptionTV?.text = mProduct?.description
         priceTV?.text = mProduct?.price
@@ -96,6 +101,12 @@ class ProductDetailFragment : BaseFragment() {
         shareButton?.setOnClickListener {
             //TODO abrir intent de compartir
             shareIntent(mProduct?.name.toString())
+
+        }
+
+        deleteReserveButton?.setOnClickListener {
+
+            deleteReservation(mProduct?.id.toString())
 
         }
 
@@ -190,6 +201,26 @@ class ProductDetailFragment : BaseFragment() {
             showProgressDialog()
             when (val response =
                 customRepository.reserveWish(wishId)) {
+                is ResponseResult.Success -> {
+                    showMessage("El deseo ha sido reservado correctamente", messageCard)
+                    findNavController().popBackStack()
+                }
+                is ResponseResult.Error -> {
+                    logD("Error")
+                }
+                is ResponseResult.Forbidden -> {
+                    logD("Forbidden")
+                }
+            }
+            hideProgressDialog()
+        }
+    }
+
+    private fun deleteReservation(wishId: String) {
+        GlobalScope.launch(Dispatchers.Main) {
+            showProgressDialog()
+            when (val response =
+                customRepository.deleteReservedWish(wishId)) {
                 is ResponseResult.Success -> {
                     showMessage("El deseo ha sido reservado correctamente", messageCard)
                     findNavController().popBackStack()

@@ -83,13 +83,11 @@ class FriendDetailFragment : BaseFragment() {
             friendTabsAdapter =
                 ViewPagerFragmentsAdapter(it.supportFragmentManager, lifecycle)
             friendTabsAdapter.addFragment(FriendDesireFragment())
-            friendTabsAdapter.addFragment(FriendGiftsFragment())
             containerTabs.adapter = friendTabsAdapter
 
             TabLayoutMediator(tabs, containerTabs) { tab, position ->
                 when (position) {
                     TAB_DESIRES -> tab.text = "Deseos"
-                    TAB_GIFTS_ASSOCIATEDS -> tab.text = "Regalos asociados"
                 }
             }.attach()
         }
@@ -102,16 +100,16 @@ class FriendDetailFragment : BaseFragment() {
                 customRepository.deleteFriend(friendId)) {
                 is ResponseResult.Success -> {
 
-                    showMessage("Amigo borrado correctamente", messageCard)
+                    showMessage("Amigo borrado correctamente", constraintMessageInside)
                     findNavController().popBackStack()
                     logD("respuesta login ${response.value}")
                     logD("respuesta login ${prefs.firstLogin}")
                     //Change view:
                 }
                 is ResponseResult.Error ->
-                    showError(response.message, messageCard)
+                    showError(response.message, constraintMessageInside)
                 is ResponseResult.Forbidden ->
-                    showError(response.message, messageCard)
+                    showError(response.message, constraintMessageInside)
             }
             hideProgressDialog()
         }

@@ -33,10 +33,7 @@ open class LoginFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Watch input
-        inputPassword?.addTextChangedListener(textWatcherPass(inputPasswordLayout))
         //Set buttons click
-
         buttonLogin?.setOnClickListener {
             sendUser = SendUser(inputUsernameLogin?.text.toString(), inputPassword?.text.toString())
             onClickLogin()

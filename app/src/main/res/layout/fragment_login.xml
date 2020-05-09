@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <LinearLayout
             android:id="@+id/textViewLinear"
             android:layout_width="match_parent"
@@ -42,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="54dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="@color/white_gray"
             android:textColorHint="@color/colorDetail"
@@ -58,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorDetail"
                 android:foregroundTint="@color/colorDetail"
+                android:maxLength="20"
                 android:hint="@string/placeholder_username"
                 android:inputType="textEmailAddress"
                 android:textColor="@color/colorSecondary" />
@@ -86,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorDetail"
                 android:foregroundTint="@color/colorDetail"
+                android:maxLength="20"
                 android:hint="@string/placeholder_password"
                 android:inputType="textPassword"
                 android:textColor="@color/colorSecondary" />
@@ -98,6 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:focusable="false"
+            android:textSize="14sp"
             android:text="@string/password_forgotten"
             android:textAllCaps="false"
             android:textColor="@color/colorSecondary"

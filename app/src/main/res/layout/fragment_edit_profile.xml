@@ -120,6 +120,7 @@
                 android:textSize="18sp"
                 android:hint="@string/placeholder_username"
                 android:inputType="textEmailAddress"
+                android:maxLength="20"
                 android:textColor="@color/colorSecondary" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +145,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/placeholder_name"
                 android:textSize="18sp"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
+                android:maxLength="20"
                 android:textColor="@color/colorSecondary"  />
         </com.google.android.material.textfield.TextInputLayout>
 

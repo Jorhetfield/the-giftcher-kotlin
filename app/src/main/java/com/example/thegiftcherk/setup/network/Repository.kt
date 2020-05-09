@@ -73,7 +73,7 @@ class Repository(private val service: Service, private val context: Context) {
     suspend fun doRegister(
         sendUserRegister: SendUserRegister,
         fake: Boolean = BuildConfig.MOCK
-    ): ResponseResult<Any> {
+    ): ResponseResult<User> {
         return if (!fake) {
             try {
                 val response = service.register(sendUserRegister)

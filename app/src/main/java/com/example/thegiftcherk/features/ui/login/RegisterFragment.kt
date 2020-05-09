@@ -9,12 +9,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.login.models.SendUserRegister
 import com.example.thegiftcherk.features.ui.main.MainActivity
+import com.example.thegiftcherk.features.ui.tutorial.TutorialActivity
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
-import com.example.thegiftcherk.setup.utils.extensions.addTenths
-import com.example.thegiftcherk.setup.utils.extensions.isEmail
-import com.example.thegiftcherk.setup.utils.extensions.isValidPassword
-import com.example.thegiftcherk.setup.utils.extensions.logD
+import com.example.thegiftcherk.setup.utils.extensions.*
 import kotlinx.android.synthetic.main.fragment_register.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -59,29 +57,39 @@ class RegisterFragment : BaseFragment() {
     //region Methods
     private fun onClickRegister() {
         if (checkInputs()) {
-//            if (checkAndRequestPermission(
-//                    android.Manifest.permission.ACCESS_FINE_LOCATION,
-//                    REQUEST_LOCATION
-//                )
-//            ) {
-            logD(
-                "print inputs ${inputName?.text.toString() +
-                        inputLastname?.text.toString() +
-                        inputEmail?.text.toString() +
-                        inputUsername?.text.toString() +
-                        inputPassword?.text.toString() +
-                        birthdayText?.text.toString()}"
-            )
-            sendUserRegister = SendUserRegister(
-                inputName?.text.toString(),
-                inputUsername?.text.toString(),
-                inputLastname?.text.toString(),
-                inputEmail?.text.toString(),
-                inputPassword?.text.toString(),
-                birthdayText?.text.toString()
-            )
-            requestRegister(sendUserRegister)
+            if (checkAndRequestPermission(
+                    android.Manifest.permission.CAMERA,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE,
+                    CAMERA
+                ) && checkAndRequestPermission(
+                    android.Manifest.permission.INTERNET,
+                    CAMERA
+                )
+            ) {
+                logD(
+                    "print inputs ${inputName?.text.toString() +
+                            inputLastname?.text.toString() +
+                            inputEmail?.text.toString() +
+                            inputUsername?.text.toString() +
+                            inputPassword?.text.toString() +
+                            birthdayText?.text.toString()}"
+                )
+                sendUserRegister = SendUserRegister(
+                    inputName?.text.toString(),
+                    inputUsername?.text.toString(),
+                    inputLastname?.text.toString(),
+                    inputEmail?.text.toString(),
+                    inputPassword?.text.toString(),
+                    birthdayText?.text.toString()
+                )
+                requestRegister(sendUserRegister)
 
+            }
         }
     }
 
@@ -91,7 +99,7 @@ class RegisterFragment : BaseFragment() {
                 .isNotEmpty() && inputUsername?.text.toString()
                 .isNotEmpty() && inputLastname?.text.toString().isNotEmpty()
             && inputPassword?.text.toString() == inputRepeatPassword?.text.toString()
-            && birthdayText?.text.toString() != "Select your birthday"
+            && birthdayText?.text.toString() != "Actualiza tu cumpleaños"
         ) {
             true
         } else {
@@ -100,7 +108,7 @@ class RegisterFragment : BaseFragment() {
                     .isEmpty() || inputName?.text.toString()
                     .isEmpty() || inputUsername?.text.toString()
                     .isEmpty() || inputLastname?.text.toString()
-                    .isEmpty() || birthdayText?.text.toString() == "Select your birthday"
+                    .isEmpty() || birthdayText?.text.toString() == "Actualiza tu cumpleaños"
             ) {
                 showError(getString(R.string.error_pass), constraintContainer)
             } else if (!inputPassword?.text.toString().isValidPassword()) {
@@ -110,7 +118,7 @@ class RegisterFragment : BaseFragment() {
             } else if (!inputEmail?.text.toString().isEmail()
             ) {
                 showError(getString(R.string.error_email), constraintContainer)
-            } else if (birthdayText?.text.toString() == "Select your birthday") {
+            } else if (birthdayText?.text.toString() == "Actualiza tu cumpleaños") {
                 showError("Debes seleccionar una fecha de cumpleaños", constraintContainer)
             }
             false
@@ -161,8 +169,19 @@ class RegisterFragment : BaseFragment() {
                 sendUserRegister
             )) {
                 is ResponseResult.Success -> {
-                    findNavController().popBackStack()
-                    showMessage("Registro correcto, inicia sesión para empezar", constraintContainer)
+
+                    prefs.token = response.value.token
+                    prefs.user = response.value.json()
+
+                    logD("respuesta login ${response.value}")
+                    logD("respuesta login ${prefs.firstLogin}")
+                    //Change view:
+                    if (prefs.firstLogin) {
+                        startTutorialActivity()
+                    } else {
+                        startMainClientActivity()
+                    }
+
                 }
                 is ResponseResult.Error ->
                     showError(response.message, constraintContainer)
@@ -180,6 +199,15 @@ class RegisterFragment : BaseFragment() {
             activity?.finish()
         }
     }
+
+    private fun startTutorialActivity() {
+        context?.let {
+            val intent = TutorialActivity.intent(it)
+            startActivity(intent)
+            activity?.finish()
+        }
+    }
+
     //endregion Methods
 
     companion object {

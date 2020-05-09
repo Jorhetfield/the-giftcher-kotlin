@@ -31,7 +31,7 @@ interface Service {
     @POST("user/register")
     suspend fun register(
         @Body sendUserRegister: SendUserRegister
-    ): Response<Any>
+    ): Response<User>
 
     @GET("user/{userId}")
     suspend fun getSingleUser(

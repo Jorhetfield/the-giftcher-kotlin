@@ -110,7 +110,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/placeholder_name"
-                                android:inputType="text"
+                                android:maxLength="20"
+                                android:inputType="textEmailAddress"
                                 android:textColor="@color/colorSecondary">
 
                             </com.google.android.material.textfield.TextInputEditText>
@@ -137,7 +138,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/addproduct_placeholder_shop"
-                                android:inputType="text"
+                                android:maxLength="20"
+                                android:inputType="textEmailAddress"
                                 android:textColor="@color/colorSecondary"
                                 app:hintTextColor="@color/colorSecondary">
 
@@ -164,7 +166,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/addproduct_placeholder_location"
-                                android:inputType="text"
+                                android:maxLength="20"
+                                android:inputType="textEmailAddress"
                                 android:textColor="@color/colorSecondary"
                                 app:hintTextColor="@color/colorSecondary">
 
@@ -199,6 +202,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="@string/addproduct_placeholder_price"
+                                    android:maxLength="4"
                                     android:inputType="numberDecimal"
                                     android:textColor="@color/colorSecondary"
                                     app:hintTextColor="@color/colorSecondary">
@@ -243,7 +247,8 @@
                                 android:layout_height="match_parent"
                                 android:hint="@string/addproduct_placeholder_description"
                                 android:inputType="textLongMessage"
-                                android:maxLines="15"
+                                android:maxLength="140"
+                                android:maxLines="10"
                                 android:textColor="@color/colorSecondary"
                                 app:hintTextColor="@color/colorSecondary">
 
