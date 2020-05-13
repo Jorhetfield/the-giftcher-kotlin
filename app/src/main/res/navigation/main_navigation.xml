@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/friendDetailFragment"
         android:name="com.example.thegiftcherk.features.ui.friends.frienddetail.FriendDetailFragment"
-        tools:layout="@layout/friend_detail_fragment">
+        tools:layout="@layout/profile_fragment">
         <argument
             android:name="friend"
             app:argType="com.example.thegiftcherk.features.ui.friends.Friend" />
@@ -84,7 +84,7 @@
         android:id="@+id/navigation_profile"
         android:name="com.example.thegiftcherk.features.ui.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/friend_detail_fragment">
+        tools:layout="@layout/profile_fragment">
         <action
             android:id="@+id/action_navigation_profile_to_productDetailFragment"
             app:destination="@id/productDetailFragment"

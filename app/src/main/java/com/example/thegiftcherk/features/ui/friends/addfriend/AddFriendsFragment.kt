@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.fragment_add_friends.*
 import kotlinx.android.synthetic.main.fragment_add_friends.constraintContainer
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_search.*
-import kotlinx.android.synthetic.main.friend_detail_fragment.*
+import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

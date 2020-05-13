@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.util.*
 
 class HomeFragment : BaseFragment() {
     val items1: MutableList<Item> = mutableListOf()
@@ -44,17 +43,17 @@ class HomeFragment : BaseFragment() {
         likes.forEach { like ->
 
             val prueba = if (resources.configuration.locale.toString() == "es_ES") {
-                val dentro = CategoriesIds.values().find {
+                val likeFiltered = CategoriesIds.values().find {
                     it.category.second == like
                 }
-                likesMatching.add(dentro?.category?.first)
+                likesMatching.add(likeFiltered?.category?.first)
                 logD("prueba likes if $likesMatching")
 
             } else {
-               val dentro =  CategoriesIdsEnglish.values().find {
+               val likeFiltered =  CategoriesIdsEnglish.values().find {
                     it.category.second == like
                 }
-                likesMatching.add(dentro?.category?.first)
+                likesMatching.add(likeFiltered?.category?.first)
                 logD("prueba likes else $likesMatching")
 
             }

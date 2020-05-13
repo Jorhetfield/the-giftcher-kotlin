@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs.FriendDesireFragment
-import com.example.thegiftcherk.features.ui.friends.frienddetail.friendtabs.FriendGiftsFragment
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.adapters.ViewPagerFragmentsAdapter
@@ -18,7 +17,7 @@ import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.friend_detail_fragment.*
+import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.android.synthetic.main.item_friend.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

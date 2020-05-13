@@ -13,10 +13,12 @@ import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.adapters.ViewPagerFragmentsAdapter
 import com.example.thegiftcherk.setup.network.ResponseResult
 import com.example.thegiftcherk.setup.utils.TabLayoutMediator
+import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.friend_detail_fragment.*
+import kotlinx.android.synthetic.main.fragment_friends.*
+import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -28,7 +30,7 @@ class ProfileFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View = inflater.inflate(R.layout.friend_detail_fragment, container, false)
+    ): View = inflater.inflate(R.layout.profile_fragment, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,7 +38,8 @@ class ProfileFragment : BaseFragment() {
         imageProfile?.setOnClickListener {
             logD("responseClick")
         }
-
+        getFriends()
+        getItems()
         deleteFriendButton?.visibility = View.GONE
 
         logD("user $user")
@@ -52,7 +55,7 @@ class ProfileFragment : BaseFragment() {
         }
 
         nombreusuario_TV?.text = "${user.name} ${user.lastName} (${user.username})"
-        cumpleaños_TV?.text = user.birthday
+        cumpleaños_TVFecha?.text = user.birthday
 
     }
 
@@ -72,53 +75,41 @@ class ProfileFragment : BaseFragment() {
             }.attach()
         }
     }
-
-    private fun getProfileImage() {
+    private fun getFriends() {
+        showProgressDialog()
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
             when (val response =
-                customRepository.getProfileImage()) {
+                customRepository.getFriends()) {
                 is ResponseResult.Success -> {
-                    logD("response ${response}")
-
+                    val responseResult = response.value.friends
+                    friendsNumber?.text = responseResult?.size.toString()
                 }
                 is ResponseResult.Error -> {
-                    showError(response.message, view!!.rootView)
-                    logD("response ${response.message}")
+                    showError(response.message, view!!)
                 }
-                is ResponseResult.Forbidden ->
-                    showError("ERROR", view!!.rootView)
+                is ResponseResult.Forbidden -> {
+                    showError(response.message, view!!)
+
+                }
             }
-            hideProgressDialog()
+
         }
     }
 
-    private fun getWishImage(id: String) {
+    private fun getItems() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
             when (val response =
-                customRepository.getWishImage(id)) {
+                customRepository.getItems()) {
                 is ResponseResult.Success -> {
-                    logD("response ${response.value}")
-
+                    val responseResult = response.value
+                    wishesNumber?.text = responseResult.size.toString()
                 }
                 is ResponseResult.Error -> {
-                    showError(response.message, view!!.rootView)
-                    logD("response ${response.message}")
                 }
-                is ResponseResult.Forbidden ->
-                    showError("ERROR", view!!.rootView)
+                is ResponseResult.Forbidden -> {
+                }
             }
             hideProgressDialog()
-        }
-    }
-
-
-    private fun startMainActivity() {
-        context?.let {
-            val intent = MainActivity.intent(it)
-            startActivity(intent)
-            activity?.finish()
         }
     }
 
