@@ -2,7 +2,6 @@ package com.example.thegiftcherk.features.ui.search
 
 import android.view.View
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.search.models.Item
@@ -37,10 +36,18 @@ class SearchHolder(v: View) : RecyclerView.ViewHolder(v) {
             Navigation.findNavController(this.view).navigate(action)
         }
 
-        Picasso.get()
-            .load(item.picture)
-            .noPlaceholder()
-            .into(view.itemImage)
+        if (!item.picture.isNullOrEmpty()) {
+            Picasso.get()
+                .load((item.picture))
+                .placeholder(R.drawable.ic_gift)
+                .into(view.itemImage)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_gift)
+                .placeholder(R.drawable.ic_gift)
+                .into(view.itemImage)
+        }
+
 
     }
 

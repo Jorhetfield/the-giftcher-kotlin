@@ -4,10 +4,13 @@ import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_home_row.view.*
+import kotlinx.android.synthetic.main.item_home_row.view.homeItemCard
+import kotlinx.android.synthetic.main.item_my_list_row.view.*
 import kotlinx.android.synthetic.main.item_row.view.*
 import kotlinx.android.synthetic.main.item_row.view.itemImage
 import kotlinx.android.synthetic.main.item_row.view.message
@@ -34,10 +37,18 @@ class HomeHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         view.message.text = item.name
 
-        Picasso.get()
-            .load(item.picture)
-            .noPlaceholder()
-            .into(view.itemImage)
+        if (!item.picture.isNullOrEmpty()){
+
+            Picasso.get()
+                .load(item.picture)
+                .placeholder(R.drawable.ic_gift)
+                .into(view.itemImage)
+        } else {
+            Picasso.get()
+                .load(R.drawable.ic_gift)
+                .placeholder(R.drawable.ic_gift)
+                .into(view.itemImage)
+        }
 
         view.homeItemCard?.setOnClickListener {
             val action = HomeFragmentDirections.actionNavigationHomeToProductDetailFragment(item)

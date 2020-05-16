@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="button_height">56dp</dimen>
     <dimen name="text_title">35sp</dimen>
     <dimen name="text_bigger">24sp</dimen>
     <dimen name="text_big">16sp</dimen>
     <dimen name="text_subtitle">18sp</dimen>
+    <dimen name="design_bottom_navigation_icon_size" tools:override="true">32dp</dimen>
+    <dimen name="design_bottom_navigation_height" tools:override="true">66dp</dimen>
 </resources>

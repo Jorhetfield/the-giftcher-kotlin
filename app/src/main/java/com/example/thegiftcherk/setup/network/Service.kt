@@ -1,6 +1,7 @@
 package com.example.thegiftcherk.setup.network
 
 import com.example.thegiftcherk.features.ui.friends.Friend
+import com.example.thegiftcherk.features.ui.friends.FriendListResponse
 import com.example.thegiftcherk.features.ui.login.models.*
 import com.example.thegiftcherk.features.ui.search.models.Item
 import okhttp3.MultipartBody
@@ -30,7 +31,16 @@ interface Service {
     @POST("user/register")
     suspend fun register(
         @Body sendUserRegister: SendUserRegister
-    ): Response<Any>
+    ): Response<User>
+
+    @GET("user/{userId}")
+    suspend fun getSingleUser(
+        @Path("userId") userId: String
+    ): Response<Friend>
+
+    @DELETE("user/delete_account")
+    suspend fun deleteAccount(
+    ): Response<Operation>
 
     @GET("wishes/")
     suspend fun getOwnWishes(
@@ -50,16 +60,16 @@ interface Service {
     suspend fun editWish(
         @Path("wishId") wishId: String,
         @Body sendEditWish: SendEditWish
-    ): Response<Operation>
+    ): Response<Item>
 
     @POST("wishes/")
     suspend fun addNewWish(
         @Body sendNewWish: SendNewWish
-    ): Response<Operation>
+    ): Response<Item>
 
     @GET("friends")
     suspend fun getFriends(
-    ): Response<List<Friend>>
+    ): Response<FriendListResponse>
 
     @GET("user/get_users")
     suspend fun getAllUsers(
@@ -69,6 +79,13 @@ interface Service {
     @POST("/user/google_cloud_image")
     suspend fun uploadImage(
         @Part file: MultipartBody.Part?
+    ): Response<User>
+
+    @Multipart
+    @POST("/wishes/google_cloud_wish_image/{wishId}")
+    suspend fun uploadWishImage(
+        @Part file: MultipartBody.Part?,
+        @Path("wishId") id: String
     ): Response<Any>
 
     @GET("user/get_profile_image")
@@ -87,13 +104,13 @@ interface Service {
 
     @GET("/wishes/userId/{userId}")
     suspend fun getFriendWishes(
-        @Path("userId") userId: String
+        @Path("userId") userId: Long
     ): Response<List<Item>>
 
     @PUT("user/update/")
     suspend fun editProfile(
         @Body sendEditUser: SendEditUser
-    ): Response<Operation>
+    ): Response<User>
 
     @POST("wishes/copy/userId/{userId}/id/{wishId}")
     suspend fun copyWishFromUser(
@@ -105,24 +122,38 @@ interface Service {
     suspend fun getFriendRequests(
     ): Response<List<ListaPeticionesAmistad>>
 
-    @GET("friends/{friendRequestId}")
+    @PUT("friends/{friendRequestId}")
     suspend fun confirmFriend(
         @Path("friendRequestId") friendRequestId: String
     ): Response<Operation>
 
-    @GET("/friends/requests/{friendRequestId}")
+    @DELETE("/friends/requests/{friendRequestId}")
     suspend fun deleteFriendRequest(
         @Path("friendRequestId") friendRequestId: String
     ): Response<Operation>
 
-    @GET("friends/{friendId}")
+    @DELETE("friends/{friendId}")
     suspend fun deleteFriend(
         @Path("friendId") friendId: String
-    ): Response<List<ListaPeticionesAmistad>>
+    ): Response<Operation>
 
-    @GET("friends")
+    @POST("friends")
     suspend fun createFriendRequest(
-        @Body friendRequestId: Operation
+        @Body friendRequestId: FriendRequestId
+    ): Response<Operation>
+
+    @GET("reserved_wishes")
+    suspend fun getReservedWishes(
+    ): Response<ReservedWishesList>
+
+    @POST("reserved_wishes")
+    suspend fun reserveWish(
+        @Body wishToReserve: WishToReserve
+    ): Response<WishReserved>
+
+    @DELETE("reserved_wishes/{wishId}")
+    suspend fun deleteReservedWish(
+        @Path("wishId") wishId: String
     ): Response<Operation>
     //endregion Others
 }

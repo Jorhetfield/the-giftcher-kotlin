@@ -10,6 +10,7 @@ import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
 import kotlinx.android.synthetic.main.fragment_my_list.*
+import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -39,7 +40,7 @@ class MyListFragment : BaseFragment() {
 
     private fun getItems() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
+//            showProgressDialog()
             when (val response =
                 customRepository.getItems()) {
                 is ResponseResult.Success -> {
@@ -49,13 +50,14 @@ class MyListFragment : BaseFragment() {
                     items.addAll(responseResult)
                     myListAdapter.notifyDataSetChanged()
                     hideKeyboard()
+                    wishesNumber?.text = items.size.toString()
                 }
                 is ResponseResult.Error -> {
                 }
                 is ResponseResult.Forbidden -> {
                 }
             }
-            hideProgressDialog()
+//            hideProgressDialog()
         }
     }
 }

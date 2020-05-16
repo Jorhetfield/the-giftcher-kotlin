@@ -121,16 +121,7 @@ fun View.invisible() = this.post { if (this.visibility != View.INVISIBLE) this.v
 
 fun View.gone() = this.post { if (this.visibility != View.GONE) this.visibility = View.GONE }
 
-fun View.colorize(from: Int, to: Int, duration: Long = 300, delay: Long = 0) {
-    ValueAnimator.ofInt(from, to).apply {
-        setEvaluator(ArgbEvaluator())
-        addUpdateListener { value ->
-            this@colorize.setBackgroundColor((value.animatedValue as Int).colorStateList().defaultColor)
-        }
-        this.duration = duration
-        startDelay = delay
-    }.start()
-}
+
 
 fun View.alphaAnimated(from: Float, to: Float, duration: Long = 300, delay: Long = 0) {
     ValueAnimator.ofFloat(from, to).apply {
@@ -142,16 +133,6 @@ fun View.alphaAnimated(from: Float, to: Float, duration: Long = 300, delay: Long
     }.start()
 }
 
-fun View.colorizeTint(from: Int = this@colorizeTint.solidColor, to: Int, duration: Long = 300, delay: Long = 0) {
-    ValueAnimator.ofInt(from, to).apply {
-        setEvaluator(ArgbEvaluator())
-        addUpdateListener { value ->
-            this@colorizeTint.backgroundTintList = (value.animatedValue as Int).colorStateList()
-        }
-        this.duration = duration
-        startDelay = delay
-    }.start()
-}
 
 fun View.paddingAnimated(from: Int, to: Int, duration: Long = 300, delay: Long = 0) {
     ValueAnimator.ofInt(from, to).apply {

@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
                 android:orientation="vertical"
                 android:screenReaderFocusable="true"
@@ -65,8 +65,9 @@
                         android:id="@+id/inputName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nombre"
-                        android:inputType="textPersonName"
+                        android:hint="@string/placeholder_name"
+                        android:maxLength="20"
+                        android:inputType="textEmailAddress"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -86,8 +87,9 @@
                         android:id="@+id/inputLastname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Apellidos"
-                        android:inputType="textPersonName"
+                        android:hint="@string/placeholder_surname"
+                        android:maxLength="20"
+                        android:inputType="textEmailAddress"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,6 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/placeholder_email"
+                        android:maxLength="20"
                         android:inputType="textEmailAddress"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -128,8 +131,9 @@
                         android:id="@+id/inputUsername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nombre de usuario"
-                        android:inputType="text"
+                        android:hint="@string/placeholder_username"
+                        android:maxLength="20"
+                        android:inputType="textEmailAddress"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,6 +156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/placeholder_password"
+                        android:maxLength="20"
                         android:inputType="textPassword"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -175,6 +180,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/placeholder_repeat_password"
+                        android:maxLength="20"
                         android:inputType="textPassword"
                         android:textColor="@color/colorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -203,9 +209,9 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="32dp"
                         android:backgroundTint="@color/color_detail"
-                        android:text="Select your birthday"
+                        android:text="@string/title_updatebirthday"
                         android:textColor="@color/colorDetail"
-                        android:textSize="16dp" />
+                        android:textSize="16sp" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
             </LinearLayout>

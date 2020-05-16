@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class MyReservationsFragment : BaseFragment() {
     val items: MutableList<Item> = mutableListOf()
-        private lateinit var myListAdapter: MyListAdapter
+    private lateinit var myListAdapter: MyListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -26,30 +26,33 @@ class MyReservationsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val gridLayoutManager = GridLayoutManager(context,3)
+        getReservedWishes()
+        val gridLayoutManager = GridLayoutManager(context, 3)
         recyclerItemsMyList.layoutManager = gridLayoutManager
         myListAdapter =
             MyListAdapter(
+//                wishList
                 items
             ) {
             }
         recyclerItemsMyList.adapter = myListAdapter
-        getItems()
     }
 
-    private fun getItems() {
+    private fun getReservedWishes() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
-                customRepository.getItems()) {
+                customRepository.getReservedWishes()) {
                 is ResponseResult.Success -> {
-                    val responseResult = response.value
-
+                    val responseResult = response.value.reservedWishes
                     items.clear()
-                    val health = responseResult.filter {
-                        it.category == "Health"
+
+                    responseResult?.forEach { reservedWishes ->
+                        reservedWishes.friendReservedWishes?.forEach {
+                            items.add(it)
+                        }
                     }
-                    items.addAll(health)
+
                     myListAdapter.notifyDataSetChanged()
                     hideKeyboard()
                 }
@@ -61,4 +64,5 @@ class MyReservationsFragment : BaseFragment() {
             hideProgressDialog()
         }
     }
+
 }

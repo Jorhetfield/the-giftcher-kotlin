@@ -1,9 +1,13 @@
 package com.example.thegiftcherk.features.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.search.models.Item
@@ -22,12 +26,13 @@ class HomeFragment : BaseFragment() {
     val items2: MutableList<Item> = mutableListOf()
     val items3: MutableList<Item> = mutableListOf()
     val items4: MutableList<Item> = mutableListOf()
-    val likesMatching: MutableList<CategoriesIds?> = mutableListOf()
+    val likesMatching: MutableList<String?> = mutableListOf()
     private lateinit var itemAdapter1: HomeAdapter
     private lateinit var itemAdapter2: HomeAdapter
     private lateinit var itemAdapter3: HomeAdapter
     private lateinit var itemAdapter4: HomeAdapter
-    private val likes = prefs.likes?.fromJson<Array<String>>()
+    private val arrPrueba: Array<String> = arrayOf("Videojuegos", "Hogar", "Televisión", "Moda")
+    private val likes = prefs.likes?.fromJson<Array<String?>>() ?: arrPrueba
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_home, container, false)
@@ -36,19 +41,32 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         getFriendRequests()
 
-        likes?.forEach { like ->
-            val prueba = CategoriesIds.values().find {
-                it.category.second == like
+        likes.forEach { like ->
+
+            val prueba = if (resources.configuration.locale.toString() == "es_ES") {
+                val likeFiltered = CategoriesIds.values().find {
+                    it.category.second == like
+                }
+                likesMatching.add(likeFiltered?.category?.first)
+                logD("prueba likes if $likesMatching")
+
+            } else {
+                val likeFiltered = CategoriesIdsEnglish.values().find {
+                    it.category.second == like
+                }
+                likesMatching.add(likeFiltered?.category?.first)
+                logD("prueba likes else $likesMatching")
+
             }
-            likesMatching.add(prueba)
-            logD("Prueba $prueba")
+
+            logD("Prueba $prueba ${resources.configuration.locale} ")
             logD("Prueba $likesMatching")
         }
-        recyclerTitle1.text = likesMatching[0]?.category?.second ?: ""
-        recyclerTitle2.text = likesMatching[1]?.category?.second ?: ""
-        recyclerTitle3.text = likesMatching[2]?.category?.second ?: ""
-        recyclerTitle4.text = likesMatching[3]?.category?.second ?: ""
 
+        recyclerTitle1.text = getStringFromCategory(likesMatching[0] ?: "")
+        recyclerTitle2.text = getStringFromCategory(likesMatching[1] ?: "")
+        recyclerTitle3.text = getStringFromCategory(likesMatching[2] ?: "")
+        recyclerTitle4.text = getStringFromCategory(likesMatching[3] ?: "")
 
         val linearLayoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -58,6 +76,7 @@ class HomeFragment : BaseFragment() {
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val linearLayoutManager3 =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
         recycler1.layoutManager = linearLayoutManager
         recycler2.layoutManager = linearLayoutManager1
         recycler3.layoutManager = linearLayoutManager2
@@ -89,29 +108,45 @@ class HomeFragment : BaseFragment() {
 
         getItems()
 
+
+        moreInfoButton?.setOnClickListener {
+            openWeb("http://thegiftcher.com")
+        }
+    }
+
+    private fun checkRecyclers(items: MutableList<Item>, textView: TextView?) {
+        if (items.size < 1){
+            textView?.visibility = View.GONE
+        } else {
+            textView?.visibility = View.VISIBLE
+        }
+    }
+
+    private fun openWeb(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
     private fun getItems() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
             when (val response =
                 customRepository.getAllWishes()) {
                 is ResponseResult.Success -> {
 
                     val firstRecycler = response.value.filter {
-                        it.category == likesMatching[0]?.category?.first ?: "1"
+                        it.category == likesMatching[0] ?: "1"
                     }
 
                     val secondRecycler = response.value.filter {
-                        it.category == likesMatching[1]?.category?.first ?: "2"
+                        it.category == likesMatching[1] ?: "2"
                     }
 
                     val thirdRecycler = response.value.filter {
-                        it.category == likesMatching[2]?.category?.first ?: "3"
+                        it.category == likesMatching[2] ?: "3"
                     }
 
                     val fourthRecycler = response.value.filter {
-                        it.category == likesMatching[3]?.category?.first ?: "4"
+                        it.category == likesMatching[3] ?: "4"
                     }
 
                     items1.clear()
@@ -130,6 +165,10 @@ class HomeFragment : BaseFragment() {
                     itemAdapter3.notifyDataSetChanged()
                     itemAdapter4.notifyDataSetChanged()
                     hideKeyboard()
+                    checkRecyclers(items1, recyclerTitle1)
+                    checkRecyclers(items2, recyclerTitle2)
+                    checkRecyclers(items3, recyclerTitle3)
+                    checkRecyclers(items4, recyclerTitle4)
                 }
 
                 is ResponseResult.Error -> {
@@ -138,16 +177,15 @@ class HomeFragment : BaseFragment() {
                 }
                 is ResponseResult.Forbidden -> {
                     showError(response.message, recyclers)
-
                 }
             }
-            hideProgressDialog()
+            hideProgressBar()
         }
     }
 
     private fun getFriendRequests() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
+            showProgressBar()
             when (val response =
                 customRepository.getFriendRequests()) {
                 is ResponseResult.Success -> {
@@ -156,13 +194,10 @@ class HomeFragment : BaseFragment() {
                         logD("Ok ${response.value}")
                         MaterialAlertDialogBuilder(context, R.style.DialogTheme1)
                             .setTitle("Tienes nuevas peticiones de amistad")
-                            .setNegativeButton("Cerrar") { _, _ ->
-
-
-
-                            }
+                            .setNegativeButton("Cerrar", null)
                             .setPositiveButton("Ver") { _, _ ->
 
+                                findNavController().navigate(R.id.actionGoToFriendRequest)
 
 
                             }.show()
@@ -176,7 +211,39 @@ class HomeFragment : BaseFragment() {
 
                 }
             }
-            hideProgressDialog()
+        }
+    }
+
+    private fun showProgressBar() {
+        loadingBarHome?.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        loadingBarHome?.visibility = View.GONE
+    }
+
+    private fun getStringFromCategory(category: String): String {
+        return when (category) {
+            "1" -> resources.getString(R.string.likes_checkbox_videogames)
+            "2" -> resources.getString(R.string.likes_checkbox_home)
+            "3" -> resources.getString(R.string.likes_checkbox_motor)
+            "4" -> resources.getString(R.string.likes_checkbox_homeappliances)
+            "5" -> resources.getString(R.string.likes_checkbox_fashion)
+            "6" -> resources.getString(R.string.likes_checkbox_garden)
+            "7" -> resources.getString(R.string.likes_checkbox_tv)
+            "8" -> resources.getString(R.string.likes_checkbox_music)
+            "9" -> resources.getString(R.string.likes_checkbox_photo)
+            "10" -> resources.getString(R.string.likes_checkbox_mobile)
+            "11" -> resources.getString(R.string.likes_checkbox_computing)
+            "12" -> resources.getString(R.string.likes_checkbox_sports)
+            "13" -> resources.getString(R.string.likes_checkbox_books)
+            "14" -> resources.getString(R.string.likes_checkbox_childs)
+            "15" -> resources.getString(R.string.likes_checkbox_farming)
+            "16" -> resources.getString(R.string.likes_checkbox_services)
+            "17" -> resources.getString(R.string.likes_checkbox_collectibles)
+            "18" -> resources.getString(R.string.likes_checkbox_masonry)
+            "19" -> resources.getString(R.string.likes_checkbox_others)
+            else -> "hola"
         }
     }
 

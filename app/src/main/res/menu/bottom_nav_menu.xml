@@ -4,26 +4,26 @@
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/ic_loupe"
-        android:title="Buscar" />
+        android:title="@string/search"/>
 
     <item
         android:id="@+id/navigation_friends"
         android:icon="@drawable/ic_friends"
-        android:title="Amigos" />
+        android:title="@string/friends" />
 
     <item
         android:id="@+id/navigation_add"
         android:icon="@drawable/ic_add_desire"
-        android:title="Añadir Deseo" />
+        android:title="@string/add_wish" />
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_brain"
-        android:title="Perfil" />
+        android:title="@string/profile" />
 
 </menu>
