@@ -54,6 +54,11 @@ class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener {
         }
         recyclerItems.adapter = itemAdapter
         getAllWishes()
+
+        swipeSearch?.setOnRefreshListener {
+            getAllWishes()
+        }
+
     }
 
 
@@ -130,7 +135,7 @@ class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
     private fun getAllWishes() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
+            swipeSearch?.isRefreshing = true
             when (val response =
                 customRepository.getAllWishes()) {
                 is ResponseResult.Success -> {
@@ -155,7 +160,7 @@ class SearchFragment : BaseFragment(), SearchView.OnQueryTextListener {
                     showError(response.message, view!!)
                 }
             }
-            hideProgressDialog()
+            swipeSearch?.isRefreshing = false
         }
     }
 }

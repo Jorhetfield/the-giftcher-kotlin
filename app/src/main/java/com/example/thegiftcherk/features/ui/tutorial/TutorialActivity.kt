@@ -31,15 +31,15 @@ class TutorialActivity : BaseActivity() {
 
         val pictureUrlList: MutableList<Pair<Drawable, String>> = mutableListOf()
 
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.lista_gustos),"Explora listas relacionadas con tus gustos"))
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.aniadir_1),"Añade deseos a tu lista personalizada"))
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.aniadir_2),"Elige entre las categorías"))
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.lista_deseos),"Explora tu lista de deseos"))
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.detalle_deseo),"Mira los detalles de tus deseos"))
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.lista_amigos),"Explora entre tus amigos y añade más"))
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.detalle_amigo),"Cotillea las listas de tus amigos"))
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.perfil),"Edita tu perfil"))
-        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.perfil_reservas),"Contempla los regalos que tienes asignados"))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.lista_gustos), resources.getString(R.string.tutorial_1)))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.aniadir_1), resources.getString(R.string.tutorial_2)))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.aniadir_2), resources.getString(R.string.tutorial_3)))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.lista_deseos), resources.getString(R.string.tutorial_4)))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.detalle_deseo),  resources.getString(R.string.tutorial_5)))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.lista_amigos),  resources.getString(R.string.tutorial_6)))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.detalle_amigo),  resources.getString(R.string.tutorial_7)))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.perfil),  resources.getString(R.string.tutorial_8)))
+        pictureUrlList.add(Pair(resources.getDrawable(R.drawable.perfil_reservas),  resources.getString(R.string.tutorial_9)))
 
 
         tutorialViewPager.setBackgroundColor(
@@ -86,8 +86,8 @@ class TutorialActivity : BaseActivity() {
 
             // LinePagerIndicatorDecoration has default values (#ff000000, 60000000, and 0f respectively)
             val pagerDecoration = LinePagerIndicatorDecoration(
-                colorActive = context.color(R.color.colorDetailDark),
-                colorInactive = context.color(R.color.white80Transparent),
+                colorActive = context.color(R.color.colorSecondary),
+                colorInactive = context.color(R.color.colorPrimary),
                 offSet = 0f.dp // let us to overlay the image with the page indicators (24f.dp = indicators move up 24 dpi)
             )
             addItemDecoration(pagerDecoration)

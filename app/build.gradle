@@ -6,7 +6,6 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -24,7 +23,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -92,7 +90,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
-
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 
     //Koin DI
     implementation 'androidx.multidex:multidex:2.0.1'
@@ -110,8 +108,8 @@ dependencies {
     //Logger
     implementation 'com.javiersc.kotlinlogger:jvm:0.0.2'
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha04"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.0-alpha04"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha06"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.0-alpha06"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

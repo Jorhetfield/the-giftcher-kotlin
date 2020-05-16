@@ -27,7 +27,7 @@ class FriendGiftsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getFriendWishes(prefs.friendId ?: "0")
+        getReservedWishes()
 
         val gridLayoutManager = GridLayoutManager(context, 3)
         recyclerItemsMyList.layoutManager = gridLayoutManager
@@ -36,31 +36,27 @@ class FriendGiftsFragment : BaseFragment() {
         recyclerItemsMyList.adapter = friendTabsAdapter
     }
 
-
-    private fun getFriendWishes(userId: String) {
+    private fun getReservedWishes() {
         GlobalScope.launch(Dispatchers.Main) {
             showProgressDialog()
             when (val response =
-                customRepository.getFriendWishes(userId)) {
+                customRepository.getReservedWishes()) {
                 is ResponseResult.Success -> {
-                    val responseResult = response.value
-
+                    val responseResult = response.value.reservedWishes
                     desires.clear()
-                    desires.addAll(responseResult)
-                    friendTabsAdapter.notifyDataSetChanged()
 
-                    responseResult.forEach {
-                        logD("probando peticiones $it")
+                    responseResult?.forEach { reservedWishes ->
+                        reservedWishes.friendReservedWishes?.forEach {
+                            desires.add(it)
+                        }
                     }
 
+                    friendTabsAdapter.notifyDataSetChanged()
+                    hideKeyboard()
                 }
-
                 is ResponseResult.Error -> {
-                    showError(response.message, constraintContainerMyList)
                 }
                 is ResponseResult.Forbidden -> {
-                    showError(response.message, constraintContainerMyList)
-
                 }
             }
             hideProgressDialog()

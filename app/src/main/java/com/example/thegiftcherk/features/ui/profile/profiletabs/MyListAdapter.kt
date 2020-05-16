@@ -7,14 +7,14 @@ import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.utils.extensions.inflate
 
 class MyListAdapter(
-    private val items: MutableList<Item>,
-    private val listener: (Item) -> Unit
+    private val items: MutableList<Item>?,
+    private val listener: (Item?) -> Unit
 ) : RecyclerView.Adapter<MyListHolder>() {
     override fun onBindViewHolder(
         filterHolder: MyListHolder,
         position: Int
     ) {
-        items[position].apply { filterHolder.bind(this) { listener(it) } }
+        items?.get(position).apply { this?.let { filterHolder.bind(it) { listener(it) } } }
     }
 
     //region Methods
@@ -26,6 +26,6 @@ class MyListAdapter(
         )
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = items!!.size
     //endregion
 }

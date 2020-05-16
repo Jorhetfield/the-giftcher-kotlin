@@ -4,21 +4,29 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.friends.Friend
 import com.example.thegiftcherk.features.ui.friends.FriendsAdapter
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.setup.BaseFragment
+import com.example.thegiftcherk.setup.network.FriendRequestId
+import com.example.thegiftcherk.setup.network.Operation
 import com.example.thegiftcherk.setup.network.ResponseResult
+import com.example.thegiftcherk.setup.utils.extensions.appContext
 import com.example.thegiftcherk.setup.utils.extensions.fromJson
 import com.example.thegiftcherk.setup.utils.extensions.json
 import com.example.thegiftcherk.setup.utils.extensions.logD
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_add_friends.*
+import kotlinx.android.synthetic.main.fragment_add_friends.constraintContainer
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.profile_fragment.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -56,22 +64,28 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
             }
         recyclerAddFriends.adapter = friendsAdapter
+
+        swipeNewFriends?.setOnRefreshListener {
+            getAllUsers()
+        }
+
     }
 
     override fun onQueryTextChange(query: String): Boolean {
         val text = searchView2.text.toString().toLowerCase()
         if (text.isEmpty()) {
             friends.clear()
-//            getFriends()
+            getAllUsers()
+
         } else {
             val productsPrefs =
-                Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
+                Gson().fromJson(prefs.wishIds, Array<Friend>::class.java).toList()
             val name = ""
             val itemsQuery = productsPrefs.filter {
-                if (it.name.isNullOrEmpty()) {
-                    it.name == name
+                if (it.username.isNullOrEmpty()) {
+                    it.username == name
                 } else {
-                    it.name.toLowerCase().contains(text)
+                    it.username.toLowerCase().contains(text)
                 }
             }
             friends.clear()
@@ -89,16 +103,16 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
         if (text.isEmpty()) {
             friends.clear()
-//            getFriends()
+            getAllUsers()
         } else {
             val productsPrefs =
-                Gson().fromJson(prefs.obsLocationAddress, Array<Friend>::class.java).toList()
+                Gson().fromJson(prefs.wishIds, Array<Friend>::class.java).toList()
             val name = ""
             val itemsQuery = productsPrefs.filter {
-                if (it.name.isNullOrEmpty()) {
-                    it.name == name
+                if (it.username.isNullOrEmpty()) {
+                    it.username == name
                 } else {
-                    it.name.toLowerCase().contains(text)
+                    it.username.toLowerCase().contains(text)
                 }
             }
             friends.clear()
@@ -115,7 +129,7 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
         val filteredModelList = ArrayList<Friend>()
         for (product in models) {
-            val name = product.name?.toLowerCase()
+            val name = product.username?.toLowerCase()
             if (!name.isNullOrEmpty()) {
                 if (name.contains(lowerCaseQuery)) {
                     filteredModelList.add(product)
@@ -128,20 +142,21 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
 
     private fun getAllUsers() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
+            swipeNewFriends?.isRefreshing = true
             when (val response =
                 customRepository.getAllUsers()) {
                 is ResponseResult.Success -> {
                     val responseResult = response.value
 
+                    prefs.wishIds = response.value.json()
                     responseResult.forEach {
                         logD("response ${it.username}")
                     }
+
                     val allUsers = response.value.filterNot {
                         it.username == userData?.username
                     }
 
-                    prefs.obsLocationAddress = allUsers.json()
                     friends.clear()
                     friends.addAll(allUsers)
                     friendsAdapter.notifyDataSetChanged()
@@ -153,6 +168,23 @@ class AddFriendsFragment : BaseFragment(), SearchView.OnQueryTextListener {
                 is ResponseResult.Forbidden -> {
                     showError(response.message, view!!)
                 }
+            }
+            swipeNewFriends?.isRefreshing = false
+        }
+    }
+
+     fun addFriend(friendRequestId: FriendRequestId) {
+        GlobalScope.launch(Dispatchers.Main) {
+            showProgressDialog()
+            when (val response =
+                customRepository.createFriendRequest(friendRequestId)) {
+                is ResponseResult.Success -> {
+                    logD("respuesta login ${response.value}")
+                }
+                is ResponseResult.Error -> logD("respuesta login ${response.message}")
+////                    showError(response.message, constraintContainer)
+                is ResponseResult.Forbidden -> logD("respuesta login ${response.message}")
+//                    showError(response.message, constraintContainer)
             }
             hideProgressDialog()
         }

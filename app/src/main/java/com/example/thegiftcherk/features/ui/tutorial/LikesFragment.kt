@@ -22,9 +22,7 @@ class LikesFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        chipGroup?.setOnCheckedChangeListener { group, checkedId ->
-            logD("checked chips $checkedId")
-        }
+
 
         val checkedChips: MutableList<String> = mutableListOf()
 
@@ -44,9 +42,18 @@ class LikesFragment : BaseFragment() {
 
                 buttonSendLikes?.setOnClickListener {
 
-                    prefs.likes = checkedChips.json()
-                    logD("checked chips $checkedChips")
-                    startMainActivity()
+                    if (checkedChips.size < 4) {
+                        showError(
+                            "Tienes que marcar, al menos, 4 gustos.",
+                            constraintLikesContainer
+                        )
+                    } else {
+                        prefs.likes = checkedChips.json()
+                        logD("checked chips $checkedChips")
+                        startMainActivity()
+                    }
+
+
                 }
 
             }

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
             android:gravity="center"
-            android:text="THEGIFTCHER"
+            android:text="@string/app_name"
             android:textColor="@color/colorDetail"
             android:textSize="@dimen/text_title" />
 
@@ -52,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/placeholder_email"
+            android:maxLength="20"
             android:inputType="textEmailAddress"
             android:textColor="@color/colorDetail" />
     </com.google.android.material.textfield.TextInputLayout>

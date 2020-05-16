@@ -65,6 +65,7 @@
     <style name="MyOutlinedBox.Dense" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="hintTextAppearance">@style/TextAppearance.TextInputLayout.HintText</item>
         <item name="android:paddingBottom">8dp</item>
+        <item name="tint">@color/colorDetail</item>
     </style>
     <style name="TextLabel" parent="TextAppearance.AppCompat">
         <!-- Hint color and label color in FALSE state -->

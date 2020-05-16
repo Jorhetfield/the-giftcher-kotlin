@@ -37,7 +37,7 @@
                     android:layout_marginEnd="32dp"
                     android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/colorDetail"
-                    android:text="asd"
+                    android:text="@string/sample"
                     android:textAllCaps="true"
                     android:textSize="@dimen/text_bigger" />
 
@@ -48,7 +48,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="32dp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text="asd"
+                    android:text="@string/sample"
                     android:textAllCaps="true"
                     android:textSize="@dimen/text_bigger"
                     android:textStyle="bold"/>
@@ -73,7 +73,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:textColor="@color/colorSecondary"
-                    android:text="asd"
+                    android:text="@string/sample"
                     android:textSize="@dimen/text_big"
                     android:textStyle="bold" />
 
@@ -81,7 +81,7 @@
                     android:id="@+id/buttonDate"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:contentDescription="asd"
+                    android:contentDescription="@string/sample"
                     android:scaleType="fitCenter"
                     android:layout_margin="8dp"
                     android:layout_gravity="center"
@@ -93,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="asdasdsadsadasd"
+                    android:text="@string/sample"
                     android:textColor="@color/colorSecondary"
                     android:textSize="@dimen/text_big"
                     android:textStyle="bold" />
@@ -106,7 +106,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:textColor="@color/colorSecondary"
-                    android:text="asd"
+                    android:text="@string/sample"
                     android:textSize="@dimen/text_big"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -118,7 +118,7 @@
                     android:id="@+id/buttonHour"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:contentDescription="asd"
+                    android:contentDescription="@string/sample"
                     android:scaleType="fitCenter"
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
@@ -130,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="sdsadasdsadsasad"
+                    android:text="@string/sample"
                     android:textColor="@color/colorSecondary"
                     android:textSize="@dimen/text_big"
                     android:textStyle="bold" />
@@ -143,7 +143,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:contentDescription="asd"
+                android:contentDescription="@string/sample"
                 android:scaleType="fitCenter"
                 android:textColor="@color/colorSecondary"
                 android:background="?attr/selectableItemBackgroundBorderless"

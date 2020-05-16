@@ -48,8 +48,6 @@ class MainActivity : BaseActivity() {
         setStatusBarColor()
         setSupportActionBar(toolbar)
         navView.setupWithNavController(navController)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

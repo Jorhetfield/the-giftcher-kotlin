@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Friend(
     @SerializedName("id")val id: String?,
+    @SerializedName("friendId")val friendId: String?,
     @SerializedName("username")val username: String?,
     @SerializedName("name")val name: String?,
     @SerializedName("lastName")val lastName: String?,

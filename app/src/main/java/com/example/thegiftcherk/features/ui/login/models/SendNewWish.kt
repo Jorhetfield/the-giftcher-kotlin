@@ -12,8 +12,7 @@ data class SendNewWish(
     @SerializedName("price") val price: String?,
     @SerializedName("shop") val shop: String?,
     @SerializedName("reserved") val reserved: Boolean?,
-    @SerializedName("location") val location: String?,
+    @SerializedName("online_shop") val onlineShop: String?,
     @SerializedName("date") val date: String?,
-    @SerializedName("online_shop") val online_shop: String?,
     @SerializedName("category") val category: Int?
 ) : Parcelable, JSONConvertable

@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.thegiftcherk.R
+import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.network.Repository
 import com.example.thegiftcherk.setup.utils.extensions.hideProgressDialog
 import com.example.thegiftcherk.setup.utils.extensions.isEmail
@@ -24,6 +25,7 @@ abstract class BaseFragment : Fragment() {
     //region Vars
     val prefs: Prefs by inject()
     val customRepository by inject<Repository>()
+    val reservedWish: MutableList<Item?> = mutableListOf()
     //endregion Vars
 
     fun checkAndRequestPermission(permission: String, codeRequest: Int): Boolean {
@@ -176,7 +178,8 @@ abstract class BaseFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (!s.toString().isValidPassword()) {
                     inputPasswordLayout.isErrorEnabled = true
-                    inputPasswordLayout.error = "La contraseña debe tener más de 8 caracteres, una mayus, un número y uno de estos símbolos @#!$%"
+                    inputPasswordLayout.error =
+                        "La contraseña debe tener más de 8 caracteres, una mayus, un número y uno de estos símbolos @#!$%"
                 }
             }
         }
@@ -198,31 +201,53 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
-
     enum class CategoriesIds(val category: Pair<String, String>) {
         VIDEOJUEGOS(Pair("1", "Videojuegos")),
         HOGAR(Pair("2", "Hogar")),
-        MOTOR(Pair("3", "Motor")),
+        MOTOR(Pair("3", "Vehículos")),
         ELECTRODOMESTICOS(Pair("4", "Electrodomésticos")),
         MODA(Pair("5", "Moda")),
-        JARDIN(Pair("6", "Jardín")),
-        TELEVISION(Pair("7", "Televisión")),
+        JARDIN(Pair("6", "Jardinería")),
+        TELEVISION(Pair("7", "Televisores")),
         MUSICA(Pair("8", "Música")),
         FOTO(Pair("9", "Fotografía")),
-        MOVILES(Pair("10", "Móviles")),
+        MOVILES(Pair("10", "Telefonía")),
         INFORMATICA(Pair("11", "Informática")),
-        DEPORTE(Pair("12", "Deporte")),
-        LIBROS(Pair("13", "Libros")),
-        NIÑOS_Y_BEBES(Pair("14", "Niños y Bebés")),
+        DEPORTE(Pair("12", "Deportes")),
+        LIBROS(Pair("13", "Literatura")),
+        NIÑOS_Y_BEBES(Pair("14", "Niños y bebés")),
         AGRICULTURA(Pair("15", "Agricultura")),
         SERVICIOS(Pair("16", "Servicios")),
         COLECCIONISMO(Pair("17", "Coleccionismo")),
-        CONSTRUCCION(Pair("18", "Construcción")),
-        OTROS(Pair("19", "Otros"))
+        CONSTRUCCION(Pair("18", "Albañilería y construcción")),
+        OTROS(Pair("19", "Otras"))
+    }
+
+    enum class CategoriesIdsEnglish(val category: Pair<String, String>) {
+        VIDEOJUEGOS(Pair("1", "Videogames")),
+        HOGAR(Pair("2", "Home")),
+        MOTOR(Pair("3", "Motor")),
+        ELECTRODOMESTICOS(Pair("4", "House appliances")),
+        MODA(Pair("5", "Fashion")),
+        JARDIN(Pair("6", "Gardening")),
+        TELEVISION(Pair("7", "TV")),
+        MUSICA(Pair("8", "Music")),
+        FOTO(Pair("9", "Photography")),
+        MOVILES(Pair("10", "Mobile phones")),
+        INFORMATICA(Pair("11", "Computing")),
+        DEPORTE(Pair("12", "Sports")),
+        LIBROS(Pair("13", "Books")),
+        NIÑOS_Y_BEBES(Pair("14", "Kids & Babies")),
+        AGRICULTURA(Pair("15", "Farming")),
+        SERVICIOS(Pair("16", "Services")),
+        COLECCIONISMO(Pair("17", "Collectibles")),
+        CONSTRUCCION(Pair("18", "Building and masonry")),
+        OTROS(Pair("19", "Other products"))
     }
 
     companion object {
         const val REQUEST_LOCATION = 83
+        const val CAMERA = 84
     }
     //endregion App Special Methods
 }
