@@ -80,7 +80,6 @@ class AddProductFragment : BaseFragment() {
         saveButton?.setOnClickListener {
             if (multipartPrueba != null && inputName.text.toString()
                     .isNotEmpty() && inputStore.text.toString()
-                    .isNotEmpty() && inputLocation.text.toString()
                     .isNotEmpty() && inputPrice.text.toString()
                     .isNotEmpty() && inputDescription.text.toString().isNotEmpty()
             ) {
@@ -238,11 +237,11 @@ class AddProductFragment : BaseFragment() {
 
                 is ResponseResult.Error -> {
                     logD("******************** Error *******************")
-                    showError(response.message, view!!.rootView)
+                    showError(response.message, constraintContainer)
                 }
                 is ResponseResult.Forbidden -> {
                     logD("******************** Forbidden *******************")
-                    showError(response.message, view!!.rootView)
+                    showError(response.message, constraintContainer)
                 }
             }
             hideProgressDialog()
@@ -272,16 +271,12 @@ class AddProductFragment : BaseFragment() {
             inputPrice?.text.toString(),
             inputStore?.text.toString(),
             false,
-            inputLocation?.text.toString(),
-            null,
+            inputOnlineShop?.text.toString(),
             null,
             (spinnerCardType?.selectedItemPosition)?.plus(1)
         )
-
         addWish(wish)
-
     }
-
 
     private fun addWish(sendNewWish: SendNewWish) {
         GlobalScope.launch(Dispatchers.Main) {

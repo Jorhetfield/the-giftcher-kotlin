@@ -85,7 +85,7 @@ class EditWishFragment : BaseFragment() {
         inputStore?.setText(mProduct?.shop)
         inputPrice?.setText(mProduct?.price)
         inputDescription?.setText(mProduct?.description)
-        inputLocation?.setText(mProduct?.location)
+        inputOnlineShop?.setText(mProduct?.onlineShop)
 
         if (!mProduct?.picture.isNullOrEmpty()) {
 
@@ -105,7 +105,7 @@ class EditWishFragment : BaseFragment() {
         saveButton?.setOnClickListener {
             if (multipartPrueba != null && inputName.text.toString()
                     .isNotEmpty() && inputStore.text.toString()
-                    .isNotEmpty() && inputLocation.text.toString()
+                    .isNotEmpty() && inputOnlineShop.text.toString()
                     .isNotEmpty() && inputPrice.text.toString()
                     .isNotEmpty() && inputDescription.text.toString().isNotEmpty()
             ) {
@@ -302,7 +302,7 @@ class EditWishFragment : BaseFragment() {
             mProduct?.picture,
             "",
             null,
-            inputLocation?.text.toString(),
+            inputOnlineShop?.text.toString(),
             null,
             null,
             (spinnerCardType?.selectedItemPosition)?.plus(1)

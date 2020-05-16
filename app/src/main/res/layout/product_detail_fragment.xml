@@ -66,6 +66,7 @@
                         android:id="@+id/itemImage"
                         android:layout_width="0dp"
                         android:layout_height="300dp"
+                        android:layout_margin="1dp"
                         android:scaleType="centerCrop"
                         app:layout_constraintBottom_toTopOf="@+id/textContainer"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -292,6 +293,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
+                android:id="@+id/buttonContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -320,6 +322,20 @@
                     android:textColor="@color/white_gray"
                     app:layout_constraintTop_toBottomOf="@+id/messageCard" />
             </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/goToWebsite"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorDetail"
+                android:text="@string/productdetail_button_gotoweb"
+                android:textColor="@color/white_gray"
+                android:visibility="gone"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buttonContainer" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

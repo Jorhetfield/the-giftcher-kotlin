@@ -40,7 +40,7 @@ class MyListFragment : BaseFragment() {
 
     private fun getItems() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
+//            showProgressDialog()
             when (val response =
                 customRepository.getItems()) {
                 is ResponseResult.Success -> {
@@ -57,7 +57,7 @@ class MyListFragment : BaseFragment() {
                 is ResponseResult.Forbidden -> {
                 }
             }
-            hideProgressDialog()
+//            hideProgressDialog()
         }
     }
 }

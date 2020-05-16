@@ -11,6 +11,7 @@ data class Item(
     val name: String?,
     @SerializedName("userId") val userId: String?,
     @SerializedName("shop") val shop: String?,
+    @SerializedName("onlineShop") val onlineShop: String?,
     val price: String?,
     val reserved: Boolean?,
     val category: String?,

@@ -147,7 +147,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/inputLocationLayout"
+                            android:id="@+id/inputOnlineShopLayout"
                             style="@style/MyOutlinedBox.Dense"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -162,10 +162,10 @@
                             app:layout_constraintTop_toBottomOf="@id/inputStoreLayout">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/inputLocation"
+                                android:id="@+id/inputOnlineShop"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/addproduct_placeholder_location"
+                                android:hint="@string/addproduct_placeholder_online_shop"
                                 android:maxLength="20"
                                 android:inputType="textEmailAddress"
                                 android:textColor="@color/colorSecondary"
@@ -185,7 +185,7 @@
                             android:weightSum="100"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/inputLocationLayout">
+                            app:layout_constraintTop_toBottomOf="@+id/inputOnlineShopLayout">
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:id="@+id/inputPriceLayout"

@@ -108,8 +108,8 @@ dependencies {
     //Logger
     implementation 'com.javiersc.kotlinlogger:jvm:0.0.2'
 
-    implementation "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha04"
-    implementation "androidx.navigation:navigation-ui-ktx:2.3.0-alpha04"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha06"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.0-alpha06"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

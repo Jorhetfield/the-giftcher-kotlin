@@ -5,7 +5,7 @@
     <string name="yes">Yes</string>
     <string name="confirm">Confirm</string>
     <string name="loading">Loading…</string>
-    <string name="placeholder_name">Name</string>
+    <string name="placeholder_name">Name*</string>
     <string name="placeholder_surname">Surname</string>
     <string name="placeholder_username">User name</string>
     <string name="placeholder_password">Password</string>
@@ -53,10 +53,10 @@
     <string name="addfriend_searchbar_explanation">⬆     Find another friends writing their usernames on the searchbar and send a friend request.</string>
 
     <!-- Fragment "Add Product" -->
-    <string name="addproduct_placeholder_shop">Shop</string>
-    <string name="addproduct_placeholder_location">Location</string>
-    <string name="addproduct_placeholder_price">Price</string>
-    <string name="addproduct_placeholder_description">Product description</string>
+    <string name="addproduct_placeholder_shop">Shop*</string>
+    <string name="addproduct_placeholder_online_shop">Url o dirección web de la tienda</string>
+    <string name="addproduct_placeholder_price">Price*</string>
+    <string name="addproduct_placeholder_description">Product description*</string>
     <string name="addproduct_button_save">Save</string>
     <string name="addproduct_button_associate">Associate</string>
 
@@ -131,6 +131,7 @@
     <!-- Fragment "Product detail" -->
     <string name="productdetail_button_update">Actualizar</string>
     <string name="productdetail_button_delete">Eliminar</string>
+    <string name="productdetail_button_gotoweb">Ir a la web</string>
 
     <!-- Activity "Tutorial" -->
     <string name="tutorial_1">Allévoy</string>

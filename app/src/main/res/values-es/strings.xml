@@ -5,7 +5,7 @@
     <string name="yes">Sí</string>
     <string name="confirm">Confirmar</string>
     <string name="loading">Cargando…</string>
-    <string name="placeholder_name">Nombre</string>
+    <string name="placeholder_name">Nombre*</string>
     <string name="placeholder_surname">Apellidos</string>
     <string name="placeholder_username">Nombre de usuario</string>
     <string name="placeholder_password">Contraseña</string>
@@ -50,13 +50,14 @@
 
     <!-- Fragment Add Friend -->
     <string name="addfriend_searchbar_placeholder">Busca nuevos amigos.</string>
+    <string name="productdetail_button_gotoweb">Ir a la web</string>
     <string name="addfriend_searchbar_explanation">⬆     Encuentra a otros usuarios escribiendo su nombre en el buscador y envíales una solicitud de amistad.</string>
 
     <!-- Fragment Add Product -->
-    <string name="addproduct_placeholder_shop">Tienda</string>
-    <string name="addproduct_placeholder_location">Dirección</string>
-    <string name="addproduct_placeholder_price">Precio</string>
-    <string name="addproduct_placeholder_description">Descripción del producto</string>
+    <string name="addproduct_placeholder_shop">Tienda*</string>
+    <string name="addproduct_placeholder_online_shop">Url o dirección web de la tienda</string>
+    <string name="addproduct_placeholder_price">Precio*</string>
+    <string name="addproduct_placeholder_description">Descripción del producto*</string>
     <string name="addproduct_button_save">Guardar</string>
     <string name="addproduct_button_associate">Asociar</string>
 

@@ -1,6 +1,7 @@
 package com.example.thegiftcherk.features.ui.addproduct.productdetail
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.login.models.User
 import com.example.thegiftcherk.features.ui.login.models.WishToReserve
-import com.example.thegiftcherk.features.ui.search.models.Item
 import com.example.thegiftcherk.setup.BaseFragment
 import com.example.thegiftcherk.setup.network.ResponseResult
-import com.example.thegiftcherk.setup.utils.extensions.fromJson
-import com.example.thegiftcherk.setup.utils.extensions.lazyUnsychronized
-import com.example.thegiftcherk.setup.utils.extensions.logD
+import com.example.thegiftcherk.setup.utils.extensions.*
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_detail_fragment.*
@@ -65,17 +63,14 @@ class ProductDetailFragment : BaseFragment() {
         }
 
         if (mProduct?.userId != userData?.id) {
-            editWishButton?.visibility = View.GONE
-            deleteWishButton?.visibility = View.GONE
+            buttonContainer?.visibility = View.GONE
             reserveButton?.visibility = View.VISIBLE
             saveButton?.visibility = View.VISIBLE
         } else {
-            editWishButton?.visibility = View.VISIBLE
-            deleteWishButton?.visibility = View.VISIBLE
+            buttonContainer?.visibility = View.VISIBLE
             reserveButton?.visibility = View.GONE
             saveButton?.visibility = View.GONE
         }
-
 
         if (mProduct?.reserved == true && mProduct?.userId != userData?.id) {
             reserveButton?.visibility = View.GONE
@@ -84,7 +79,7 @@ class ProductDetailFragment : BaseFragment() {
 
         titleTV?.text = mProduct?.name
         descriptionTV?.text = mProduct?.description
-        priceTV?.text = mProduct?.price
+        priceTV?.text = "${mProduct?.price}€"
         storeTV?.text = mProduct?.shop
 
         if (!mProduct?.picture.isNullOrEmpty()) {
@@ -97,6 +92,16 @@ class ProductDetailFragment : BaseFragment() {
                 .into(itemImage)
         }
         logD("product $mProduct")
+
+        if (!mProduct?.onlineShop.isNullOrEmpty()) {
+            goToWebsite?.visibility = View.VISIBLE
+        } else {
+            goToWebsite?.visibility = View.GONE
+        }
+
+        goToWebsite?.setOnClickListener {
+            openWeb(mProduct?.onlineShop ?: "http://thegiftcher.com")
+        }
 
         shareButton?.setOnClickListener {
             //TODO abrir intent de compartir
@@ -154,7 +159,11 @@ class ProductDetailFragment : BaseFragment() {
 
         val shareIntent = Intent.createChooser(sendIntent, null)
         startActivity(shareIntent)
+    }
 
+    private fun openWeb(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
     }
 
     private fun deleteWish(id: String) {
