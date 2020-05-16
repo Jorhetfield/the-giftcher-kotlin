@@ -54,11 +54,12 @@ class FriendDetailFragment : BaseFragment() {
 
             Picasso.get()
                 .load(mFriend?.imagePath)
-                .placeholder(R.drawable.ic_placeholder)
+                .placeholder(R.drawable.ic_electronics)
                 .into(imageProfile)
         } else {
             Picasso.get()
-                .load(R.drawable.ic_placeholder)
+                .load(R.drawable.ic_electronics)
+                .placeholder(R.drawable.ic_electronics)
                 .into(imageProfile)
         }
 

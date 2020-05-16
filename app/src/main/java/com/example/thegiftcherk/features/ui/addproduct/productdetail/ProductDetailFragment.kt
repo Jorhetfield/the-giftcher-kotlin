@@ -85,10 +85,12 @@ class ProductDetailFragment : BaseFragment() {
         if (!mProduct?.picture.isNullOrEmpty()) {
             Picasso.get()
                 .load(mProduct?.picture)
+                .placeholder(R.drawable.ic_placeholder)
                 .into(itemImage)
         } else {
             Picasso.get()
                 .load(R.drawable.ic_placeholder)
+                .placeholder(R.drawable.ic_placeholder)
                 .into(itemImage)
         }
         logD("product $mProduct")

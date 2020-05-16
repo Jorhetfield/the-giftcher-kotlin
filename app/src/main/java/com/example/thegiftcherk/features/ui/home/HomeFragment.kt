@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thegiftcherk.R
@@ -50,7 +51,7 @@ class HomeFragment : BaseFragment() {
                 logD("prueba likes if $likesMatching")
 
             } else {
-               val likeFiltered =  CategoriesIdsEnglish.values().find {
+                val likeFiltered = CategoriesIdsEnglish.values().find {
                     it.category.second == like
                 }
                 likesMatching.add(likeFiltered?.category?.first)
@@ -106,8 +107,18 @@ class HomeFragment : BaseFragment() {
         recycler4.adapter = itemAdapter4
 
         getItems()
+
+
         moreInfoButton?.setOnClickListener {
             openWeb("http://thegiftcher.com")
+        }
+    }
+
+    private fun checkRecyclers(items: MutableList<Item>, textView: TextView?) {
+        if (items.size < 1){
+            textView?.visibility = View.GONE
+        } else {
+            textView?.visibility = View.VISIBLE
         }
     }
 
@@ -118,7 +129,6 @@ class HomeFragment : BaseFragment() {
 
     private fun getItems() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
             when (val response =
                 customRepository.getAllWishes()) {
                 is ResponseResult.Success -> {
@@ -155,6 +165,10 @@ class HomeFragment : BaseFragment() {
                     itemAdapter3.notifyDataSetChanged()
                     itemAdapter4.notifyDataSetChanged()
                     hideKeyboard()
+                    checkRecyclers(items1, recyclerTitle1)
+                    checkRecyclers(items2, recyclerTitle2)
+                    checkRecyclers(items3, recyclerTitle3)
+                    checkRecyclers(items4, recyclerTitle4)
                 }
 
                 is ResponseResult.Error -> {
@@ -163,16 +177,15 @@ class HomeFragment : BaseFragment() {
                 }
                 is ResponseResult.Forbidden -> {
                     showError(response.message, recyclers)
-
                 }
             }
-            hideProgressDialog()
+            hideProgressBar()
         }
     }
 
     private fun getFriendRequests() {
         GlobalScope.launch(Dispatchers.Main) {
-            showProgressDialog()
+            showProgressBar()
             when (val response =
                 customRepository.getFriendRequests()) {
                 is ResponseResult.Success -> {
@@ -198,8 +211,15 @@ class HomeFragment : BaseFragment() {
 
                 }
             }
-            hideProgressDialog()
         }
+    }
+
+    private fun showProgressBar() {
+        loadingBarHome?.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        loadingBarHome?.visibility = View.GONE
     }
 
     private fun getStringFromCategory(category: String): String {

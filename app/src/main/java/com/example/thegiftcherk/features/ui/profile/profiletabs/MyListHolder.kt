@@ -53,11 +53,12 @@ class MyListHolder(v: View) : RecyclerView.ViewHolder(v) {
 
             Picasso.get()
                 .load(item.picture)
-                .placeholder(R.drawable.ic_placeholder)
+                .placeholder(R.drawable.ic_gift)
                 .into(view.itemImage)
         } else {
             Picasso.get()
-                .load(R.drawable.ic_placeholder)
+                .load(R.drawable.ic_gift)
+                .placeholder(R.drawable.ic_gift)
                 .into(view.itemImage)
         }
 
