@@ -167,7 +167,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/addproduct_placeholder_online_shop"
-                                android:maxLength="20"
                                 android:inputType="textEmailAddress"
                                 android:textColor="@color/colorSecondary"
                                 app:hintTextColor="@color/colorSecondary">
