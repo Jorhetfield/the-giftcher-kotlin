@@ -114,6 +114,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginStart="8dp"
+                        android:visibility="gone"
                         android:layout_marginBottom="8dp"
                         app:cardElevation="4dp"
                         app:cardMaxElevation="10dp"
@@ -299,7 +300,7 @@
                 android:padding="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/messageCard">
+                app:layout_constraintTop_toBottomOf="@+id/goToWebsite">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/editWishButton"
@@ -318,7 +319,7 @@
                     android:backgroundTint="@color/colorDetail"
                     android:text="@string/productdetail_button_delete"
                     android:textColor="@color/white_gray"
-                    app:layout_constraintTop_toBottomOf="@+id/messageCard" />
+                    app:layout_constraintTop_toBottomOf="@+id/goToWebsite" />
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -329,11 +330,12 @@
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/colorDetail"
                 android:text="@string/productdetail_button_gotoweb"
-                android:textColor="@color/white_gray"
                 android:visibility="gone"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/white_gray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/buttonContainer" />
+                app:layout_constraintTop_toBottomOf="@+id/messageCard" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

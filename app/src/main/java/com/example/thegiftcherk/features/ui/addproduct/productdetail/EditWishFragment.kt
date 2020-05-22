@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.thegiftcherk.R
 import com.example.thegiftcherk.features.ui.login.models.SendEditWish
 import com.example.thegiftcherk.setup.BaseFragment
@@ -98,21 +99,19 @@ class EditWishFragment : BaseFragment() {
                 .into(imagePickerIV)
         }
 
-
         imagePickerIV?.setOnClickListener {
             selectImage()
         }
         saveButton?.setOnClickListener {
-            if (multipartPrueba != null && inputName.text.toString()
+            if (inputName.text.toString()
                     .isNotEmpty() && inputStore.text.toString()
-                    .isNotEmpty() && inputOnlineShop.text.toString()
-                    .isNotEmpty() && inputPrice.text.toString()
+                    .isNotEmpty() &&  inputPrice.text.toString()
                     .isNotEmpty() && inputDescription.text.toString().isNotEmpty()
             ) {
                 fetchData()
             } else {
                 showError(
-                    "Necesitamos que subas una imagen con el deseo y rellenes todos los campos",
+                    "Necesitamos que rellenes todos los campos",
                     constraintContainer
                 )
             }
@@ -266,11 +265,11 @@ class EditWishFragment : BaseFragment() {
 
                 is ResponseResult.Error -> {
                     logD("******************** Error *******************")
-                    showError(response.message, view!!.rootView)
+                    showError(response.message, requireView())
                 }
                 is ResponseResult.Forbidden -> {
                     logD("******************** Forbidden *******************")
-                    showError(response.message, view!!.rootView)
+                    showError(response.message, requireView())
                 }
             }
             hideProgressDialog()
@@ -302,9 +301,8 @@ class EditWishFragment : BaseFragment() {
             mProduct?.picture,
             "",
             null,
+            null,
             inputOnlineShop?.text.toString(),
-            null,
-            null,
             (spinnerCardType?.selectedItemPosition)?.plus(1)
         )
 
@@ -320,8 +318,11 @@ class EditWishFragment : BaseFragment() {
                 customRepository.editWish(wishId, sendEditWish)) {
                 is ResponseResult.Success -> {
 
-                    showMessage("Deseo añadido correctamente", logoBackground)
-                    uploadWishImage(multipartPrueba!!, wishId)
+                    showMessage("Deseo editado correctamente", logoBackground)
+                    findNavController().popBackStack()
+                    if (multipartPrueba != null) {
+                        multipartPrueba?.let { uploadWishImage(it, wishId) }
+                    }
 
                 }
 

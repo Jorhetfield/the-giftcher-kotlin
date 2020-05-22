@@ -85,10 +85,10 @@ class ProfileFragment : BaseFragment() {
                     friendsNumber?.text = responseResult?.size.toString()
                 }
                 is ResponseResult.Error -> {
-                    showError(response.message, view!!)
+                    showError(response.message, requireView())
                 }
                 is ResponseResult.Forbidden -> {
-                    showError(response.message, view!!)
+                    showError(response.message, requireView())
 
                 }
             }
