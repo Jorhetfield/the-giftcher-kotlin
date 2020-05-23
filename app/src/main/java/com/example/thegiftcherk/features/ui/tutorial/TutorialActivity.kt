@@ -26,7 +26,6 @@ class TutorialActivity : BaseActivity() {
         homeButton?.setOnClickListener {
 //            startMainActivity()
             fragmentLikes()
-            prefs.firstLogin = false
         }
 
         val pictureUrlList: MutableList<Pair<Drawable, String>> = mutableListOf()

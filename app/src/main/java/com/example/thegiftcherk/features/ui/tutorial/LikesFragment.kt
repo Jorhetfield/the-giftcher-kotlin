@@ -59,11 +59,11 @@ class LikesFragment : BaseFragment() {
             }
             logD("$view")
         }
-
     }
 
     private fun startMainActivity() {
         context?.let {
+            prefs.firstLogin = false
             val intent = MainActivity.intent(it)
             startActivity(intent)
             activity?.finish()
